@@ -7,8 +7,9 @@ B-AROL-O Team proposal for [OpenCV AI Competition 2023](https://www.hackster.io/
 ## Timeline
 
 * [x] (2023-07-10 18:00 PDT) Contest begins
-* [ ] (2023-11-30 23:59 PDT) Submissions close
-* [ ] (2023-12-21) Winners announced
+* [ ] (2023-08-31 12:00 PDT) Preliminary submissions due
+* [ ] (2023-11-30 23:59 PDT) Final submissions due
+* [ ] (2023-12-21 09:00 PDT) Winners announced
 
 ## The Team
 
