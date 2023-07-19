@@ -4,7 +4,7 @@ B-AROL-O Team proposal for [OpenCV AI Competition 2023](https://www.hackster.io/
 
 ![2023-07-14-132715.jpg](assets/2023-07-14-132715.jpg)
 
-## Timeline
+## Competition Timeline
 
 * [x] (2023-07-10 18:00 PDT) Contest begins
 * [ ] (2023-08-31 12:00 PDT) Preliminary submissions due
@@ -17,6 +17,13 @@ B-AROL-O Team proposal for [OpenCV AI Competition 2023](https://www.hackster.io/
 * Document your idea, design and proposed process
 * Get your proposal reviewed by our amazing judges
 * Shortlisted winners advance to Phase 2
+
+### Phase 2: Develop and Implement
+
+* Develop your idea in the proposal from Phase 1
+* Create a technical project report
+* Share the source code
+* Create a short demo video of upto 5 mins
 
 ## The Team
 
