@@ -11,6 +11,13 @@ B-AROL-O Team proposal for [OpenCV AI Competition 2023](https://www.hackster.io/
 * [ ] (2023-11-30 23:59 PDT) Final submissions due
 * [ ] (2023-12-21 09:00 PDT) Winners announced
 
+### Phase 1: Idea and Design
+
+* Submit your project proposal
+* Document your idea, design and proposed process
+* Get your proposal reviewed by our amazing judges
+* Shortlisted winners advance to Phase 2
+
 ## The Team
 
 Firstname | Lastname   | GitHub_ID                                    | Telegram_ID   | Blog
