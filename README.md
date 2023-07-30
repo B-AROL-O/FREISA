@@ -35,4 +35,25 @@ Gianluca  | Teti       | [@gteti](https://github.com/gteti)           | ?       
 Davide    | Macario    | [@davmacario](https://github.com/davmacario) | DavideMacario | ?
 TODO      | TODO       | TODO                                         | TODO          | TODO
 
+## OpenCV AI Competition 2023: Jumpstart your idea with this checklist
+
+### Getting to know the technology
+
+Here are all the resources you need to start developing:
+
+#### Resources
+
+[Getting started guide](https://opencv.org/get-started/)
+
+### Start building
+
+Need sample tutorials for a part of your build? Browse from thousands of tutorials on [Hackster](https://www.hackster.io/projects).
+
+Need techincal help? Ask the community for help on the contest [discussion board](https://www.hackster.io/contests/opencv-ai-competition-2023/discussion).
+
+### Create your submission
+
+And last but not least, document your work and submit your entry.
+[Here's a tutorial](https://www.hackster.io/AlexWulff/how-to-create-a-high-quality-project-tutorial-e25feb) on how to create a high-quality project.
+
 <!-- EOF -->
