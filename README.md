@@ -49,7 +49,7 @@ Here are all the resources you need to start developing:
 
 Need sample tutorials for a part of your build? Browse from thousands of tutorials on [Hackster](https://www.hackster.io/projects).
 
-Need techincal help? Ask the community for help on the contest [discussion board](https://www.hackster.io/contests/opencv-ai-competition-2023/discussion).
+Need technical help? Ask the community for help on the contest [discussion board](https://www.hackster.io/contests/opencv-ai-competition-2023/discussion).
 
 ### Create your submission
 
