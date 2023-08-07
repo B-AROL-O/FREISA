@@ -31,7 +31,7 @@ Firstname | Lastname   | GitHub_ID                                    | Telegram
 ----------|------------|----------------------------------------------|---------------|------------|---|
 Gianpaolo | Macario    | [@gmacario](https://github.com/gmacario)     | gmacario      | [gmacario.github.io](https://gmacario.github.io/)| TODO |
 Pietro    | d'Agostino | [@pitdagosti](https://github.com/gteti)      | Pit836        | No | [@pit.dago](https://www.instagram.com/pit.dago/) |
-Gianluca  | Teti       | [@gteti](https://github.com/gteti)           | ?             | ? | ? |
+Gianluca  | Teti       | [@gteti](https://github.com/gteti)           | Gianteti      | ? | ? |
 Davide    | Macario    | [@davmacario](https://github.com/davmacario) | DavideMacario | ? | ? |
 TODO      | TODO       | TODO                                         | TODO          | TODO | TODO |
 
