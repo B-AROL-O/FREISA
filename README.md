@@ -1,8 +1,13 @@
 # opencv-ai-competition-2023
 
-B-AROL-O Team proposal for [OpenCV AI Competition 2023](https://www.hackster.io/contests/opencv-ai-competition-2023)
+B-AROL-O Team proposal for [OpenCV AI Competition 2023](https://www.hackster.io/contests/opencv-ai-competition-2023).
 
-![2023-07-14-132715.jpg](assets/2023-07-14-132715.jpg)
+## Quick links
+
+* [B-AROL-O TODO List: Open issues](https://github.com/orgs/B-AROL-O/projects/1)
+* [B-AROL-O TODO List: Completed](https://github.com/orgs/B-AROL-O/projects/1/views/5)
+* [opencv-ai-competition-2023: Closest milestones](https://github.com/B-AROL-O/opencv-ai-competition-2023/milestones?direction=asc&sort=due_date&state=open)
+* [Andrea Podo considerations on project backlog](assets/2023-07-14-132715.jpg)
 
 ## Competition Timeline
 
