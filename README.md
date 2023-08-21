@@ -38,6 +38,7 @@ Gianpaolo | Macario    | [@gmacario](https://github.com/gmacario)     | gmacario
 Pietro    | d'Agostino | [@pitdagosti](https://github.com/gteti)      | Pit836        | No | [@pit.dago](https://www.instagram.com/pit.dago/) |
 Gianluca  | Teti       | [@gteti](https://github.com/gteti)           | Gianteti      | ? | ? |
 Davide    | Macario    | [@davmacario](https://github.com/davmacario) | DavideMacario | ? | ? |
+Andrea    | Podo       | [@AndreaPodo](https://github.com/AndreaPodo) | andreapodo    | ? | ? |
 TODO      | TODO       | TODO                                         | TODO          | TODO | TODO |
 
 ## OpenCV AI Competition 2023: Jumpstart your idea with this checklist
