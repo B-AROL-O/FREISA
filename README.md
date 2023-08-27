@@ -40,7 +40,7 @@ Pietro    | d'Agostino | [@pitdagosti](https://github.com/gteti)      | Pit836  
 Gianluca  | Teti       | [@gteti](https://github.com/gteti)           | Gianteti      | ? | ? |
 Davide    | Macario    | [@davmacario](https://github.com/davmacario) | DavideMacario | ? | ? |
 Andrea    | Podo       | [@AndreaPodo](https://github.com/AndreaPodo) | andreapodo    | ? | ? |
-TODO      | TODO       | TODO                                         | TODO          | TODO | TODO |
+Eric      | Orso       | [@OrsoEric](https://github.com/OrsoEric)     | x05032MendicantBias | ? | ? |
 
 ## OpenCV AI Competition 2023: Jumpstart your idea with this checklist
 
