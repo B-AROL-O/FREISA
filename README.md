@@ -33,14 +33,16 @@ B-AROL-O Team proposal for [OpenCV AI Competition 2023](https://www.hackster.io/
 
 ## The Team
 
-Firstname | Lastname   | GitHub_ID                                    | Telegram_ID   | Blog | Instagram |
-----------|------------|----------------------------------------------|---------------|------------|---|
-Gianpaolo | Macario    | [@gmacario](https://github.com/gmacario)     | gmacario      | [gmacario.github.io](https://gmacario.github.io/)| TODO |
-Pietro    | d'Agostino | [@pitdagosti](https://github.com/gteti)      | Pit836        | No | [@pit.dago](https://www.instagram.com/pit.dago/) |
-Gianluca  | Teti       | [@gteti](https://github.com/gteti)           | Gianteti      | ? | ? |
-Davide    | Macario    | [@davmacario](https://github.com/davmacario) | DavideMacario | ? | ? |
-Andrea    | Podo       | [@AndreaPodo](https://github.com/AndreaPodo) | andreapodo    | ? | ? |
-Eric      | Orso       | [@OrsoEric](https://github.com/OrsoEric)     | x05032MendicantBias | ? | ? |
+Firstname | Lastname   | GitHub_ID                                    | Telegram_ID
+----------|------------|----------------------------------------------|---------------------
+Gianpaolo | Macario    | [@gmacario](https://github.com/gmacario)     | gmacario
+Pietro    | d'Agostino | [@pitdagosti](https://github.com/gteti)      | Pit836
+Gianluca  | Teti       | [@gteti](https://github.com/gteti)           | Gianteti
+Davide    | Macario    | [@davmacario](https://github.com/davmacario) | DavideMacario
+Andrea    | Podo       | [@AndreaPodo](https://github.com/AndreaPodo) | andreapodo
+Eric      | Orso       | [@OrsoEric](https://github.com/OrsoEric)     | x05032MendicantBias
+
+For additional contact information please see [assets/baroloteam_members.yaml](assets/baroloteam_members.yaml)
 
 ## OpenCV AI Competition 2023: Jumpstart your idea with this checklist
 
