@@ -33,14 +33,14 @@ B-AROL-O Team proposal for [OpenCV AI Competition 2023](https://www.hackster.io/
 
 ## The Team
 
-Firstname | Lastname   | GitHub_ID                                    | Telegram_ID
-----------|------------|----------------------------------------------|---------------------
-Gianpaolo | Macario    | [@gmacario](https://github.com/gmacario)     | gmacario
-Pietro    | d'Agostino | [@pitdagosti](https://github.com/gteti)      | Pit836
-Gianluca  | Teti       | [@gteti](https://github.com/gteti)           | Gianteti
-Davide    | Macario    | [@davmacario](https://github.com/davmacario) | DavideMacario
-Andrea    | Podo       | [@AndreaPodo](https://github.com/AndreaPodo) | andreapodo
-Eric      | Orso       | [@OrsoEric](https://github.com/OrsoEric)     | x05032MendicantBias
+Firstname | Lastname   | Role    | GitHub_ID                                    | Telegram_ID
+----------|------------|---------|----------------------------------------|---------------------
+Gianpaolo | Macario    | Advisor | [@gmacario](https://github.com/gmacario)     | gmacario
+Pietro    | d'Agostino | Member  | [@pitdagosti](https://github.com/gteti)      | Pit836
+Gianluca  | Teti       | Advisor | [@gteti](https://github.com/gteti)           | Gianteti
+Davide    | Macario    | Member  | [@davmacario](https://github.com/davmacario) | DavideMacario
+Andrea    | Podo       | Member  | [@AndreaPodo](https://github.com/AndreaPodo) | andreapodo
+Eric      | Orso       | Member  | [@OrsoEric](https://github.com/OrsoEric)     | x05032MendicantBias
 
 For additional contact information please see [assets/baroloteam_members.yaml](assets/baroloteam_members.yaml)
 
