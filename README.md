@@ -35,12 +35,12 @@ B-AROL-O Team proposal for [OpenCV AI Competition 2023](https://www.hackster.io/
 
 Firstname | Lastname   | Role    | GitHub_ID                                    | Telegram_ID
 ----------|------------|---------|----------------------------------------|---------------------
-Gianpaolo | Macario    | Advisor | [@gmacario](https://github.com/gmacario)     | gmacario
+Andrea    | Podo       | Member  | [@AndreaPodo](https://github.com/AndreaPodo) | andreapodo
+Davide    | Macario    | Member  | [@davmacario](https://github.com/davmacario) | DavideMacario
+Eric      | Orso       | Member  | [@OrsoEric](https://github.com/OrsoEric)     | x05032MendicantBias
 Pietro    | d'Agostino | Member  | [@pitdagosti](https://github.com/gteti)      | Pit836
 Gianluca  | Teti       | Advisor | [@gteti](https://github.com/gteti)           | Gianteti
-Davide    | Macario    | Member  | [@davmacario](https://github.com/davmacario) | DavideMacario
-Andrea    | Podo       | Member  | [@AndreaPodo](https://github.com/AndreaPodo) | andreapodo
-Eric      | Orso       | Member  | [@OrsoEric](https://github.com/OrsoEric)     | x05032MendicantBias
+Gianpaolo | Macario    | Advisor | [@gmacario](https://github.com/gmacario)     | gmacario
 
 For additional contact information please see [assets/baroloteam_members.yaml](assets/baroloteam_members.yaml)
 
