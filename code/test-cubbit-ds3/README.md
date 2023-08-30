@@ -2,9 +2,9 @@
 
 ## Introduction
 
-The **Cubbit Cloud** service, that offers TBs of space, by now doesn't have the option for an API integration.
+The [Cubbit Cloud](https://web.cubbit.io/) service, that offers TBs of space, by now doesn't have the option for an API integration.
 
-Otherwise there's the possibility to use **Cubbit DS3 Object Storage** that supports most of AWS S3 APIs.
+Otherwise there's the possibility to use [Cubbit DS3 Object Storage](https://console.cubbit.eu/signin) that supports most of AWS S3 APIs.
 
 ## Register and Create Bucket
 
