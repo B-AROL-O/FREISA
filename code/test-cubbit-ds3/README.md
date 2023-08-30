@@ -1,4 +1,4 @@
-# README.md
+# test-cubbit-ds3
 
 ## Introduction
 
@@ -9,11 +9,12 @@ Otherwise there's the possibility to use [Cubbit DS3 Object Storage](https://con
 ## Register and Create Bucket
 
 * Create an account in <https://console.cubbit.eu/signup>
-* Create a new bucket By pressing "+ Create bucket"
+* Create a new bucket by pressing "+ Create bucket"
 * Generate the Keys of the repository by clicking "API keys" and then "+ Generate new client API key". Save the *Access key ID* and the *Secret access key*
 
 ## Resources
 
-<https://docs.cubbit.io/guides/s3-api>
+* <https://docs.cubbit.io/guides/s3-api>
+* <https://docs.cubbit.io/guides/access-control-list>
 
-<https://docs.cubbit.io/guides/access-control-list>
+<!-- EOF -->
