@@ -38,7 +38,7 @@ Firstname | Lastname   | Role    | GitHub_ID                                    
 Andrea    | Podo       | Member  | [@AndreaPodo](https://github.com/AndreaPodo) | andreapodo
 Davide    | Macario    | Member  | [@davmacario](https://github.com/davmacario) | DavideMacario
 Eric      | Orso       | Member  | [@OrsoEric](https://github.com/OrsoEric)     | x05032MendicantBias
-Pietro    | d'Agostino | Member  | [@pitdagosti](https://github.com/gteti)      | Pit836
+Pietro    | d'Agostino | Member  | [@pitdagosti](https://github.com/pitdagosti) | Pit836
 Gianluca  | Teti       | Advisor | [@gteti](https://github.com/gteti)           | Gianteti
 Gianpaolo | Macario    | Advisor | [@gmacario](https://github.com/gmacario)     | gmacario
 
