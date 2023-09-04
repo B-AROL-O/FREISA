@@ -14,7 +14,7 @@ Otherwise there's the possibility to use [Cubbit DS3 Object Storage](https://con
 
 ## Sample code
 
-Under *code/test-cubbit-ds3* can be found a file named *code.ipynb* that represents a sample code for the basic actions that can be performed using python functions.
+File `code.ipynb` under `code/test-cubbit-ds3` is a Jupyter notebook which demonstrates the basic actions that can be performed using Python functions.
 
 ### Prerequisites
 
