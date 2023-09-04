@@ -26,7 +26,7 @@ Under *code/test-cubbit-ds3* can be found a file named *code.ipynb* that represe
 
 The sample script is divided into two parts:
 
-* The creation of the session: Once the endpoint (to https://s3.cubbit.eu) is stated, it is possible to use the Access key and the Secret key to create a Cubbit's S3 service and then instantiate an S3 client.
+* The creation of the session: Once the endpoint (to <https://s3.cubbit.eu>) is stated, it is possible to use the Access key and the Secret key to create a Cubbit's S3 service and then instantiate an S3 client.
 * The Read/Write functions: With an active session, the client can use the R/W to access the database. In particular these allow:
   * Listing of all the bucket present in repository
   * Listing of all the objects present in a bucket
