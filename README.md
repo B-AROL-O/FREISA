@@ -1,6 +1,6 @@
 # opencv-ai-competition-2023
 
-[Project FREISA](https://www.hackster.io/projects/845012) (an acronym for "Four-legged Robot Ensuring Intelligent Sprinkler Automation") is [B-AROL-O Team](https://github.com/B-AROL-O?view_as=public) proposal for the [OpenCV AI Competition 2023](https://www.hackster.io/contests/opencv-ai-competition-2023).
+[Project FREISA](https://www.hackster.io/projects/845012), an acronym for "`F`our-legged `R`obot `E`nsuring `I`ntelligent `S`prinkler `A`utomation", is [B-AROL-O Team](https://github.com/B-AROL-O?view_as=public) proposal for the [OpenCV AI Competition 2023](https://www.hackster.io/contests/opencv-ai-competition-2023).
 
 ## Quick links
 
