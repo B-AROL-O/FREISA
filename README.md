@@ -4,9 +4,8 @@ B-AROL-O Team proposal for [OpenCV AI Competition 2023](https://www.hackster.io/
 
 ## Quick links
 
-* [B-AROL-O TODO List: Open issues](https://github.com/orgs/B-AROL-O/projects/1)
-* [B-AROL-O TODO List: Completed](https://github.com/orgs/B-AROL-O/projects/1/views/5)
-* [FREISA Project Board](https://github.com/orgs/B-AROL-O/projects/3)
+* [B-AROL-O TODO List](https://github.com/orgs/B-AROL-O/projects/1): [Open issues](https://github.com/orgs/B-AROL-O/projects/1), [Completed](https://github.com/orgs/B-AROL-O/projects/1/views/5), [Unassigned AIs](https://github.com/orgs/B-AROL-O/projects/1/views/9)
+* [FREISA Project Board](https://github.com/orgs/B-AROL-O/projects/3): [FREISA Kanban](https://github.com/orgs/B-AROL-O/projects/3), [FREISA Roadmap](https://github.com/orgs/B-AROL-O/projects/3/views/2)
 * [FREISA Project Homepage on hackster.io](https://www.hackster.io/projects/845012)
 * [opencv-ai-competition-2023: Closest milestones](https://github.com/B-AROL-O/opencv-ai-competition-2023/milestones?direction=asc&sort=due_date&state=open)
 * [Andrea Podo considerations on project backlog](assets/2023-07-14-132715.jpg)
