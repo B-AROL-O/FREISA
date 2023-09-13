@@ -1,6 +1,6 @@
 # opencv-ai-competition-2023
 
-B-AROL-O Team proposal for [OpenCV AI Competition 2023](https://www.hackster.io/contests/opencv-ai-competition-2023).
+[Project FREISA](https://www.hackster.io/projects/845012) (Four-legged Robot Ensuring Intelligent Sprinkler Automation) is B-AROL-O Team proposal for [OpenCV AI Competition 2023](https://www.hackster.io/contests/opencv-ai-competition-2023).
 
 ## Quick links
 
