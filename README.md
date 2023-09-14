@@ -7,7 +7,7 @@
 * [B-AROL-O TODO List](https://github.com/orgs/B-AROL-O/projects/1): [Open issues](https://github.com/orgs/B-AROL-O/projects/1), [Completed](https://github.com/orgs/B-AROL-O/projects/1/views/5), [Unassigned AIs](https://github.com/orgs/B-AROL-O/projects/1/views/9)
 * [FREISA Project Board](https://github.com/orgs/B-AROL-O/projects/3): [FREISA Kanban](https://github.com/orgs/B-AROL-O/projects/3), [FREISA Roadmap](https://github.com/orgs/B-AROL-O/projects/3/views/2)
 * [FREISA Project Homepage on hackster.io](https://www.hackster.io/projects/845012)
-* [opencv-ai-competition-2023: Closest milestones](https://github.com/B-AROL-O/opencv-ai-competition-2023/milestones?direction=asc&sort=due_date&state=open). [Past milestones](https://github.com/B-AROL-O?view_as=public)
+* [opencv-ai-competition-2023: Closest milestones](https://github.com/B-AROL-O/opencv-ai-competition-2023/milestones?direction=asc&sort=due_date&state=open). [Past milestones](https://github.com/B-AROL-O/opencv-ai-competition-2023/milestones?direction=asc&sort=due_date&state=closed)
 * [Andrea Podo considerations on project backlog as of 2023-07-14](assets/2023-07-14-132715.jpg)
 
 ## Competition Timeline
