@@ -1,3 +1,4 @@
+#!/bin/bash
 docker run --rm \
     --privileged \
     --name=shoot-on-oak-d-lite \
