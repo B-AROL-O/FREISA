@@ -1,7 +1,7 @@
 # Running DepthAI inside a Docker Container
 
 The official Dockerfile is available at [this link](https://github.com/luxonis/depthai/blob/main/Dockerfile).
-It builds on top of a Python image and it installs DepthAI by cloning the original [repo](https://github.com/luxonis/depthai) and running the installer.
+It builds on top of a Python image and it installs DepthAI by cloning the original [repository](https://github.com/luxonis/depthai) and running the installer.
 
 ## test-depthai
 
