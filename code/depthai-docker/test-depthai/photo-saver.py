@@ -64,7 +64,7 @@ with dai.Device(pipeline) as device:
             fName = f"{dirName}/{int(time.time() * 1000)}.jpeg"
             with open(fName, "wb") as f:
                 f.write(qStill.get().getData())
-                print('Image saved to', fName)
+                print("Image saved to", fName)
                 shot = True
 
         ctrl = dai.CameraControl()
