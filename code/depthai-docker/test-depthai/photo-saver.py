@@ -35,7 +35,6 @@ print("Starting ...")
 
 # Connect to device and start pipeline
 with dai.Device(pipeline) as device:
-
     # Output queue will be used to get the rgb frames from the output defined above
     qRgb = device.getOutputQueue(name="rgb", maxSize=30, blocking=False)
     qStill = device.getOutputQueue(name="still", maxSize=30, blocking=True)
