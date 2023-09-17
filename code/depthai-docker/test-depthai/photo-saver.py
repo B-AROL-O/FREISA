@@ -2,6 +2,7 @@
 
 import time
 from pathlib import Path
+
 import cv2
 import depthai as dai
 
