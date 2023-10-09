@@ -1,0 +1,2 @@
+# Ignored files (textlint):
+requirements.txt    # It finds errors in the names of Python packages
