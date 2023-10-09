@@ -19,11 +19,9 @@ if __name__ == "__main__":
                 try:
                     out_img.save(str(sys.argv[2]))
                     print("Image was converted!")
-                except:
+                except IndexError:
                     print("Converted image stored in original folder")
                     out_img.save()
-                else:
-                    pass
             else:
                 raise ValueError("Image is not in '.heic' format!")
         elif os.path.isdir(in_path):
