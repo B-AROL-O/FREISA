@@ -1,6 +1,7 @@
-from heic2png import HEIC2PNG
 import os
 import sys
+
+from heic2png import HEIC2PNG
 
 if __name__ == "__main__":
     # Argv[1]: input image path or folder of images
@@ -21,6 +22,8 @@ if __name__ == "__main__":
                 except:
                     print("Converted image stored in original folder")
                     out_img.save()
+                else:
+                    pass
             else:
                 raise ValueError("Image is not in '.heic' format!")
         elif os.path.isdir(in_path):
