@@ -1,6 +1,6 @@
-# HEIC to PNG converter
+# '.heic' to '.png' converter
 
-This folder contains a simple [Python program](./conv-heic2png.py) that can convert HEIC images in PNG.
+This folder contains a simple [Python program](./conv-heic2png.py) that can convert '.heic' images in '.png'.
 
 Usage:
 
