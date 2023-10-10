@@ -12,9 +12,10 @@ if __name__ == "__main__":
 
     in_path = str(sys.argv[1])
     if os.path.exists(in_path):
+        # print(f"DEBUG: in_path={in_path}")
         if os.path.isfile(in_path):
             # Single image was specified
-            if in_path.split(".")[-1] == "heic":
+            if in_path.split(".")[-1].lower() == "heic":
                 out_img = HEIC2PNG(in_path)
                 try:
                     out_img.save(str(sys.argv[2]))
@@ -34,7 +35,8 @@ if __name__ == "__main__":
                 flg = True
             n_conv = 0
             for f in os.listdir(in_path):
-                if f.split(".")[-1] == "heic":
+                # print(f"DEBUG: f={f}")
+                if f.split(".")[-1].lower() == "heic":
                     out_img = HEIC2PNG(os.path.join(in_path, f))
                     if flg:
                         img_name = f.split(".")[:-1]
