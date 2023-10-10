@@ -5,6 +5,12 @@ This folder contains a simple Python program which converts images from [HEIC](h
 Usage:
 
 ```bash
+# Install prerequisites
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+
+# Example run
 python3 conv-heic2png.py <input image/folder> [<output image/folder>]
 ```
 
