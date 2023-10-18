@@ -7,3 +7,11 @@ The module will be then deployed over Docker using the same process explained in
 ## Sources and useful material
 
 - TODO
+
+## TODO
+
+- [ ] Find guides on how to handle results of inference with DepthAI
+- [ ] Read API specifications of DepthAI - need to understand how to change model on the Oak-d lite 'on the fly'
+- [ ] Translate some Roboflow model to OpenVino or any format compatible with the camera.
+- [ ] Read and understand application architecture
+- [ ] Decide the APIs of this microservice
