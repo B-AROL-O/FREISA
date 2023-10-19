@@ -137,3 +137,4 @@ Notable nodes:
     - Pass model parameters: `mobilenetDet.setBlobPath(nnBlobPath)`
     - Set number of threads for inference: `mobilenetDet.setNumInferenceThreads(2)`
     - Customize output type (e.g., non-blocking - drop oldest): `mobilenetDet.input.setBlocking(False)`
+- [YOLO]
