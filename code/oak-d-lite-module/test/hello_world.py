@@ -1,5 +1,4 @@
 # first, import all necessary modules
-from pathlib import Path
 
 import blobconverter
 import cv2
@@ -47,12 +46,13 @@ with depthai.Device(pipeline) as device:
     q_rgb = device.getOutputQueue("rgb")
     q_nn = device.getOutputQueue("nn")
 
-    # Here, some of the default values are defined. Frame will be an image from "rgb" stream, detections will contain nn results
+    # Here, some of the default values are defined. Frame will be an image from "rgb" stream,
+    # detections will contain nn results
     frame = None
     detections = []
 
-    # Since the detections returned by nn have values from <0..1> range, they need to be multiplied by frame width/height to
-    # receive the actual position of the bounding box on the image
+    # Since the detections returned by nn have values from <0..1> range, they need to be multiplied by frame
+    # width/height to receive the actual position of the bounding box on the image
     def frameNorm(frame, bbox):
         normVals = np.full(len(bbox), frame.shape[0])
         normVals[::2] = frame.shape[1]
@@ -60,7 +60,8 @@ with depthai.Device(pipeline) as device:
 
     # Main host-side application loop
     while True:
-        # we try to fetch the data from nn/rgb queues. tryGet will return either the data packet or None if there isn't any
+        # we try to fetch the data from nn/rgb queues. tryGet will return either the data packet or None if
+        # there isn't any
         in_rgb = q_rgb.tryGet()
         in_nn = q_nn.tryGet()
 
