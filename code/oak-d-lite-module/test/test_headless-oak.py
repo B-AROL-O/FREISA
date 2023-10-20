@@ -16,6 +16,7 @@ def frameNorm(frame, bbox):
 
 def runInferencePipeline(
     pipeline: dai.Pipeline,
+    labels_list: list,
     max_time: float,
     res_path: str,
     pipeline_name: str = "Neural network",
@@ -37,6 +38,8 @@ def runInferencePipeline(
     ### Input parameters
     - pipeline: depthai.Pipeline object with initialized nodes; need
     output streams (XLinkOut) "rgb" and "inference" to be initialized
+    - labels_list: list of labels for provided NN; the indices must
+    match the output value of the model
     - max_time: time duration for the use of the pipeline
     - res_path: path of the output file
     - pipeline_name: name of the pipeline (string) - used for printing
@@ -322,9 +325,13 @@ if __name__ == "__main__":
 
     ## Execution Loop (use each model for 20 seconds, then switch)
     while True:
-        runInferencePipeline(pipeline, 20, fname, "MobileNet", disp=DISPLAY, verb=VERB)
+        runInferencePipeline(
+            pipeline, MN_CLASSES, 20, fname, "MobileNet", disp=DISPLAY, verb=VERB
+        )
         # Switch model
-        runInferencePipeline(pipeline_1, 20, fname, "YOLOv3", disp=DISPLAY, verb=VERB)
+        runInferencePipeline(
+            pipeline_1, YOLO_CLASSES, 20, fname, "YOLOv3", disp=DISPLAY, verb=VERB
+        )
 
         if cv2.waitKey(1) == ord("q"):
             # This part of the code is not working!
