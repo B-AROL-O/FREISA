@@ -89,6 +89,8 @@ Steps:
 - Create and configure nodes
 - Upload pipeline to device at its instantiation: `device = depthai.Device(pipeline)`
 
+*Note*: by passing to `depthai.Device` a different pipeline, it is possible to 'change' the CV model used in the camera.
+
 Overview of `depthai.Pipeline`: [here](https://docs.luxonis.com/projects/api/en/latest/components/pipeline/#reference).
 
 #### Nodes
