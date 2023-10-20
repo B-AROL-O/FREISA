@@ -13,7 +13,7 @@ def frameNorm(frame, bbox):
 
 
 VERB = True
-DISPLAY = True
+DISPLAY = False
 MN_CLASSES = [
     "background",
     "aeroplane",
@@ -89,7 +89,7 @@ with dai.Device(pipeline) as device:
         print("Capture started")
         while True:
             # Timestamp
-            ts = datetime.now().strftime("%m/%d/%Y, %H:%M:%S")
+            ts = datetime.now().strftime("%Y/%m/%d, %H:%M:%S")
 
             # Try to get an element from the output nn queue
             in_nn = queue_nn.tryGet()
