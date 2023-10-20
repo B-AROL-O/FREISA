@@ -150,4 +150,3 @@ Notable nodes:
     - Set specific parameters (see [full guide](https://docs.luxonis.com/projects/api/en/latest/components/nodes/yolo_detection_network/#yolodetectionnetwork) for list of parameters to be tuned)
 - `depthai.node.XLinkIn`: used to send data from host (RPi) to device (OAK-D lite) via XLink.
   - Creation: `xLinkIn = pipeline.create(depthai.node.XLinkIn)`
-  - 
