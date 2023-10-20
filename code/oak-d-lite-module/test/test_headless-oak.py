@@ -70,11 +70,15 @@ detection_nn.out.link(xout_nn.input)
 # Create DepthAI device
 with dai.Device(pipeline) as device:
     # Define queue for nn output - blocking=False will make only the most recent info available
-    # queue_nn = device.getOutputQueue(name="inference", maxSize=1, blocking=False)
-    queue_nn = device.getOutputQueue(name="inference")
+    queue_nn = device.getOutputQueue(name="inference", maxSize=1, blocking=False)
+    # queue_nn = device.getOutputQueue(name="inference")
 
-    # queue_rgb = device.getOutputQueue("rgb", maxSize=1, blocking=False)
-    queue_rgb = device.getOutputQueue("rgb")
+    queue_rgb = device.getOutputQueue("rgb", maxSize=1, blocking=False)
+    # queue_rgb = device.getOutputQueue("rgb")
+
+    # NOTE: setting blocking=False makes inference quicker, as everytime the
+    # loop is repeated there will be no backlogged detections (old ones are
+    # discarded)
 
     # Initialize placeholders for results:
     frame = None  # Probably not used
