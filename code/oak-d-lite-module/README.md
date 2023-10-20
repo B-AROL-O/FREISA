@@ -6,7 +6,9 @@ The module will be then deployed over Docker using the same process explained in
 
 ## Sources and useful material
 
-- TODO
+- [DepthAI docs](https://docs.luxonis.com/projects/api/en/latest/)
+- [Deploy YOLO model to OAK camera](https://docs.roboflow.com/deploy/luxonis-oak)
+  - YOLOv8 [tutorial](https://github.com/luxonis/depthai-ml-training/blob/master/colab-notebooks/YoloV8_training.ipynb)
 
 ## TODO
 
@@ -109,6 +111,7 @@ Notable nodes:
     - `preview` output: RGB, used to feed image into `NeuralNetwork` (or other models analyzing RGB images)
     - `video` output: NV12 (bigger size frames)
   - [Full documentation](https://docs.luxonis.com/projects/api/en/latest/components/nodes/color_camera/#colorcamera)
+- `depthai.node.VideoEncoder`: encode an `ImgFrame` onto specific formats.
 - `depthai.node.ImageManip`: used to perform manipulations on images provided as inputs (`ImageFrame` objects).
   - Specific methods determine specific transformations
   - [Full documentation](https://docs.luxonis.com/projects/api/en/latest/components/nodes/image_manip/#imagemanip)
@@ -125,6 +128,7 @@ Notable nodes:
     - Modify settings: `config.depthThresholds.lowerThreshold = 100` (minimum value of depth to actually provide spatial location info)
     - Set ROI: `config.roi = depthai.Rect(topLeft, bottomRight)`
     - Update config of node: `spatialCalc.initialConfig(addROI())`
+    - Full [guide](https://docs.luxonis.com/projects/api/en/latest/components/nodes/spatial_location_calculator/#spatiallocationcalculator).
 - `depthai.node.NeuralNetwork`: upload a NN in OpenVINO format (as long as all layers fit in memory)
   - Generic neural network block (more specialized ones exist - see `depthai.node.MobileNetDetectionNetwork`)
   - Input: any message type
@@ -137,4 +141,11 @@ Notable nodes:
     - Pass model parameters: `mobilenetDet.setBlobPath(nnBlobPath)`
     - Set number of threads for inference: `mobilenetDet.setNumInferenceThreads(2)`
     - Customize output type (e.g., non-blocking - drop oldest): `mobilenetDet.input.setBlocking(False)`
-- [YOLO]
+- `depthai.node.YoloDetectionNetwork`: deploy YOLO neural network (with result decoding) - the output is an [`ImgDetections` object](https://docs.luxonis.com/projects/api/en/latest/components/messages/img_detections/#imgdetections) (as for `MobileNetDetectionNetwork`)
+  - Usage:
+    - Initialize node in pipeline: `yoloDet = pipeline.create(depthai.node.YoloDetectionNetwork)`
+    - Pass model (blob): `yoloDet.setBlobPath`
+    - Set specific parameters (see [full guide](https://docs.luxonis.com/projects/api/en/latest/components/nodes/yolo_detection_network/#yolodetectionnetwork) for list of parameters to be tuned)
+- `depthai.node.XLinkIn`: used to send data from host (RPi) to device (OAK-D lite) via XLink.
+  - Creation: `xLinkIn = pipeline.create(depthai.node.XLinkIn)`
+  - 
