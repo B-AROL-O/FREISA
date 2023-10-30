@@ -25,10 +25,10 @@ The result will be transmitted to the mini-pupper controller program (acting as 
 - [x] Read and understand application architecture
 - [ ] Decide the APIs of this microservice
 - [ ] Decide:
-  - [ ] How should the camera send data to the motion control (mini pupper REST API - webserver - is it usable?)
-  - [ ] How should the camera trigger the model change? Should it wait for some action from the motion control - depending on what it saw before, switch, maybe?
+  - [x] How should the camera send data to the motion control (mini pupper REST API - webserver - is it usable?)
+  - [x] How should the camera trigger the model change? Should it wait for some action from the motion control - depending on what it saw before, switch, maybe?
 
-### IMPORTANT
+## IMPORTANT - REST API
 
 - [ ] Camera: server HTTP - FSM GETs continuously for images; the POST is used to change model (**POLLING**)
 
