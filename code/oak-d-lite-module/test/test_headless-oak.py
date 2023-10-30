@@ -110,7 +110,7 @@ def runInferencePipeline(
                             "{}: Label: {} - {}, Confidence: {}; Position: {}\n".format(
                                 ts,
                                 detection.label,
-                                MN_CLASSES[detection.label],
+                                labels_list[detection.label],
                                 detection.confidence,
                                 object_centroid,
                             )

@@ -4,6 +4,11 @@ This folder (will contain) the code necessary to launch the Docker container use
 
 The module will be then deployed over Docker using the same process explained in the [depthai-docker](../depthai-docker/) folder.
 
+## Operation
+
+The camera should run one of the three pre-trained models that are used in the application (trunk detection, leaves classification, path detection).
+The result will be transmitted to the mini-pupper controller program (acting as a web server) so that it will drive the robot towards the objectives (e.g., if seeing a plant, get closer to it).
+
 ## Sources and useful material
 
 - [DepthAI docs](https://docs.luxonis.com/projects/api/en/latest/)
@@ -12,12 +17,20 @@ The module will be then deployed over Docker using the same process explained in
 
 ## TODO
 
-- [ ] Find guides on how to handle results of inference with DepthAI
-- [ ] Read API specifications of DepthAI
-  - [ ] Understand how to change model on the Oak-d lite 'on the fly'
+- [x] Find guides on how to handle results of inference with DepthAI
+- [x] Read API specifications of DepthAI
+  - [x] Understand how to change model on the Oak-d lite 'on the fly'
+  - [ ] Read documentation about stereo camera and ability to evaluate accurate distances (specifically: find a way to get the distance of a detected object from the camera)
 - [ ] Translate some Roboflow model to OpenVino or any format compatible with the camera.
-- [ ] Read and understand application architecture
+- [x] Read and understand application architecture
 - [ ] Decide the APIs of this microservice
+- [ ] Decide:
+  - [ ] How should the camera send data to the motion control (mini pupper REST API - webserver - is it usable?)
+  - [ ] How should the camera trigger the model change? Should it wait for some action from the motion control - depending on what it saw before, switch, maybe?
+
+### IMPORTANT
+
+- [ ] Camera: server HTTP - FSM GETs continuously for images; the POST is used to change model (**POLLING**)
 
 ## DepthAI overview
 
