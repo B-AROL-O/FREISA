@@ -1,0 +1,17 @@
+{
+    "trunk_detection": {
+        "path": "",
+        "n_classes": 1,
+        "classes_map": [
+            "trunk"
+        ]
+    },
+    "leaves_detection": {
+        "path": "",
+        "n_classes": 2,
+        "classes_map": [
+            "healthy",
+            "unhealthy"
+        ]
+    }
+}
