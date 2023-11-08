@@ -6,8 +6,8 @@ The module will be then deployed over Docker using the same process explained in
 
 ## Operation
 
-The camera should run one of the three pre-trained models that are used in the application (trunk detection, leaves classification, path detection).
-The result will be transmitted to the mini-pupper controller program (acting as a web server) so that it will drive the robot towards the objectives (e.g., if seeing a plant, get closer to it).
+The camera should run one of the three pre-trained models that are used in the application (trunk detection, leaves classification, and path detection).
+The result will be transmitted to the Mini-Pupper controller program (acting as a web server) so that it will drive the robot towards the objectives (e.g., if seeing a plant, get closer to it).
 
 ## Sources and useful material
 
@@ -19,13 +19,13 @@ The result will be transmitted to the mini-pupper controller program (acting as 
 
 - [x] Find guides on how to handle results of inference with DepthAI
 - [x] Read API specifications of DepthAI
-  - [x] Understand how to change model on the Oak-d lite 'on the fly'
-  - [ ] Read documentation about stereo camera and ability to evaluate accurate distances (specifically: find a way to get the distance of a detected object from the camera)
-- [ ] Translate some Roboflow model to OpenVino or any format compatible with the camera.
-- [x] Read and understand application architecture
+  - [x] Understand how to change the model on the Oak-d lite 'on the fly'
+  - [ ] Read documentation about the stereo camera and its ability to evaluate accurate distances (specifically: find a way to get the distance of a detected object from the camera)
+- [ ] Translate some Roboflow models to OpenVino or any format compatible with the camera.
+- [x] Read and understand the application architecture
 - [ ] Decide the APIs of this microservice
 - [ ] Decide:
-  - [x] How should the camera send data to the motion control (mini pupper REST API - webserver - is it usable?)
+  - [x] How should the camera send data to the motion control (Mini Pupper REST API - webserver - is it usable?)
   - [x] How should the camera trigger the model change? Should it wait for some action from the motion control - depending on what it saw before, switch, maybe?
 
 ## IMPORTANT - REST API
@@ -34,12 +34,14 @@ The result will be transmitted to the mini-pupper controller program (acting as 
 
 ## DepthAI overview
 
-The DepthAI API allows users to communicate and use OAK davices (OAK-D lite in our case).
+The DepthAI API allows users to communicate and use OAK devices (OAK-D lite in our case).
 We will use the Python API.
 
 The following figure shows the architecture of DepthAI:
 
-<img src="assets/images/depthai-api-diagram.png", alt="depthai-architecture" width="200"/>
+<!-- markdownlint-disable MD033 -->
+<img src="assets/images/depthai-api-diagram.png" alt="depthai-architecture" width="500"/>
+<!-- markdownlint-enable MD033 -->
 
 The relevant points of the architecture are:
 
@@ -163,3 +165,5 @@ Notable nodes:
     - Set specific parameters (see [full guide](https://docs.luxonis.com/projects/api/en/latest/components/nodes/yolo_detection_network/#yolodetectionnetwork) for list of parameters to be tuned)
 - `depthai.node.XLinkIn`: used to send data from host (RPi) to device (OAK-D lite) via XLink.
   - Creation: `xLinkIn = pipeline.create(depthai.node.XLinkIn)`
+
+<!-- EOF -->
