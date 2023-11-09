@@ -63,6 +63,8 @@ class VisionController:
         self.pipelines = []
         self._initPipelines()
 
+        # TODO: add other possible variables (e.g., store outputs of running models)
+
     def _initPipelines(self):
         """Initialize the `depthai.Pipeline` objects for each model.
         The method modifies the attribute `pipelines`."""
@@ -100,6 +102,32 @@ class VisionController:
 
             # Add this new pipeline to the list of pipelines
             self.pipelines.append(new_pipeline)
+
+    def selectModel(self, new_model: str | int):
+        """
+        Change the currently active model.
+
+        This method triggers the change in the pipeline which is being ran.
+
+        ### Input parameters
+        - new_model: string or integer number indicating the new model to be launched.
+        If it is a string, it is the name of the model; if it is an int, it is the
+        index of the model in the list.
+        """
+        if isinstance(new_model, str):
+            if new_model.lower() not in self.model_names:
+                raise ValueError(f"Model {new_model} does not exist!")
+            else:
+                mod = new_model
+        elif isinstance(new_model, int):
+            mod = self.model_names[new_model]
+        else:
+            raise ValueError("The new model should be a string or an int")
+
+        # TODO
+        # Stop the thread
+        # Change the active model info
+        # Restart the thread
 
     # +-----------+
     # + UTILITIES
