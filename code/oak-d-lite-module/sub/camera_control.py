@@ -22,6 +22,12 @@ Camera control library
 ---
 This library contains functions used for controlling the operation of 
 the OAK-D lite camera.
+
+TODO:
+- Find way to import class-label mapping
+- Fix depth evaluation
+- Import YOLOv8 model
+- Test locally
 """
 
 
@@ -257,4 +263,4 @@ class VisionController:
 
 
 if __name__ == "__main__":
-    pass
+    vc = VisionController()
