@@ -23,7 +23,7 @@ The result will be transmitted to the Mini-Pupper controller program (acting as 
   - [ ] Read documentation about the stereo camera and its ability to evaluate accurate distances (specifically: find a way to get the distance of a detected object from the camera)
 - [ ] Translate some Roboflow models to OpenVino or any format compatible with the camera.
 - [x] Read and understand the application architecture
-- [ ] Decide the APIs of this microservice
+- [x] Decide the APIs of this microservice
 - [ ] Decide:
   - [x] How should the camera send data to the motion control (Mini Pupper REST API - webserver - is it usable?)
   - [x] How should the camera trigger the model change? Should it wait for some action from the motion control - depending on what it saw before, switch, maybe?
@@ -83,7 +83,7 @@ with depthai.Device(pipeline) as device:
 It is also possible to pass as argument the device information of the specific device we want to connect too (not needed in our case).
 
 The queues are used to store messages from camera/host to host/camera.
-It is necessary to set the queue length and whether it will be blocking or not at initialization, but it is possible to modify these parameters afterwards (`queue.setMaxSize(10)` and `queue.setBlocking(True)`).
+It is necessary to set the queue length and whether it will be blocking or not at initialization, but it is possible to modify these parameters afterward (`queue.setMaxSize(10)` and `queue.setBlocking(True)`).
 (*Note*: `blocking=False` means that the arrival of a message at full queue will make it drop the oldest packet to fit the new one in the buffer; with `blocking=True`, instead, incoming packets that cannot fit in the queue will be dropped).
 
 Notice that queues will take up space in the host RAM.
