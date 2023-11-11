@@ -209,7 +209,7 @@ class VisionController:
             queue_depth = device.getOutputQueue(name="depth", maxSize=1, blocking=False)
 
             # Initialize placeholders for results:
-            frame = None  # Containing the output of the camera block
+            depth_frame = None  # Containing the output of the camera block
             detections = []  # Containing the inference results
             distances = []
 
@@ -222,11 +222,11 @@ class VisionController:
                 inf_result_new = {}
                 inf_result_new["detections"] = []
                 inf_result_new["timestamp"] = ts
-                in_nn = queue_nn.get()
+                in_nn = queue_nn.get()  # FIXME: maybe replace with tryGet()...
                 in_depth = queue_depth.get()
                 if in_nn is not None:
-                    # Frame should contain the distances for each pixel
-                    frame = in_depth.getFrame()
+                    # depth_frame should contain the distances for each pixel
+                    depth_frame = in_depth.getFrame()
                     for det in in_nn.detections:
                         x1, y1, x2, y2 = (
                             int(det.xmin),
@@ -236,7 +236,7 @@ class VisionController:
                         )
                         det_centroid = (0.5 * (x1 + x2), 0.5 * (y1 + y2))
                         # TODO: improve distance evaluation
-                        det_dist = frame
+                        det_dist = depth_frame
 
                     # Package solution
                     inf_result_new["detections"].append(
