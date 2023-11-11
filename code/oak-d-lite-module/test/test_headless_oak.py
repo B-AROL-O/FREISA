@@ -278,6 +278,27 @@ if __name__ == "__main__":
     # Connect color camera preview to nn input
     cam_rgb.preview.link(detection_nn.input)
 
+    # Depth estimation
+    mono_l = pipeline.create(dai.node.MonoCamera)
+    mono_l.setCamera("left")
+    mono_l.setResolution(dai.MonoCameraProperties.SensorResolution.THE_400_P)
+
+    mono_r = pipeline.create(dai.node.MonoCamera)
+    mono_r.setCamera("right")
+    mono_r.setResolution(dai.MonoCameraProperties.SensorResolution.THE_400_P)
+
+    stereo = pipeline.create(dai.node.StereoDepth)
+    stereo.setDefaultProfilePreset(dai.node.StereoDepth.PresetMode.HIGH_DENSITY)
+    # Options: MEDIAN_OFF, KERNEL_3x3, KERNEL_5x5, KERNEL_7x7 (default)
+    stereo.initialConfig.setMedianFilter(dai.MedianFilter.KERNEL_7x7)
+    stereo.setLeftRightCheck(True)
+    stereo.setExtendedDisparity(False)
+    stereo.setSubpixel(False)
+
+    # Link mono cameras to stereo view
+    mono_l.out.link(stereo.left)
+    mono_r.out.link(stereo.right)
+
     # Create XLink objects and link the specific node outputs
     # to the corresponding stream
     # Video
@@ -289,6 +310,11 @@ if __name__ == "__main__":
     xout_nn = pipeline.create(dai.node.XLinkOut)
     xout_nn.setStreamName("inference")
     detection_nn.out.link(xout_nn.input)
+
+    # Link depth estimation
+    xout_stereo = pipeline.create(dai.node.XLinkOut)
+    xout_stereo.setStreamName("depth")
+    stereo.depth.link(xout_stereo.input)
 
     ###### Create second pipeline with different model
     pipeline_1 = dai.Pipeline()
