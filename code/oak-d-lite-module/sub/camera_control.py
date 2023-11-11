@@ -136,6 +136,7 @@ class VisionController:
             xout_rgb.setStreamName("rgb")
             cam_rgb.preview.link(xout_rgb.input)  # Output RGB (debugging)
 
+            # Link inference node
             xout_nn = new_pipeline.create(dai.node.XLinkOut)
             xout_nn.setStreamName("inference")
             yolo_nn.out.link(xout_nn.input)  # Output inference results
