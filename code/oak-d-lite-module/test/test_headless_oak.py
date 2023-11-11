@@ -84,7 +84,8 @@ def runInferencePipeline(
                 ts = datetime.now().strftime("%Y/%m/%d, %H:%M:%S")
 
                 # Try to get an element from the output nn queue
-                in_nn = queue_nn.tryGet()
+                # in_nn = queue_nn.tryGet()
+                in_nn = queue_nn.get()
                 in_depth = queue_depth.tryGet()
 
                 if disp:
@@ -98,16 +99,16 @@ def runInferencePipeline(
                     flg_disp = True
 
                 # Get the detection results from the frame (if any)
-                if in_nn is not None and in_depth is not None:
+                if in_nn is not None:  # and in_depth is not None:
                     detections = in_nn.detections
 
                     for detection in detections:
                         # Get boundary coordinates of detected object
                         x1, y1, x2, y2 = (
-                            int(detection.xmin),
-                            int(detection.ymin),
-                            int(detection.xmax),
-                            int(detection.ymax),
+                            detection.xmin,
+                            detection.ymin,
+                            detection.xmax,
+                            detection.ymax,
                         )
                         # Notice that the values of x and y are normalized to [0, 1]
                         object_centroid = (0.5 * (x1 + x2), 0.5 * (y1 + y2))
@@ -284,6 +285,8 @@ if __name__ == "__main__":
     detection_nn = pipeline.create(dai.node.MobileNetDetectionNetwork)
     detection_nn.setBlobPath(blobconverter.from_zoo(name="mobilenet-ssd", shaves=6))
     detection_nn.setConfidenceThreshold(0.5)
+    detection_nn.input.setBlocking(False)
+    detection_nn.setNumInferenceThreads(2)
 
     # Connect color camera preview to nn input
     cam_rgb.preview.link(detection_nn.input)
@@ -372,9 +375,10 @@ if __name__ == "__main__":
     stereo_1.setSubpixel(False)
 
     # Link mono cameras to stereo view
-    mono_l_1.out.link(stereo.left)
-    mono_r_1.out.link(stereo.right)
+    mono_l_1.out.link(stereo_1.left)
+    mono_r_1.out.link(stereo_1.right)
 
+    # Output streams
     xout_1_rgb = pipeline_1.create(dai.node.XLinkOut)
     xout_1_rgb.setStreamName("rgb")
     cam_rgb_1.preview.link(xout_1_rgb.input)
@@ -391,12 +395,12 @@ if __name__ == "__main__":
     ## Execution Loop (use each model for 20 seconds, then switch)
     while True:
         runInferencePipeline(
-            pipeline, MN_CLASSES, 20, fname, "MobileNet", disp=DISPLAY, verb=VERB
+            pipeline, MN_CLASSES, 1000000, fname, "MobileNet", disp=DISPLAY, verb=VERB
         )
         # Switch model
-        runInferencePipeline(
-            pipeline_1, YOLO_CLASSES, 20, fname, "YOLOv3", disp=DISPLAY, verb=VERB
-        )
+        # runInferencePipeline(
+        #     pipeline_1, YOLO_CLASSES, 40, fname, "YOLOv3", disp=DISPLAY, verb=VERB
+        # )
 
         if cv2.waitKey(1) == ord("q"):
             # This part of the code is not working!
