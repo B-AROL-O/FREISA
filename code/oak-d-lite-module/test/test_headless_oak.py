@@ -7,6 +7,8 @@ import os
 import sys
 import time
 
+LOG = True
+
 
 def frameNorm(frame, bbox):
     normVals = np.full(len(bbox), frame.shape[0])
@@ -57,6 +59,10 @@ def runInferencePipeline(
 
     t_start = time.time()
     with dai.Device(pipeline) as device:
+        if LOG:
+            device.setLogLevel(dai.LogLevel.DEBUG)
+            device.setLogOutputLevel(dai.LogLevel.DEBUG)
+
         # Define queue for nn output - blocking=False will make only the most recent info available
         queue_nn = device.getOutputQueue(name="inference", maxSize=1, blocking=False)
         # Define queue for camera output - only if 'disp' flag is true
@@ -86,6 +92,8 @@ def runInferencePipeline(
                 # Try to get an element from the output nn queue
                 # in_nn = queue_nn.tryGet()
                 in_nn = queue_nn.get()
+                if verb:
+                    print("•")
                 in_depth = queue_depth.tryGet()
 
                 if disp:
