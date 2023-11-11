@@ -395,12 +395,12 @@ if __name__ == "__main__":
     ## Execution Loop (use each model for 20 seconds, then switch)
     while True:
         runInferencePipeline(
-            pipeline, MN_CLASSES, 1000000, fname, "MobileNet", disp=DISPLAY, verb=VERB
+            pipeline, MN_CLASSES, 40, fname, "MobileNet", disp=DISPLAY, verb=VERB
         )
         # Switch model
-        # runInferencePipeline(
-        #     pipeline_1, YOLO_CLASSES, 40, fname, "YOLOv3", disp=DISPLAY, verb=VERB
-        # )
+        runInferencePipeline(
+            pipeline_1, YOLO_CLASSES, 40, fname, "YOLOv3", disp=DISPLAY, verb=VERB
+        )
 
         if cv2.waitKey(1) == ord("q"):
             # This part of the code is not working!
