@@ -63,6 +63,9 @@ def runInferencePipeline(
         if disp:
             queue_rgb = device.getOutputQueue("rgb", maxSize=1, blocking=False)
 
+        # Define queue for depth estimation
+        queue_depth = device.getOutputQueue(name="depth", maxSize=1, blocking=False)
+
         # NOTE: setting blocking=False makes inference quicker, as everytime the
         # loop is repeated there will be no backlogged detections (old ones are
         # discarded)
@@ -70,6 +73,8 @@ def runInferencePipeline(
         # Initialize placeholders for results:
         frame = None  # Containing the output of the camera block
         detections = []  # Containing the inference results
+
+        in_depth = None
 
         # Create a text file to store inference results
         with open(res_path, "a") as output_file:
@@ -80,6 +85,7 @@ def runInferencePipeline(
 
                 # Try to get an element from the output nn queue
                 in_nn = queue_nn.tryGet()
+                in_depth = queue_depth.tryGet()
 
                 if disp:
                     in_rgb = queue_rgb.tryGet()
@@ -92,7 +98,7 @@ def runInferencePipeline(
                     flg_disp = True
 
                 # Get the detection results from the frame (if any)
-                if in_nn is not None:
+                if in_nn is not None and in_depth is not None:
                     detections = in_nn.detections
 
                     for detection in detections:
@@ -105,6 +111,10 @@ def runInferencePipeline(
                         )
                         # Notice that the values of x and y are normalized to [0, 1]
                         object_centroid = (0.5 * (x1 + x2), 0.5 * (y1 + y2))
+
+                        # Evaluating the distance of the centroid object from the camera:
+                        depth_frame = in_depth.getFrame()
+                        print()
 
                         out_str = (
                             "{}: Label: {} - {}, Confidence: {}; Position: {}\n".format(
@@ -316,6 +326,9 @@ if __name__ == "__main__":
     xout_stereo.setStreamName("depth")
     stereo.depth.link(xout_stereo.input)
 
+    #
+    #
+    #
     ###### Create second pipeline with different model
     pipeline_1 = dai.Pipeline()
 
@@ -341,6 +354,27 @@ if __name__ == "__main__":
 
     cam_rgb_1.preview.link(yolo_nn.input)
 
+    # Depth estimation
+    mono_l_1 = pipeline_1.create(dai.node.MonoCamera)
+    mono_l_1.setCamera("left")
+    mono_l_1.setResolution(dai.MonoCameraProperties.SensorResolution.THE_400_P)
+
+    mono_r_1 = pipeline_1.create(dai.node.MonoCamera)
+    mono_r_1.setCamera("right")
+    mono_r_1.setResolution(dai.MonoCameraProperties.SensorResolution.THE_400_P)
+
+    stereo_1 = pipeline_1.create(dai.node.StereoDepth)
+    stereo_1.setDefaultProfilePreset(dai.node.StereoDepth.PresetMode.HIGH_DENSITY)
+    # Options: MEDIAN_OFF, KERNEL_3x3, KERNEL_5x5, KERNEL_7x7 (default)
+    stereo_1.initialConfig.setMedianFilter(dai.MedianFilter.KERNEL_7x7)
+    stereo_1.setLeftRightCheck(True)
+    stereo_1.setExtendedDisparity(False)
+    stereo_1.setSubpixel(False)
+
+    # Link mono cameras to stereo view
+    mono_l_1.out.link(stereo.left)
+    mono_r_1.out.link(stereo.right)
+
     xout_1_rgb = pipeline_1.create(dai.node.XLinkOut)
     xout_1_rgb.setStreamName("rgb")
     cam_rgb_1.preview.link(xout_1_rgb.input)
@@ -348,6 +382,11 @@ if __name__ == "__main__":
     xout_1_nn = pipeline_1.create(dai.node.XLinkOut)
     xout_1_nn.setStreamName("inference")
     yolo_nn.out.link(xout_1_nn.input)
+
+    # Link depth estimation
+    xout_stereo_1 = pipeline_1.create(dai.node.XLinkOut)
+    xout_stereo_1.setStreamName("depth")
+    stereo_1.depth.link(xout_stereo_1.input)
 
     ## Execution Loop (use each model for 20 seconds, then switch)
     while True:
