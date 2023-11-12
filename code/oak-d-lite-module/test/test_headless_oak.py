@@ -7,7 +7,7 @@ import os
 import sys
 import time
 
-LOG = True
+LOG = False
 
 
 def frameNorm(frame, bbox):
@@ -65,10 +65,8 @@ def runInferencePipeline(
 
         # Define queue for nn output - blocking=False will make only the most recent info available
         queue_nn = device.getOutputQueue(name="inference", maxSize=1, blocking=False)
-        # Define queue for camera output - only if 'disp' flag is true
-        if disp:
-            queue_rgb = device.getOutputQueue("rgb", maxSize=1, blocking=False)
-
+        # Define queue for camera output
+        # queue_rgb = device.getOutputQueue("rgb", maxSize=1, blocking=False)
         # Define queue for depth estimation
         queue_depth = device.getOutputQueue(name="depth", maxSize=1, blocking=False)
 
@@ -91,23 +89,23 @@ def runInferencePipeline(
 
                 # Try to get an element from the output nn queue
                 # in_nn = queue_nn.tryGet()
-                in_nn = queue_nn.get()
-                if verb:
-                    print("•")
-                in_depth = queue_depth.tryGet()
+                in_nn = queue_nn.tryGet()
+                # in_depth = queue_depth.tryGet()
 
-                if disp:
-                    in_rgb = queue_rgb.tryGet()
+                # if disp:
+                #     in_rgb = queue_rgb.tryGet()
+                #
+                #     if in_rgb is not None:
+                #         frame = in_rgb.getCvFrame()
 
-                    if in_rgb is not None:
-                        frame = in_rgb.getCvFrame()
-
-                flg_disp = False
-                if frame is not None and disp:
-                    flg_disp = True
+                # flg_disp = False
+                # if frame is not None and disp:
+                #     flg_disp = True
 
                 # Get the detection results from the frame (if any)
                 if in_nn is not None:  # and in_depth is not None:
+                    if verb:
+                        print("•")
                     detections = in_nn.detections
 
                     for detection in detections:
@@ -122,7 +120,7 @@ def runInferencePipeline(
                         object_centroid = (0.5 * (x1 + x2), 0.5 * (y1 + y2))
 
                         # Evaluating the distance of the centroid object from the camera:
-                        depth_frame = in_depth.getFrame()
+                        # depth_frame = in_depth.getFrame()
                         print()
 
                         out_str = (
@@ -140,25 +138,25 @@ def runInferencePipeline(
 
                         output_file.write(out_str)
 
-                        if flg_disp:
-                            bbox = frameNorm(frame, (x1, y1, x2, y2))
-                            cv2.rectangle(
-                                frame,
-                                (bbox[0], bbox[1]),
-                                (bbox[2], bbox[3]),
-                                (255, 0, 0),
-                                2,
-                            )
+                        # if flg_disp:
+                        #     bbox = frameNorm(frame, (x1, y1, x2, y2))
+                        #     cv2.rectangle(
+                        #         frame,
+                        #         (bbox[0], bbox[1]),
+                        #         (bbox[2], bbox[3]),
+                        #         (255, 0, 0),
+                        #         2,
+                        #     )
 
-                    if flg_disp:
-                        print("here")
-                        cv2.imshow("preview", frame)
+                    # if flg_disp:
+                    #     print("here")
+                    #     cv2.imshow("preview", frame)
                 else:
                     pass
                     # output_file.write("{}\n".format(ts))
 
                 # wait for some time before next capture
-                time.sleep(0.5)
+                time.sleep(1)
 
 
 VERB = True
@@ -323,9 +321,9 @@ if __name__ == "__main__":
     # Create XLink objects and link the specific node outputs
     # to the corresponding stream
     # Video
-    xout_rgb = pipeline.create(dai.node.XLinkOut)
-    xout_rgb.setStreamName("rgb")
-    cam_rgb.preview.link(xout_rgb.input)
+    # xout_rgb = pipeline.create(dai.node.XLinkOut)
+    # xout_rgb.setStreamName("rgb")
+    # cam_rgb.preview.link(xout_rgb.input)
 
     # Inference
     xout_nn = pipeline.create(dai.node.XLinkOut)
@@ -345,8 +343,10 @@ if __name__ == "__main__":
 
     cam_rgb_1 = pipeline_1.create(dai.node.ColorCamera)
     cam_rgb_1.setPreviewSize(416, 416)
+    cam_rgb_1.setResolution(dai.ColorCameraProperties.SensorResolution.THE_1080_P)
     cam_rgb_1.setInterleaved(False)
     cam_rgb_1.setColorOrder(dai.ColorCameraProperties.ColorOrder.BGR)
+    cam_rgb_1.setFps(40)
 
     yolo_nn = pipeline_1.create(dai.node.YoloDetectionNetwork)
     # yolo_nn.setBlobPath(
@@ -387,9 +387,9 @@ if __name__ == "__main__":
     mono_r_1.out.link(stereo_1.right)
 
     # Output streams
-    xout_1_rgb = pipeline_1.create(dai.node.XLinkOut)
-    xout_1_rgb.setStreamName("rgb")
-    cam_rgb_1.preview.link(xout_1_rgb.input)
+    # xout_1_rgb = pipeline_1.create(dai.node.XLinkOut)
+    # xout_1_rgb.setStreamName("rgb")
+    # cam_rgb_1.preview.link(xout_1_rgb.input)
 
     xout_1_nn = pipeline_1.create(dai.node.XLinkOut)
     xout_1_nn.setStreamName("inference")
@@ -403,11 +403,11 @@ if __name__ == "__main__":
     ## Execution Loop (use each model for 20 seconds, then switch)
     while True:
         runInferencePipeline(
-            pipeline, MN_CLASSES, 40, fname, "MobileNet", disp=DISPLAY, verb=VERB
+            pipeline_1, YOLO_CLASSES, 20, fname, "YOLOv3", disp=DISPLAY, verb=VERB
         )
         # Switch model
         runInferencePipeline(
-            pipeline_1, YOLO_CLASSES, 40, fname, "YOLOv3", disp=DISPLAY, verb=VERB
+            pipeline, MN_CLASSES, 20, fname, "MobileNet", disp=DISPLAY, verb=VERB
         )
 
         if cv2.waitKey(1) == ord("q"):
