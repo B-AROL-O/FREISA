@@ -97,6 +97,12 @@ class VisionController:
         for i in range(self.n_models):
             new_pipeline = dai.Pipeline()
 
+            # Check the path of the JSON and BLOB exist
+            if not os.path.exists(self.json_paths[i]):
+                raise ValueError(f"File {self.json_paths[i]} does not exist!")
+            if not os.path.exists(self.model_paths[i]):
+                raise ValueError(f"Model {self.model_paths[i]} does not exist!")
+
             # Get JSON with configuration
             with open(self.json_paths[i]) as f:
                 curr_settings = json.load(f)

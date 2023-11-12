@@ -4,35 +4,14 @@ import cv2
 import blobconverter
 import numpy as np
 from datetime import datetime
+import json
 import os
 import sys
 import time
 
 
 DISP = False
-MN_CLASSES = [
-    "background",
-    "aeroplane",
-    "bicycle",
-    "bird",
-    "boat",
-    "bottle",
-    "bus",
-    "car",
-    "cat",
-    "chair",
-    "cow",
-    "diningtable",
-    "dog",
-    "horse",
-    "motorbike",
-    "person",
-    "pottedplant",
-    "sheep",
-    "sofa",
-    "train",
-    "tvmonitor",
-]
+MN_CLASSES = ["healthy", "unhealthy"]
 
 
 def frameNorm(frame, bbox):
@@ -41,20 +20,48 @@ def frameNorm(frame, bbox):
     return (np.clip(np.array(bbox), 0, 1) * normVals).astype(int)
 
 
+#################### Try out own models
+
+# File names
+script_folder = os.path.dirname(__file__)
+model_folder = os.path.join(script_folder, "..", "models", "leaves")
+config_file = os.path.join(model_folder, "leaves_yolo.json")
+model_file = os.path.join(model_folder, "leaves_yolo_openvino_2022.1_6shave.blob")
+
+# Import configuration
+with open(config_file, "r") as f:
+    config = json.load(f)
+
+model_mappings = config["mappings"]["labels"]
+input_size = [int(n) for n in config["nn_config"]["input_size"].split("x")]
+
 pipeline = dai.Pipeline()
 
 # Create camera node
 cam_rgb = pipeline.create(dai.node.ColorCamera)
-cam_rgb.setPreviewSize(300, 300)
+cam_rgb.setPreviewSize(input_size[0], input_size[1])
 cam_rgb.setInterleaved(False)
+cam_rgb.setColorOrder(dai.ColorCameraProperties.ColorOrder.BGR)
+cam_rgb.setFps(40)
 
 # Configure the YOLO detection model (use MobileNet for testing)
 # pipeline.add(depthai.YoloDetectionNetwork().setBlobPath("path/to/your/yolo_model.blob").setConfidenceThreshold(0.5))
-detection_nn = pipeline.create(dai.node.MobileNetDetectionNetwork)
-detection_nn.setBlobPath(blobconverter.from_zoo(name="mobilenet-ssd", shaves=6))
-detection_nn.setConfidenceThreshold(0.5)
-# detection_nn.input.setBlocking(False)
-# detection_nn.setNumInferenceThreads(2)
+detection_nn = pipeline.create(dai.node.YoloDetectionNetwork)
+detection_nn.setBlobPath(model_file)
+detection_nn.setConfidenceThreshold(
+    config["nn_config"]["NN_specific_metadata"]["confidence_threshold"]
+)
+detection_nn.setNumClasses(config["nn_config"]["NN_specific_metadata"]["classes"])
+detection_nn.setCoordinateSize(
+    config["nn_config"]["NN_specific_metadata"]["coordinates"]
+)
+detection_nn.setAnchors(config["nn_config"]["NN_specific_metadata"]["anchors"])
+detection_nn.setAnchorMasks(config["nn_config"]["NN_specific_metadata"]["anchor_masks"])
+detection_nn.setIouThreshold(
+    config["nn_config"]["NN_specific_metadata"]["iou_threshold"]
+)
+detection_nn.input.setBlocking(False)
+detection_nn.setNumInferenceThreads(2)
 
 # Connect color camera preview to nn input
 cam_rgb.preview.link(detection_nn.input)
@@ -82,6 +89,7 @@ mono_r.out.link(stereo.right)
 
 # Create XLink objects and link the specific node outputs
 # to the corresponding stream
+
 # Video
 xout_rgb = pipeline.create(dai.node.XLinkOut)
 xout_rgb.setStreamName("rgb")
@@ -148,12 +156,12 @@ with dai.Device(pipeline) as device:
 
                 # Evaluating the distance of the centroid object from the camera:
                 # depth_frame = in_depth.getFrame()
-                print()
+                # print()
 
                 out_str = "{}: Label: {} - {}, Confidence: {}; Position: {}\n".format(
                     ts,
                     detection.label,
-                    MN_CLASSES[detection.label],
+                    model_mappings[detection.label],
                     detection.confidence,
                     object_centroid,
                 )
