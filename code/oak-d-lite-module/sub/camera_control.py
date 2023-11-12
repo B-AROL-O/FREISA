@@ -3,12 +3,13 @@ import cv2
 import blobconverter
 import numpy as np
 from datetime import datetime
+import json
 import os
 import sys
 import threading
 import time
 
-from sub.config import (
+from .config import (
     DEBUG,
     VERB,
     CONF_THRESH_NN,
@@ -16,6 +17,7 @@ from sub.config import (
     SUBPIXEL,
     LR_CHECK,
 )
+from .utilities import frameNorm
 
 """
 Camera control library
@@ -46,6 +48,7 @@ class VisionController:
       - classes_map: mapping between the classes and the associated index (list)
     - model_names (list): list containing the names of the models.
     - model_paths (list): list of paths where the corresponding model is found.
+    - json_paths (list): list of paths where the jsons of the models are found.
     - n_models (int): number of models
     - curr_model_ind (int): index (in the list of models) of the current active model
     if set to -1, no model is active.
@@ -62,7 +65,8 @@ class VisionController:
         Initialize VisionController object.
 
         ### Input parameters
-        - models:
+        - models: dict containing as keys the model names, and as values dict with model_path
+        and json_path
         TODO
         """
         if not isinstance(models, dict):
@@ -70,7 +74,10 @@ class VisionController:
 
         self.models = models
         self.model_names = list(models.keys())
-        self.model_paths = [str(models[k]["path"]) for k in self.model_names]
+        self.model_paths = [str(models[k]["model_path"]) for k in self.model_names]
+        self.json_paths = [str(models[k]["json_path"]) for k in self.model_names]
+        self.model_settings = []  # Will contain the JSONs stored as dict
+        self.model_mappings = []  # Will contain labels list
         self.n_models = len(self.model_names)
         self.current_model_ind = -1
 
@@ -90,22 +97,46 @@ class VisionController:
         for i in range(self.n_models):
             new_pipeline = dai.Pipeline()
 
+            # Get JSON with configuration
+            with open(self.json_paths[i]) as f:
+                curr_settings = json.load(f)
+                self.model_settings.append(curr_settings)
+
+            self.model_mappings.append(curr_settings["mappings"]["labels"])
+            input_size = curr_settings["nn_config"]["input_size"].split("x")
+            input_size = [int(n) for n in input_size]
+
             # Camera node
             cam_rgb = new_pipeline.create(dai.node.ColorCamera)
-            cam_rgb.setPreviewSize(416, 416)
+            cam_rgb.setPreviewSize(input_size[0], input_size[1])
             cam_rgb.setInterleaved(False)
             cam_rgb.setColorOrder(dai.ColorCameraProperties.ColorOrder.BGR)
+            cam_rgb.setFps(40)
 
-            # YOLO detection model
+            # YOLO detection model (extract info from JSON config)
             yolo_nn = new_pipeline.create(dai.node.YoloDetectionNetwork)
             yolo_nn.setBlobPath(self.model_paths[i])
-            yolo_nn.setConfidenceThreshold(CONF_THRESH_NN)
+            yolo_nn.setConfidenceThreshold(
+                curr_settings["nn_config"]["NN_specific_metadata"][
+                    "confidence_threshold"
+                ]
+            )
             # Settings:
-            yolo_nn.setNumClasses(self.models[self.model_names[i]]["n_classes"])
-            yolo_nn.setCoordinateSize(4)
-            yolo_nn.setAnchors([10, 14, 23, 27, 37, 58, 81, 82, 135, 169, 344, 319])
-            yolo_nn.setAnchorMasks({"side26": [1, 2, 3], "side13": [3, 4, 5]})
-            yolo_nn.setIouThreshold(0.5)
+            yolo_nn.setNumClasses(
+                curr_settings["nn_config"]["NN_specific_metadata"]["classes"]
+            )
+            yolo_nn.setCoordinateSize(
+                curr_settings["nn_config"]["NN_specific_metadata"]["coordinates"]
+            )
+            yolo_nn.setAnchors(
+                curr_settings["nn_config"]["NN_specific_metadata"]["anchors"]
+            )
+            yolo_nn.setAnchorMasks(
+                curr_settings["nn_config"]["NN_specific_metadata"]["anchor_masks"]
+            )
+            yolo_nn.setIouThreshold(
+                curr_settings["nn_config"]["NN_specific_metadata"]["iou_threshold"]
+            )
             yolo_nn.setNumInferenceThreads(2)
             yolo_nn.input.setBlocking(False)
 
@@ -132,9 +163,10 @@ class VisionController:
             mono_l.out.link(stereo.left)
             mono_r.out.link(stereo.right)
 
-            xout_rgb = new_pipeline.create(dai.node.XLinkOut)
-            xout_rgb.setStreamName("rgb")
-            cam_rgb.preview.link(xout_rgb.input)  # Output RGB (debugging)
+            ## NOTE: if on, the program breaks unless the queue is used
+            # xout_rgb = new_pipeline.create(dai.node.XLinkOut)
+            # xout_rgb.setStreamName("rgb")
+            # cam_rgb.preview.link(xout_rgb.input)  # Output RGB (debugging)
 
             # Link inference node
             xout_nn = new_pipeline.create(dai.node.XLinkOut)
@@ -188,7 +220,9 @@ class VisionController:
 
         self.vision_thread.start()
 
-    def _runInferencePipeline(self, pipeline: dai.Pipeline, pipeline_name: str):
+    def _runInferencePipeline(
+        self, pipeline: dai.Pipeline, pipeline_name: str, sync_frame: bool = True
+    ):
         """
         Run the specified pipeline.
         This method is only called by `selectModel`, and should be ran as an
@@ -222,8 +256,14 @@ class VisionController:
                 inf_result_new = {}
                 inf_result_new["detections"] = []
                 inf_result_new["timestamp"] = ts
-                in_nn = queue_nn.get()  # FIXME: maybe replace with tryGet()...
-                in_depth = queue_depth.get()
+
+                if sync_frame:
+                    in_nn = queue_nn.get()
+                    in_depth = queue_depth.get()
+                else:
+                    in_nn = queue_nn.tryGet()
+                    in_depth = queue_depth.tryGet()
+
                 if in_nn is not None:
                     # depth_frame should contain the distances for each pixel
                     depth_frame = in_depth.getFrame()
@@ -264,4 +304,12 @@ class VisionController:
 
 
 if __name__ == "__main__":
+    # Init the dictionary
+    script_dir = os.path.dirname(__file__)
+    models_folder = os.path.join(script_dir, "..", "models")
+    mod = {}
+    mod["trunk"] = {
+        "model_path": os.path.join(models_folder, "trunk", "trunk_yolo.pt"),
+        "json_path": os.path.join(models_folder, "trunk", "trunk_yolo.json"),
+    }
     vc = VisionController()
