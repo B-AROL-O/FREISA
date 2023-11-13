@@ -65,8 +65,10 @@ class VisionController:
         Initialize VisionController object.
 
         ### Input parameters
-        - models: dict containing as keys the model names, and as values dict with model_path
-        and json_path
+        - models: dict containing as keys the model names, and as values dict with 'model_path'
+        and 'json_path' keys containing the paths of the `.blob` model and of the `.json`
+        configuration file for each model
+        - time_resolution: time interval between two inference results in seconds (default: 0.5 s)
         TODO
         """
         if not isinstance(models, dict):
@@ -87,7 +89,7 @@ class VisionController:
         self.pipelines = []
         self._initPipelines()
 
-        # TODO: add other possible variables (e.g., store outputs of running models)
+        # FIXME: add other possible variables (e.g., store outputs of running models)
         self._thread_started = False
         self.vision_thread = None  # Placeholder for the threading.Thread object
 
@@ -232,6 +234,8 @@ class VisionController:
             )
         )
 
+        self.last_inference_result = {}  # Reset value!
+
         self.vision_thread.start()
 
     def _runInferencePipeline(
@@ -249,6 +253,7 @@ class VisionController:
         if VERB:
             print(f"Starting model {pipeline_name}")
 
+        model_name = self.getCurrentModelName()
         with dai.Device(pipeline) as device:
             # Define queue for nn output - blocking=False will make only the most recent info available
             queue_nn = device.getOutputQueue(
@@ -269,6 +274,7 @@ class VisionController:
             while True:
                 ts = datetime.now().strftime("%Y/%m/%d, %H:%M:%S")
                 inf_result_new = {}
+                inf_result_new["model_name"] = model_name
                 inf_result_new["detections"] = []
                 inf_result_new["timestamp"] = ts
 
@@ -327,6 +333,9 @@ class VisionController:
 
     def getCurrentModelName(self):
         """Get the name of the current active model."""
+        if self.current_model_ind == -1:
+            # No model was launched yet!
+            return ""
         return self.model_names[self.current_model_ind]
 
 
