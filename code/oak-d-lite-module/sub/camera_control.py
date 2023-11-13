@@ -60,7 +60,7 @@ class VisionController:
     -
     """
 
-    def __init__(self, models: dict):
+    def __init__(self, models: dict, time_resolution: float = 0.5):
         """
         Initialize VisionController object.
 
@@ -81,6 +81,9 @@ class VisionController:
         self.n_models = len(self.model_names)
         self.current_model_ind = -1
 
+        self.info_dict = {}
+        self.buildInfoDict()
+
         self.pipelines = []
         self._initPipelines()
 
@@ -90,6 +93,9 @@ class VisionController:
 
         # The last inference result consists in a dict
         self.last_inference_result = {}
+
+        ###
+        self.time_resolution = time_resolution
 
     def _initPipelines(self):
         """Initialize the `depthai.Pipeline` objects for each model.
@@ -169,7 +175,7 @@ class VisionController:
             mono_l.out.link(stereo.left)
             mono_r.out.link(stereo.right)
 
-            ## NOTE: if on, the program breaks unless the queue is used
+            ## NOTE: if on, the program breaks unless the queue is used for some reason...
             # xout_rgb = new_pipeline.create(dai.node.XLinkOut)
             # xout_rgb.setStreamName("rgb")
             # cam_rgb.preview.link(xout_rgb.input)  # Output RGB (debugging)
@@ -216,6 +222,8 @@ class VisionController:
 
         # Change the active model info
         self.current_model_ind = mod_ind
+        self.current_model_settings = self.model_settings[mod_ind]
+        self.current_model_mappings = self.model_mappings[mod_ind]
 
         # Restart the thread
         self.vision_thread = threading.Thread(
@@ -238,7 +246,8 @@ class VisionController:
         - pipeline: the pipeline to be ran
         - pipeline_name: the name (string) of the pipeline (for packaging results)
         """
-        t_start = time.time()
+        if VERB:
+            print(f"Starting model {pipeline_name}")
 
         with dai.Device(pipeline) as device:
             # Define queue for nn output - blocking=False will make only the most recent info available
@@ -275,14 +284,17 @@ class VisionController:
                     depth_frame = in_depth.getFrame()
                     for det in in_nn.detections:
                         x1, y1, x2, y2 = (
-                            int(det.xmin),
-                            int(det.ymin),
-                            int(det.xmax),
-                            int(det.ymax),
+                            det.xmin,
+                            det.ymin,
+                            det.xmax,
+                            det.ymax,
                         )
                         det_centroid = (0.5 * (x1 + x2), 0.5 * (y1 + y2))
-                        # TODO: improve distance evaluation
+                        # TODO: add distance evaluation
                         det_dist = depth_frame
+
+                        # TODO: with distance evaluated it is possible to calculate
+                        # the angle of rotation to have the plant centered.
 
                     # Package solution
                     inf_result_new["detections"].append(
@@ -290,15 +302,24 @@ class VisionController:
                             "position": det_centroid,
                             "depth": det_dist,
                             "label": det.label,
-                            "class": "",
-                        }  # FIXME: add conversion to class label
+                            "class": self.current_model_mappings[det.label],
+                            "distance": 0,
+                        }
                     )
 
                 # Need to place this here so that if no objects are found, the
                 # program will return an empty solution
                 self.last_inference_result = inf_result_new
 
-                # TODO: Add distance estimation
+                # Wait before next capture
+                time.sleep(self.time_resolution)
+
+    def buildInfoDict(self):
+        """
+        Assemble the dict containing the information of all available models.
+        """
+        for i in range(self.n_models):
+            self.info_dict[self.model_names[i]] = self.model_settings[i]
 
     # +-----------+
     # + UTILITIES
@@ -318,4 +339,15 @@ if __name__ == "__main__":
         "model_path": os.path.join(models_folder, "trunk", "trunk_yolo.pt"),
         "json_path": os.path.join(models_folder, "trunk", "trunk_yolo.json"),
     }
-    vc = VisionController()
+    mod["leaves"] = {
+        "model_path": os.path.join(models_folder, "leaves", "leaves_yolo.pt"),
+        "json_path": os.path.join(models_folder, "leaves", "leaves_yolo.json"),
+    }
+    vc = VisionController(models=mod)
+
+    t_start = time.time()
+    models = list(mod.keys())
+    i = 0
+    while time.time() - t_start < 20:
+        vc.selectModel(models[i % len(models)])
+        i += 1
