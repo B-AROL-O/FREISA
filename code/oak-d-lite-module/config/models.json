@@ -1,13 +1,15 @@
 {
     "trunk_detection": {
-        "path": "",
+        "model_path": "",
+        "json_path": "",
         "n_classes": 1,
         "classes_map": [
             "trunk"
         ]
     },
     "leaves_detection": {
-        "path": "",
+        "model_path": "",
+        "json_path": "",
         "n_classes": 2,
         "classes_map": [
             "healthy",
