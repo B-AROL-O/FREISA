@@ -108,10 +108,7 @@ class VisionWebServer:
                         "No inference result found - need to launch a pipeline first (POST)",
                     )
                 else:
-                    cp.response.status = 201
-
-                    # print(self.oak_control.last_inference_result)
-
+                    cp.response.status = 20
                     return json.dumps(self.oak_control.last_inference_result)
             elif str(path[0]) == "models_info":
                 return json.dumps(self.oak_control.info_dict)
