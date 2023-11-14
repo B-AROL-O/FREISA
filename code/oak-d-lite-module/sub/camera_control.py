@@ -60,14 +60,17 @@ class VisionController:
     -
     """
 
-    def __init__(self, models: dict, time_resolution: float = 0.5):
+    script_folder = os.path.dirname(__file__)
+
+    def __init__(self, models: dict, time_resolution: float = 1):
         """
         Initialize VisionController object.
 
         ### Input parameters
         - models: dict containing as keys the model names, and as values dict with 'model_path'
         and 'json_path' keys containing the paths of the `.blob` model and of the `.json`
-        configuration file for each model
+        configuration file for each model; NOTE: the paths should be relative to the folder where
+        this file is stored!
         - time_resolution: time interval between two inference results in seconds (default: 0.5 s)
         TODO
         """
@@ -76,18 +79,24 @@ class VisionController:
 
         self.models = models
         self.model_names = list(models.keys())
-        self.model_paths = [str(models[k]["model_path"]) for k in self.model_names]
-        self.json_paths = [str(models[k]["json_path"]) for k in self.model_names]
+        self.model_paths = [
+            os.path.join(self.script_folder, str(models[k]["model_path"]))
+            for k in self.model_names
+        ]
+        self.json_paths = [
+            os.path.join(self.script_folder, str(models[k]["json_path"]))
+            for k in self.model_names
+        ]
         self.model_settings = []  # Will contain the JSONs stored as dict
         self.model_mappings = []  # Will contain labels list
         self.n_models = len(self.model_names)
         self.current_model_ind = -1
 
-        self.info_dict = {}
-        self.buildInfoDict()
-
         self.pipelines = []
         self._initPipelines()
+
+        self.info_dict = {}
+        self.buildInfoDict()
 
         # FIXME: add other possible variables (e.g., store outputs of running models)
         self._thread_started = False
@@ -229,14 +238,19 @@ class VisionController:
 
         # Restart the thread
         self.vision_thread = threading.Thread(
-            target=self._runInferencePipeline(
-                self.pipelines[self.current_model_ind], pipeline_name=mod
-            )
+            target=self._runInferencePipeline,
+            args=(self.pipelines[self.current_model_ind], mod),
+            daemon=True,
         )
 
         self.last_inference_result = {}  # Reset value!
 
         self.vision_thread.start()
+
+        if VERB:
+            print("Thread started!")
+
+        self._thread_started = True
 
     def _runInferencePipeline(
         self, pipeline: dai.Pipeline, pipeline_name: str, sync_frame: bool = True
@@ -302,16 +316,17 @@ class VisionController:
                         # TODO: with distance evaluated it is possible to calculate
                         # the angle of rotation to have the plant centered.
 
-                    # Package solution
-                    inf_result_new["detections"].append(
-                        {
-                            "position": det_centroid,
-                            "depth": det_dist,
-                            "label": det.label,
-                            "class": self.current_model_mappings[det.label],
-                            "distance": 0,
-                        }
-                    )
+                        # Package solution
+                        inf_result_new["detections"].append(
+                            {
+                                "position": det_centroid,
+                                # "depth": det_dist,
+                                "label": det.label,
+                                "class": self.current_model_mappings[det.label],
+                                "distance": 0,
+                                "confidence": det.confidence,
+                            }
+                        )
 
                 # Need to place this here so that if no objects are found, the
                 # program will return an empty solution
