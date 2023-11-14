@@ -177,7 +177,7 @@ def main():
             time.sleep(10)
     except KeyboardInterrupt:
         cp.engine.stop()
-        return 1
+        return serv.stopThreads()
 
 
 # ---------------------------------------------------------------------------

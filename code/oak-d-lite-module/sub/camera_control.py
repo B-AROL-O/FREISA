@@ -364,6 +364,13 @@ class VisionController:
             return ""
         return self.model_names[self.current_model_ind]
 
+    def stopThreads(self):
+        """Stop the active pipeline to prevent errors when shutting down."""
+        self._thread_stop = True
+        if VERB:
+            print("Threads stopped!")
+        return 1
+
 
 if __name__ == "__main__":
     # Init the dictionary
