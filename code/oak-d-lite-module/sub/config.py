@@ -11,7 +11,7 @@ VERB = True
 # Confidence threshold for the models
 CONF_THRESH_NN = 0.5
 
-### Stereo Camera settings
+# Stereo Camera settings
 # Closer-in minimum depth, disparity range is doubled (from 95 to 190):
 EXTENDED_DISPARITY = False
 # Better accuracy for longer distance, fractional disparity 32-levels:
