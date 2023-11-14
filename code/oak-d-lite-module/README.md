@@ -19,10 +19,10 @@ When launched, no model is active by default, so the client needs to first launc
 
 Requirements:
 
-* Have docker installed on the host device (Raspberry Pi)
-* Place the models in subfolders of the [models folder](./models/), e.g., ./folders/leaves/leaves_detection.json
-  * If needed, fix the paths in the [main script](./vision_webserver.py)
-* Connect the OAK-D lite camera to the host device using a USB 3 cable
+- Have docker installed on the host device (Raspberry Pi)
+- Place the models in subfolders of the ["models" folder](./models/), e.g., ./folders/leaves/leaves_detection.json
+  - If needed, fix the paths in the [main script](./vision_webserver.py)
+- Connect the OAK-D lite camera to the host device using a USB 3 cable
 
 ## Running the web server
 
