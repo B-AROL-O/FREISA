@@ -17,14 +17,30 @@ class VisionWebServer:
     control system periodically sends a GET request that will return the position
     of the target object in the camera field of view. The robot will then move
     accordingly.
+    It is also possible to request information about the available models or the
+    active one.
 
-    The motion control also decides which model to use depending on what object
+    The motion control should also decide which model to use depending on what object
     it is looking for.
     To change model, it is necessary to sumbit a POST request.
+
+    ### API
+    - GET:
+        - /: get the API information (any method)
+        - /latest_inference: get the latest inference result (404 if no inference result is
+        available - no pipeline running)
+        - /models_info: get a json-formatted string containing the information of the available
+        models
+        - /model: get the name of the currently active model (empty string if none)
+    - POST:
+        - /: get the API information (for POST only)
+        - /change_model?model=<model name>: switch the currently active model for the one
+        specified in the parameter; Error 422 if model name is invalid
     """
 
     exposed = True
 
+    # Webserver configuration information - passed at startup
     webserv_config = {
         "/": {
             "request.dispatch": cp.dispatch.MethodDispatcher(),
@@ -45,16 +61,6 @@ class VisionWebServer:
         - public: bool value, true if server should be public (reachable from any
         interface); if false, it will only be reachable from the IP in the config
         file
-
-        ### API
-        - GET:
-          - /: get the API information
-          - /latest_inference: get the latest inference result;
-          - /models_info: get a json-formatted string containing the information of the available
-          models
-          - /model: get the name of the currently active model
-        - POST:
-          -
         """
 
         if not config_path.endswith("json"):
@@ -93,7 +99,8 @@ class VisionWebServer:
         ---
         Retrieve camera information or inference output.
 
-        Possible paths:
+        ### Possible URLs
+        - /: get API information (for all available methods)
         - /last_inference: get latest inference result (from currently active model)
         - /models_info: get information on available models
         - /model: get currently active model name (if available)
@@ -124,6 +131,11 @@ class VisionWebServer:
         POST
         ---
         Select the model to be ran on the OAK-D lite camera.
+
+        ### Possible URLs
+        - /: get the API information (for POST only)
+        - /change_model?model=<model name>: switch the currently active model for the one
+        specified in the parameter; Error 422 if model name is invalid
         """
         # body = json.loads(cp.request.body.read())
         if len(path) > 0 and len(params) > 0:
@@ -149,6 +161,14 @@ class VisionWebServer:
                 )
         else:
             return json.dumps(self.supported_req["POST"])
+
+    def PUT(self):
+        """Not implemented"""
+        raise cp.HTTPError(501, "PUT not implemented!")
+
+    def DELETE(self):
+        """Not implemented"""
+        raise cp.HTTPError(501, "PUT not implemented!")
 
 
 # ---------------------------------------------------------------------------
