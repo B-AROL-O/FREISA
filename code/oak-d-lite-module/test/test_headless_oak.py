@@ -1,11 +1,12 @@
-import depthai as dai
-import cv2
-import blobconverter
-import numpy as np
-from datetime import datetime
 import os
 import sys
 import time
+from datetime import datetime
+
+import blobconverter
+import cv2
+import depthai as dai
+import numpy as np
 
 LOG = False
 
@@ -68,17 +69,13 @@ def runInferencePipeline(
         # Define queue for camera output
         # queue_rgb = device.getOutputQueue("rgb", maxSize=1, blocking=False)
         # Define queue for depth estimation
-        queue_depth = device.getOutputQueue(name="depth", maxSize=1, blocking=False)
 
         # NOTE: setting blocking=False makes inference quicker, as everytime the
         # loop is repeated there will be no backlogged detections (old ones are
         # discarded)
 
         # Initialize placeholders for results:
-        frame = None  # Containing the output of the camera block
         detections = []  # Containing the inference results
-
-        in_depth = None
 
         # Create a text file to store inference results
         with open(res_path, "a") as output_file:
@@ -338,7 +335,7 @@ if __name__ == "__main__":
     #
     #
     #
-    ###### Create second pipeline with different model
+    # Create second pipeline with different model
     pipeline_1 = dai.Pipeline()
 
     cam_rgb_1 = pipeline_1.create(dai.node.ColorCamera)
@@ -400,7 +397,7 @@ if __name__ == "__main__":
     xout_stereo_1.setStreamName("depth")
     stereo_1.depth.link(xout_stereo_1.input)
 
-    ## Execution Loop (use each model for 20 seconds, then switch)
+    # Execution Loop (use each model for 20 seconds, then switch)
     while True:
         runInferencePipeline(
             pipeline_1, YOLO_CLASSES, 20, fname, "YOLOv3", disp=DISPLAY, verb=VERB

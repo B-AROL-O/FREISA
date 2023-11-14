@@ -1,14 +1,12 @@
 # Initialize DepthAI pipeline
-import depthai as dai
-import cv2
-import blobconverter
-import numpy as np
-from datetime import datetime
 import json
 import os
-import sys
 import time
+from datetime import datetime
 
+import cv2
+import depthai as dai
+import numpy as np
 
 DISP = False
 MN_CLASSES = ["healthy", "unhealthy"]
@@ -20,7 +18,7 @@ def frameNorm(frame, bbox):
     return (np.clip(np.array(bbox), 0, 1) * normVals).astype(int)
 
 
-#################### Try out own models
+# Try out own models
 
 # File names
 script_folder = os.path.dirname(__file__)
