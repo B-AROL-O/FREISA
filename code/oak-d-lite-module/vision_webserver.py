@@ -110,6 +110,9 @@ class VisionWebServer:
                     )
                 else:
                     cp.response.status = 201
+
+                    # print(self.oak_control.last_inference_result)
+
                     return json.dumps(self.oak_control.last_inference_result)
             elif str(path[0]) == "models_info":
                 return json.dumps(self.oak_control.info_dict)
@@ -126,7 +129,7 @@ class VisionWebServer:
         ---
         Select the model to be ran on the OAK-D lite camera.
         """
-        body = json.loads(cp.request.body.read())
+        # body = json.loads(cp.request.body.read())
         if len(path) > 0 and len(params) > 0:
             if str(path[0]) == "change_model" and "model" in params:
                 new_model = str(params["model"])
@@ -161,7 +164,7 @@ def main():
     models_config = os.path.join(config_folder, "models.json")
     server_config = os.path.join(config_folder, "serv_config.json")
 
-    serv = VisionWebServer(server_config, models_config, public=False)
+    serv = VisionWebServer(server_config, models_config, public=True)
 
     cp.tree.mount(serv, "/", serv.webserv_config)
     cp.config.update(
@@ -171,7 +174,7 @@ def main():
 
     try:
         while True:
-            time.sleep()
+            time.sleep(10)
     except KeyboardInterrupt:
         cp.engine.stop()
         return 1
