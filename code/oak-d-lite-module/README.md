@@ -1,19 +1,57 @@
 # Oak-d Lite module
 
-This folder (will contain) the code necessary to launch the Docker container used to control the Oak-d lite camera in order to perform inference and communicate the results over specific APIs in order to guide the MiniPupper.
+This folder contains the code necessary to launch the Docker container used to control the Oak-d lite camera to perform inference and communicate the results over HTTP to the MiniPupper motion control.
 
-The module will be then deployed over Docker using the same process explained in the [depthai-docker](../depthai-docker/) folder.
+This module can be deployed inside a Docker container, provided it has access to the USB bus of the host machine.
 
 ## Operation
 
-The camera should run one of the three pre-trained models that are used in the application (trunk detection, leaves classification, and path detection).
-The result will be transmitted to the Mini-Pupper controller program (acting as a web server) so that it will drive the robot towards the objectives (e.g., if seeing a plant, get closer to it).
+The `VisionWebServer` class uses CherryPy to create an HTTP server, through which clients can control the OAK-D lite camera and get the inference results.
+The web server makes use of a `VisionController` object to upload the YOLOv8 models on the cameras and run the inference pipelines with these models.
+
+The MiniPupper uses two CV models: one for detecting the trunk of the plant, and the other for detecting the leaves (healthy and unhealthy).
+
+The result will be transmitted to the Mini-Pupper controller program (acting as a web client) so that it will drive the robot towards the objectives (e.g., if seeing a plant, get closer to it).
+
+When launched, no model is active by default, so the client needs to first launch the desired pipeline before being able to retrieve the results.
+
+## Running the web server
+
+### Creating the image
+
+To create the image, open a terminal in this folder, and run:
+
+```bash
+./create_image.sh
+```
+
+This script invokes the [Dockerfile](./Dockerfile) also available in this folder to build an image, named `depthai-freisa:latest`, containing all the required Python packages needed by the server.
+
+The Dockerfile is an adapted version of the [DepthAI Dockerfile](https://github.com/luxonis/depthai/blob/main/Dockerfile).
+
+### Deploying the container
+
+After making sure Docker is up and running on the host, it is possible to launch the web server by running:
+
+```bash
+./vision_container.sh
+```
+
+This will create a container with the image that was just built and running the [vision web server](./vision_webserver.py).
+
+Since the container is launched in detached mode (`-d` flag in the `docker run` call), to verify the container has successfully started, run `docker ps | grep oak-d-lite-server`.
+If the output is not empty, the container has been started successfully.
 
 ## Sources and useful material
 
 - [DepthAI docs](https://docs.luxonis.com/projects/api/en/latest/)
 - [Deploy YOLO model to OAK camera](https://docs.roboflow.com/deploy/luxonis-oak)
   - YOLOv8 [tutorial](https://github.com/luxonis/depthai-ml-training/blob/master/colab-notebooks/YoloV8_training.ipynb)
+- [Depthai repository](https://github.com/luxonis/depthai)
+- [DepthAI Dockerfile](https://github.com/luxonis/depthai/blob/main/Dockerfile)
+  
+---
+---
 
 ## TODO
 
@@ -27,10 +65,6 @@ The result will be transmitted to the Mini-Pupper controller program (acting as 
 - [ ] Decide:
   - [x] How should the camera send data to the motion control (Mini Pupper REST API - webserver - is it usable?)
   - [x] How should the camera trigger the model change? Should it wait for some action from the motion control - depending on what it saw before, switch, maybe?
-
-## IMPORTANT - REST API
-
-- [ ] Camera: server HTTP - FSM GETs continuously for images; the POST is used to change model (**POLLING**)
 
 ## DepthAI overview
 
@@ -54,8 +88,8 @@ The relevant points of the architecture are:
 #### Device
 
 `depthai.Device` object: OAK device.
-Need to upload a *pipeline* (`depthai.Pipeline` - see [later](#pipeline)) to it and it will be executed on the on-board processor.
-Notice that when initializing the `Device` object, it is needed to provide the pipeline as argument of the constructor.
+Need to upload a *pipeline* (`depthai.Pipeline` - see [later](#pipeline)) to it and it will be executed on the onboard processor.
+Notice that when initializing the `Device` object, it is needed to provide the pipeline as an argument of the constructor.
 
 ```python
 pipeline = depthai.Pipeline()
@@ -80,7 +114,7 @@ with depthai.Device(pipeline) as device:
         input_q.send(cfg)
 ```
 
-It is also possible to pass as argument the device information of the specific device we want to connect too (not needed in our case).
+It is also possible to pass as an argument the device information of the specific device we want to connect to (not needed in our case).
 
 The queues are used to store messages from camera/host to host/camera.
 It is necessary to set the queue length and whether it will be blocking or not at initialization, but it is possible to modify these parameters afterward (`queue.setMaxSize(10)` and `queue.setBlocking(True)`).
@@ -92,7 +126,7 @@ Overview of class `depthai.Device`: [here](https://docs.luxonis.com/projects/api
 
 #### Pipeline
 
-`depthai.Pipeline`: collection of nodes (see [here](#nodes)) and links between them.
+`depthai.Pipeline`: a collection of nodes (see [here](#nodes)) and links between them.
 It specifies what the device does when powered up.
 
 When passed to a `Device` object, it gets converted to JSON and sent to the camera with XLink.
@@ -102,7 +136,7 @@ Steps:
 - Initialization: `pipeline = depthai.Pipeline()`
   - Possibility to specify OpenVINO version: `pipeline.setOpenVINOVersion(depthai.OpenVINO.Version.VERSION_2021_4)`
 - Create and configure nodes
-- Upload pipeline to device at its instantiation: `device = depthai.Device(pipeline)`
+- Upload pipeline to the device at its instantiation: `device = depthai.Device(pipeline)`
 
 *Note*: by passing to `depthai.Device` a different pipeline, it is possible to 'change' the CV model used in the camera.
 
@@ -113,8 +147,8 @@ Overview of `depthai.Pipeline`: [here](https://docs.luxonis.com/projects/api/en/
 `depthai.node`: building block(s) of the pipeline.
 Each node provides a specific functionality and a set of configurable inputs & outputs.
 
-Nodes can be connected in order to communicate (unidirectional flows).
-Need to ensure that the inputs are able to keep up with the outputs they receive data from (queues).
+Nodes can be connected to communicate (unidirectional flows).
+Need to ensure that the inputs can keep up with the outputs they receive data from (queues).
 Also here it is necessary to decide whether to make inputs blocking or not.
 
 Notable nodes:
@@ -132,9 +166,9 @@ Notable nodes:
 - `depthai.node.ImageManip`: used to perform manipulations on images provided as inputs (`ImageFrame` objects).
   - Specific methods determine specific transformations
   - [Full documentation](https://docs.luxonis.com/projects/api/en/latest/components/nodes/image_manip/#imagemanip)
-- `depthai.node.StereoDepth`: use the on-board stereo camera to get the disparity/depth.
+- `depthai.node.StereoDepth`: use the onboard stereo camera to get the disparity/depth.
   - Need configuration ([guide](https://docs.luxonis.com/projects/api/en/latest/tutorials/configuring-stereo-depth/#configuring-stereo-depth))
-  - Among the outputs it is possible to find `depth` which is an `ImgFrame` indicating the distance of each point in millimeters.
+  - Among the outputs, it is possible to find `depth` which is an `ImgFrame` indicating the distance of each point in millimeters.
   - The inputs are the left and right stereo camera flows, plus the configuration for the `StereoDepth` node.
   - Full [guide](https://docs.luxonis.com/projects/api/en/latest/components/nodes/stereo_depth/#stereodepth).
 - `depthai.node.SpatialLocationCalculator`: used to provide the spatial coordinates of the specified region of interest.
@@ -146,7 +180,7 @@ Notable nodes:
     - Set ROI: `config.roi = depthai.Rect(topLeft, bottomRight)`
     - Update config of node: `spatialCalc.initialConfig(addROI())`
     - Full [guide](https://docs.luxonis.com/projects/api/en/latest/components/nodes/spatial_location_calculator/#spatiallocationcalculator).
-- `depthai.node.NeuralNetwork`: upload a NN in OpenVINO format (as long as all layers fit in memory)
+- `depthai.node.NeuralNetwork`: upload a neural network in OpenVINO format (as long as all layers fit in memory)
   - Generic neural network block (more specialized ones exist - see `depthai.node.MobileNetDetectionNetwork`)
   - Input: any message type
   - [Full documentation](https://docs.luxonis.com/projects/api/en/latest/components/nodes/neural_network/#neuralnetwork)
@@ -162,7 +196,7 @@ Notable nodes:
   - Usage:
     - Initialize node in pipeline: `yoloDet = pipeline.create(depthai.node.YoloDetectionNetwork)`
     - Pass model (blob): `yoloDet.setBlobPath`
-    - Set specific parameters (see [full guide](https://docs.luxonis.com/projects/api/en/latest/components/nodes/yolo_detection_network/#yolodetectionnetwork) for list of parameters to be tuned)
+    - Set specific parameters (see [full guide](https://docs.luxonis.com/projects/api/en/latest/components/nodes/yolo_detection_network/#yolodetectionnetwork) for a list of parameters to be tuned)
 - `depthai.node.XLinkIn`: used to send data from host (RPi) to device (OAK-D lite) via XLink.
   - Creation: `xLinkIn = pipeline.create(depthai.node.XLinkIn)`
 
