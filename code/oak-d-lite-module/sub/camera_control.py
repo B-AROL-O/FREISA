@@ -20,10 +20,7 @@ This library contains functions used for controlling the operation of
 the OAK-D lite camera.
 
 TODO:
-- Find way to import class-label mapping
 - Fix depth evaluation
-- Import YOLOv8 model
-- Test locally
 """
 
 
@@ -35,23 +32,47 @@ class VisionController:
     pipelines to execute different operations.
 
     ### Attributes
+
+    #### Public
     - models (dict): dictionary containing as keys the model names, and as values dictionaries
     with the keys:
-      - path: path of the JSON file of the model
-      - n_classes: number of classes
-      - classes_map: mapping between the classes and the associated index (list)
+      - model_path: path of the .blob file of the model
+      - json_path: path of the JSON file of the model
     - model_names (list): list containing the names of the models.
     - model_paths (list): list of paths where the corresponding model is found.
     - json_paths (list): list of paths where the jsons of the models are found.
+    - model_settings (list): list containing the dicts obtained from the JSON configuration
+    files
+    - model_mappings (list): list containing the mappings of each model (sublists)
     - n_models (int): number of models
     - curr_model_ind (int): index (in the list of models) of the current active model
     if set to -1, no model is active.
     - pipelines (list): list of depthai.Pipeline objects associated with each model.
+    - info_dict (dict): dictionary containing the models' information that have been retrieved
+    from the JSON configuration files passed at initialization
+    - vision_thread (threading.Thread): thread on which the currently active pipeline is being
+    executed; initialized to None at instantiation
+    - last_inference_result (dict): result of the last inference performed by the currently
+    active model; it contains the model name, the timestamp, and the detection information.
+    - time_resolution (float): time step (in seconds) at which inference is performed.
+
+    #### Private
+    - _thread_started (bool): true if currently a pipeline is being executed (on separate
+    thread)
+    - _thread_stop (bool): when set to True, it will interrupt the currently active pipeline
 
     ### Methods
-    - __init__: constructor; it also initializes the pipelines (Depthai)
-    given the paths to the models to be used
-    -
+    - __init__: constructor; it also initializes the pipelines (Depthai) given the paths to
+    the models to be used
+    - _initPipelines: create the depthai.Pipeline objects for each of the models
+    - selectModel: change the currently active inference model (modify active thread)
+    - _runInferencePipeline: run a specific pipeline; this method should always be ran as an
+    independent thread, and can only be stopped by modifying the value of _thread_stop
+    - buildInfoDict: put together the dictionary containing the information of all available
+    models
+    - getCurrentModelName: get the name of the currently active model; will return an empty
+    string if no model has been launched
+    - stopThreads: stop the thread of the active pipeline for soft shutdown
     """
 
     script_folder = os.path.dirname(__file__)
@@ -66,7 +87,6 @@ class VisionController:
         configuration file for each model; NOTE: the paths should be relative to the folder where
         this file is stored!
         - time_resolution: time interval between two inference results in seconds (default: 0.5 s)
-        TODO
         """
         if not isinstance(models, dict):
             raise ValueError("The models must be stored inside a dictionary!")
@@ -340,6 +360,10 @@ class VisionController:
         if VERB:
             print(f"Pipeline '{model_name}' stopped")
 
+    # +-----------+
+    # + UTILITIES
+    # +-----------+
+
     def buildInfoDict(self):
         """
         Assemble the dict containing the information of all available models.
@@ -347,12 +371,11 @@ class VisionController:
         for i in range(self.n_models):
             self.info_dict[self.model_names[i]] = self.model_settings[i]
 
-    # +-----------+
-    # + UTILITIES
-    # +-----------+
-
-    def getCurrentModelName(self):
-        """Get the name of the current active model."""
+    def getCurrentModelName(self) -> str:
+        """
+        Get the name of the current active model. If no model has been launched, it
+        will return an empty string.
+        """
         if self.current_model_ind == -1:
             # No model was launched yet!
             return ""
