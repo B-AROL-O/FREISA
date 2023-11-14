@@ -2,6 +2,7 @@ import json
 import os
 import threading
 import time
+import typing
 from datetime import datetime
 
 import depthai as dai
@@ -302,7 +303,7 @@ class VisionController:
             # Do the thing
             while True and not self._thread_stop:
                 ts = datetime.now().strftime("%Y/%m/%d, %H:%M:%S")
-                inf_result_new: dict[str, list] | dict[str, str] | dict[str, dict] = {}
+                inf_result_new: dict[str, typing.Any] = {}
                 inf_result_new["model_name"] = model_name
                 inf_result_new["detections"] = []
                 inf_result_new["timestamp"] = ts
