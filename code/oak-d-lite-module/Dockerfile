@@ -4,11 +4,9 @@ RUN apt-get update && apt-get install -y wget build-essential cmake pkg-config l
 
 RUN git clone https://github.com/luxonis/depthai.git depthai
 
-# ADD docker_dependencies.sh .
 RUN ./depthai/docker_dependencies.sh
 
-# ADD . /depthai
 RUN python3 ./depthai/install_requirements.py
 
-ADD requirements.txt .
+COPY requirements.txt .
 RUN pip3 install -r requirements.txt
