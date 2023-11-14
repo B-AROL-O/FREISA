@@ -101,6 +101,7 @@ class VisionController:
         # FIXME: add other possible variables (e.g., store outputs of running models)
         self._thread_started = False
         self.vision_thread = None  # Placeholder for the threading.Thread object
+        self._thread_stop = False  # Flag used to stop the current thread
 
         # The last inference result consists in a dict
         self.last_inference_result = {}
@@ -229,12 +230,17 @@ class VisionController:
 
         # Stop the thread
         if self._thread_started:
+            self._thread_stop = True
+            # time.sleep(0.3)  # Give time to finish current iteration
             self.vision_thread.join()
 
         # Change the active model info
         self.current_model_ind = mod_ind
         self.current_model_settings = self.model_settings[mod_ind]
         self.current_model_mappings = self.model_mappings[mod_ind]
+
+        # Reset stop flag
+        self._thread_stop = False
 
         # Restart the thread
         self.vision_thread = threading.Thread(
@@ -268,72 +274,77 @@ class VisionController:
             print(f"Starting model {pipeline_name}")
 
         model_name = self.getCurrentModelName()
-        with dai.Device(pipeline) as device:
-            # Define queue for nn output - blocking=False will make only the most recent info available
-            queue_nn = device.getOutputQueue(
-                name="inference", maxSize=1, blocking=False
-            )
-            # Define queue for depth
-            queue_depth = device.getOutputQueue(name="depth", maxSize=1, blocking=False)
+        while not self._thread_stop:
+            with dai.Device(pipeline) as device:
+                # Define queue for nn output - blocking=False will make only the most recent info available
+                queue_nn = device.getOutputQueue(
+                    name="inference", maxSize=1, blocking=False
+                )
+                # Define queue for depth
+                queue_depth = device.getOutputQueue(
+                    name="depth", maxSize=1, blocking=False
+                )
 
-            # Initialize placeholders for results:
-            depth_frame = None  # Containing the output of the camera block
-            detections = []  # Containing the inference results
-            distances = []
+                # Initialize placeholders for results:
+                depth_frame = None  # Containing the output of the camera block
+                detections = []  # Containing the inference results
+                distances = []
 
-            in_nn = None
-            in_depth = None
+                in_nn = None
+                in_depth = None
 
-            # Do the thing
-            while True:
-                ts = datetime.now().strftime("%Y/%m/%d, %H:%M:%S")
-                inf_result_new = {}
-                inf_result_new["model_name"] = model_name
-                inf_result_new["detections"] = []
-                inf_result_new["timestamp"] = ts
+                # Do the thing
+                while True:
+                    ts = datetime.now().strftime("%Y/%m/%d, %H:%M:%S")
+                    inf_result_new = {}
+                    inf_result_new["model_name"] = model_name
+                    inf_result_new["detections"] = []
+                    inf_result_new["timestamp"] = ts
 
-                if sync_frame:
-                    in_nn = queue_nn.get()
-                    in_depth = queue_depth.get()
-                else:
-                    in_nn = queue_nn.tryGet()
-                    in_depth = queue_depth.tryGet()
+                    if sync_frame:
+                        in_nn = queue_nn.get()
+                        in_depth = queue_depth.get()
+                    else:
+                        in_nn = queue_nn.tryGet()
+                        in_depth = queue_depth.tryGet()
 
-                if in_nn is not None:
-                    # depth_frame should contain the distances for each pixel
-                    depth_frame = in_depth.getFrame()
-                    for det in in_nn.detections:
-                        x1, y1, x2, y2 = (
-                            det.xmin,
-                            det.ymin,
-                            det.xmax,
-                            det.ymax,
-                        )
-                        det_centroid = (0.5 * (x1 + x2), 0.5 * (y1 + y2))
-                        # TODO: add distance evaluation
-                        det_dist = depth_frame
+                    if in_nn is not None:
+                        # depth_frame should contain the distances for each pixel
+                        depth_frame = in_depth.getFrame()
+                        for det in in_nn.detections:
+                            x1, y1, x2, y2 = (
+                                det.xmin,
+                                det.ymin,
+                                det.xmax,
+                                det.ymax,
+                            )
+                            det_centroid = (0.5 * (x1 + x2), 0.5 * (y1 + y2))
+                            # TODO: add distance evaluation
+                            det_dist = depth_frame
 
-                        # TODO: with distance evaluated it is possible to calculate
-                        # the angle of rotation to have the plant centered.
+                            # TODO: with distance evaluated it is possible to calculate
+                            # the angle of rotation to have the plant centered.
 
-                        # Package solution
-                        inf_result_new["detections"].append(
-                            {
-                                "position": det_centroid,
-                                # "depth": det_dist,
-                                "label": det.label,
-                                "class": self.current_model_mappings[det.label],
-                                "distance": 0,
-                                "confidence": det.confidence,
-                            }
-                        )
+                            # Package solution
+                            inf_result_new["detections"].append(
+                                {
+                                    "position": det_centroid,
+                                    # "depth": det_dist,
+                                    "label": det.label,
+                                    "class": self.current_model_mappings[det.label],
+                                    "distance": 0,
+                                    "confidence": det.confidence,
+                                }
+                            )
 
-                # Need to place this here so that if no objects are found, the
-                # program will return an empty solution
-                self.last_inference_result = inf_result_new
+                    # Need to place this here so that if no objects are found, the
+                    # program will return an empty solution
+                    self.last_inference_result = inf_result_new
 
-                # Wait before next capture
-                time.sleep(self.time_resolution)
+                    # Wait before next capture
+                    time.sleep(self.time_resolution)
+        if VERB:
+            print("Thread stopped")
 
     def buildInfoDict(self):
         """
