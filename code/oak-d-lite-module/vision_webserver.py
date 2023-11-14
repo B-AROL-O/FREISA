@@ -1,8 +1,8 @@
-import cherrypy as cp
 import json
 import os
 import time
 
+import cherrypy as cp
 from sub.camera_control import VisionController
 
 
@@ -141,7 +141,7 @@ class VisionWebServer:
         if len(path) > 0 and len(params) > 0:
             if str(path[0]) == "change_model" and "model" in params:
                 new_model = str(params["model"])
-                if not new_model in self.oak_control.model_names:
+                if new_model not in self.oak_control.model_names:
                     raise cp.HTTPError(
                         422,
                         f"Parameter 'mode' = {new_model} is invalid!\nValid models: {self.oak_control.model_names}",
@@ -193,7 +193,7 @@ def main():
             time.sleep(10)
     except KeyboardInterrupt:
         cp.engine.stop()
-        return serv.stopThreads()
+        return serv.oak_control.stopThreads()
 
 
 # ---------------------------------------------------------------------------
