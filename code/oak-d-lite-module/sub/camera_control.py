@@ -294,7 +294,7 @@ class VisionController:
             queue_depth = device.getOutputQueue(name="depth", maxSize=1, blocking=False)
 
             # Initialize placeholders for results:
-            depth_frame = None  # Containing the output of the camera block
+            # depth_frame = None  # Containing the output of the camera block
 
             in_nn = None
             in_depth = None
@@ -316,7 +316,7 @@ class VisionController:
 
                 if in_nn is not None:
                     # depth_frame should contain the distances for each pixel
-                    depth_frame = in_depth.getFrame()
+                    _ = in_depth.getFrame()
                     for det in in_nn.detections:
                         x1, y1, x2, y2 = (
                             det.xmin,
