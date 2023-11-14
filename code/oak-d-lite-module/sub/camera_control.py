@@ -1,18 +1,12 @@
 import depthai as dai
-import cv2
-import blobconverter
-import numpy as np
 from datetime import datetime
 import json
 import os
-import sys
 import threading
 import time
 
 from .config import (
-    DEBUG,
     VERB,
-    CONF_THRESH_NN,
     EXTENDED_DISPARITY,
     SUBPIXEL,
     LR_CHECK,

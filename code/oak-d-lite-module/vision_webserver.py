@@ -1,4 +1,3 @@
-import numpy as np
 import cherrypy as cp
 import json
 import os
