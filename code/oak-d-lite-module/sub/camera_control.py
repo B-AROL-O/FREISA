@@ -1,17 +1,17 @@
-import depthai as dai
-from datetime import datetime
 import json
 import os
 import threading
 import time
+from datetime import datetime
 
-from .config import (
+import depthai as dai
+
+from sub.config import (
     VERB,
     EXTENDED_DISPARITY,
     SUBPIXEL,
     LR_CHECK,
 )
-from .utilities import frameNorm
 
 """
 Camera control library
@@ -101,24 +101,23 @@ class VisionController:
             os.path.join(self.script_folder, str(models[k]["json_path"]))
             for k in self.model_names
         ]
-        self.model_settings = []  # Will contain the JSONs stored as dict
-        self.model_mappings = []  # Will contain labels list
+        self.model_settings: list[dict] = []  # Will contain the JSONs stored as dict
+        self.model_mappings: list[list] = []  # Will contain labels list
         self.n_models = len(self.model_names)
         self.current_model_ind = -1
 
-        self.pipelines = []
+        self.pipelines: list[dai.Pipeline] = []
         self._initPipelines()
 
-        self.info_dict = {}
+        self.info_dict: dict[str, dict] = {}
         self.buildInfoDict()
 
-        # FIXME: add other possible variables (e.g., store outputs of running models)
         self._thread_started = False
-        self.vision_thread = None  # Placeholder for the threading.Thread object
+        self.vision_thread = threading.Thread()
         self._thread_stop = False  # Flag used to stop the current thread
 
         # The last inference result consists in a dict
-        self.last_inference_result = {}
+        self.last_inference_result: dict[str, dict] = {}
 
         ###
         self.time_resolution = time_resolution
@@ -201,7 +200,7 @@ class VisionController:
             mono_l.out.link(stereo.left)
             mono_r.out.link(stereo.right)
 
-            ## NOTE: if on, the program breaks unless the queue is used for some reason...
+            # NOTE: if on, the program breaks unless the queue is used for some reason...
             # xout_rgb = new_pipeline.create(dai.node.XLinkOut)
             # xout_rgb.setStreamName("rgb")
             # cam_rgb.preview.link(xout_rgb.input)  # Output RGB (debugging)
@@ -245,7 +244,8 @@ class VisionController:
         # Stop the thread
         if self._thread_started:
             self._thread_stop = True
-            self.vision_thread.join()
+            if self.vision_thread is not None:
+                self.vision_thread.join()
 
         # Change the active model info
         self.current_model_ind = mod_ind
@@ -300,8 +300,6 @@ class VisionController:
 
             # Initialize placeholders for results:
             depth_frame = None  # Containing the output of the camera block
-            detections = []  # Containing the inference results
-            distances = []
 
             in_nn = None
             in_depth = None
@@ -309,9 +307,9 @@ class VisionController:
             # Do the thing
             while True and not self._thread_stop:
                 ts = datetime.now().strftime("%Y/%m/%d, %H:%M:%S")
-                inf_result_new = {}
+                inf_result_new: dict[str, dict, list] = {}
                 inf_result_new["model_name"] = model_name
-                inf_result_new["detections"] = []
+                inf_result_new["detections"]: list[dict] = []
                 inf_result_new["timestamp"] = ts
 
                 if sync_frame:
