@@ -3,3 +3,4 @@ depthai
 opencv-python
 numpy
 matplotlib
+cherrypy
