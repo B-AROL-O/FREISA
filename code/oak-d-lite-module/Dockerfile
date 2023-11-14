@@ -9,3 +9,6 @@ RUN ./depthai/docker_dependencies.sh
 
 # ADD . /depthai
 RUN python3 ./depthai/install_requirements.py
+
+ADD requirements.txt .
+RUN pip3 install -r requirements.txt
