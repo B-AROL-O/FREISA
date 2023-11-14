@@ -6,7 +6,7 @@ from datetime import datetime
 
 import depthai as dai
 
-from sub.config import VERB, EXTENDED_DISPARITY, SUBPIXEL, LR_CHECK
+from sub.config import EXTENDED_DISPARITY, LR_CHECK, SUBPIXEL, VERB
 
 """
 Camera control library
