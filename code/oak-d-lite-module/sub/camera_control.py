@@ -149,7 +149,7 @@ class VisionController:
             cam_rgb.setPreviewSize(input_size[0], input_size[1])
             cam_rgb.setInterleaved(False)
             cam_rgb.setColorOrder(dai.ColorCameraProperties.ColorOrder.BGR)
-            cam_rgb.setFps(40)
+            cam_rgb.setFps(30)
 
             # YOLO detection model (extract info from JSON config)
             yolo_nn = new_pipeline.create(dai.node.YoloDetectionNetwork)
