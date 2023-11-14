@@ -6,17 +6,12 @@ from datetime import datetime
 
 import depthai as dai
 
-from sub.config import (
-    VERB,
-    EXTENDED_DISPARITY,
-    SUBPIXEL,
-    LR_CHECK,
-)
+from sub.config import VERB, EXTENDED_DISPARITY, SUBPIXEL, LR_CHECK
 
 """
 Camera control library
 ---
-This library contains functions used for controlling the operation of 
+This library contains functions used for controlling the operation of
 the OAK-D lite camera.
 
 TODO:
@@ -307,9 +302,9 @@ class VisionController:
             # Do the thing
             while True and not self._thread_stop:
                 ts = datetime.now().strftime("%Y/%m/%d, %H:%M:%S")
-                inf_result_new: dict[str, dict, list] = {}
+                inf_result_new: dict[str, list] = {}
                 inf_result_new["model_name"] = model_name
-                inf_result_new["detections"]: list[dict] = []
+                inf_result_new["detections"] = []
                 inf_result_new["timestamp"] = ts
 
                 if sync_frame:
@@ -331,7 +326,7 @@ class VisionController:
                         )
                         det_centroid = (0.5 * (x1 + x2), 0.5 * (y1 + y2))
                         # TODO: add distance evaluation
-                        det_dist = depth_frame
+                        # det_dist = depth_frame
 
                         # TODO: with distance evaluated it is possible to calculate
                         # the angle of rotation to have the plant centered.
