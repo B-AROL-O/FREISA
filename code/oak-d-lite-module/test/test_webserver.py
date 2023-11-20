@@ -3,11 +3,20 @@
 import argparse
 import json
 import time
+import warnings
 
-import requests
+try:
+    import requests
+except ImportError:
+    raise ImportError(
+        "Install the 'requests' Python package by running \
+            'pip3 install requests'"
+    )
 
 """
 This program can be used to test the functioning of the vision webserver.
+
+NOTE: this script requires the Python package "requests".
 
 Usage:
     Launch the script as:
@@ -24,6 +33,10 @@ def use_camera(addr: str, period: float | int = 30):
     """
     Define a pipeline for using the camera and switching between models every
     30 seconds.
+
+    ### Input parameters
+    - addr: server address
+    - period: time each model is used for
     """
     # Get list of valid models
     mod_info = requests.get(addr + "models_info").json()
@@ -35,7 +48,8 @@ def use_camera(addr: str, period: float | int = 30):
         # Select the model
         curr_mod = mod_names[ind]
         x = requests.post(addr + f"change_model?model={str(curr_mod)}")
-        assert x.status_code == 204
+        assert x.status_code == 204, "Unable to communicate with server"
+
         print(f"> Started model {curr_mod}")
 
         # Give some time for setup
@@ -43,12 +57,17 @@ def use_camera(addr: str, period: float | int = 30):
 
         t_start = time.time()
         while time.time() - t_start < period:
-            res = requests.get(addr + "latest_inference").json()
-            assert res.status_code == 200 or res.status_code == 404
-            print(json.dumps(res))
-            print()
+            res = requests.get(addr + "latest_inference")
+            if res.status_code == 200:
+                out = res.json()
+                print(json.dumps(out))
+                print()
+            elif res.status_code == 404:
+                print("No available result")
+            else:
+                warnings.warn(f"Server error {res.status_code}")
 
-            # Sleep for 1 second
+            # Wait for 1 second
             time.sleep(1)
 
         ind = (ind + 1) % len(mod_names)
