@@ -15,7 +15,8 @@ Usage:
         python3 test_webserver.py [-u <url>]
         ```
     where the argument `-u` allows to specify the address of the server.
-    If no 
+    If no argument is passed, the address will be set to
+    'http://localhost:9090'.
 """
 
 
