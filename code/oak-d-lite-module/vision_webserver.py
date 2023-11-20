@@ -1,8 +1,11 @@
+#!/usr/bin/env python3
+
 import json
 import os
 import time
 
 import cherrypy as cp
+
 from sub.camera_control import VisionController
 
 
