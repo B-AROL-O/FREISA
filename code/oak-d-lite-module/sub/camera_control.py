@@ -8,7 +8,6 @@ import typing
 from datetime import datetime
 
 import depthai as dai
-
 from sub.config import EXTENDED_DISPARITY, LR_CHECK, SUBPIXEL, VERB
 
 """
