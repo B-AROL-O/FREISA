@@ -10,7 +10,12 @@ import requests
 This program can be used to test the functioning of the vision webserver.
 
 Usage:
-    TODO
+    Launch the script as:
+        ```
+        python3 test_webserver.py [-u <url>]
+        ```
+    where the argument `-u` allows to specify the address of the server.
+    If no 
 """
 
 
@@ -38,6 +43,7 @@ def use_camera(addr: str, period: float | int = 30):
         t_start = time.time()
         while time.time() - t_start < period:
             res = requests.get(addr + "latest_inference").json()
+            assert res.status_code == 200 or res.status_code == 404
             print(json.dumps(res))
             print()
 
