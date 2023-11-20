@@ -51,6 +51,19 @@ This will create a container with the image that was just built and running the 
 Since the container is launched in detached mode (`-d` flag in the `docker run` call), to verify the container has successfully started, run `docker ps | grep oak-d-lite-server`.
 If the output is not empty, the container has been started successfully.
 
+#### Hint: check the container is running
+
+To verify the container is running, we propose two methods.
+
+The first approach it to perform requests through a HTTP request tool, such as [Thunder client for VSCode](https://marketplace.visualstudio.com/items?itemName=rangav.vscode-thunder-client).
+
+Another possibility is to run the [test program](./test/test_webserver.py) as follows:
+
+```bash
+python3 ./test/test_webserver.py -u <http://server_address:9090/>
+```
+This script will attempt to run each of the available models for 30 seconds, and returns the inference results every 1s.
+
 ## Sources and useful material
 
 - [DepthAI docs](https://docs.luxonis.com/projects/api/en/latest/)
