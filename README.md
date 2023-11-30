@@ -71,6 +71,12 @@ And last but not least, document your work and submit your entry.
 [Here's a tutorial](https://www.hackster.io/AlexWulff/how-to-create-a-high-quality-project-tutorial-e25feb) on how to create a high-quality project.
 -->
 
+## How to stay in touch
+
+You may follow [@baroloteam on Instagram](https://instagram.com/baroloteam) or [@baroloteam on ~~Twitter~~ X](https://x.com/baroloteam) to get notified about the progress of the FREISA project.
+
+Please report bugs and feature requests on <https://github.com/B-AROL-O/FREISA/issues>, or DM [B-AROL-O Team on ~~Twitter~~ X](https://x.com/baroloteam) about security issues or other non-public topics.
+
 ## Copyright and license
 
 Copyright (C) 2023, [B-AROL-O Team](https://github.com/B-AROL-O), all rights reserved.
