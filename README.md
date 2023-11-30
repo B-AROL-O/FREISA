@@ -2,6 +2,8 @@
 
 [Project FREISA](https://www.hackster.io/projects/845012), an acronym for "`F`our-legged `R`obot `E`nsuring `I`ntelligent `S`prinkler `A`utomation", is [B-AROL-O Team](https://github.com/B-AROL-O?view_as=public) proposal for the [OpenCV AI Competition 2023](https://www.hackster.io/contests/opencv-ai-competition-2023).
 
+![2023-10-28-freisa-landing-page.png](https://raw.githubusercontent.com/B-AROL-O/.github/main/profile/img/2023-10-28-freisa-landing-page.png)
+
 <!--
 ## Quick links
 
