@@ -46,7 +46,7 @@ Pietro    | d'Agostino | Member  | [@pitdagosti](https://github.com/pitdagosti) 
 Gianluca  | Teti       | Advisor | [@gteti](https://github.com/gteti)           | Gianteti
 Gianpaolo | Macario    | Advisor | [@gmacario](https://github.com/gmacario)     | gmacario
 
-For additional contact information please see [assets/baroloteam_members.yaml](assets/baroloteam_members.yaml)
+<!-- For additional contact information please see [assets/baroloteam_members.yaml](assets/baroloteam_members.yaml) -->
 
 <!--
 ## OpenCV AI Competition 2023: Jumpstart your idea with this checklist
