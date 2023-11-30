@@ -2,6 +2,7 @@
 
 [Project FREISA](https://www.hackster.io/projects/845012), an acronym for "`F`our-legged `R`obot `E`nsuring `I`ntelligent `S`prinkler `A`utomation", is [B-AROL-O Team](https://github.com/B-AROL-O?view_as=public) proposal for the [OpenCV AI Competition 2023](https://www.hackster.io/contests/opencv-ai-competition-2023).
 
+<!--
 ## Quick links
 
 * [B-AROL-O TODO List](https://github.com/orgs/B-AROL-O/projects/1): [Open issues](https://github.com/orgs/B-AROL-O/projects/1), [Completed](https://github.com/orgs/B-AROL-O/projects/1/views/5), [Unassigned AIs](https://github.com/orgs/B-AROL-O/projects/1/views/9)
@@ -9,7 +10,9 @@
 * [FREISA Project Homepage on hackster.io](https://www.hackster.io/projects/845012)
 * [opencv-ai-competition-2023: Closest milestones](https://github.com/B-AROL-O/opencv-ai-competition-2023/milestones?direction=asc&sort=due_date&state=open). [Past milestones](https://github.com/B-AROL-O/opencv-ai-competition-2023/milestones?direction=asc&sort=due_date&state=closed)
 * [Andrea Podo considerations on project backlog as of 2023-07-14](assets/2023-07-14-132715.jpg)
+-->
 
+<!--
 ## Competition Timeline
 
 * [x] (2023-07-10 18:00 PDT) Contest begins
@@ -30,6 +33,7 @@
 * Create a technical project report
 * Share the source code
 * Create a short demo video of upto 5 mins
+-->
 
 ## The Team
 
@@ -44,6 +48,7 @@ Gianpaolo | Macario    | Advisor | [@gmacario](https://github.com/gmacario)     
 
 For additional contact information please see [assets/baroloteam_members.yaml](assets/baroloteam_members.yaml)
 
+<!--
 ## OpenCV AI Competition 2023: Jumpstart your idea with this checklist
 
 ### Getting to know the technology
@@ -64,6 +69,7 @@ Need technical help? Ask the community for help on the contest [discussion board
 
 And last but not least, document your work and submit your entry.
 [Here's a tutorial](https://www.hackster.io/AlexWulff/how-to-create-a-high-quality-project-tutorial-e25feb) on how to create a high-quality project.
+-->
 
 ## Copyright and license
 
