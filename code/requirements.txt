@@ -6,4 +6,3 @@ numpy==1.26.2
 pyserial==3.5
 Requests==2.31.0
 UDPComms==2.1.1
-UDPComms==2.1.1
