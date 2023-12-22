@@ -45,7 +45,7 @@ git clone https://github.com/mangdangroboticsclub/mini_pupper_web_controller.git
 ./mini_pupper_web_controller/webserver/install.sh
 ```
 
-# Demos
+## Demos
 
 Put the demos in `~/mini_pupper_bsp/demos/`.
 

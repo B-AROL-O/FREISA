@@ -58,7 +58,7 @@ if __name__ == "__main__":
         # header of the debug message
         format="[%(asctime)s] %(levelname)s %(module)s:%(lineno)d > %(message)s ",
     )
-    logging.info(f"Class definition")
+    logging.info("Class definition")
     print("Test GPIO UART")
 
     gcl_ser = serial.Serial(
