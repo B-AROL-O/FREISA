@@ -47,7 +47,7 @@ def set_goal_position(ID, position):
 # ----------------------------------------------------------------
 # MAIN
 # ----------------------------------------------------------------
-## if the file is being read WITH the intent of being executed
+# if the file is being read WITH the intent of being executed
 
 if __name__ == "__main__":
     # initialize logs

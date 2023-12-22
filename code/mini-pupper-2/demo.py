@@ -25,13 +25,12 @@ except ImportError:
 # send robot command via UDP
 from UDPComms import Publisher
 
-
-def direction_helper(trigger, opt1, opt2):
-    if trigger == opt1:
-        return -1
-    if trigger == opt2:
-        return 1
-    return 0
+# def direction_helper(trigger, opt1, opt2):
+#     if trigger == opt1:
+#         return -1
+#     if trigger == opt2:
+#         return 1
+#     return 0
 
 
 def direction_helper(opt1, opt2):
@@ -162,11 +161,11 @@ def use_camera(addr: str, period: float | int = 30):
                 # activate sprinkler
                 elif n_state == 4:
                     # sprinkle!
-                    sb_message = set_goal_position(13, 500)
+                    # sb_message = set_goal_position(13, 500)
                     n_state = 5
                 # reset sprinkler
                 elif n_state == 5:
-                    sb_message = set_goal_position(13, 650)
+                    # sb_message = set_goal_position(13, 650)
                     n_state = 6
                 else:
                     return
@@ -180,12 +179,12 @@ def use_camera(addr: str, period: float | int = 30):
 
 
 def send_udp_message(s_direction):
-    rx_ = 0.0
-    ry_ = 0.0
+    # rx_ = 0.0
+    # ry_ = 0.0
     lx_ = 0.0
     ly_ = 0.0
     l_alpha = 0.15
-    r_alpha = 0.3
+    # r_alpha = 0.3
 
     msg = {
         "ly": 0.0,
