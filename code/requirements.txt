@@ -1,0 +1,8 @@
+blobconverter==1.4.2
+CherryPy==18.9.0
+depthai==2.24.0.0
+HEIC2PNG==1.1.4
+numpy==1.26.2
+pyserial==3.5
+Requests==2.31.0
+UDPComms==2.1.1
