@@ -6,7 +6,7 @@
 
 **BUT THE COMPETITION IS NOT OVER YET! VOTE US ON [OpenCV Form-Community Award](https://www.jotform.com/form/233544823564157) BY COMPILING THE FIELDS AND SELECTING US ON THE FIRST PLACE! LET'S WIN TOGHETHER ⭐**
 
-[![2023-12-29-freisa-image.png]([assets/2023-12-29-xxx.png](https://github.com/B-AROL-O/FREISA/assets/90387263/395a7b23-75df-4d37-9ae5-e493044b0249))](https://www.jotform.com/form/233544823564157)
+[![2023-12-29-freisa-image.png](https://github.com/B-AROL-O/FREISA/assets/90387263/395a7b23-75df-4d37-9ae5-e493044b0249)](https://www.jotform.com/form/233544823564157)
 
 ## The Team
 
