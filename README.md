@@ -4,7 +4,7 @@
 
 [Project FREISA](https://www.hackster.io/projects/845012), an acronym for "`F`our-legged `R`obot `E`nsuring `I`ntelligent `S`prinkler `A`utomation", is the winner of the **Grand Prize** 🥇 of [OpenCV AI Competition 2023](https://www.hackster.io/contests/opencv-ai-competition-2023) from [B-AROL-O Team](https://github.com/B-AROL-O?view_as=public).
 
-**BUT THE COMPETITION IS NOT OVER YET! VOTE US ON [OpenCV Form-Community Award](https://www.jotform.com/form/233544823564157) BY COMPILING THE FIELDS AND SELECTING US ON THE FIRST PLACE! LET'S WIN TOGHETHER ⭐**
+**BUT THE COMPETITION IS NOT OVER YET! VOTE US ON [OpenCV Form-Community Award](https://www.jotform.com/form/233544823564157) BY COMPILING THE FIELDS AND SELECTING US ON THE FIRST PLACE! LET'S WIN TOGETHER ⭐**
 
 [![2023-12-29-freisa-image.png](https://github.com/B-AROL-O/FREISA/assets/90387263/395a7b23-75df-4d37-9ae5-e493044b0249)](https://www.jotform.com/form/233544823564157)
 
