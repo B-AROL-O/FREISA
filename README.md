@@ -1,6 +1,6 @@
 # Four-legged Robot Ensuring Intelligent Sprinkler Automation
 
-[![2023-10-28-freisa-landing-page.png](https://raw.githubusercontent.com/B-AROL-O/.github/main/profile/img/2023-10-28-freisa-landing-page.png)](https://www.hackster.io/projects/845012)
+[![2023-10-28-freisa-landing-page.png](https://github.com/B-AROL-O/FREISA/assets/90387263/720b1270-4645-444d-8c37-23f423472d9a)](https://www.hackster.io/projects/845012)
 
 [Project FREISA](https://www.hackster.io/projects/845012), an acronym for "`F`our-legged `R`obot `E`nsuring `I`ntelligent `S`prinkler `A`utomation", is the winner of the **Grand Prize** 🥇 of [OpenCV AI Competition 2023](https://www.hackster.io/contests/opencv-ai-competition-2023) from [B-AROL-O Team](https://github.com/B-AROL-O?view_as=public).
 
