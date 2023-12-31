@@ -10,7 +10,9 @@
 
 ## What is FREISA
 
-Here is [a short presentation of the FREISA project](https://video.linux.it/w/xq3Z9khHJGTzv2NsNc1gK7?start=9m37&stop=20m23) given during [a recent event](https://www.eventbrite.com/e/databeers-torino-episodio-17-tickets-754459006197) organized by [DataBeers Torino](https://twitter.com/databeerstorino) and [Python Torino](https://torino.python.it/).
+Here is [a short presentation](https://video.linux.it/w/xq3Z9khHJGTzv2NsNc1gK7?start=9m37&stop=20m23) of the FREISA project ([slides](https://speakerdeck.com/pythontorino/unwrapping-the-future-of-sprinkler-automation)) given during [a recent event](https://www.eventbrite.com/e/databeers-torino-episodio-17-tickets-754459006197) organized by [DataBeers Torino](https://twitter.com/databeerstorino) and [Python Torino](https://torino.python.it/)
+
+[![2023-12-13-freisa-databeers.png](assets/2023-12-13-freisa-databeers.png)](https://video.linux.it/w/xq3Z9khHJGTzv2NsNc1gK7?start=9m37&stop=20m23)
 
 ## The Team
 
