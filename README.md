@@ -8,8 +8,13 @@
 
 [![2023-12-29-freisa-image.png](https://github.com/B-AROL-O/FREISA/assets/90387263/395a7b23-75df-4d37-9ae5-e493044b0249)](https://www.jotform.com/form/233544823564157)
 
-## The Team
+## What is FREISA
 
+Here is [a short presentation](https://video.linux.it/w/xq3Z9khHJGTzv2NsNc1gK7?start=9m37&stop=20m23) of the FREISA project ([slides](https://speakerdeck.com/pythontorino/unwrapping-the-future-of-sprinkler-automation)) given during [a recent event](https://www.eventbrite.com/e/databeers-torino-episodio-17-tickets-754459006197) organized by [DataBeers Torino](https://twitter.com/databeerstorino) and [Python Torino](https://torino.python.it/)
+
+[![2023-12-13-freisa-databeers.png](assets/2023-12-13-freisa-databeers.png)](https://video.linux.it/w/xq3Z9khHJGTzv2NsNc1gK7?start=9m37&stop=20m23)
+
+## The Team
 
 Firstname | Lastname   | Role    | GitHub_ID                                    | Telegram_ID
 ----------|------------|---------|----------------------------------------|---------------------
@@ -28,7 +33,7 @@ Please report bugs and feature requests on <https://github.com/B-AROL-O/FREISA/i
 
 ## Copyright and license
 
-Copyright (C) 2023, [B-AROL-O Team](https://github.com/B-AROL-O), all rights reserved.
+Copyright (C) 2023-2024, [B-AROL-O Team](https://github.com/B-AROL-O), all rights reserved.
 
 ### Source code license
 
