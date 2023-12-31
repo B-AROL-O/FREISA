@@ -14,7 +14,6 @@ Here is [a short presentation of the FREISA project](https://video.linux.it/w/xq
 
 ## The Team
 
-
 Firstname | Lastname   | Role    | GitHub_ID                                    | Telegram_ID
 ----------|------------|---------|----------------------------------------|---------------------
 Andrea    | Podo       | Member  | [@AndreaPodo](https://github.com/AndreaPodo) | andreapodo
