@@ -8,6 +8,10 @@
 
 [![2023-12-29-freisa-image.png](https://github.com/B-AROL-O/FREISA/assets/90387263/395a7b23-75df-4d37-9ae5-e493044b0249)](https://www.jotform.com/form/233544823564157)
 
+## What is FREISA
+
+Here is [a short presentation of the FREISA project](https://video.linux.it/w/xq3Z9khHJGTzv2NsNc1gK7?start=9m37&stop=20m23) given during a recent event organized by [DataBeers Torino](https://twitter.com/databeerstorino) and [Python Torino](https://torino.python.it/).
+
 ## The Team
 
 
