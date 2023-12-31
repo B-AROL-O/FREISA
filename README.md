@@ -31,7 +31,7 @@ Please report bugs and feature requests on <https://github.com/B-AROL-O/FREISA/i
 
 ## Copyright and license
 
-Copyright (C) 2023, [B-AROL-O Team](https://github.com/B-AROL-O), all rights reserved.
+Copyright (C) 2023-2024, [B-AROL-O Team](https://github.com/B-AROL-O), all rights reserved.
 
 ### Source code license
 
