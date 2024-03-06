@@ -159,9 +159,7 @@ class VisionWebServer:
                 ), "Something went wrong in changing the model"
                 cp.response.status = 204
                 return json.dumps(
-                    self.oak_control.info_dict[
-                        self.oak_control.getCurrentModelName()
-                    ]
+                    self.oak_control.info_dict[self.oak_control.getCurrentModelName()]
                 )
             else:
                 raise cp.HTTPError(

@@ -108,9 +108,7 @@ class VisionController:
             os.path.join(self.script_folder, str(models[k]["json_path"]))
             for k in self.model_names
         ]
-        self.model_settings: list[
-            dict
-        ] = []  # Will contain the JSONs stored as dict
+        self.model_settings: list[dict] = []  # Will contain the JSONs stored as dict   
         self.model_mappings: list[list] = []  # Will contain labels list
         self.n_models = len(self.model_names)
         self.current_model_ind = -1
@@ -163,31 +161,23 @@ class VisionController:
             yolo_nn = new_pipeline.create(dai.node.YoloDetectionNetwork)
             yolo_nn.setBlobPath(self.model_paths[i])
             yolo_nn.setConfidenceThreshold(
-                curr_settings["nn_config"]["NN_specific_metadata"][
-                    "confidence_threshold"
-                ]
+                curr_settings["nn_config"]["NN_specific_metadata"]["confidence_threshold"]
             )
             # Settings:
             yolo_nn.setNumClasses(
                 curr_settings["nn_config"]["NN_specific_metadata"]["classes"]
             )
             yolo_nn.setCoordinateSize(
-                curr_settings["nn_config"]["NN_specific_metadata"][
-                    "coordinates"
-                ]
+                curr_settings["nn_config"]["NN_specific_metadata"]["coordinates"]
             )
             yolo_nn.setAnchors(
                 curr_settings["nn_config"]["NN_specific_metadata"]["anchors"]
             )
             yolo_nn.setAnchorMasks(
-                curr_settings["nn_config"]["NN_specific_metadata"][
-                    "anchor_masks"
-                ]
+                curr_settings["nn_config"]["NN_specific_metadata"]["anchor_masks"]
             )
             yolo_nn.setIouThreshold(
-                curr_settings["nn_config"]["NN_specific_metadata"][
-                    "iou_threshold"
-                ]
+                curr_settings["nn_config"]["NN_specific_metadata"]["iou_threshold"]
             )
             yolo_nn.setNumInferenceThreads(2)
             yolo_nn.input.setBlocking(False)
@@ -197,20 +187,14 @@ class VisionController:
             # Depth estimation
             mono_l = new_pipeline.create(dai.node.MonoCamera)
             mono_l.setCamera("left")
-            mono_l.setResolution(
-                dai.MonoCameraProperties.SensorResolution.THE_400_P
-            )
+            mono_l.setResolution(dai.MonoCameraProperties.SensorResolution.THE_400_P)
 
             mono_r = new_pipeline.create(dai.node.MonoCamera)
             mono_r.setCamera("right")
-            mono_r.setResolution(
-                dai.MonoCameraProperties.SensorResolution.THE_400_P
-            )
+            mono_r.setResolution(dai.MonoCameraProperties.SensorResolution.THE_400_P)
 
             stereo = new_pipeline.create(dai.node.StereoDepth)
-            stereo.setDefaultProfilePreset(
-                dai.node.StereoDepth.PresetMode.HIGH_DENSITY
-            )
+            stereo.setDefaultProfilePreset(dai.node.StereoDepth.PresetMode.HIGH_DENSITY)
             # Options: MEDIAN_OFF, KERNEL_3x3, KERNEL_5x5, KERNEL_7x7 (default)
             stereo.initialConfig.setMedianFilter(dai.MedianFilter.KERNEL_7x7)
             stereo.setLeftRightCheck(LR_CHECK)
@@ -316,13 +300,9 @@ class VisionController:
         model_name = self.getCurrentModelName()
         with dai.Device(pipeline) as device:
             # Define queue for nn output - blocking=False will make only the most recent info available
-            queue_nn = device.getOutputQueue(
-                name="inference", maxSize=1, blocking=False
-            )
+            queue_nn = device.getOutputQueue(name="inference", maxSize=1, blocking=False)
             # Define queue for depth
-            queue_depth = device.getOutputQueue(
-                name="depth", maxSize=1, blocking=False
-            )
+            queue_depth = device.getOutputQueue(name="depth", maxSize=1, blocking=False)
 
             # Initialize placeholders for results:
             # depth_frame = None  # Containing the output of the camera block
