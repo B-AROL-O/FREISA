@@ -8,6 +8,7 @@ import typing
 from datetime import datetime
 
 import depthai as dai
+
 from sub.config import EXTENDED_DISPARITY, LR_CHECK, SUBPIXEL, VERB
 
 """
@@ -31,44 +32,51 @@ class VisionController:
     ### Attributes
 
     #### Public
-    - models (dict): dictionary containing as keys the model names, and as values dictionaries
-    with the keys:
+    - models (dict): dictionary containing as keys the model names, and as
+    values dictionaries with the keys:
       - model_path: path of the .blob file of the model
       - json_path: path of the JSON file of the model
     - model_names (list): list containing the names of the models.
     - model_paths (list): list of paths where the corresponding model is found.
     - json_paths (list): list of paths where the jsons of the models are found.
-    - model_settings (list): list containing the dicts obtained from the JSON configuration
-    files
-    - model_mappings (list): list containing the mappings of each model (sublists)
+    - model_settings (list): list containing the dicts obtained from the JSON
+    configuration files
+    - model_mappings (list): list containing the mappings of each model
+    (sublists)
     - n_models (int): number of models
-    - curr_model_ind (int): index (in the list of models) of the current active model
-    if set to -1, no model is active.
-    - pipelines (list): list of depthai.Pipeline objects associated with each model.
-    - info_dict (dict): dictionary containing the models' information that have been retrieved
-    from the JSON configuration files passed at initialization
-    - vision_thread (threading.Thread): thread on which the currently active pipeline is being
-    executed; initialized to None at instantiation
-    - last_inference_result (dict): result of the last inference performed by the currently
-    active model; it contains the model name, the timestamp, and the detection information.
-    - time_resolution (float): time step (in seconds) at which inference is performed.
+    - curr_model_ind (int): index (in the list of models) of the current active
+    model if set to -1, no model is active.
+    - pipelines (list): list of depthai.Pipeline objects associated with each
+    model.
+    - info_dict (dict): dictionary containing the models' information that have
+    been retrieved from the JSON configuration files passed at initialization
+    - vision_thread (threading.Thread): thread on which the currently active
+    pipeline is being executed; initialized to None at instantiation
+    - last_inference_result (dict): result of the last inference performed by
+    the currently active model; it contains the model name, the timestamp, and
+    the detection information.
+    - time_resolution (float): time step (in seconds) at which inference is
+    performed.
 
     #### Private
-    - _thread_started (bool): true if currently a pipeline is being executed (on separate
-    thread)
-    - _thread_stop (bool): when set to True, it will interrupt the currently active pipeline
+    - _thread_started (bool): true if currently a pipeline is being executed (on
+    separate thread)
+    - _thread_stop (bool): when set to True, it will interrupt the currently
+    active pipeline
 
     ### Methods
-    - __init__: constructor; it also initializes the pipelines (Depthai) given the paths to
-    the models to be used
+    - __init__: constructor; it also initializes the pipelines (Depthai) given
+    the paths to the models to be used
     - _initPipelines: create the depthai.Pipeline objects for each of the models
-    - selectModel: change the currently active inference model (modify active thread)
-    - _runInferencePipeline: run a specific pipeline; this method should always be ran as an
-    independent thread, and can only be stopped by modifying the value of _thread_stop
-    - buildInfoDict: put together the dictionary containing the information of all available
-    models
-    - getCurrentModelName: get the name of the currently active model; will return an empty
-    string if no model has been launched
+    - selectModel: change the currently active inference model (modify active
+    thread)
+    - _runInferencePipeline: run a specific pipeline; this method should always
+    be ran as an independent thread, and can only be stopped by modifying the
+    value of _thread_stop
+    - buildInfoDict: put together the dictionary containing the information of
+    all available models
+    - getCurrentModelName: get the name of the currently active model; will
+    return an empty string if no model has been launched
     - stopThreads: stop the thread of the active pipeline for soft shutdown
     """
 
@@ -79,11 +87,13 @@ class VisionController:
         Initialize VisionController object.
 
         ### Input parameters
-        - models: dict containing as keys the model names, and as values dict with 'model_path'
-        and 'json_path' keys containing the paths of the `.blob` model and of the `.json`
-        configuration file for each model; NOTE: the paths should be relative to the folder where
-        this file is stored!
-        - time_resolution: time interval between two inference results in seconds (default: 0.5 s)
+        - models: dict containing as keys the model names, and as values dict
+        with 'model_path' and 'json_path' keys containing the paths of the
+        `.blob` model and of the `.json` configuration file for each model;
+        NOTE: the paths should be relative to the folder where this file is
+        stored!
+        - time_resolution: time interval between two inference results in
+        seconds (default: 0.5 s)
         """
         if not isinstance(models, dict):
             raise ValueError("The models must be stored inside a dictionary!")
@@ -98,7 +108,9 @@ class VisionController:
             os.path.join(self.script_folder, str(models[k]["json_path"]))
             for k in self.model_names
         ]
-        self.model_settings: list[dict] = []  # Will contain the JSONs stored as dict
+        self.model_settings: list[
+            dict
+        ] = []  # Will contain the JSONs stored as dict
         self.model_mappings: list[list] = []  # Will contain labels list
         self.n_models = len(self.model_names)
         self.current_model_ind = -1
@@ -160,16 +172,22 @@ class VisionController:
                 curr_settings["nn_config"]["NN_specific_metadata"]["classes"]
             )
             yolo_nn.setCoordinateSize(
-                curr_settings["nn_config"]["NN_specific_metadata"]["coordinates"]
+                curr_settings["nn_config"]["NN_specific_metadata"][
+                    "coordinates"
+                ]
             )
             yolo_nn.setAnchors(
                 curr_settings["nn_config"]["NN_specific_metadata"]["anchors"]
             )
             yolo_nn.setAnchorMasks(
-                curr_settings["nn_config"]["NN_specific_metadata"]["anchor_masks"]
+                curr_settings["nn_config"]["NN_specific_metadata"][
+                    "anchor_masks"
+                ]
             )
             yolo_nn.setIouThreshold(
-                curr_settings["nn_config"]["NN_specific_metadata"]["iou_threshold"]
+                curr_settings["nn_config"]["NN_specific_metadata"][
+                    "iou_threshold"
+                ]
             )
             yolo_nn.setNumInferenceThreads(2)
             yolo_nn.input.setBlocking(False)
@@ -179,14 +197,20 @@ class VisionController:
             # Depth estimation
             mono_l = new_pipeline.create(dai.node.MonoCamera)
             mono_l.setCamera("left")
-            mono_l.setResolution(dai.MonoCameraProperties.SensorResolution.THE_400_P)
+            mono_l.setResolution(
+                dai.MonoCameraProperties.SensorResolution.THE_400_P
+            )
 
             mono_r = new_pipeline.create(dai.node.MonoCamera)
             mono_r.setCamera("right")
-            mono_r.setResolution(dai.MonoCameraProperties.SensorResolution.THE_400_P)
+            mono_r.setResolution(
+                dai.MonoCameraProperties.SensorResolution.THE_400_P
+            )
 
             stereo = new_pipeline.create(dai.node.StereoDepth)
-            stereo.setDefaultProfilePreset(dai.node.StereoDepth.PresetMode.HIGH_DENSITY)
+            stereo.setDefaultProfilePreset(
+                dai.node.StereoDepth.PresetMode.HIGH_DENSITY
+            )
             # Options: MEDIAN_OFF, KERNEL_3x3, KERNEL_5x5, KERNEL_7x7 (default)
             stereo.initialConfig.setMedianFilter(dai.MedianFilter.KERNEL_7x7)
             stereo.setLeftRightCheck(LR_CHECK)
@@ -222,9 +246,9 @@ class VisionController:
         This method triggers the change in the pipeline which is being ran.
 
         ### Input parameters
-        - new_model: string or integer number indicating the new model to be launched.
-        If it is a string, it is the name of the model; if it is an int, it is the
-        index of the model in the list.
+        - new_model: string or integer number indicating the new model to be
+        launched. If it is a string, it is the name of the model; if it is an
+        int, it is the index of the model in the list.
         """
         if isinstance(new_model, str):
             if new_model.lower() not in self.model_names:
@@ -272,7 +296,10 @@ class VisionController:
         time.sleep(2)
 
     def _runInferencePipeline(
-        self, pipeline: dai.Pipeline, pipeline_name: str, sync_frame: bool = True
+        self,
+        pipeline: dai.Pipeline,
+        pipeline_name: str,
+        sync_frame: bool = True,
     ):
         """
         Run the specified pipeline.
@@ -293,7 +320,9 @@ class VisionController:
                 name="inference", maxSize=1, blocking=False
             )
             # Define queue for depth
-            queue_depth = device.getOutputQueue(name="depth", maxSize=1, blocking=False)
+            queue_depth = device.getOutputQueue(
+                name="depth", maxSize=1, blocking=False
+            )
 
             # Initialize placeholders for results:
             # depth_frame = None  # Containing the output of the camera block
@@ -368,8 +397,8 @@ class VisionController:
 
     def getCurrentModelName(self) -> str:
         """
-        Get the name of the current active model. If no model has been launched, it
-        will return an empty string.
+        Get the name of the current active model. If no model has been launched,
+        it will return an empty string.
         """
         if self.current_model_ind == -1:
             # No model was launched yet!

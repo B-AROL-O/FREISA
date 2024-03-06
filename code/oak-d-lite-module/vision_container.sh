@@ -1,4 +1,5 @@
 #!/bin/bash
+
 docker run --rm \
     --privileged \
     --name=oak-d-lite-server \

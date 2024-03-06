@@ -5,6 +5,7 @@ import os
 import time
 
 import cherrypy as cp
+
 from sub.camera_control import VisionController
 
 
@@ -16,28 +17,30 @@ class VisionWebServer:
     to the software controlling the movements of the MiniPupper robot.
 
     The working principle is polling: to retrieve the information, the motion
-    control system periodically sends a GET request that will return the position
-    of the target object in the camera field of view. The robot will then move
-    accordingly.
+    control system periodically sends a GET request that will return the
+    position of the target object in the camera field of view. The robot will
+    then move accordingly.
     It is also possible to request information about the available models or the
     active one.
 
-    The motion control should also decide which model to use depending on what object
-    it is looking for.
+    The motion control should also decide which model to use depending on what
+    object it is looking for.
     To change model, it is necessary to sumbit a POST request.
 
     ### API
     - GET:
         - /: get the API information (any method)
-        - /latest_inference: get the latest inference result (404 if no inference result is
-        available - no pipeline running)
-        - /models_info: get a json-formatted string containing the information of the available
-        models
-        - /model: get the name of the currently active model (empty string if none)
+        - /latest_inference: get the latest inference result (404 if no
+            inference result is available - no pipeline running)
+        - /models_info: get a json-formatted string containing the information
+            of the available models
+        - /model: get the name of the currently active model (empty string if
+            none)
     - POST:
         - /: get the API information (for POST only)
-        - /change_model?model=<model name>: switch the currently active model for the one
-        specified in the parameter; Error 422 if model name is invalid
+        - /change_model?model=<model name>: switch the currently active model
+            for the one specified in the parameter; Error 422 if model name is
+            invalid
     """
 
     exposed = True
@@ -54,15 +57,15 @@ class VisionWebServer:
         """
         VisionWebServer
         ---
-        HTTP server used to manage the OAK-D lite camera, by selecting the models and
-        retrieving the inference results.
+        HTTP server used to manage the OAK-D lite camera, by selecting the
+        models and retrieving the inference results.
 
         ### Input parameters
         - config_path: path of the server configuration file (JSON)
         - models_path: path of the JSON file containing the models information
-        - public: bool value, true if server should be public (reachable from any
-        interface); if false, it will only be reachable from the IP in the config
-        file
+        - public: bool value, true if server should be public (reachable from
+            any interface); if false, it will only be reachable from the IP in
+            the config file
         """
 
         if not config_path.endswith("json"):
@@ -103,7 +106,8 @@ class VisionWebServer:
 
         ### Possible URLs
         - /: get API information (for all available methods)
-        - /last_inference: get latest inference result (from currently active model)
+        - /last_inference: get latest inference result (from currently active
+            model)
         - /models_info: get information on available models
         - /model: get currently active model name (if available)
         """
@@ -155,11 +159,14 @@ class VisionWebServer:
                 ), "Something went wrong in changing the model"
                 cp.response.status = 204
                 return json.dumps(
-                    self.oak_control.info_dict[self.oak_control.getCurrentModelName()]
+                    self.oak_control.info_dict[
+                        self.oak_control.getCurrentModelName()
+                    ]
                 )
             else:
                 raise cp.HTTPError(
-                    404, f"Invalid POST request to {self.own_addr + str(path[0])}"
+                    404,
+                    f"Invalid POST request to {self.own_addr + str(path[0])}",
                 )
         else:
             return json.dumps(self.supported_req["POST"])
@@ -170,7 +177,7 @@ class VisionWebServer:
 
     def DELETE(self):
         """Not implemented"""
-        raise cp.HTTPError(501, "PUT not implemented!")
+        raise cp.HTTPError(501, "DELETE not implemented!")
 
 
 # ---------------------------------------------------------------------------
@@ -186,7 +193,10 @@ def main():
 
     cp.tree.mount(serv, "/", serv.webserv_config)
     cp.config.update(
-        {"server.socket_host": serv.serv_ip_out, "server.socket_port": serv.serv_port}
+        {
+            "server.socket_host": serv.serv_ip_out,
+            "server.socket_port": serv.serv_port,
+        }
     )
     cp.engine.start()
 
