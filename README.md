@@ -1,6 +1,6 @@
 # Four-legged Robot Ensuring Intelligent Sprinkler Automation
 
-[![Twitter Follow](https://img.shields.io/twitter/follow/CoderHQ?label=%40CoderHQ&style=social)](https://twitter.com/coderhq)
+[![Twitter Follow](https://img.shields.io/twitter/follow/baroloteam?label=%40baroloteam&style=social)](https://twitter.com/baroloteam)
 
 <!-- [![2023-10-28-freisa-landing-page.png](https://github.com/B-AROL-O/FREISA/assets/90387263/720b1270-4645-444d-8c37-23f423472d9a)](https://www.hackster.io/projects/845012) -->
 
