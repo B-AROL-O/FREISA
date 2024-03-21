@@ -35,11 +35,11 @@ FirstName LastName | GitHub_ID                              | Telegram_ID
 
 We express gratitude to the following people who actively contributed to the project but are no longer active in FREISA:
 
-Firstname | Lastname   | Role    | GitHub_ID                                    | Telegram_ID
-----------|------------|---------|----------------------------------------|---------------------
-Andrea    | Podo       | Member  | [@AndreaPodo](https://github.com/AndreaPodo) | andreapodo
-Gianluca  | Teti       | Advisor | [@gteti](https://github.com/gteti)           | Gianteti
-Alessandro | Varesi | Support and ideas | [@alv67](https://github.com/alv67) | -
+FirstName LastName | Role    | GitHub_ID                                    | Telegram_ID
+-------------------|---------|----------------------------------------|---------------------
+[Andrea Podo](https://www.linkedin.com/in/andrea-podo-a65209187) | Member  | [@AndreaPodo](https://github.com/AndreaPodo) | andreapodo
+[Gianluca Teti](https://www.linkedin.com/in/gianluca-teti) | Advisor | [@gteti](https://github.com/gteti) | Gianteti
+[Alessandro Varesi](https://www.linkedin.com/in/alessandrovaresi) | Support and ideas | [@alv67](https://github.com/alv67) | -
 
 ## How to stay in touch
 
