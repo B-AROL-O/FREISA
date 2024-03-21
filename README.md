@@ -22,14 +22,14 @@ Here is [a short presentation](https://video.linux.it/w/xq3Z9khHJGTzv2NsNc1gK7?s
 
 ## The Team
 
-Firstname | Lastname   | GitHub_ID                                    | Telegram_ID
-----------|------------|----------------------------------------|---------------------
-Davide    | Macario    | [@davmacario](https://github.com/davmacario) | DavideMacario
-Eric      | Orso       | [@OrsoEric](https://github.com/OrsoEric)     | x05032MendicantBias
-Pietro    | d'Agostino | [@pitdagosti](https://github.com/pitdagosti) | Pit836
-Gianpaolo | Macario    | [@gmacario](https://github.com/gmacario)     | gmacario
-Francesca | Petrocchi | [@francipetrocchi](https://github.com/francipetrocchi) | @stabilofuxia
-Gianfranco | Poncini | [@Muwattalli](https://github.com/@Muwattalli) | @Togodumno
+FirstName LastName | GitHub_ID                              | Telegram_ID
+-------------------|----------------------------------------|---------------------
+[Davide Macario](https://www.linkedin.com/in/gmacario/) | [@davmacario](https://github.com/davmacario) | DavideMacario
+[Eric Orso](https://www.linkedin.com/in/eric-orso-56934124a/) | [@OrsoEric](https://github.com/OrsoEric) | x05032MendicantBias
+[Pietro d'Agostino](https://www.linkedin.com/in/pietro-d-agostino-9b8199212/) | [@pitdagosti](https://github.com/pitdagosti) | Pit836
+[Gianpaolo Macario](https://www.linkedin.com/in/gmacario/) | [@gmacario](https://github.com/gmacario) | gmacario
+[Francesca Petrocchi](https://www.linkedin.com/in/francescapetrocchi/) | [@francipetrocchi](https://github.com/francipetrocchi) | @stabilofuxia
+[Gianfranco Poncini](https://www.linkedin.com/in/gianfranco-poncini-b0830340/) | [@Muwattalli](https://github.com/@Muwattalli) | @Togodumno
 
 ### FREISA Team Alumni
 
