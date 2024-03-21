@@ -28,8 +28,8 @@ Davide    | Macario    | [@davmacario](https://github.com/davmacario) | DavideMa
 Eric      | Orso       | [@OrsoEric](https://github.com/OrsoEric)     | x05032MendicantBias
 Pietro    | d'Agostino | [@pitdagosti](https://github.com/pitdagosti) | Pit836
 Gianpaolo | Macario    | [@gmacario](https://github.com/gmacario)     | gmacario
-Francesca | Petrocchi | [@francipetrocchi](https://github.com/francipetrocchi)
-Gianfranco | Poncini | [@Muwattalli](https://github.com/@Muwattalli)
+Francesca | Petrocchi | [@francipetrocchi](https://github.com/francipetrocchi) | @stabilofuxia
+Gianfranco | Poncini | [@Muwattalli](https://github.com/@Muwattalli) | @Togodumno
 
 ### FREISA Team Alumni
 
