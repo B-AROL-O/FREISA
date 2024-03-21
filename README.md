@@ -29,7 +29,7 @@ Eric      | Orso       | Member  | [@OrsoEric](https://github.com/OrsoEric)     
 Pietro    | d'Agostino | Member  | [@pitdagosti](https://github.com/pitdagosti) | Pit836
 Gianpaolo | Macario    | Advisor | [@gmacario](https://github.com/gmacario)     | gmacario
 
-### Past team members and contributors
+### FREISA Team Alumni
 
 We express gratitude to the following people who actively contributed to the project but are no longer active in FREISA:
 
@@ -37,6 +37,7 @@ Firstname | Lastname   | Role    | GitHub_ID                                    
 ----------|------------|---------|----------------------------------------|---------------------
 Andrea    | Podo       | Member  | [@AndreaPodo](https://github.com/AndreaPodo) | andreapodo
 Gianluca  | Teti       | Advisor | [@gteti](https://github.com/gteti)           | Gianteti
+Alessandro | Varesi | Support and ideas | [@alv67](https://github.com/alv67) | -
 
 ## How to stay in touch
 
