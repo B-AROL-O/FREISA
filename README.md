@@ -24,12 +24,19 @@ Here is [a short presentation](https://video.linux.it/w/xq3Z9khHJGTzv2NsNc1gK7?s
 
 Firstname | Lastname   | Role    | GitHub_ID                                    | Telegram_ID
 ----------|------------|---------|----------------------------------------|---------------------
-Andrea    | Podo       | Member  | [@AndreaPodo](https://github.com/AndreaPodo) | andreapodo
 Davide    | Macario    | Member  | [@davmacario](https://github.com/davmacario) | DavideMacario
 Eric      | Orso       | Member  | [@OrsoEric](https://github.com/OrsoEric)     | x05032MendicantBias
 Pietro    | d'Agostino | Member  | [@pitdagosti](https://github.com/pitdagosti) | Pit836
-Gianluca  | Teti       | Advisor | [@gteti](https://github.com/gteti)           | Gianteti
 Gianpaolo | Macario    | Advisor | [@gmacario](https://github.com/gmacario)     | gmacario
+
+### Past team members and contributors
+
+We express gratitude to the following people who actively contributed to the project but are no longer active in FREISA:
+
+Firstname | Lastname   | Role    | GitHub_ID                                    | Telegram_ID
+----------|------------|---------|----------------------------------------|---------------------
+Andrea    | Podo       | Member  | [@AndreaPodo](https://github.com/AndreaPodo) | andreapodo
+Gianluca  | Teti       | Advisor | [@gteti](https://github.com/gteti)           | Gianteti
 
 ## How to stay in touch
 
