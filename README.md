@@ -28,6 +28,8 @@ Davide    | Macario    | Member  | [@davmacario](https://github.com/davmacario) 
 Eric      | Orso       | Member  | [@OrsoEric](https://github.com/OrsoEric)     | x05032MendicantBias
 Pietro    | d'Agostino | Member  | [@pitdagosti](https://github.com/pitdagosti) | Pit836
 Gianpaolo | Macario    | Advisor | [@gmacario](https://github.com/gmacario)     | gmacario
+Francesca | Petrocchi | - | [@francipetrocchi](https://github.com/francipetrocchi)
+Gianfranco | Poncini | - | [@Muwattalli](https://github.com/@Muwattalli)
 
 ### FREISA Team Alumni
 
