@@ -22,14 +22,14 @@ Here is [a short presentation](https://video.linux.it/w/xq3Z9khHJGTzv2NsNc1gK7?s
 
 ## The Team
 
-Firstname | Lastname   | Role    | GitHub_ID                                    | Telegram_ID
-----------|------------|---------|----------------------------------------|---------------------
-Davide    | Macario    | Member  | [@davmacario](https://github.com/davmacario) | DavideMacario
-Eric      | Orso       | Member  | [@OrsoEric](https://github.com/OrsoEric)     | x05032MendicantBias
-Pietro    | d'Agostino | Member  | [@pitdagosti](https://github.com/pitdagosti) | Pit836
-Gianpaolo | Macario    | Advisor | [@gmacario](https://github.com/gmacario)     | gmacario
-Francesca | Petrocchi | - | [@francipetrocchi](https://github.com/francipetrocchi)
-Gianfranco | Poncini | - | [@Muwattalli](https://github.com/@Muwattalli)
+Firstname | Lastname   | GitHub_ID                                    | Telegram_ID
+----------|------------|----------------------------------------|---------------------
+Davide    | Macario    | [@davmacario](https://github.com/davmacario) | DavideMacario
+Eric      | Orso       | [@OrsoEric](https://github.com/OrsoEric)     | x05032MendicantBias
+Pietro    | d'Agostino | [@pitdagosti](https://github.com/pitdagosti) | Pit836
+Gianpaolo | Macario    | [@gmacario](https://github.com/gmacario)     | gmacario
+Francesca | Petrocchi | [@francipetrocchi](https://github.com/francipetrocchi)
+Gianfranco | Poncini | [@Muwattalli](https://github.com/@Muwattalli)
 
 ### FREISA Team Alumni
 
