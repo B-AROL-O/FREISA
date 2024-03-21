@@ -8,9 +8,13 @@
 
 Project FREISA is the **Grand Prize Winner** 🥇 of the [OpenCV AI Competition 2023](https://www.hackster.io/contests/opencv-ai-competition-2023) with [OpenCV](https://www.hackster.io/opencv), [Khadas](https://www.hackster.io/khadas) and [Seeed Studio](https://www.hackster.io/seeed).
 
-[![2024-01-27-freisa-hackster-page.png](assets/2024-01-27-freisa-hackster-page.png)](https://www.hackster.io/projects/845012)
+[![OpenCV AI Competition 2023 Grand Prize Winners - OpenCV Live 126](https://img.youtube.com/vi/iUe4N7yvpmA/0.jpg)](https://www.youtube.com/watch?v=iUe4N7yvpmA "OpenCV AI Competition 2023 Grand Prize Winners - OpenCV Live 126")
 
 ## What is FREISA
+
+A detailed writeup of what the FREISA project does has been published on Hackster
+
+[![2024-01-27-freisa-hackster-page.png](assets/2024-01-27-freisa-hackster-page.png)](https://www.hackster.io/projects/845012)
 
 Here is [a short presentation](https://video.linux.it/w/xq3Z9khHJGTzv2NsNc1gK7?start=9m37&stop=20m23) of the FREISA project ([slides](https://speakerdeck.com/pythontorino/unwrapping-the-future-of-sprinkler-automation)) given during [a recent event](https://www.eventbrite.com/e/databeers-torino-episodio-17-tickets-754459006197) organized by [DataBeers Torino](https://twitter.com/databeerstorino) and [Python Torino](https://torino.python.it/)
 
