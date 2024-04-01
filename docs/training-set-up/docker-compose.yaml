@@ -1,0 +1,29 @@
+version: "3.9"
+
+services:
+  jupyter:
+    image: "quay.io/jupyter/pytorch-notebook:cuda12-latest"
+    user: root
+    working_dir: "/home/jovyan"
+    ports:
+      - "8888:8888"
+    volumes:
+      - ./projects/:/home/jovyan/projects/
+    container_name: jupyter-ml
+    build:
+      context: .
+      shm_size: "8gb"
+    shm_size: "8gb"
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1  # Specify the number of GPUs on the system
+              capabilities: [gpu]
+    environment:
+      JUPYTER_ENABLE_LAB: "yes"
+      GRANT_SUDO: "yes"
+      CHOWN_HOME: "yes"
+    command: "start-notebook.py --IdentityProvider.token='<YOUR-TOKEN>'"
+    restart: unless-stopped
