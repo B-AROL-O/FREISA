@@ -7,15 +7,15 @@ We will go through the steps to create a Docker container with JupyterLab, which
 ## Requirements
 
 - A computer running Ubuntu 22.04 LTS
-- Preferrably, a GPU (the steps will assume an Nvidia GPU is used)
+- Preferrably, a GPU (the steps will assume an NVIDIA GPU is used)
 - Docker needs to be installed on the system.
   - Follow [these steps](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-22-04) for a minimal, but effective Docker installation.
 
 ## Installation
 
-### Installing Nvidia drivers
+### Installing NVIDIA drivers
 
-First, we need to install the Nvidia drivers.
+First, we need to install the NVIDIA drivers.
 If they are already installed, we suggest to follow this guide anyway, as the same commands can be used to upgrade them.
 
 To check which version (if any) of the drivers is currently installed, run:
@@ -31,7 +31,7 @@ sudo ubuntu-drivers list
 ```
 
 And note down these versions.
-Then, visit the [Nvidia site](https://www.nvidia.com/Download/index.aspx?lang=en-us) to find out which is the latest (stable) driver version supported by your GPU.
+Then, visit the [NVIDIA site](https://www.nvidia.com/Download/index.aspx?lang=en-us) to find out which is the latest (stable) driver version supported by your GPU.
 We will install this driver version.
 
 To install it automatically, run the command:
@@ -62,7 +62,7 @@ and get your GPU information as output.
 
 _Note_ that at the time of writing we are using CUDA 12.4.
 
-## Installing additional Nvidia toolkits
+## Installing additional NVIDIA toolkits
 
 Next, we will install the **CUDA toolkit** following [this guide](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/#network-repo-installation-for-ubuntu).\
 Carefully follow all the installation steps, including the [post-installation actions](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html#post-installation-actions), as they are required to correctly set-up the environment.
@@ -72,7 +72,7 @@ Then reboot (`sudo reboot`).
 
 To verify the installation, follow [this](https://docs.nvidia.com/deeplearning/cudnn/installation/linux.html#verifying-the-install-on-linux).
 
-Next, install the **Nvidia Container Toolkit** following [this guide](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html).
+Next, install the **NVIDIA Container Toolkit** following [this guide](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html).
 Specifically, you may want to follow [this section](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html#installing-with-apt).
 
 ## Setting up the work environment (JupyterLab container)
