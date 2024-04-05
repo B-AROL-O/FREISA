@@ -1,4 +1,4 @@
-# HOWTO: set up a training workstation
+# HOWTO Set up a YOLOv8 Training Workstation
 
 This guide will show you how to prepare a Linux (Ubuntu) workstation for training the YOLOv8 models used in FREISA.
 
