@@ -1,14 +1,14 @@
 # HOWTO Set up a YOLOv8 Training Workstation
 
-This guide will show you how to prepare a Linux (Ubuntu) workstation for training the YOLOv8 models used in FREISA.
+This guide will show you how to prepare a Linux (Ubuntu) workstation for training the [YOLOv8](https://docs.ultralytics.com/) models used in [FREISA](http://github.com/B-AROL-O/FREISA).
 
-We will go through the steps to create a Docker container with JupyterLab, which will allow us to remotely access a development environment where it is possible to train the vision models on a GPU.
+We will go through the steps to create a Docker container with [JupyterLab](https://jupyter.org/), which will allow us to remotely access a development environment where it is possible to train the vision models on a GPU.
 
 ## Requirements
 
-- A computer running Ubuntu 22.04 LTS
-- Preferrably, a GPU (the steps will assume an NVIDIA GPU is used)
-- Docker needs to be installed on the system.
+- A computer running [Ubuntu 22.04 LTS](https://ubuntu.com/)
+- Preferrably, a GPU (the steps will assume an [NVIDIA&trade;](https://nvidia.com/) GPU is used)
+- [Docker Engine](https://docs.docker.com/engine/) needs to be installed on the system.
   - Follow [these steps](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-22-04) for a minimal, but effective Docker installation.
 
 ## Installation
