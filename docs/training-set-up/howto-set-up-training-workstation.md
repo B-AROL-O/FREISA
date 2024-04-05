@@ -137,7 +137,7 @@ docker compose up -d
 
 To connect to the container, visit the following address:
 
-> http://<host-IP-address>:8888/lab?token=<YOUR-TOKEN>
+> `http://<host-IP-address>:8888/lab?token=<YOUR-TOKEN>`
 
 The first time, you will be prompted to create a password.
 
