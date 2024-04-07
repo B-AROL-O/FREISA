@@ -20,8 +20,8 @@ To do so, log into Roboflow with your account and, in the left-hand-side menu, s
 
 Select “create new project” and choose the type of model, or choose an existing one.
 
-When prompted to add images, either upload your own, or look for them among the free data sets already available on the website.
-Roboflow allows to import images from public data sets on the website.
+When prompted to add images, either upload your own, or look for them among the free data sets already available on the site.
+Roboflow allows to import images from public data sets on the site.
 Just make sure to create the project beforehand, then you can browse existing data sets and select the images to be imported.
 
 Then, annotate the images and split them in training/test/validation sets.
