@@ -104,7 +104,7 @@ services:
         reservations:
           devices:
             - driver: nvidia
-              count: 1  # Replace with the actual number of GPUs on your system
+              count: 1 # Replace with the actual number of GPUs on your system
               capabilities: [gpu]
     environment:
       JUPYTER_ENABLE_LAB: "yes"
@@ -140,6 +140,22 @@ To connect to the container, visit the following address:
 > `http://<host-IP-address>:8888/lab?token=<YOUR-TOKEN>`
 
 The first time, you will be prompted to create a password.
+
+### Hint: unable to create folders and files in the JupyterLab container
+
+Sometimes, when working in the JupyterLab instance we just created, you may be unable to create or delete folders and files from the web interface due to the "permission denied" error.
+This issue can be solved by changing the ownership of the mounted volume.\
+From a shell on the host computer, run the following command:
+
+```bash
+sudo chown 1000 /path/to/mounted/volume
+```
+
+In the Docker compose file reported [previously](#setting-up-the-work-environment-jupyterlab-container), the command would be:
+
+```bash
+sudo chown 1000 ./projects
+```
 
 ### Important remarks
 
