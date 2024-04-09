@@ -16,7 +16,7 @@ In more recent times, FREISA is a **Finalist of [Backdrop Build](https://backdro
 
 ## What is FREISA
 
-A detailed writeup of what the FREISA project does has been published on Hackster
+A detailed writeup of what the FREISA project does has been published on Hackster and [Electromaker.io](https://www.electromaker.io/project/view/four-legged-robot-ensuring-intelligent-sprinkler-automation)
 
 [![2024-01-27-freisa-hackster-page.png](assets/2024-01-27-freisa-hackster-page.png)](https://www.hackster.io/projects/845012)
 
