@@ -20,6 +20,10 @@ A detailed writeup of what the FREISA project does has been published on Hackste
 
 [![2024-01-27-freisa-hackster-page.png](assets/2024-01-27-freisa-hackster-page.png)](https://www.hackster.io/projects/845012)
 
+[Issue 139](https://magpi.raspberrypi.com/issues/139) of [The MagPi Magazine](https://magpi.raspberrypi.com/) contains a 4-page interview by David Crookes to the B-AROL-O Team who talk about FREISA ([get the PDF here](https://magpi.raspberrypi.com/issues/139/pdf)).
+
+[![2024-03-01-magpi139-cover.png](assets/2024-03-01-magpi139-cover.png)](https://magpi.raspberrypi.com/issues/139)
+
 Here is [a short presentation](https://video.linux.it/w/xq3Z9khHJGTzv2NsNc1gK7?start=9m37&stop=20m23) of the FREISA project ([slides](https://speakerdeck.com/pythontorino/unwrapping-the-future-of-sprinkler-automation)) given during [an event which took place in December 2023](https://www.eventbrite.com/e/databeers-torino-episodio-17-tickets-754459006197) organized by [DataBeers Torino](https://twitter.com/databeerstorino) and [Python Torino](https://torino.python.it/)
 
 [![2023-12-13-freisa-databeers.png](assets/2023-12-13-freisa-databeers.png)](https://video.linux.it/w/xq3Z9khHJGTzv2NsNc1gK7?start=9m37&stop=20m23)
