@@ -6,9 +6,9 @@ This guide assumes you set up your working environment as described in the [trai
 ## Requirements
 
 - A PC running Linux (Ubuntu 22.04 LTS)
-- Preferably, an [NVIDIA&trade;](https://nvidia.com/) GPU (or any other GPU that can be used for hardware acceleration in PyTorch)
+- Preferably, an [NVIDIA&trade;](https://nvidia.com/) GPU (or any other GPU that can be used for hardware acceleration in [PyTorch](https://pytorch.org/))
   - If using a GPU, make sure to have the latest drivers installed.
-- A running instance of JupyterLab (see [guide](./howto-set-up-training-workstation.md))
+- A running instance of [JupyterLab](https://jupyter.org/) (see [guide](./howto-set-up-training-workstation.md))
 - Since the JupyterLab container can potentially be deployed on a remote server, make sure it is possible to connect to that server from your host machine.
 - A valid [Roboflow](https://www.roboflow.com) account.
   - It is possible to use a pre-existing data set, but we will use a custom one.
@@ -47,11 +47,11 @@ When downloading the images from Roboflow, make sure to save them on the Docker 
 This way if for any reason you need to recreate the container you will not lose any data, and additionally, it will be possible to export the trained model more easily since it will be stored in the computer disk.
 
 Then, simply copy-paste the command given by Roboflow and wait for the files to be downloaded.
-Once the process is finished you should be able to see/navigate to the files in the Jupyter Lab file explorer.
+Once the process is finished you should be able to see/navigate to the files in the JupyterLab file explorer.
 
 ## Launching the training
 
-A Jupyter notebooc containing the code for training can be found at [this link](https://colab.research.google.com/github/roboflow-ai/notebooks/blob/main/notebooks/train-yolov8-object-detection-on-custom-dataset.ipynb), while the code used by us is in the [`training-yolo` folder] (../../code/training-yolo).
+A JupyterLab notebook containing the code for training can be found at [this link](https://colab.research.google.com/github/roboflow-ai/notebooks/blob/main/notebooks/train-yolov8-object-detection-on-custom-dataset.ipynb), while the code used by us is in the [`training-yolo`](../../code/training-yolo/) folder.
 
 Relatively to the folder where the images have been downloaded to, the training results (model weights, graphs, validation results) can be found in the `runs/detect/train/` folder.
 
