@@ -51,7 +51,7 @@ Once the process is finished you should be able to see/navigate to the files in 
 
 ## Launching the training
 
-A Jupyter notebooc containing the code for training can be found at [this link](https://colab.research.google.com/github/roboflow-ai/notebooks/blob/main/notebooks/train-yolov8-object-detection-on-custom-dataset.ipynb), while the code used by us is in the [`training-yolo` folder] (../../code/training-yolo).
+A Jupyter notebooc containing the code for training can be found at [this link](https://colab.research.google.com/github/roboflow-ai/notebooks/blob/main/notebooks/train-yolov8-object-detection-on-custom-dataset.ipynb), while the code used by us is in the [`training-yolo`](../../code/training-yolo/) folder.
 
 Relatively to the folder where the images have been downloaded to, the training results (model weights, graphs, validation results) can be found in the `runs/detect/train/` folder.
 
