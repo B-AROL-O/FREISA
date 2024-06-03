@@ -10,9 +10,9 @@ Project FREISA is the **Grand Prize Winner** 🥇 of the [OpenCV AI Competition 
 
 [![OpenCV AI Competition 2023 Grand Prize Winners - OpenCV Live 126](https://img.youtube.com/vi/iUe4N7yvpmA/0.jpg)](https://www.youtube.com/watch?v=iUe4N7yvpmA "OpenCV AI Competition 2023 Grand Prize Winners - OpenCV Live 126")
 
-In more recent times, FREISA is a **Finalist of [Backdrop Build](https://backdropbuild.com/builds/v3/freisa)** V3 and has already applied to Backdrop Build V4:
+In more recent times, FREISA was a **Finalist of [Backdrop Build V3](https://backdropbuild.com/builds/v3/freisa)** and repeated the achievement with [Backdrop Build V4](https://backdropbuild.com/builds/v4/freisa):
 
-[![FREISA 1.1 Backdrop Build V3 2024](https://img.youtube.com/vi/aP1SNc5cRu4/0.jpg)](https://www.youtube.com/watch?v=aP1SNc5cRu4 "FREISA 1.1 Backdrop Build V3 2024")
+[![FREISA v2 @Backdrop Build](https://img.youtube.com/vi/UnR6vbQ7b6U/0.jpg)](https://www.youtube.com/watch?v=UnR6vbQ7b6U "FREISA v2 @Backdrop Build")
 
 ## What is FREISA
 
