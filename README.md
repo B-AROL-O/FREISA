@@ -6,11 +6,11 @@
 
 [FREISA](https://www.hackster.io/projects/845012), an acronym for "`F`our-legged `R`obot `E`nsuring `I`ntelligent `S`prinkler `A`utomation", continues the storyline of the [B-AROL-O Team](https://github.com/B-AROL-O?view_as=public)'s saga.
 
-Project FREISA is the **Grand Prize Winner** 🥇 of the [OpenCV AI Competition 2023](https://www.hackster.io/contests/opencv-ai-competition-2023) with [OpenCV](https://www.hackster.io/opencv), [Khadas](https://www.hackster.io/khadas) and [Seeed Studio](https://www.hackster.io/seeed).
+Project FREISA was the **Grand Prize Winner** 🥇 of the [OpenCV AI Competition 2023](https://www.hackster.io/contests/opencv-ai-competition-2023) with [OpenCV](https://www.hackster.io/opencv), [Khadas](https://www.hackster.io/khadas) and [Seeed Studio](https://www.hackster.io/seeed).
 
 [![OpenCV AI Competition 2023 Grand Prize Winners - OpenCV Live 126](https://img.youtube.com/vi/iUe4N7yvpmA/0.jpg)](https://www.youtube.com/watch?v=iUe4N7yvpmA "OpenCV AI Competition 2023 Grand Prize Winners - OpenCV Live 126")
 
-In more recent times, FREISA was a **Finalist of [Backdrop Build V3](https://backdropbuild.com/builds/v3/freisa)** and repeated the achievement with [Backdrop Build V4](https://backdropbuild.com/builds/v4/freisa):
+In more recent times, FREISA was a **Finalist of [Backdrop Build V3](https://backdropbuild.com/builds/v3/freisa)** and repeated the achievement with [Backdrop Build V4](https://backdropbuild.com/builds/freisa-wyfd):
 
 [![FREISA v2 @Backdrop Build](https://img.youtube.com/vi/UnR6vbQ7b6U/0.jpg)](https://www.youtube.com/watch?v=UnR6vbQ7b6U "FREISA v2 @Backdrop Build")
 
@@ -32,12 +32,11 @@ Here is [a short presentation](https://video.linux.it/w/xq3Z9khHJGTzv2NsNc1gK7?s
 
 FirstName LastName | GitHub_ID                              | Telegram_ID
 -------------------|----------------------------------------|---------------------
-[Davide Macario](https://www.linkedin.com/in/gmacario/) | [@davmacario](https://github.com/davmacario) | DavideMacario
-[Eric Orso](https://www.linkedin.com/in/eric-orso-56934124a/) | [@OrsoEric](https://github.com/OrsoEric) | x05032MendicantBias
 [Pietro d'Agostino](https://www.linkedin.com/in/pietro-d-agostino-9b8199212/) | [@pitdagosti](https://github.com/pitdagosti) | Pit836
+[Davide Macario](https://www.linkedin.com/in/davide-macario-b872b4225/) | [@davmacario](https://github.com/davmacario) | DavideMacario
 [Gianpaolo Macario](https://www.linkedin.com/in/gmacario/) | [@gmacario](https://github.com/gmacario) | gmacario
-[Francesca Petrocchi](https://www.linkedin.com/in/francescapetrocchi/) | [@francipetrocchi](https://github.com/francipetrocchi) | @stabilofuxia
-[Gianfranco Poncini](https://www.linkedin.com/in/gianfranco-poncini-b0830340/) | [@Muwattalli](https://github.com/@Muwattalli) | @Togodumno
+[Eric Orso](https://www.linkedin.com/in/eric-orso-56934124a/) | [@OrsoEric](https://github.com/OrsoEric) | x05032MendicantBias
+[Gianfranco Poncini](https://www.linkedin.com/in/gianfranco-poncini-b0830340/) | [@Muwattalli](https://github.com/@Muwattalli) | Togodumno
 
 ### FREISA Team Alumni
 
@@ -45,6 +44,7 @@ We express gratitude to the following people who actively contributed to the pro
 
 FirstName LastName | Role    | GitHub_ID                                    | Telegram_ID
 -------------------|---------|----------------------------------------|---------------------
+[Francesca Petrocchi](https://www.linkedin.com/in/francescapetrocchi/) | [@francipetrocchi](https://github.com/francipetrocchi) | @stabilofuxia
 [Andrea Podo](https://www.linkedin.com/in/andrea-podo-a65209187) | Member  | [@AndreaPodo](https://github.com/AndreaPodo) | andreapodo
 [Gianluca Teti](https://www.linkedin.com/in/gianluca-teti) | Advisor | [@gteti](https://github.com/gteti) | Gianteti
 [Alessandro Varesi](https://www.linkedin.com/in/alessandrovaresi) | Support and ideas | [@alv67](https://github.com/alv67) | -
