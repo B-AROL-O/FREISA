@@ -44,7 +44,7 @@ We express gratitude to the following people who actively contributed to the pro
 
 FirstName LastName | Role    | GitHub_ID                                    | Telegram_ID
 -------------------|---------|----------------------------------------|---------------------
-[Francesca Petrocchi](https://www.linkedin.com/in/francescapetrocchi/) | [@francipetrocchi](https://github.com/francipetrocchi) | @stabilofuxia
+[Francesca Petrocchi](https://www.linkedin.com/in/francescapetrocchi/) | Support and ideas | [@francipetrocchi](https://github.com/francipetrocchi) | stabilofuxia
 [Andrea Podo](https://www.linkedin.com/in/andrea-podo-a65209187) | Member  | [@AndreaPodo](https://github.com/AndreaPodo) | andreapodo
 [Gianluca Teti](https://www.linkedin.com/in/gianluca-teti) | Advisor | [@gteti](https://github.com/gteti) | Gianteti
 [Alessandro Varesi](https://www.linkedin.com/in/alessandrovaresi) | Support and ideas | [@alv67](https://github.com/alv67) | -
