@@ -36,7 +36,6 @@ FirstName LastName | GitHub_ID                              | Telegram_ID
 [Eric Orso](https://www.linkedin.com/in/eric-orso-56934124a/) | [@OrsoEric](https://github.com/OrsoEric) | x05032MendicantBias
 [Pietro d'Agostino](https://www.linkedin.com/in/pietro-d-agostino-9b8199212/) | [@pitdagosti](https://github.com/pitdagosti) | Pit836
 [Gianpaolo Macario](https://www.linkedin.com/in/gmacario/) | [@gmacario](https://github.com/gmacario) | gmacario
-[Francesca Petrocchi](https://www.linkedin.com/in/francescapetrocchi/) | [@francipetrocchi](https://github.com/francipetrocchi) | @stabilofuxia
 [Gianfranco Poncini](https://www.linkedin.com/in/gianfranco-poncini-b0830340/) | [@Muwattalli](https://github.com/@Muwattalli) | @Togodumno
 
 ### FREISA Team Alumni
@@ -45,6 +44,7 @@ We express gratitude to the following people who actively contributed to the pro
 
 FirstName LastName | Role    | GitHub_ID                                    | Telegram_ID
 -------------------|---------|----------------------------------------|---------------------
+[Francesca Petrocchi](https://www.linkedin.com/in/francescapetrocchi/) | [@francipetrocchi](https://github.com/francipetrocchi) | @stabilofuxia
 [Andrea Podo](https://www.linkedin.com/in/andrea-podo-a65209187) | Member  | [@AndreaPodo](https://github.com/AndreaPodo) | andreapodo
 [Gianluca Teti](https://www.linkedin.com/in/gianluca-teti) | Advisor | [@gteti](https://github.com/gteti) | Gianteti
 [Alessandro Varesi](https://www.linkedin.com/in/alessandrovaresi) | Support and ideas | [@alv67](https://github.com/alv67) | -
