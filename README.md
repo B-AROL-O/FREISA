@@ -4,7 +4,7 @@
 
 <!-- [![2023-10-28-freisa-landing-page.png](https://github.com/B-AROL-O/FREISA/assets/90387263/720b1270-4645-444d-8c37-23f423472d9a)](https://www.hackster.io/projects/845012) -->
 
-[FREISA](https://www.hackster.io/projects/845012), an acronym for "`F`our-legged `R`obot `E`nsuring `I`ntelligent `S`prinkler `A`utomation", continues the storyline of the [B-AROL-O Team](https://github.com/B-AROL-O?view_as=public)'s saga.
+Project [FREISA](https://github.com/B-AROL-O/FREISA), an acronym for "`F`our-legged `R`obot `E`nsuring `I`ntelligent `S`prinkler `A`utomation", continues the storyline of the [B-AROL-O Team](https://github.com/B-AROL-O?view_as=public)'s saga.
 
 Project FREISA was the **Grand Prize Winner** 🥇 of the [OpenCV AI Competition 2023](https://www.hackster.io/contests/opencv-ai-competition-2023) with [OpenCV](https://www.hackster.io/opencv), [Khadas](https://www.hackster.io/khadas) and [Seeed Studio](https://www.hackster.io/seeed).
 
