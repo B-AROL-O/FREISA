@@ -64,11 +64,18 @@ The project was created by [Gianluca Teti](https://www.linkedin.com/in/gianluca-
 
 ### ARNEIS
 
-TODO
+This is the first public project of the B-AROL-O Team. Some of the algorithms and code developed for ARNEIS have been reused and further refined by FREISA.
+
+<https://github.com/B-AROL-O/ARNEIS>
+
+[![2024-09-01-arneis-readthedocs.png](assets/2024-09-01-arneis-readthedocs.png)](https://arneis.readthedocs.io/)
 
 ### OpenSCAD-lego-library
 
-TODO
+OpenSCAD library to draw LEGO&reg; beams and plates with custom patterns.
+This GitHub repository contains most of the custom 3D-printed parts which are needed to build the FREISA Robot Dog
+
+<https://github.com/B-AROL-O/OpenSCAD-lego-library>
 
 ## How to stay in touch
 
