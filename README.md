@@ -1,6 +1,6 @@
 # Four-legged Robot Ensuring Intelligent Sprinkler Automation
 
-[![Twitter Follow](https://img.shields.io/twitter/follow/baroloteam?label=%40baroloteam&style=social)](https://twitter.com/baroloteam)
+[![Twitter Follow](https://img.shields.io/twitter/follow/baroloteam?label=%40baroloteam&style=social)](https://x.com/baroloteam)
 
 <!-- [![2023-10-28-freisa-landing-page.png](https://github.com/B-AROL-O/FREISA/assets/90387263/720b1270-4645-444d-8c37-23f423472d9a)](https://www.hackster.io/projects/845012) -->
 
@@ -28,7 +28,7 @@ More recently, we published an updated writeup on [Hackster.io](https://www.hack
 
 [![2024-03-01-magpi139-cover.png](assets/2024-03-01-magpi139-cover.png)](https://magpi.raspberrypi.com/issues/139)
 
-Here is [a short presentation](https://video.linux.it/w/xq3Z9khHJGTzv2NsNc1gK7?start=9m37&stop=20m23) of the FREISA project ([slides](https://speakerdeck.com/pythontorino/unwrapping-the-future-of-sprinkler-automation)) given during [an event which took place in December 2023](https://www.eventbrite.com/e/databeers-torino-episodio-17-tickets-754459006197) organized by [DataBeers Torino](https://twitter.com/databeerstorino) and [Python Torino](https://torino.python.it/)
+Here is [a short presentation](https://video.linux.it/w/xq3Z9khHJGTzv2NsNc1gK7?start=9m37&stop=20m23) of the FREISA project ([slides](https://speakerdeck.com/pythontorino/unwrapping-the-future-of-sprinkler-automation)) given during [an event which took place in December 2023](https://www.eventbrite.com/e/databeers-torino-episodio-17-tickets-754459006197) organized by [DataBeers Torino](https://x.com/databeerstorino) and [Python Torino](https://torino.python.it/)
 
 [![2023-12-13-freisa-databeers.png](assets/2023-12-13-freisa-databeers.png)](https://video.linux.it/w/xq3Z9khHJGTzv2NsNc1gK7?start=9m37&stop=20m23)
 
@@ -55,9 +55,9 @@ FirstName LastName | Role    | GitHub_ID                                    | Te
 
 ## How to stay in touch
 
-You may follow [@baroloteam on Instagram](https://instagram.com/baroloteam) or [@baroloteam on ~~Twitter~~ X](https://x.com/baroloteam) to get notified about the progress of the FREISA project.
+You may follow [@baroloteam on Instagram](https://instagram.com/baroloteam) or [@baroloteam on X](https://x.com/baroloteam) to get notified about the progress of the FREISA project.
 
-Please report bugs and feature requests on <https://github.com/B-AROL-O/FREISA/issues>, or DM [B-AROL-O Team on ~~Twitter~~ X](https://x.com/baroloteam) about security issues or other non-public topics.
+Please report bugs and feature requests on <https://github.com/B-AROL-O/FREISA/issues>, or DM [B-AROL-O Team on X](https://x.com/baroloteam) about security issues or other non-public topics.
 
 ## Copyright and license
 
