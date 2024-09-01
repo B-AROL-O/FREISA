@@ -32,7 +32,7 @@ Here is [a short presentation](https://video.linux.it/w/xq3Z9khHJGTzv2NsNc1gK7?s
 
 [![2023-12-13-freisa-databeers.png](assets/2023-12-13-freisa-databeers.png)](https://video.linux.it/w/xq3Z9khHJGTzv2NsNc1gK7?start=9m37&stop=20m23)
 
-## The Team
+## The Team behind FREISA
 
 FirstName LastName | GitHub_ID                              | Telegram_ID
 -------------------|----------------------------------------|---------------------
@@ -52,6 +52,23 @@ FirstName LastName | Role    | GitHub_ID                                    | Te
 [Andrea Podo](https://www.linkedin.com/in/andrea-podo-a65209187) | Member  | [@AndreaPodo](https://github.com/AndreaPodo) | andreapodo
 [Gianluca Teti](https://www.linkedin.com/in/gianluca-teti) | Advisor | [@gteti](https://github.com/gteti) | Gianteti
 [Alessandro Varesi](https://www.linkedin.com/in/alessandrovaresi) | Support and ideas | [@alv67](https://github.com/alv67) | -
+
+## Related Projects
+
+### Amarone
+
+Project [Amarone](https://www.hackster.io/projects/185a16) reused some of the code and algorithms originally developed for FREISA.
+The project was created by [Gianluca Teti](https://www.linkedin.com/in/gianluca-teti) together with a couple of members of the B-AROL-O team and is available on [Hackster](https://www.hackster.io/projects/185a16).
+
+[![2024-09-01-amarone-hackster-page.png](assets/2024-09-01-amarone-hackster-page.png)](https://www.hackster.io/projects/185a16)
+
+### ARNEIS
+
+TODO
+
+### OpenSCAD-lego-library
+
+TODO
 
 ## How to stay in touch
 
