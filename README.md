@@ -16,9 +16,13 @@ In more recent times, FREISA was a **Finalist of [Backdrop Build V3](https://bac
 
 ## What is FREISA
 
-A detailed writeup of what the FREISA project does has been published on [Hackster.io](https://www.hackster.io/projects/845012) and [Electromaker.io](https://www.electromaker.io/project/view/four-legged-robot-ensuring-intelligent-sprinkler-automation).
+We published an detailed writeup of the FREISA project on [Hackster.io](https://www.hackster.io/projects/845012) at the end of November 2023 and some weeks later on [Electromaker.io](https://www.electromaker.io/project/view/four-legged-robot-ensuring-intelligent-sprinkler-automation).
 
 [![2024-01-27-freisa-hackster-page.png](assets/2024-01-27-freisa-hackster-page.png)](https://www.hackster.io/projects/845012)
+
+More recently, we published an updated writeup on [Hackster.io](https://www.hackster.io/projects/89596b).
+
+[![2024-09-01-freisa-watcher-hackster-page.png](assets/2024-09-01-freisa-watcher-hackster-page.png)](https://www.hackster.io/projects/89596b)
 
 [Issue 139](https://magpi.raspberrypi.com/issues/139) of [The MagPi Magazine](https://magpi.raspberrypi.com/) contains a 4-page interview by David Crookes to the B-AROL-O Team who talk about FREISA ([get the PDF here](https://magpi.raspberrypi.com/issues/139/pdf)).
 
