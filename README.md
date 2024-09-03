@@ -1,34 +1,38 @@
 # Four-legged Robot Ensuring Intelligent Sprinkler Automation
 
-[![Twitter Follow](https://img.shields.io/twitter/follow/baroloteam?label=%40baroloteam&style=social)](https://twitter.com/baroloteam)
+[![Twitter Follow](https://img.shields.io/twitter/follow/baroloteam?label=%40baroloteam&style=social)](https://x.com/baroloteam)
 
 <!-- [![2023-10-28-freisa-landing-page.png](https://github.com/B-AROL-O/FREISA/assets/90387263/720b1270-4645-444d-8c37-23f423472d9a)](https://www.hackster.io/projects/845012) -->
 
-[FREISA](https://www.hackster.io/projects/845012), an acronym for "`F`our-legged `R`obot `E`nsuring `I`ntelligent `S`prinkler `A`utomation", continues the storyline of the [B-AROL-O Team](https://github.com/B-AROL-O?view_as=public)'s saga.
+Project [FREISA](https://github.com/B-AROL-O/FREISA), an acronym for "`F`our-legged `R`obot `E`nsuring `I`ntelligent `S`prinkler `A`utomation", continues the storyline of the [B-AROL-O Team](https://github.com/B-AROL-O?view_as=public)'s saga.
 
 Project FREISA was the **Grand Prize Winner** 🥇 of the [OpenCV AI Competition 2023](https://www.hackster.io/contests/opencv-ai-competition-2023) with [OpenCV](https://www.hackster.io/opencv), [Khadas](https://www.hackster.io/khadas) and [Seeed Studio](https://www.hackster.io/seeed).
 
 [![OpenCV AI Competition 2023 Grand Prize Winners - OpenCV Live 126](https://img.youtube.com/vi/iUe4N7yvpmA/0.jpg)](https://www.youtube.com/watch?v=iUe4N7yvpmA "OpenCV AI Competition 2023 Grand Prize Winners - OpenCV Live 126")
 
-In more recent times, FREISA was a **Finalist of [Backdrop Build V3](https://backdropbuild.com/builds/v3/freisa)** and repeated the achievement with [Backdrop Build V4](https://backdropbuild.com/builds/freisa-wyfd):
+In more recent times, FREISA was a **Finalist of [Backdrop Build V3](https://backdropbuild.com/builds/v3/freisa)** and repeated the achievement with [Backdrop Build V4](https://backdropbuild.com/builds/freisa-wyfd) and [Backdrop Build V5](https://backdropbuild.com/builds/freisa-beuv):
 
-[![FREISA v2 @Backdrop Build](https://img.youtube.com/vi/UnR6vbQ7b6U/0.jpg)](https://www.youtube.com/watch?v=UnR6vbQ7b6U "FREISA v2 @Backdrop Build")
+[![FREISA Robot Dog meets SenseCAP Watcher (Backdrop Build V6)](https://img.youtube.com/vi/yC3U7GVKcvg/0.jpg)](https://www.youtube.com/watch?v=yC3U7GVKcvg "FREISA Robot Dog meets SenseCAP Watcher (Backdrop Build V6)")
 
 ## What is FREISA
 
-A detailed writeup of what the FREISA project does has been published on [Hackster.io](https://www.hackster.io/projects/845012) and [Electromaker.io](https://www.electromaker.io/project/view/four-legged-robot-ensuring-intelligent-sprinkler-automation).
+We published a detailed writeup of the FREISA project on [Hackster.io](https://www.hackster.io/projects/845012) at the end of November 2023 and some weeks later on [Electromaker.io](https://www.electromaker.io/project/view/four-legged-robot-ensuring-intelligent-sprinkler-automation).
 
 [![2024-01-27-freisa-hackster-page.png](assets/2024-01-27-freisa-hackster-page.png)](https://www.hackster.io/projects/845012)
+
+More recently, we published an updated writeup on [Hackster.io](https://www.hackster.io/projects/89596b).
+
+[![2024-09-01-freisa-watcher-hackster-page.png](assets/2024-09-01-freisa-watcher-hackster-page.png)](https://www.hackster.io/projects/89596b)
 
 [Issue 139](https://magpi.raspberrypi.com/issues/139) of [The MagPi Magazine](https://magpi.raspberrypi.com/) contains a 4-page interview by David Crookes to the B-AROL-O Team who talk about FREISA ([get the PDF here](https://magpi.raspberrypi.com/issues/139/pdf)).
 
 [![2024-03-01-magpi139-cover.png](assets/2024-03-01-magpi139-cover.png)](https://magpi.raspberrypi.com/issues/139)
 
-Here is [a short presentation](https://video.linux.it/w/xq3Z9khHJGTzv2NsNc1gK7?start=9m37&stop=20m23) of the FREISA project ([slides](https://speakerdeck.com/pythontorino/unwrapping-the-future-of-sprinkler-automation)) given during [an event which took place in December 2023](https://www.eventbrite.com/e/databeers-torino-episodio-17-tickets-754459006197) organized by [DataBeers Torino](https://twitter.com/databeerstorino) and [Python Torino](https://torino.python.it/)
+Here is [a short presentation](https://video.linux.it/w/xq3Z9khHJGTzv2NsNc1gK7?start=9m37&stop=20m23) of the FREISA project ([slides](https://speakerdeck.com/pythontorino/unwrapping-the-future-of-sprinkler-automation)) given during [an event which took place in December 2023](https://www.eventbrite.com/e/databeers-torino-episodio-17-tickets-754459006197) organized by [DataBeers Torino](https://x.com/databeerstorino) and [Python Torino](https://torino.python.it/)
 
 [![2023-12-13-freisa-databeers.png](assets/2023-12-13-freisa-databeers.png)](https://video.linux.it/w/xq3Z9khHJGTzv2NsNc1gK7?start=9m37&stop=20m23)
 
-## The Team
+## The Team behind FREISA
 
 FirstName LastName | GitHub_ID                              | Telegram_ID
 -------------------|----------------------------------------|---------------------
@@ -49,11 +53,35 @@ FirstName LastName | Role    | GitHub_ID                                    | Te
 [Gianluca Teti](https://www.linkedin.com/in/gianluca-teti) | Advisor | [@gteti](https://github.com/gteti) | Gianteti
 [Alessandro Varesi](https://www.linkedin.com/in/alessandrovaresi) | Support and ideas | [@alv67](https://github.com/alv67) | -
 
+## Related Projects
+
+### Amarone
+
+Project [Amarone](https://www.hackster.io/projects/185a16) reused some of the code and algorithms originally developed for FREISA.
+The project was created by [Gianluca Teti](https://www.linkedin.com/in/gianluca-teti) together with a couple of members of the B-AROL-O team and is available on [Hackster](https://www.hackster.io/projects/185a16).
+
+[![2024-09-01-amarone-hackster-page.png](assets/2024-09-01-amarone-hackster-page.png)](https://www.hackster.io/projects/185a16)
+
+### ARNEIS
+
+This is the first public project of the B-AROL-O Team. Some of the algorithms and code developed for ARNEIS have been reused and further refined by FREISA.
+
+<https://github.com/B-AROL-O/ARNEIS>
+
+[![2024-09-01-arneis-readthedocs.png](assets/2024-09-01-arneis-readthedocs.png)](https://arneis.readthedocs.io/)
+
+### OpenSCAD-lego-library
+
+OpenSCAD library to draw LEGO&reg; beams and plates with custom patterns.
+This GitHub repository contains most of the custom 3D-printed parts which are needed to build the FREISA Robot Dog
+
+<https://github.com/B-AROL-O/OpenSCAD-lego-library>
+
 ## How to stay in touch
 
-You may follow [@baroloteam on Instagram](https://instagram.com/baroloteam) or [@baroloteam on ~~Twitter~~ X](https://x.com/baroloteam) to get notified about the progress of the FREISA project.
+You may follow [@baroloteam on Instagram](https://instagram.com/baroloteam) or [@baroloteam on X](https://x.com/baroloteam) to get notified about the progress of the FREISA project.
 
-Please report bugs and feature requests on <https://github.com/B-AROL-O/FREISA/issues>, or DM [B-AROL-O Team on ~~Twitter~~ X](https://x.com/baroloteam) about security issues or other non-public topics.
+Please report bugs and feature requests on <https://github.com/B-AROL-O/FREISA/issues>, or DM [B-AROL-O Team on X](https://x.com/baroloteam) about security issues or other non-public topics.
 
 ## Copyright and license
 
