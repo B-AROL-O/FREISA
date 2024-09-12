@@ -81,6 +81,10 @@ This GitHub repository contains most of the custom 3D-printed parts which are ne
 
 <https://github.com/B-AROL-O/OpenSCAD-lego-library>
 
+### SenseCAP Watcher
+
+Project FREISA is featured in the front page of Kickstarter campaign "[SenseCAP Watcher - The Physical AI Agent for Smarter Spaces](https://www.kickstarter.com/projects/seeed/sensecap-watcher-open-source-ai-assistant-for-smarter-spaces?ref=checkout_rewards_page)" by [Seeed Studio](https://www.seeedstudio.com/).
+
 ## How to stay in touch
 
 You may follow [@baroloteam on Instagram](https://instagram.com/baroloteam) or [@baroloteam on X](https://x.com/baroloteam) to get notified about the progress of the FREISA project.
