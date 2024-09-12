@@ -72,7 +72,7 @@ This was the first public project of the B-AROL-O Team. Some of the algorithms a
 
 ### ChatGPT Robot Kit
 
-Project FREISA is featured in the front page of Kickstarter campaign "[ChatGPT Robot Kit: Unlock your AI Dream Job](https://www.kickstarter.com/projects/mdrobotkits/md-robot-kits-open-source-support-your-genai-creativity?ref=freisa_homepage)" by [Mangdang Ltd.](https://www.kickstarter.com/profile/mdrobotkits)
+Project FREISA is featured in the front page of Kickstarter "Project We Love" campaign "[ChatGPT Robot Kit: Unlock your AI Dream Job](https://www.kickstarter.com/projects/mdrobotkits/md-robot-kits-open-source-support-your-genai-creativity?ref=freisa_homepage)" by [Mangdang Ltd.](https://www.kickstarter.com/profile/mdrobotkits)
 
 [![2024-09-12-ks-mangdang.png](assets/2024-09-12-ks-mangdang.png)](https://www.kickstarter.com/projects/mdrobotkits/md-robot-kits-open-source-support-your-genai-creativity?ref=freisa_homepage)
 
