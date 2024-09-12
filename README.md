@@ -74,6 +74,8 @@ This is the first public project of the B-AROL-O Team. Some of the algorithms an
 
 Project FREISA is featured in the front page of Kickstarter campaign "[ChatGPT Robot Kit: Unlock your AI Dream Job](https://www.kickstarter.com/projects/mdrobotkits/md-robot-kits-open-source-support-your-genai-creativity)" by [Mangdang Ltd.](https://www.kickstarter.com/profile/mdrobotkits)
 
+[![2024-09-12-ks-mangdang.png](assets/2024-09-12-ks-mangdang.png)](https://www.kickstarter.com/projects/mdrobotkits/md-robot-kits-open-source-support-your-genai-creativity)
+
 ### OpenSCAD-lego-library
 
 OpenSCAD library to draw LEGO&reg; beams and plates with custom patterns.
