@@ -64,7 +64,7 @@ The project was created by [Gianluca Teti](https://www.linkedin.com/in/gianluca-
 
 ### ARNEIS
 
-This is the first public project of the B-AROL-O Team. Some of the algorithms and code developed for ARNEIS have been reused and further refined by FREISA.
+This was the first public project of the B-AROL-O Team. Some of the algorithms and code developed for ARNEIS have been reused and further refined by FREISA.
 
 <https://github.com/B-AROL-O/ARNEIS>
 
@@ -72,20 +72,22 @@ This is the first public project of the B-AROL-O Team. Some of the algorithms an
 
 ### ChatGPT Robot Kit
 
-Project FREISA is featured in the front page of Kickstarter campaign "[ChatGPT Robot Kit: Unlock your AI Dream Job](https://www.kickstarter.com/projects/mdrobotkits/md-robot-kits-open-source-support-your-genai-creativity)" by [Mangdang Ltd.](https://www.kickstarter.com/profile/mdrobotkits)
+Project FREISA is featured in the front page of Kickstarter campaign "[ChatGPT Robot Kit: Unlock your AI Dream Job](https://www.kickstarter.com/projects/mdrobotkits/md-robot-kits-open-source-support-your-genai-creativity?ref=freisa_homepage)" by [Mangdang Ltd.](https://www.kickstarter.com/profile/mdrobotkits)
 
-[![2024-09-12-ks-mangdang.png](assets/2024-09-12-ks-mangdang.png)](https://www.kickstarter.com/projects/mdrobotkits/md-robot-kits-open-source-support-your-genai-creativity)
+[![2024-09-12-ks-mangdang.png](assets/2024-09-12-ks-mangdang.png)](https://www.kickstarter.com/projects/mdrobotkits/md-robot-kits-open-source-support-your-genai-creativity?ref=freisa_homepage)
 
 ### OpenSCAD-lego-library
 
 OpenSCAD library to draw LEGO&reg; beams and plates with custom patterns.
-This GitHub repository contains most of the custom 3D-printed parts which are needed to build the FREISA Robot Dog
+This GitHub repository contains most of the custom 3D-printed parts which are needed to build the FREISA Robot Dog.
 
 <https://github.com/B-AROL-O/OpenSCAD-lego-library>
 
 ### SenseCAP Watcher
 
-Project FREISA is featured in the front page of Kickstarter campaign "[SenseCAP Watcher - The Physical AI Agent for Smarter Spaces](https://www.kickstarter.com/projects/seeed/sensecap-watcher-open-source-ai-assistant-for-smarter-spaces?ref=checkout_rewards_page)" by [Seeed Studio](https://www.seeedstudio.com/).
+Project FREISA is featured in the front page of Kickstarter campaign "[SenseCAP Watcher - The Physical AI Agent for Smarter Spaces](https://www.kickstarter.com/projects/seeed/sensecap-watcher-open-source-ai-assistant-for-smarter-spaces?ref=freisa_homepage)" by [Seeed Studio](https://www.seeedstudio.com/).
+
+[![2024-09-12-ks-sensecap-watcher.png](assets/2024-09-12-ks-sensecap-watcher.png)](https://www.kickstarter.com/projects/seeed/sensecap-watcher-open-source-ai-assistant-for-smarter-spaces?ref=freisa_homepage)
 
 ## How to stay in touch
 
