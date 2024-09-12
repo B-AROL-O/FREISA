@@ -10,7 +10,7 @@ Project FREISA was the **Grand Prize Winner** 🥇 of the [OpenCV AI Competition
 
 [![OpenCV AI Competition 2023 Grand Prize Winners - OpenCV Live 126](https://img.youtube.com/vi/iUe4N7yvpmA/0.jpg)](https://www.youtube.com/watch?v=iUe4N7yvpmA "OpenCV AI Competition 2023 Grand Prize Winners - OpenCV Live 126")
 
-In more recent times, FREISA was a **Finalist of [Backdrop Build V3](https://backdropbuild.com/builds/v3/freisa)** and repeated the achievement with [Backdrop Build V4](https://backdropbuild.com/builds/freisa-wyfd) and [Backdrop Build V5](https://backdropbuild.com/builds/freisa-beuv):
+In more recent times, FREISA was a **Finalist of [Backdrop Build v3](https://backdropbuild.com/builds/v3/freisa)** and repeated the same achievement with **[Build v4](https://backdropbuild.com/builds/freisa-wyfd)**, **[Build v5](https://backdropbuild.com/builds/freisa-beuv)** and **[Build v6](https://backdropbuild.com/builds/freisa-beuv)**:
 
 [![FREISA Robot Dog meets SenseCAP Watcher (Backdrop Build V6)](https://img.youtube.com/vi/yC3U7GVKcvg/0.jpg)](https://www.youtube.com/watch?v=yC3U7GVKcvg "FREISA Robot Dog meets SenseCAP Watcher (Backdrop Build V6)")
 
