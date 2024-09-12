@@ -85,7 +85,9 @@ This GitHub repository contains most of the custom 3D-printed parts which are ne
 
 ### SenseCAP Watcher
 
-Project FREISA is featured in the front page of Kickstarter campaign "[SenseCAP Watcher - The Physical AI Agent for Smarter Spaces](https://www.kickstarter.com/projects/seeed/sensecap-watcher-open-source-ai-assistant-for-smarter-spaces?ref=freisa_homepage)" by [Seeed Studio](https://www.seeedstudio.com/).
+The B-AROL-O Team was selected by [Seeed Studio](https://www.seeedstudio.com/) to receive one of the 50 SenseCAP Watcher Alpha and delivered a comprehensive [writeup on Hackster.io](https://www.hackster.io/projects/89596b) before its official launch.
+
+Project FREISA has also been featured in the Kickstarter "Project We Love" campaign "[SenseCAP Watcher - The Physical AI Agent for Smarter Spaces](https://www.kickstarter.com/projects/seeed/sensecap-watcher-open-source-ai-assistant-for-smarter-spaces?ref=freisa_homepage)" by [Seeed Studio](https://www.seeedstudio.com/), including the teaser video and a few photos on the front page.
 
 [![2024-09-12-ks-sensecap-watcher.png](assets/2024-09-12-ks-sensecap-watcher.png)](https://www.kickstarter.com/projects/seeed/sensecap-watcher-open-source-ai-assistant-for-smarter-spaces?ref=freisa_homepage)
 
