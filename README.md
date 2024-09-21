@@ -4,19 +4,19 @@
 
 <!-- [![2023-10-28-freisa-landing-page.png](https://github.com/B-AROL-O/FREISA/assets/90387263/720b1270-4645-444d-8c37-23f423472d9a)](https://www.hackster.io/projects/845012) -->
 
-Project [FREISA](https://github.com/B-AROL-O/FREISA), an acronym for "`F`our-legged `R`obot `E`nsuring `I`ntelligent `S`prinkler `A`utomation", continues the storyline of the [B-AROL-O Team](https://github.com/B-AROL-O?view_as=public)'s saga.
+**[Project FREISA](https://github.com/B-AROL-O/FREISA)**, an acronym for "`F`our-legged `R`obot `E`nsuring `I`ntelligent `S`prinkler `A`utomation", continues the storyline of the [B-AROL-O Team](https://github.com/B-AROL-O?view_as=public)'s saga.
 
 Project FREISA was the **Grand Prize Winner** 🥇 of the [OpenCV AI Competition 2023](https://www.hackster.io/contests/opencv-ai-competition-2023) with [OpenCV](https://www.hackster.io/opencv), [Khadas](https://www.hackster.io/khadas) and [Seeed Studio](https://www.hackster.io/seeed).
 
 [![OpenCV AI Competition 2023 Grand Prize Winners - OpenCV Live 126](https://img.youtube.com/vi/iUe4N7yvpmA/0.jpg)](https://www.youtube.com/watch?v=iUe4N7yvpmA "OpenCV AI Competition 2023 Grand Prize Winners - OpenCV Live 126")
 
-In more recent times, FREISA was a **Finalist of [Backdrop Build V3](https://backdropbuild.com/builds/v3/freisa)** and repeated the achievement with [Backdrop Build V4](https://backdropbuild.com/builds/freisa-wyfd) and [Backdrop Build V5](https://backdropbuild.com/builds/freisa-beuv):
+In more recent times, FREISA was a **Finalist of [Backdrop Build v3](https://backdropbuild.com/builds/v3/freisa)** and repeated the same achievement with **[Build v4](https://backdropbuild.com/builds/freisa-wyfd)**, **[Build v5](https://backdropbuild.com/builds/freisa-beuv)** and **[Build v6](https://backdropbuild.com/builds/freisa-beuv)**:
 
 [![FREISA Robot Dog meets SenseCAP Watcher (Backdrop Build V6)](https://img.youtube.com/vi/yC3U7GVKcvg/0.jpg)](https://www.youtube.com/watch?v=yC3U7GVKcvg "FREISA Robot Dog meets SenseCAP Watcher (Backdrop Build V6)")
 
 ## What is FREISA
 
-We published a detailed writeup of the FREISA project on [Hackster.io](https://www.hackster.io/projects/845012) at the end of November 2023 and some weeks later on [Electromaker.io](https://www.electromaker.io/project/view/four-legged-robot-ensuring-intelligent-sprinkler-automation).
+We published a detailed writeup of Project FREISA on [Hackster.io](https://www.hackster.io/projects/845012) at the end of November 2023 and some weeks later on [Electromaker.io](https://www.electromaker.io/project/view/four-legged-robot-ensuring-intelligent-sprinkler-automation).
 
 [![2024-01-27-freisa-hackster-page.png](assets/2024-01-27-freisa-hackster-page.png)](https://www.hackster.io/projects/845012)
 
@@ -28,7 +28,7 @@ More recently, we published an updated writeup on [Hackster.io](https://www.hack
 
 [![2024-03-01-magpi139-cover.png](assets/2024-03-01-magpi139-cover.png)](https://magpi.raspberrypi.com/issues/139)
 
-Here is [a short presentation](https://video.linux.it/w/xq3Z9khHJGTzv2NsNc1gK7?start=9m37&stop=20m23) of the FREISA project ([slides](https://speakerdeck.com/pythontorino/unwrapping-the-future-of-sprinkler-automation)) given during [an event which took place in December 2023](https://www.eventbrite.com/e/databeers-torino-episodio-17-tickets-754459006197) organized by [DataBeers Torino](https://x.com/databeerstorino) and [Python Torino](https://torino.python.it/)
+Here is [a short presentation](https://video.linux.it/w/xq3Z9khHJGTzv2NsNc1gK7?start=9m37&stop=20m23) of Project FREISA ([slides](https://speakerdeck.com/pythontorino/unwrapping-the-future-of-sprinkler-automation)) given during [an event which took place in December 2023](https://www.eventbrite.com/e/databeers-torino-episodio-17-tickets-754459006197) organized by [DataBeers Torino](https://x.com/databeerstorino) and [Python Torino](https://torino.python.it/)
 
 [![2023-12-13-freisa-databeers.png](assets/2023-12-13-freisa-databeers.png)](https://video.linux.it/w/xq3Z9khHJGTzv2NsNc1gK7?start=9m37&stop=20m23)
 
@@ -64,18 +64,32 @@ The project was created by [Gianluca Teti](https://www.linkedin.com/in/gianluca-
 
 ### ARNEIS
 
-This is the first public project of the B-AROL-O Team. Some of the algorithms and code developed for ARNEIS have been reused and further refined by FREISA.
+This was the first public project of the B-AROL-O Team. Some of the algorithms and code developed for ARNEIS have been reused and further refined by FREISA.
 
 <https://github.com/B-AROL-O/ARNEIS>
 
 [![2024-09-01-arneis-readthedocs.png](assets/2024-09-01-arneis-readthedocs.png)](https://arneis.readthedocs.io/)
 
+### ChatGPT Robot Kit
+
+Project FREISA is featured in the front page of Kickstarter "Project We Love" campaign "[ChatGPT Robot Kit: Unlock your AI Dream Job](https://www.kickstarter.com/projects/mdrobotkits/md-robot-kits-open-source-support-your-genai-creativity?ref=freisa_homepage)" by [Mangdang Ltd.](https://www.kickstarter.com/profile/mdrobotkits)
+
+[![2024-09-12-ks-mangdang.png](assets/2024-09-12-ks-mangdang.png)](https://www.kickstarter.com/projects/mdrobotkits/md-robot-kits-open-source-support-your-genai-creativity?ref=freisa_homepage)
+
 ### OpenSCAD-lego-library
 
 OpenSCAD library to draw LEGO&reg; beams and plates with custom patterns.
-This GitHub repository contains most of the custom 3D-printed parts which are needed to build the FREISA Robot Dog
+This GitHub repository contains most of the custom 3D-printed parts which are needed to build the FREISA Robot Dog.
 
 <https://github.com/B-AROL-O/OpenSCAD-lego-library>
+
+### SenseCAP Watcher
+
+The B-AROL-O Team was selected by [Seeed Studio](https://www.seeedstudio.com/) to receive one of the 50 SenseCAP Watcher Alpha and delivered a comprehensive [writeup on Hackster.io](https://www.hackster.io/projects/89596b) before its official launch.
+
+Project FREISA has also been featured in the Kickstarter "Project We Love" campaign "[SenseCAP Watcher - The Physical AI Agent for Smarter Spaces](https://www.kickstarter.com/projects/seeed/sensecap-watcher-open-source-ai-assistant-for-smarter-spaces?ref=freisa_homepage)" by [Seeed Studio](https://www.seeedstudio.com/), including the teaser video and a few photos on the front page.
+
+[![2024-09-12-ks-sensecap-watcher.png](assets/2024-09-12-ks-sensecap-watcher.png)](https://www.kickstarter.com/projects/seeed/sensecap-watcher-open-source-ai-assistant-for-smarter-spaces?ref=freisa_homepage)
 
 ## How to stay in touch
 
