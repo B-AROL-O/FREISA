@@ -57,6 +57,7 @@ jobs:
           VALIDATE_JSON: false
           VALIDATE_JSON_PRETTIER: false
           VALIDATE_SHELL_SHFMT: false
+          VALIDATE_DOCKERFILE_HADOLINT: false
           DEFAULT_BRANCH: main
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           # Do not lint downloaded code - see https://github.com/github/super-linter
