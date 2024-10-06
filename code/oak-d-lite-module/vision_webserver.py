@@ -125,7 +125,7 @@ class VisionWebServer:
                 # Return currently active model (Empty string if no active model!)
                 return self.oak_control.getCurrentModelName()
         else:
-            cp.response.status = 418
+            cp.response.status = 200
             return f"Available methods:\n{json.dumps(self.supported_req)}"
 
     def POST(self, *path, **params):
