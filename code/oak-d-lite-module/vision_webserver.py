@@ -29,15 +29,15 @@ class VisionWebServer:
     ### API
     - GET:
         - /: get the API information (any method)
-        - /latest_inference: get the latest inference result (404 if no inference result is
-        available - no pipeline running)
-        - /models_info: get a json-formatted string containing the information of the available
-        models
+        - /latest_inference: get the latest inference result (404 if no inference
+        result is available - no pipeline running)
+        - /models_info: get a json-formatted string containing the information of the
+        available models
         - /model: get the name of the currently active model (empty string if none)
     - POST:
         - /: get the API information (for POST only)
-        - /change_model?model=<model name>: switch the currently active model for the one
-        specified in the parameter; Error 422 if model name is invalid
+        - /change_model?model=<model name>: switch the currently active model for the
+        one specified in the parameter; Error 422 if model name is invalid
     """
 
     exposed = True
@@ -95,7 +95,7 @@ class VisionWebServer:
         self.msg_ok = {"status": "SUCCESS", "msg": "", "params": {}}
         self.msg_ko = {"status": "FAILURE", "msg": "", "params": {}}
 
-    def GET(self, *path, **params):
+    def GET(self, *path):
         """
         GET
         ---
@@ -114,18 +114,17 @@ class VisionWebServer:
                     # No model is currently active
                     raise cp.HTTPError(
                         404,
-                        "No inference result found - need to launch a pipeline first (POST)",
+                        "No inference result found - need to launch a pipeline first",
                     )
-                else:
-                    cp.response.status = 200
-                    return json.dumps(self.oak_control.last_inference_result)
+                cp.response.status = 200
+                return json.dumps(self.oak_control.last_inference_result)
             elif str(path[0]) == "models_info":
                 return json.dumps(self.oak_control.info_dict)
             elif str(path[0]) == "model":
                 # Return currently active model (Empty string if no active model!)
                 return self.oak_control.getCurrentModelName()
         else:
-            cp.response.status = 418
+            cp.response.status = 200
             return f"Available methods:\n{json.dumps(self.supported_req)}"
 
     def POST(self, *path, **params):
@@ -136,8 +135,8 @@ class VisionWebServer:
 
         ### Possible URLs
         - /: get the API information (for POST only)
-        - /change_model?model=<model name>: switch the currently active model for the one
-        specified in the parameter; Error 422 if model name is invalid
+        - /change_model?model=<model name>: switch the currently active model for the
+        one specified in the parameter; Error 422 if model name is invalid
         """
         # body = json.loads(cp.request.body.read())
         if len(path) > 0 and len(params) > 0:
@@ -146,7 +145,8 @@ class VisionWebServer:
                 if new_model not in self.oak_control.model_names:
                     raise cp.HTTPError(
                         422,
-                        f"Parameter 'mode' = {new_model} is invalid!\nValid models: {self.oak_control.model_names}",
+                        f"""Parameter 'mode' = {new_model} is invalid!\nValid models:
+                        {self.oak_control.model_names}""",
                     )
                 # If valid model name, switch to that
                 self.oak_control.selectModel(new_model)
@@ -157,10 +157,9 @@ class VisionWebServer:
                 return json.dumps(
                     self.oak_control.info_dict[self.oak_control.getCurrentModelName()]
                 )
-            else:
-                raise cp.HTTPError(
-                    404, f"Invalid POST request to {self.own_addr + str(path[0])}"
-                )
+            raise cp.HTTPError(
+                404, f"Invalid POST request to {self.own_addr + str(path[0])}"
+            )
         else:
             return json.dumps(self.supported_req["POST"])
 

@@ -1,4 +1,5 @@
 #!/bin/bash
+
 docker run --rm \
     --privileged \
     --name=oak-d-lite-server \
@@ -7,5 +8,4 @@ docker run --rm \
     --device-cgroup-rule='c 189:* rmw' \
     -p 9090:9090 \
     -d \
-    depthai-freisa:latest \
-    python3 /oak-d-lite-module/vision_webserver.py
+    depthai-freisa:latest

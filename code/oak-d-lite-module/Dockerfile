@@ -6,8 +6,17 @@ RUN git clone https://github.com/luxonis/depthai.git depthai
 
 RUN ./depthai/docker_dependencies.sh
 
+RUN useradd -m depthai
+USER depthai
+
 RUN python3 ./depthai/install_requirements.py
 
 WORKDIR /
+
 COPY requirements.txt .
+
 RUN pip3 install --no-cache-dir -r requirements.txt
+
+HEALTHCHECK CMD curl -f http://localhost:9090/ || exit 1
+
+CMD ["python3", "/oak-d-lite-module/vision_webserver.py"]
