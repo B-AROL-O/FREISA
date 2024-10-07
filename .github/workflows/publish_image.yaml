@@ -1,0 +1,47 @@
+---
+
+name: "Publish Docker Image"
+
+permissions:
+  packages: write
+  contents: read
+  attestations: write
+  id-token: write
+
+env:
+  OAK_MODULE_DIR: "code/oak-d-lite-module"
+  REGISTRY: "ghcr.io"
+  IMAGE_NAME: "${{ github.repository }}:latest"
+
+on:
+  push:  # Only run after merge to main, when these files change
+    branches: [master, main]
+    paths:
+      - "${{ env.OAK_MODULE_DIR }}/Dockerfile"
+      - "${{ env.OAK_MODULE_DIR }}/reuqirements.txt"
+      - "${{ env.OAK_MODULE_DIR }}/vision_webserver.py"
+      - ".github/workflows/publish_image.yaml"  # This file
+
+jobs:
+  build:
+    name: Publish Docker Image
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Log into GHCR
+        run: docker login ${{ env.REGISTRY }} -u ${{ github.repository_owner }} --password ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build Docker Image
+        run: |
+          pushd $OAK_MODULE_DIR
+          docker build -t "${{ env.IMAGE_NAME }}" .
+          popd
+
+      - name: Push Docker Image
+        run: docker push ${{ env.IMAGE_NAME }}
+
+# EOF
