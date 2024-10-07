@@ -18,7 +18,7 @@ on:
     branches: [master, main]
     paths:
       - "${{ env.OAK_MODULE_DIR }}/Dockerfile"
-      - "${{ env.OAK_MODULE_DIR }}/reuqirements.txt"
+      - "${{ env.OAK_MODULE_DIR }}/requirements.txt"
       - "${{ env.OAK_MODULE_DIR }}/vision_webserver.py"
       - ".github/workflows/publish_image.yaml"  # This file
 
