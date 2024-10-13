@@ -9,11 +9,11 @@ Following up to [a thread on X](https://x.com/leonanavi/status/18349165876794983
 
 ## Reference Documents
 
-* [ANAVI Handle on CrowdSupply](https://www.crowdsupply.com/anavi-technology/anavi-handle)
-* [ANAVI Handle Assembly Guide for Open Source Nunchuk to USB Adapter](https://www.youtube.com/watch?v=ZAnON53XiUk) - Leon Anavi on YouTube, 2024-05-22
-* [GitHub: AnaviTechnology/anavi-handle](https://github.com/AnaviTechnology/anavi-handle)
-* [GitHub: AnaviTechnology/anavi-handle-sw](https://github.com/AnaviTechnology/anavi-handle-sw)
-* [Seeed Studio XIAO RP2040](https://www.seeedstudio.com/XIAO-RP2040-v1-0-p-5026.html) - Supports Arduino, MicroPython and CircuitPython
+- [ANAVI Handle on CrowdSupply](https://www.crowdsupply.com/anavi-technology/anavi-handle)
+- [ANAVI Handle Assembly Guide for Open Source Nunchuk to USB Adapter](https://www.youtube.com/watch?v=ZAnON53XiUk) - Leon Anavi on YouTube, 2024-05-22
+- [GitHub: AnaviTechnology/anavi-handle](https://github.com/AnaviTechnology/anavi-handle)
+- [GitHub: AnaviTechnology/anavi-handle-sw](https://github.com/AnaviTechnology/anavi-handle-sw)
+- [Seeed Studio XIAO RP2040](https://www.seeedstudio.com/XIAO-RP2040-v1-0-p-5026.html) - Supports Arduino, MicroPython and CircuitPython
 
 ## Assembling and testing ANAVI Handle
 
@@ -40,8 +40,8 @@ Step number 1 is to peel off the protective films from both sides of the Acrylic
 
 ANAVI Handle comes with:
 
-* 4x M2.5 10mm screws
-* 8x M2.5 nuts
+- 4x M2.5 10mm screws
+- 8x M2.5 nuts
 
 Take the Top Acrylic Enclosure which has a notch for the Nintendo Nunchuk controller.
 
@@ -77,14 +77,14 @@ The source code is [available at GitHub](https://github.com/AnaviTechnology/anav
 
 The default open-source firmware uses an RGB LED to indicate the connection status:
 
-* Green light: Nunchuk controller is connected correctly.
-* Blue light: The Nunchuk controller is disconnected from the ANAVI Handle.
-* Red light: The Nunchuk controller is absent or improperly connected.
+- Green light: Nunchuk controller is connected correctly.
+- Blue light: The Nunchuk controller is disconnected from the ANAVI Handle.
+- Red light: The Nunchuk controller is absent or improperly connected.
 
 A green LED confirms a successful connection between the Nunchuk, the ANAVI Handle, and your computer.
 
 ## Using ANAVI Handle to control FREISA Robot Dog
 
-TODO
+To be continued...
 
 <!-- EOF -->
