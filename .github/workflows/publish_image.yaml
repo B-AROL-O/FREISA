@@ -16,9 +16,9 @@ on:
   push: # Only run after merge to main, when these files change
     branches: [master, main]
     paths:
-      - "${{ env.OAK_MODULE_DIR }}/Dockerfile"
-      - "${{ env.OAK_MODULE_DIR }}/requirements.txt"
-      - "${{ env.OAK_MODULE_DIR }}/vision_webserver.py"
+      - "code/oak-d-lite-module/Dockerfile"
+      - "code/oak-d-lite-module/requirements.txt"
+      - "code/oak-d-lite-module/vision_webserver.py"
       - ".github/workflows/publish_image.yaml" # This file
   workflow_dispatch:
 
