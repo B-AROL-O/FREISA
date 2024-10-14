@@ -64,7 +64,7 @@ jobs:
         id: build-and-push
         uses: docker/build-push-action@v5.0.0
         with:
-          context: .
+          context: code/oak-d-lite-module/
           push: ${{ github.event_name != 'pull_request' }} # Don't push on PR
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
