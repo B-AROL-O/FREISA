@@ -3,7 +3,7 @@ name: "Publish Docker Image"
 
 env:
   REGISTRY: "ghcr.io"
-  IMAGE_NAME: "${{ github.repository }}:latest"
+  IMAGE_NAME: "${{ github.repository }}"
 
 on:
   push: # Only run after merge to main, when these files change
@@ -62,7 +62,7 @@ jobs:
 
       - name: Build and push Docker image
         id: build-and-push
-        uses: docker/build-push-action@v5.0.0
+        uses: docker/build-push-action@v6
         with:
           context: code/oak-d-lite-module/
           push: ${{ github.event_name != 'pull_request' }} # Don't push on PR
