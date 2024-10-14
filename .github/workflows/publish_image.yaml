@@ -1,5 +1,4 @@
 ---
-
 name: "Publish Docker Image"
 
 permissions:
@@ -14,13 +13,14 @@ env:
   IMAGE_NAME: "${{ github.repository }}:latest"
 
 on:
-  push:  # Only run after merge to main, when these files change
+  push: # Only run after merge to main, when these files change
     branches: [master, main]
     paths:
       - "${{ env.OAK_MODULE_DIR }}/Dockerfile"
       - "${{ env.OAK_MODULE_DIR }}/requirements.txt"
       - "${{ env.OAK_MODULE_DIR }}/vision_webserver.py"
-      - ".github/workflows/publish_image.yaml"  # This file
+      - ".github/workflows/publish_image.yaml" # This file
+  workflow_dispatch: true
 
 jobs:
   build:
@@ -43,5 +43,4 @@ jobs:
 
       - name: Push Docker Image
         run: docker push ${{ env.IMAGE_NAME }}
-
 # EOF
