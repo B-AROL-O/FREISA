@@ -1,0 +1,54 @@
+# Set default behavior to automatically normalize line endings
+* text=auto
+
+# Force batch scripts to use CRLF
+*.{cmd,[cC][mM][dD]} text eol=crlf
+*.{bat,[bB][aA][tT]} text eol=crlf
+
+# Force bash scripts to use LF
+*.sh text eol=lf
+
+# Python files
+*.py text diff=python
+
+# Jupyter notebook
+*.ipynb text
+
+# Documentation
+*.md text diff=markdown
+*.txt text
+
+# Docker files
+Dockerfile text
+docker-compose*.{yml,yaml} text
+
+# Config files
+*.json text
+*.yml text
+*.yaml text
+*.conf text
+
+# Binary files
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.mov binary
+*.mp4 binary
+*.mp3 binary
+*.flv binary
+*.fla binary
+*.swf binary
+*.gz binary
+*.zip binary
+*.7z binary
+*.ttf binary
+*.eot binary
+*.woff binary
+*.woff2 binary
+*.pyc binary
+*.pdf binary
+*.STL binary
+*.STEP binary
+*.stp binary
