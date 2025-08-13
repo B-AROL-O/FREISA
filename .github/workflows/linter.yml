@@ -1,34 +1,15 @@
 ---
-#################################
-#################################
-## Super Linter GitHub Actions ##
-#################################
-#################################
-name: Lint Code Base
+name: Lint
 
-#
-# Documentation:
-# https://help.github.com/en/articles/workflow-syntax-for-github-actions
-#
+on: # yamllint disable-line rule:truthy
+  push: null
+  pull_request: null
 
 permissions: {}
 
-#############################
-# Start the job on all push #
-#############################
-on:
-  # Only on pull requests (for approval)
-  pull_request:
-    branches: [master, main]
-
-###############
-# Set the Job #
-###############
 jobs:
   build:
-    # Name the Job
-    name: Lint Code Base
-    # Set the agent to run on
+    name: Lint
     runs-on: ubuntu-latest
 
     permissions:
@@ -37,32 +18,18 @@ jobs:
       # To report GitHub Actions status checks
       statuses: write
 
-    ##################
-    # Load all steps #
-    ##################
     steps:
-      ##########################
-      # Checkout the code base #
-      ##########################
-      - name: Checkout Code
+      - name: Checkout code
         uses: actions/checkout@v4
         with:
-          # Full git history is needed to get a proper list of changed files within `super-linter`
+          # super-linter needs the full git history to get the
+          # list of files that changed across commits
           fetch-depth: 0
 
-      ################################
-      # Run Linter against code base #
-      ################################
-      - name: Lint Code Base
-        uses: super-linter/super-linter/slim@v7
+      - name: Super-linter
+        uses: super-linter/super-linter@v8.0.0 # x-release-please-version
         env:
-          VALIDATE_ALL_CODEBASE: false
-          VALIDATE_JSON: false
-          VALIDATE_JSON_PRETTIER: false
-          VALIDATE_SHELL_SHFMT: false
-          VALIDATE_DOCKERFILE_HADOLINT: false
-          DEFAULT_BRANCH: main
+          # To report GitHub Actions status checks
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          # Do not lint downloaded code - see https://github.com/github/super-linter
-          FILTER_REGEX_EXCLUDE: .*/download/.*|layout.html
+
 # EOF
