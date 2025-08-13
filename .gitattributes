@@ -2,8 +2,10 @@
 * text=auto
 
 # Force batch scripts to use CRLF
-*.{cmd,[cC][mM][dD]} text eol=crlf
-*.{bat,[bB][aA][tT]} text eol=crlf
+*.cmd text eol=crlf
+*.CMD text eol=crlf
+*.bat text eol=crlf
+*.BAT text eol=crlf
 
 # Force bash scripts to use LF
 *.sh text eol=lf
@@ -20,7 +22,8 @@
 
 # Docker files
 Dockerfile text
-docker-compose*.{yml,yaml} text
+docker-compose*.yml text
+docker-compose*.yaml text
 
 # Config files
 *.json text
@@ -52,3 +55,5 @@ docker-compose*.{yml,yaml} text
 *.STL binary
 *.STEP binary
 *.stp binary
+
+# EOF
