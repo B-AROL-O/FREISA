@@ -1,10 +1,10 @@
 {
-    "trunk_detection": {
-        "model_path": "../models/trunk/trunk_yolo_openvino_2022.1_6shave.blob",
-        "json_path": "../models/trunk/trunk_yolo.json"
-    },
-    "leaves_detection": {
-        "model_path": "../models/leaves/leaves_yolo_openvino_2022.1_6shave.blob",
-        "json_path": "../models/leaves/leaves_yolo.json"
-    }
+  "trunk_detection": {
+    "model_path": "../models/trunk/trunk_yolo_openvino_2022.1_6shave.blob",
+    "json_path": "../models/trunk/trunk_yolo.json"
+  },
+  "leaves_detection": {
+    "model_path": "../models/leaves/leaves_yolo_openvino_2022.1_6shave.blob",
+    "json_path": "../models/leaves/leaves_yolo.json"
+  }
 }
