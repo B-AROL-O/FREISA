@@ -55,7 +55,7 @@ If the output is not empty, the container has been started successfully.
 
 To verify the container is running, we propose two methods.
 
-The first approach it to perform requests through a HTTP request tool, such as [Thunder client for VSCode](https://marketplace.visualstudio.com/items?itemName=rangav.vscode-thunder-client).
+The first approach it to perform requests through a HTTP request tool, such as the [Thunder Client](https://marketplace.visualstudio.com/items?itemName=rangav.vscode-thunder-client) extension for Visual Studio Code.
 
 Another possibility is to run the [test program](./test/test_webserver.py) as follows:
 
