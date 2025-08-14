@@ -1,13 +1,13 @@
-# Oak-d Lite module
+# OAK-D Lite module
 
-This folder contains the code necessary to launch the Docker container used to control the Oak-d lite camera to perform inference and communicate the results over HTTP to the MiniPupper motion control.
+This folder contains the code necessary to launch the Docker container used to control the [OAK-D Lite](https://shop.luxonis.com/products/oak-d-lite-1) camera to perform inference and communicate the results over HTTP to the MiniPupper motion control.
 
 This module can be deployed inside a Docker container, provided it has access to the USB bus of the host machine.
 
 ## Operation
 
-The `VisionWebServer` class uses CherryPy to create an HTTP server, through which clients can control the OAK-D lite camera and get the inference results.
-The web server makes use of a `VisionController` object to upload the YOLOv8 models on the cameras and run the inference pipelines with these models.
+The `VisionWebServer` class uses [CherryPy](https://cherrypy.dev/) to create an HTTP server, through which clients can control the OAK-D lite camera and get the inference results.
+The web server makes use of a `VisionController` object to upload the [YOLOv8](https://yolov8.com/) models on the cameras and run the inference pipelines with these models.
 
 The MiniPupper uses two CV models: one for detecting the trunk of the plant, and the other for detecting the leaves (healthy and unhealthy).
 
@@ -70,7 +70,7 @@ This script will attempt to run each of the available models for 30 seconds, and
 - [DepthAI docs](https://docs.luxonis.com/projects/api/en/latest/)
 - [Deploy YOLO model to OAK camera](https://docs.roboflow.com/deploy/luxonis-oak)
   - YOLOv8 [tutorial](https://github.com/luxonis/depthai-ml-training/blob/master/colab-notebooks/YoloV8_training.ipynb)
-- [Depthai repository](https://github.com/luxonis/depthai)
+- [DepthAI repository](https://github.com/luxonis/depthai)
 - [DepthAI Dockerfile](https://github.com/luxonis/depthai/blob/main/Dockerfile)
 
 ---
