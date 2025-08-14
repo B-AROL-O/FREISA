@@ -34,24 +34,24 @@ Here is [a short presentation](https://video.linux.it/w/xq3Z9khHJGTzv2NsNc1gK7?s
 
 ## The Team behind FREISA
 
-FirstName LastName | GitHub_ID                              | Telegram_ID
--------------------|----------------------------------------|---------------------
-[Pietro d'Agostino](https://www.linkedin.com/in/pietro-d-agostino-9b8199212/) | [@pitdagosti](https://github.com/pitdagosti) | Pit836
-[Davide Macario](https://www.linkedin.com/in/davide-macario-b872b4225/) | [@davmacario](https://github.com/davmacario) | DavideMacario
-[Gianpaolo Macario](https://www.linkedin.com/in/gmacario/) | [@gmacario](https://github.com/gmacario) | gmacario
-[Eric Orso](https://www.linkedin.com/in/eric-orso-56934124a/) | [@OrsoEric](https://github.com/OrsoEric) | x05032MendicantBias
-[Gianfranco Poncini](https://www.linkedin.com/in/gianfranco-poncini-b0830340/) | [@Muwattalli](https://github.com/@Muwattalli) | Togodumno
+| FirstName LastName                                                             | GitHub_ID                                     | Telegram_ID         |
+| ------------------------------------------------------------------------------ | --------------------------------------------- | ------------------- |
+| [Pietro d'Agostino](https://www.linkedin.com/in/pietro-d-agostino-9b8199212/)  | [@pitdagosti](https://github.com/pitdagosti)  | Pit836              |
+| [Davide Macario](https://www.linkedin.com/in/davide-macario-b872b4225/)        | [@davmacario](https://github.com/davmacario)  | DavideMacario       |
+| [Gianpaolo Macario](https://www.linkedin.com/in/gmacario/)                     | [@gmacario](https://github.com/gmacario)      | gmacario            |
+| [Eric Orso](https://www.linkedin.com/in/eric-orso-56934124a/)                  | [@OrsoEric](https://github.com/OrsoEric)      | x05032MendicantBias |
+| [Gianfranco Poncini](https://www.linkedin.com/in/gianfranco-poncini-b0830340/) | [@Muwattalli](https://github.com/@Muwattalli) | Togodumno           |
 
 ### FREISA Team Alumni
 
 We express gratitude to the following people who actively contributed to the project but are no longer active in FREISA:
 
-FirstName LastName | Role    | GitHub_ID                                    | Telegram_ID
--------------------|---------|----------------------------------------|---------------------
-[Francesca Petrocchi](https://www.linkedin.com/in/francescapetrocchi/) | Support and ideas | [@francipetrocchi](https://github.com/francipetrocchi) | stabilofuxia
-[Andrea Podo](https://www.linkedin.com/in/andrea-podo-a65209187) | Member  | [@AndreaPodo](https://github.com/AndreaPodo) | andreapodo
-[Gianluca Teti](https://www.linkedin.com/in/gianluca-teti) | Advisor | [@gteti](https://github.com/gteti) | Gianteti
-[Alessandro Varesi](https://www.linkedin.com/in/alessandrovaresi) | Support and ideas | [@alv67](https://github.com/alv67) | -
+| FirstName LastName                                                     | Role              | GitHub_ID                                              | Telegram_ID  |
+| ---------------------------------------------------------------------- | ----------------- | ------------------------------------------------------ | ------------ |
+| [Francesca Petrocchi](https://www.linkedin.com/in/francescapetrocchi/) | Support and ideas | [@francipetrocchi](https://github.com/francipetrocchi) | stabilofuxia |
+| [Andrea Podo](https://www.linkedin.com/in/andrea-podo-a65209187)       | Member            | [@AndreaPodo](https://github.com/AndreaPodo)           | andreapodo   |
+| [Gianluca Teti](https://www.linkedin.com/in/gianluca-teti)             | Advisor           | [@gteti](https://github.com/gteti)                     | Gianteti     |
+| [Alessandro Varesi](https://www.linkedin.com/in/alessandrovaresi)      | Support and ideas | [@alv67](https://github.com/alv67)                     | -            |
 
 ## Related Projects
 
