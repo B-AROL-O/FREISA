@@ -8,9 +8,9 @@ Otherwise there's the possibility to use [Cubbit DS3 Object Storage](https://con
 
 ## Register and Create Bucket
 
-* Create an account in <https://console.cubbit.eu/signup>
-* Create a new bucket by pressing "+ Create bucket"
-* Generate the Keys of the repository by clicking "API keys" and then "+ Generate new client API key". Save the *Access key ID* and the *Secret access key*
+- Create an account in <https://console.cubbit.eu/signup>
+- Create a new bucket by pressing "+ Create bucket"
+- Generate the Keys of the repository by clicking "API keys" and then "+ Generate new client API key". Save the _Access key ID_ and the _Secret access key_
 
 ## Sample code
 
@@ -18,26 +18,26 @@ File `code.ipynb` under `code/test-cubbit-ds3` is a Jupyter notebook which demon
 
 ### Prerequisites
 
-* Python Version >= 3.8
-* "boto3" Python library
-* Internet connection
+- Python Version >= 3.8
+- "boto3" Python library
+- Internet connection
 
 ### Functions
 
 The sample script is divided into two parts:
 
-* The creation of the session: Once the endpoint (to <https://s3.cubbit.eu>) is stated, it is possible to use the Access key and the Secret key to create a Cubbit's S3 service and then instantiate an S3 client.
-* The Read/Write functions: With an active session, the client can use the R/W to access the database. In particular these allow:
-  * Listing of all the bucket present in repository
-  * Listing of all the objects present in a bucket
-  * Uploading a file into a bucket
-  * Downloading an object from a bucket
-  * Deleting an object from a bucket
-  * Deleting a bucket
-  
+- The creation of the session: Once the endpoint (to <https://s3.cubbit.eu>) is stated, it is possible to use the Access key and the Secret key to create a Cubbit's S3 service and then instantiate an S3 client.
+- The Read/Write functions: With an active session, the client can use the R/W to access the database. In particular these allow:
+  - Listing of all the bucket present in repository
+  - Listing of all the objects present in a bucket
+  - Uploading a file into a bucket
+  - Downloading an object from a bucket
+  - Deleting an object from a bucket
+  - Deleting a bucket
+
 ## Resources
 
-* <https://docs.cubbit.io/guides/s3-api>
-* <https://docs.cubbit.io/guides/access-control-list>
+- <https://docs.cubbit.io/guides/s3-api>
+- <https://docs.cubbit.io/guides/access-control-list>
 
 <!-- EOF -->

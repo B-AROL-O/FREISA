@@ -11,8 +11,7 @@ name: Lint Code Base
 # https://help.github.com/en/articles/workflow-syntax-for-github-actions
 #
 
-# Prevent writing with GH Actions token
-permissions: read-all
+permissions: {}
 
 #############################
 # Start the job on all push #
@@ -31,6 +30,12 @@ jobs:
     name: Lint Code Base
     # Set the agent to run on
     runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      packages: read
+      # To report GitHub Actions status checks
+      statuses: write
 
     ##################
     # Load all steps #

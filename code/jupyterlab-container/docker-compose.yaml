@@ -19,7 +19,7 @@ services:
         reservations:
           devices:
             - driver: nvidia
-              count: 1  # Specify the number of GPUs on the system
+              count: 1 # Specify the number of GPUs on the system
               capabilities: [gpu]
     environment:
       JUPYTER_ENABLE_LAB: "yes"

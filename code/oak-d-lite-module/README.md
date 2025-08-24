@@ -55,13 +55,14 @@ If the output is not empty, the container has been started successfully.
 
 To verify the container is running, we propose two methods.
 
-The first approach it to perform requests through a HTTP request tool, such as [Thunder client for VSCode](https://marketplace.visualstudio.com/items?itemName=rangav.vscode-thunder-client).
+The first approach it to perform requests through a HTTP request tool, such as the [Thunder Client](https://marketplace.visualstudio.com/items?itemName=rangav.vscode-thunder-client) extension for Visual Studio Code.
 
 Another possibility is to run the [test program](./test/test_webserver.py) as follows:
 
 ```bash
 python3 ./test/test_webserver.py -u <http://server_address:9090/>
 ```
+
 This script will attempt to run each of the available models for 30 seconds, and returns the inference results every 1s.
 
 ## Sources and useful material
@@ -71,8 +72,9 @@ This script will attempt to run each of the available models for 30 seconds, and
   - YOLOv8 [tutorial](https://github.com/luxonis/depthai-ml-training/blob/master/colab-notebooks/YoloV8_training.ipynb)
 - [Depthai repository](https://github.com/luxonis/depthai)
 - [DepthAI Dockerfile](https://github.com/luxonis/depthai/blob/main/Dockerfile)
-  
+
 ---
+
 ---
 
 ## TODO
@@ -110,7 +112,7 @@ The relevant points of the architecture are:
 #### Device
 
 `depthai.Device` object: OAK device.
-Need to upload a *pipeline* (`depthai.Pipeline` - see [later](#pipeline)) to it and it will be executed on the onboard processor.
+Need to upload a _pipeline_ (`depthai.Pipeline` - see [later](#pipeline)) to it and it will be executed on the onboard processor.
 Notice that when initializing the `Device` object, it is needed to provide the pipeline as an argument of the constructor.
 
 ```python
@@ -140,7 +142,7 @@ It is also possible to pass as an argument the device information of the specifi
 
 The queues are used to store messages from camera/host to host/camera.
 It is necessary to set the queue length and whether it will be blocking or not at initialization, but it is possible to modify these parameters afterward (`queue.setMaxSize(10)` and `queue.setBlocking(True)`).
-(*Note*: `blocking=False` means that the arrival of a message at full queue will make it drop the oldest packet to fit the new one in the buffer; with `blocking=True`, instead, incoming packets that cannot fit in the queue will be dropped).
+(_Note_: `blocking=False` means that the arrival of a message at full queue will make it drop the oldest packet to fit the new one in the buffer; with `blocking=True`, instead, incoming packets that cannot fit in the queue will be dropped).
 
 Notice that queues will take up space in the host RAM.
 
@@ -160,7 +162,7 @@ Steps:
 - Create and configure nodes
 - Upload pipeline to the device at its instantiation: `device = depthai.Device(pipeline)`
 
-*Note*: by passing to `depthai.Device` a different pipeline, it is possible to 'change' the CV model used in the camera.
+_Note_: by passing to `depthai.Device` a different pipeline, it is possible to 'change' the CV model used in the camera.
 
 Overview of `depthai.Pipeline`: [here](https://docs.luxonis.com/projects/api/en/latest/components/pipeline/#reference).
 

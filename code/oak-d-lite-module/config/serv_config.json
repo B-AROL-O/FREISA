@@ -1,14 +1,8 @@
 {
-    "ip_addr": "127.0.0.1",
-    "port": 9090,
-    "available_methods": {
-        "GET": [
-            "/latest_inference",
-            "/models_info",
-            "/model"
-        ],
-        "POST": [
-            "/change_model?model=<model name>"
-        ]
-    }
+  "ip_addr": "127.0.0.1",
+  "port": 9090,
+  "available_methods": {
+    "GET": ["/latest_inference", "/models_info", "/model"],
+    "POST": ["/change_model?model=<model name>"]
+  }
 }
