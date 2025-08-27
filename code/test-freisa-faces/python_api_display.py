@@ -1,8 +1,8 @@
 #!/usr/bin/python
 
+import time
 from os import listdir
 from os.path import isfile, join
-import time
 
 from MangDang.mini_pupper.display import BehaviorState, Display
 
@@ -20,9 +20,8 @@ mypath = "."
 
 # Retrieve the list of all "*.png" files in the current directory
 all_images = [
-    f for f in listdir(mypath)
-    if isfile(join(mypath, f))
-    and f[-4:] == ".png"]
+    f for f in listdir(mypath) if isfile(join(mypath, f)) and f[-4:] == ".png"
+]
 
 # print(f"DEBUG: len={len(all_images)}, all_images={all_images}")
 
