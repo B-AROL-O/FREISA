@@ -5,6 +5,6 @@ REMOTE_DIR=/home/ubuntu
 
 rsync -avz . $REMOTE_HOST:$REMOTE_DIR/test
 
-ssh $REMOTE_HOST "cd $REMOTE_DIR/test && python python_api_display.py"
+ssh -t $REMOTE_HOST "cd $REMOTE_DIR/test && python python_api_display.py"
 
 # EOF
