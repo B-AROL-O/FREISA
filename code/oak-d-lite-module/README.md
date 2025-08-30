@@ -65,6 +65,21 @@ python3 ./test/test_webserver.py -u <http://server_address:9090/>
 
 This script will attempt to run each of the available models for 30 seconds, and returns the inference results every 1s.
 
+## HTTP API
+
+The web server exposes an HTTP API used to control the OAK-D lite camera.
+
+The available methods are:
+
+- GET:
+  - `/`: returns the GET API information.
+  - `/last_inference`: returns the latest inference results in JSON format.
+  - `/models_info`: returns information about the available models.
+  - `/model`: returns information about the currently loaded model (if any).
+- POST:
+  - `/`: returns the POST API information.
+  - `/change_model?model=<model_name>`: switch the current active model for the one whose name is specified.
+
 ## Sources and useful material
 
 - [DepthAI docs](https://docs.luxonis.com/projects/api/en/latest/)
