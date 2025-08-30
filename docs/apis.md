@@ -10,19 +10,7 @@ This document describes the APIs that are available in FREISA.
 
 ## OAK-D Lite Module
 
-The [OAK-D lite module](../code/oak-d-lite-module/) exposes an HTTP API that is used to control the camera.
-Specifically, it allows to perform model selection and to retrieve inference results.
-
-API:
-
-- HTTP GET:
-  - `/`: returns the GET API information.
-  - `/last_inference`: returns the latest inference results in JSON format.
-  - `/models_info`: returns information about the available models.
-  - `/model`: returns information about the currently loaded model (if any).
-- HTTP POST:
-  - `/`: returns the POST API information.
-  - `/change_model?model=<model_name>`: switch the current active model for the one whose name is specified.
+The documentation of the OAK-D lite module API can be found [here](/code/oak-d-lite-module/README.md#http-api).
 
 ## Robot Movement
 
