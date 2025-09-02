@@ -37,8 +37,8 @@ gmacario@hw2228:~/Downloads/BK_FREISA_IMAGES $ sudo dd if=/dev/sdc of=bk-puppygm
 61067264+0 records in
 61067264+0 records out
 31266439168 bytes (31 GB, 29 GiB) copied, 1971,72 s, 15,9 MB/s
-gmacario@hw2228:~/Downloads/BK_FREISA_IMAGES $ sudo chown $USER bk-puppygm03-20250902-0819.img 
-gmacario@hw2228:~/Downloads/BK_FREISA_IMAGES $ ls -la bk-puppygm03-20250902-0819.img 
+gmacario@hw2228:~/Downloads/BK_FREISA_IMAGES $ sudo chown $USER bk-puppygm03-20250902-0819.img
+gmacario@hw2228:~/Downloads/BK_FREISA_IMAGES $ ls -la bk-puppygm03-20250902-0819.img
 -rw-r--r-- 1 gmacario root 31266439168 set  2 08:54 bk-puppygm03-20250902-0819.img
 gmacario@hw2228:~/Downloads/BK_FREISA_IMAGES $ gzip bk-puppygm03-20250902-0819.img
 gmacario@hw2228:~/Downloads/BK_FREISA_IMAGES $ ls -la bk-puppygm03-20250902-0819.*
