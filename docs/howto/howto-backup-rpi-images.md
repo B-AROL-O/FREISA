@@ -1,6 +1,6 @@
 # HOWTO Backup and Restore Raspberry Pi System Images
 
-This document explains how to backup Raspberry Pi system images stored on MicroSDHC (TODO: or the CM4 on-board eMMC), as well as how to restore them to a new device. 
+This document explains how to backup Raspberry Pi system images stored on MicroSDHC (TODO: or the CM4 on-board eMMC), as well as how to restore them to a new device.
 
 ## Backup system image
 
