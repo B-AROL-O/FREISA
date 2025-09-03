@@ -1,19 +1,16 @@
-# Testing Seeed Studio ReSpeaker Mic Array
-
-... kindly provided by @OrsoEric
-
-> TODO: Integrate into <https://github.com/B-AROL-O/openai-devpost-hackathon/issues/30> or one linked PR
+# HOWTO Using ReSpeaker Mic Array
 
 <!-- (2025-08-28 11:20 CEST) -->
 
 ## Reference documentation
 
-- Product Page (SKU 114993701): <https://www.seeedstudio.com/ReSpeaker-XVF3800-USB-4-Mic-Array-With-Case-p-6490.html>
-- (OLD?) Product Page (SKU 107990193): <https://www.seeedstudio.com/ReSpeaker-USB-Mic-Array-p-4247.html>
+- ReSpeaker XVF3000 Product Page (SKU 107990193): <https://www.seeedstudio.com/ReSpeaker-USB-Mic-Array-p-4247.html>
 - ReSpeaker Introduction (from Seeed Studio wiki): <https://wiki.seeedstudio.com/ReSpeaker>
-- GitHub: <https://github.com/respeaker>
+- ReSpeaker on GitHub: <https://github.com/respeaker>
 
-## Testing ReSpeaker on `hw2482`
+<!-- - (NEW) ReSpeaker XVF3800 Product Page (SKU 114993701): <https://www.seeedstudio.com/ReSpeaker-XVF3800-USB-4-Mic-Array-With-Case-p-6490.html> -->
+
+## Testing ReSpeaker on `hw2482` (Ubuntu-desktop 24.04.x)
 
 ### USB Device identification
 
@@ -106,11 +103,9 @@ Run the program (will open a GUI)
 audacity
 ```
 
-<img width="1148" height="723" alt="image" src="https://gist.github.com/user-attachments/assets/df83f2fb-3751-4a19-b2dd-77235317255b" />
+![01-audacity.png](images/01-audacity.png)
 
-TODO
-
-## Testing ReSpeaker on `delta`
+## Testing ReSpeaker on `delta` (Ubuntu-desktop 24.04.x)
 
 <!-- (2025-08-28 18:26 CEST) -->
 
@@ -175,11 +170,9 @@ Playback through delta loudspeakers --> OK
 aplay -D plughw:0,0 output.wav
 ```
 
-TODO: Is the ReSpeaker also an audio-out device?
+TODO: Verify what to connect to ReSpeaker audio-out to hear some sound
 
-TODO
-
-## Testing ReSpeaker on `puppygm03`
+## Testing ReSpeaker on `puppygm03` (Ubuntu-server 22.04.x)
 
 <!-- (2025-08-29 07:30 CEST) -->
 
@@ -191,13 +184,13 @@ arecord -l
 
 Result:
 
-```ubuntu@puppygm03c:~$ arecord -l
+```text
+ubuntu@puppygm03c:~$ arecord -l
 **** List of CAPTURE Hardware Devices ****
 card 1: sndrpisimplecar [snd_rpi_simple_card], device 0: simple-card_codec_link snd-soc-dummy-dai-0 [simple-card_codec_link snd-soc-dummy-dai-0]
   Subdevices: 1/1
   Subdevice #0: subdevice #0
-ubuntu@puppygm03c:~$text
-TODO
+ubuntu@puppygm03c:~$
 ```
 
 Same for the playback devices
@@ -285,7 +278,5 @@ ubuntu@puppygm03c:~$
 ```
 
 ReSpeaker --> card 2, Subdevice #0.
-
-TODO
 
 <!-- EOF -->
