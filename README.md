@@ -36,13 +36,13 @@ Here is [a short presentation](https://video.linux.it/w/xq3Z9khHJGTzv2NsNc1gK7?s
 
 | FirstName LastName                                                             | GitHub_ID                                     | Telegram_ID         |
 | ------------------------------------------------------------------------------ | --------------------------------------------- | ------------------- |
+| [Alessio Chessa](https://www.linkedin.com/in/alessiochessa)                    | [@aleche28](https://github.com/aleche28)      | TODO                |
 | [Pietro d'Agostino](https://www.linkedin.com/in/pietro-d-agostino-9b8199212/)  | [@pitdagosti](https://github.com/pitdagosti)  | Pit836              |
 | [Davide Macario](https://www.linkedin.com/in/davide-macario-b872b4225/)        | [@davmacario](https://github.com/davmacario)  | DavideMacario       |
 | [Gianpaolo Macario](https://www.linkedin.com/in/gmacario/)                     | [@gmacario](https://github.com/gmacario)      | gmacario            |
 | [Eric Orso](https://www.linkedin.com/in/eric-orso-56934124a/)                  | [@OrsoEric](https://github.com/OrsoEric)      | x05032MendicantBias |
 | [Gianfranco Poncini](https://www.linkedin.com/in/gianfranco-poncini-b0830340/) | [@Muwattalli](https://github.com/@Muwattalli) | Togodumno           |
-| [Gianluca Teti](https://www.linkedin.com/in/gianluca-teti)                     | [@gteti](https://github.com/gteti)            | Giatet |  
-| [Alessio Chessa](https://www.linkedin.com/in/alessiochessa)                    | [@aleche28](https://github.com/aleche28)      | TODO |
+| [Gianluca Teti](https://www.linkedin.com/in/gianluca-teti)                     | [@gteti](https://github.com/gteti)            | Giatet              |
 
 ### FREISA Team Alumni
 
