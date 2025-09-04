@@ -13,6 +13,8 @@ app = Flask(__name__)
 available_faces = ["alice", "bob", "charlie"]
 current_face = None
 
+# In-memory storage for known sounds
+# TODO: discover available sounds from "../../../assets/sounds"
 available_sounds = ["bark", "woof", "sign"]
 
 # TODO: Should we need a mapping between sentiment and filename?
@@ -53,6 +55,7 @@ def play_sound():
     # of <https://github.com/mangdangroboticsclub/mini_pupper_2_bsp>
     ...
     return jsonify({"status": True})
+
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000, debug=True)
