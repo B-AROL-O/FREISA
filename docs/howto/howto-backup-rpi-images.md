@@ -5,7 +5,7 @@ This document explains
 1. How to backup Raspberry Pi system images stored on MicroSDHC <!-- (TODO: or the CM4 on-board eMMC, or USB) -->
 2. How to restore a system image backup to a different storage device
 
-## Backup system image
+## Backup System Image
 
 <!-- (2025-09-02 08:24 CEST) -->
 
@@ -76,7 +76,7 @@ Some of the best examples in the Open Source world are:
 
 Those two programs are available for nearly all Operating Systems and - being command-line based - they can also be used from inside scripts and application software.
 
-## Restore system image
+## Restore System Image
 
 We suggest to use [balenaEtcher](https://etcher.balena.io/) for writing the image to other SD Cards.
 
@@ -98,12 +98,15 @@ Select the target MicroSDHC (in our case, a SanDisk Ultra 256 GB)
 
 Click **Flash!** and wait until balenaEtcher completes successfully.
 
-## Customize system image
+## Customize System Image
 
 TODO: Understand how to configure cloud-init by modifying the following files on the FAT32 partition of the SD Card (the one mounted as `/boot/firmware`):
 
 - `user-data`
+- `meta-data`
 - `network-config`
+
+Reference: <https://cloudinit.readthedocs.io/en/latest/explanation/format.html>
 
 TODO
 
