@@ -4,11 +4,22 @@ import time
 from os import listdir
 from os.path import isfile, join
 
-from MangDang.mini_pupper.display import BehaviorState, Display
+# from MangDang.mini_pupper.display import BehaviorState, Display
 
 print(f"INFO: {__file__}")
 
+on_freisa = False
+
+try:
+    from MangDang.mini_pupper.display import BehaviorState, Display
+    on_freisa = True
+    print("DEBUG: Running on FREISA")
+except ImportError:
+    print("WARNING: Running in simulation")
+
 mypath = "."
+if on_freisa:
+    mypath = "~/FREISA/assets/freisa"
 
 # from os import walk
 # f = []
@@ -26,12 +37,14 @@ all_images = [
 # print(f"DEBUG: len={len(all_images)}, all_images={all_images}")
 
 # Make our doggo display all_images in sequence
-disp = Display()
+if on_freisa:
+    disp = Display()
 k = 0
 for f in sorted(all_images):
     k += 1
     print(f"DEBUG: Displaying file #{k}: {f}")
-    disp.show_image(f)
+    if on_freisa:
+        disp.show_image(f)
     time.sleep(5)
 
 # disp.show_image('/var/lib/mini_pupper_bsp/test.png')
@@ -40,8 +53,10 @@ for f in sorted(all_images):
 # time.sleep(5)
 # disp.show_state(BehaviorState.TROT)
 # time.sleep(5)
-disp.show_state(BehaviorState.LOWBATTERY)
-time.sleep(5)
-disp.show_ip()
+
+if on_freisa:
+    disp.show_state(BehaviorState.LOWBATTERY)
+    time.sleep(5)
+    disp.show_ip()
 
 # EOF
