@@ -17,13 +17,13 @@ available_sounds = ["bark", "woof", "sign"]
 
 # TODO: Should we need a mapping between sentiment and filename?
 
+
 @app.route("/status", methods=["GET"])
 def list_known_faces():
     return jsonify(
-        {
-            "available_faces": available_faces,
-            "available_sounds": available_sounds
-        })
+        {"available_faces": available_faces, "available_sounds": available_sounds}
+    )
+
 
 @app.route("/face/set", methods=["POST"])
 def set_face():
@@ -31,18 +31,19 @@ def set_face():
     data = request.get_json()
     if not data or "new_face_id" not in data:
         return jsonify({"error": "Missing new_face_id"}), 400
-    
+
     new_face_id = data["new_face_id"]
-    
+
     if new_face_id not in available_faces:
         return jsonify({"error": f"Face '{new_face_id}' not recognized"}), 404
-    
+
     # TODO: Load the picture using MangDang.display
     # disp = Display()
     # disp.show_image('/var/lib/mini_pupper_bsp/test.png')
 
     current_face = new_face_id
     return jsonify({"message": f"Current face set to {current_face}"}), 200
+
 
 # @app.route("/play/sound", methods=["POST"])
 # def play_sound():
