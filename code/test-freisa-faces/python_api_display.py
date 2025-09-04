@@ -17,9 +17,9 @@ try:
 except ImportError:
     print("WARNING: Running in simulation")
 
-mypath = "."
+basedir = "."
 if on_freisa:
-    mypath = "~/FREISA/assets/freisa"
+    basedir = "/home/ubuntu/FREISA/assets/faces"
 
 # from os import walk
 # f = []
@@ -31,7 +31,7 @@ if on_freisa:
 
 # Retrieve the list of all "*.png" files in the current directory
 all_images = [
-    f for f in listdir(mypath) if isfile(join(mypath, f)) and f[-4:] == ".png"
+    join(basedir, f) for f in listdir(basedir) if isfile(join(basedir, f)) and f[-4:] == ".png"
 ]
 
 # print(f"DEBUG: len={len(all_images)}, all_images={all_images}")
