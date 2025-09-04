@@ -1,6 +1,9 @@
 # HOWTO Backup and Restore Raspberry Pi System Images
 
-This document explains how to backup Raspberry Pi system images stored on MicroSDHC (TODO: or the CM4 on-board eMMC), as well as how to restore them to a new device.
+This document explains
+
+1. How to backup Raspberry Pi system images stored on MicroSDHC <!-- (TODO: or the CM4 on-board eMMC, or USB) -->
+2. How to restore a system image backup to a different storage device
 
 ## Backup system image
 
@@ -12,7 +15,8 @@ This document explains how to backup Raspberry Pi system images stored on MicroS
 4. Type the following commands on the host to dump the SD Card contents into a `*.img.gz` file:
 
 ```bash
-# Identify the device assigned to the SD Card (replace '/dev/sdX` with the actual device)
+# Identify the device assigned to the SD Card
+# (replace '/dev/sdX` with the actual device)
 lsblk
 
 # Create the actual backup
@@ -50,7 +54,27 @@ gmacario@hw2228:~/Downloads/BK_FREISA_IMAGES $
 
 Eject the SD Card from the PC.
 
-To simply future management, we suggest to archive multiple copies of the backups, including one on a reliable online service such as [Amazon S3](https://aws.amazon.com/s3), [Azure Blob Storage](https://azure.microsoft.com/en-us/products/storage/blobs), [Cubbit Cloud](https://www.cubbit.io) or [Git Large File Storage](https://git-lfs.com/).
+### Backup Strategy
+
+We strongly suggest to adopt a [**3-2-1 Backup Strategy**](https://en.wikipedia.org/wiki/Glossary_of_backup_terms) and keep multiple copies of the file(s) just backed up, including one on a reliable online service such as:
+
+- [Amazon S3](https://aws.amazon.com/s3)
+- [Azure Blob Storage](https://azure.microsoft.com/en-us/products/storage/blobs)
+- [Cubbit Cloud](https://www.cubbit.io)
+- [Dropbox](https://www.dropbox.com/)
+- [Git Large File Storage](https://git-lfs.com/)
+- [Microsoft OneDrive](https://www.microsoft.com/en-us/microsoft-365/onedrive)
+
+### Synchronization Tools
+
+Several tools - either proprietary or Open Source - exist to ensure that the files stored in different locations are kept aligned and in sync.
+
+Some of the best examples in the Open Source world are:
+
+- [rclone](https://rclone.org/)
+- [rsync](https://en.wikipedia.org/wiki/Rsync)
+
+Those two programs are available for nearly all Operating Systems and - being command-line based - they can also be used from inside scripts and application software.
 
 ## Restore system image
 
@@ -62,19 +86,17 @@ Insert a blank SD Card into the USB reader, then type
 balena-etcher
 ```
 
-<img width="802" height="519" alt="image" src="https://gist.github.com/user-attachments/assets/5aad6372-602c-4a46-8b2c-a27d949b7aad" />
+![balenaetcher-01](images/balenaetcher-01.png)
 
 Select either the file or the remote URL of the backup.
 
-<img width="802" height="519" alt="image" src="https://gist.github.com/user-attachments/assets/9f133ef3-3e5f-45a3-9810-9cd07d1a2c94" />
+![balenaetcher-02](images/balenaetcher-02.png)
 
 Select the target MicroSDHC (in our case, a SanDisk Ultra 256 GB)
 
-<img width="802" height="519" alt="image" src="https://gist.github.com/user-attachments/assets/62734b25-f0c7-4494-b994-7478682b32e9" />
+![balenaetcher-03](images/balenaetcher-03.png)
 
-Click **Flash!** and wait until
-
-TODO
+Click **Flash!** and wait until balenaEtcher completes successfully.
 
 ## Customize system image
 
