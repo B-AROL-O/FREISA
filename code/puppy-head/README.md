@@ -25,7 +25,7 @@ uv run puppy_head
 Result:
 
 ```text
-(puppy-head) vscode ➜ .../external/FREISA/code/puppy-head (feat-add-puppy-head) $ uv run puppy_head.py 
+(puppy-head) vscode ➜ .../external/FREISA/code/puppy-head (feat-add-puppy-head) $ uv run puppy_head.py
  * Serving Flask app 'puppy_head'
  * Debug mode: on
 WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
