@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, jsonify, request
 
 # TODO: Take inspiration from
 # <https://github.com/mangdangroboticsclub/apps-md-robots/tree/main/facial-expression-app>
@@ -45,10 +45,14 @@ def set_face():
     return jsonify({"message": f"Current face set to {current_face}"}), 200
 
 
-# @app.route("/play/sound", methods=["POST"])
-# def play_sound():
-#     See <https://github.com/mangdangroboticsclub/mini_pupper_2_bsp/blob/mini_pupper_2pro_bsp/demos/audio_test.py>
-#     ...
+@app.route("/play/sound", methods=["POST"])
+def play_sound():
+    # TODO: Check if input file exists
+    # TODO: Check if output device exists
+    # See `demos/audio_test.py` in branch `mini_pupper_2pro_bsp`
+    # of <https://github.com/mangdangroboticsclub/mini_pupper_2_bsp>
+    ...
+    return jsonify({"status": True})
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000, debug=True)
