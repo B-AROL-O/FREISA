@@ -61,7 +61,7 @@ card 3: ArrayUAC10 [ReSpeaker 4 Mic Array (UAC1.0)], device 0: USB Audio [USB Au
 gmacario@hw2482:~$
 ```
 
-In the case of `hw2481`, **card number is 3**
+In the case of `hw2482`, **card number is 3**
 
 Record audio (5 seconds)
 
@@ -109,7 +109,7 @@ audacity
 
 <!-- (2025-08-28 18:26 CEST) -->
 
-Connect the microphone to one USB port of `delta`` using a USB-A to MicroUSB cable
+Connect the microphone to one USB port of `delta` using a USB-A to MicroUSB cable
 
 ```bash
 sudo dmesg -w
@@ -146,7 +146,7 @@ card 1: ArrayUAC10 [ReSpeaker 4 Mic Array (UAC1.0)], device 0: USB Audio [USB Au
 gmacario@delta:~$
 ```
 
-In the case of `hw2481`, **card number is 1**
+In the case of `delta`, **card number is 1**
 
 Record audio (5 seconds)
 
