@@ -12,7 +12,7 @@ chown -R $USER:$USER ${HOME}
 [ -d "/dev/snd" ] && chgrp -R adm /dev/snd
 
 mkdir -p $HOME/.vnc
-echo $VNC_PASSWORD | vncpasswd -f > $HOME/.vnc/passwd
+echo "$VNC_PASSWORD" | vncpasswd -f > $HOME/.vnc/passwd
 chmod 600 $HOME/.vnc/passwd
 chown -R $USER:$USER $HOME
 sed -i "s/password = WebUtil.getConfigVar('password');/password = '$VNC_PASSWORD'/" /usr/lib/novnc/app/ui.js
@@ -345,7 +345,7 @@ VNC_PASSWORD=
 
 echo "============================================================================================"
 echo "NOTE 1: --security-opt seccomp=unconfined flag is required to launch Ubuntu Jammy based image."
-echo -e 'See \e]8;;https://github.com/Tiryoh/docker-ros2-desktop-vnc/pull/56\e\\https://github.com/Tiryoh/docker-ros2-desktop-vnc/pull/56\e]8;;\e\\'
+echo -e "See \e]8;;https://github.com/Tiryoh/docker-ros2-desktop-vnc/pull/56\e\\https://github.com/Tiryoh/docker-ros2-desktop-vnc/pull/56\e]8;;\e\\"
 echo "============================================================================================"
 
 exec /bin/tini -- supervisord -n -c /etc/supervisor/supervisord.conf
