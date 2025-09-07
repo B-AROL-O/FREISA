@@ -84,7 +84,7 @@ all_images = [
 ]
 print(f"DEBUG: len={len(all_images)}, all_images={all_images}")
 
-available_faces = all_images
+available_faces = sorted(all_images)
 current_face = None
 
 if on_freisa:
@@ -103,7 +103,7 @@ all_sounds = [
     if isfile(join(sounds_dir, f)) and f[-4:] == ".mp3"
 ]
 print(f"DEBUG: len={len(all_sounds)}, all_sounds={all_sounds}")
-available_sounds = all_sounds
+available_sounds = sorted(all_sounds)
 
 # TODO: Should we need a mapping between sentiment and filename?
 
@@ -117,27 +117,31 @@ def list_known_faces():
     )
 
 
-@app.route("/face/set", methods=["POST"])
+@app.route("/display/set", methods=["POST"])
 def set_face():
     global current_face
     data = request.get_json()
-    if not data or "new_face_id" not in data:
-        return jsonify({"error": "Missing new_face_id"}), 400
+    if not data or "path" not in data:
+        return jsonify({"error": "Missing path"}), 400
 
-    new_face_id = data["new_face_id"]
+    new_face_path = data["path"]
 
-    if new_face_id not in available_faces:
-        return jsonify({"error": f"Face '{new_face_id}' not recognized"}), 404
+    if new_face_path not in available_faces:
+        return jsonify({"error": f"Path '{new_face_path}' not found"}), 404
 
-    # TODO: Load the picture using MangDang.display
-    # disp = Display()
-    # disp.show_image('/var/lib/mini_pupper_bsp/test.png')
+    if on_freisa:
+        # Load the picture using MangDang.display
+        disp = Display()
+        # disp.show_image('/var/lib/mini_pupper_bsp/test.png')
+        disp.show_image(new_face_path)
+    else:
+        print(f"DEBUG: Should load {new_face_path}")
 
-    current_face = new_face_id
-    return jsonify({"message": f"Current face set to {current_face}"}), 200
+    current_face = new_face_path
+    return jsonify({"message": f"FREISA face set to {current_face}"}), 200
 
 
-@app.route("/play/sound", methods=["POST"])
+@app.route("/sound/play", methods=["POST"])
 def play_sound():
     # TODO: Check if input file exists
     # TODO: Check if output device exists
