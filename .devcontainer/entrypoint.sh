@@ -2,8 +2,8 @@
 
 # VNC password
 VNC_PASSWORD=${PASSWORD:-ubuntu}
-USER=ubuntu
-PASSWORD=ubuntu
+USER=${USER:-ubuntu}
+PASSWORD=${PASSWORD:-ubuntu}
 HOME=/home/$USER
 
 echo "$USER:$PASSWORD" | /usr/sbin/chpasswd 2> /dev/null || echo ""
