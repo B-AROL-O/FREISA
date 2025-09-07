@@ -19,7 +19,7 @@ source .venv/bin/activate
 ### Run the server
 
 ```bash
-uv run puppy_head
+uv run puppy_head.py
 ```
 
 Result:
@@ -45,5 +45,35 @@ curl http://localhost:5000/status
 ```
 
 For the complete API documentation please refer to the [source code](puppy_head.py).
+
+## Run on a FREISA Robot Dog
+
+Logged in as `ubuntu@puppyxxyy`:
+
+```bash
+# Install uv if not already available
+which uv || (curl -LsSf https://astral.sh/uv/install.sh | sh)
+
+# Download FREISA source tree
+cd ~
+git clone https://github.com/B-AROL-O/FREISA
+
+# Make sure you have some items in faces_dir to choose from
+cd ~/FREISA/assets/faces
+ls -la
+# (Optional) Populate faces_dir with new files
+# curl -fsSL -O "${URL_WHERE_IMAGE_IS_STORED}"
+
+# Make sure you have some items in sounds_dir to choose from
+cd ~/FREISA/assets/sounds
+ls -la
+# (Optional) Populate sounds_dir with new files
+# curl -fsSL -O "${URL_WHERE_AUDIO_IS_STORED}"
+
+# Run the puppy-head backend server
+cd ~/FREISA/code/puppy-head
+uv run puppy_head.py
+```
+
 
 <!-- EOF -->

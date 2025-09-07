@@ -4,22 +4,38 @@
 # File:    puppy_head.py
 #
 # ===========================================================================
-# **NOTE**: In order to test the code on your puppy, some assets must uploaded:
+# **NOTE 1**: See README.md for how to test the code on your puppy.
+#
+# **NOTE 2**: You must populate assets folders.
+#
+# **NOTE 3**: Should be tested on a FREISA dog after installing
+# some additional assets:
 #
 # /home/ubuntu/FREISA/assets/faces:
 # - TODO
 #
 # /home/ubuntu/FREISA/assets/sounds:
+# - <https://github.com/B-AROL-O/mini_pupper_2_bsp/blob/main/Audio/power_on.mp3>
 # - <https://pixabay.com/sound-effects/small-dog-barking-84707/>
+# - Audio files from Dropbox: 2025-09-03-audio-command-samples
+#   (to be converted into 8000 .wav files)
 #
-# ===========================================================================
+# Example: on the host:
+#
+# scp Downloads/small-dog-barking-84707.mp3 \
+#     puppygm03:FREISA/assets/sounds
+#
+# # ===========================================================================
 # Next steps (TODO: Create issues in openai-devpost-hackathon if not done)
 #
 # - [ ] Retrieve faces_dir from env variable FREISA_FACE_PATH
 #
-# - [ ] Allow faces_dir to be a list of directories 
-# (with a same format of env var PATH)
-# so that if on_fresa we can also include "/var/lib/xxx"
+# - [ ] Allow faces_dir to be a list of directories
+# (using a similar format to environment varriable PATH)
+# so that if on_fresa we can also include (for instance)
+#
+#   - "/var/lib/mini_pupper_bsp"             (install directory)
+#   - "/home/ubuntu/mini_pupper_bsp/Display" (working copy)
 #
 # - [ ] Do the same for FREISA_SOUND_PATH
 #
