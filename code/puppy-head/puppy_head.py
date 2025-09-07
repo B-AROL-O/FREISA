@@ -1,11 +1,35 @@
-# ==============================================
+# ===========================================================================
 # Project: FREISA
-# Folder: /code/puppy-head
-# File: puppy_head.py
+# Folder:  /code/puppy-head
+# File:    puppy_head.py
 #
-# TODO: Take inspiration from
+# ===========================================================================
+# **NOTE**: In order to test the code on your puppy, some assets must uploaded:
+#
+# /home/ubuntu/FREISA/assets/faces:
+# - TODO
+#
+# /home/ubuntu/FREISA/assets/sounds:
+# - <https://pixabay.com/sound-effects/small-dog-barking-84707/>
+#
+# ===========================================================================
+# Next steps (TODO: Create issues in openai-devpost-hackathon if not done)
+#
+# - [ ] Retrieve faces_dir from env variable FREISA_FACE_PATH
+#
+# - [ ] Allow faces_dir to be a list of directories 
+# (with a same format of env var PATH)
+# so that if on_fresa we can also include "/var/lib/xxx"
+#
+# - [ ] Do the same for FREISA_SOUND_PATH
+#
+# - [ ] Canonicize faces_dir to remove extra "../" in faces_dir and sound_dir
+#
+# - [ ] Take inspiration from
 # <https://github.com/mangdangroboticsclub/apps-md-robots/tree/main/facial-expression-app>
-# ==============================================
+#
+# - [ ] Check <https://github.com/suno-ai/bark>
+# ===========================================================================
 
 from flask import Flask, jsonify, request
 from os import listdir
@@ -15,8 +39,7 @@ print(f"INFO: {__file__}")
 
 on_freisa = False
 
-# TODO: Attempt to import MangDang. Fallback to simulation on error
-
+# Try importing package "MangDang". Fallback to simulation on error
 try:
     from MangDang.mini_pupper.display import Display, BehaviorState
 
@@ -34,6 +57,9 @@ else:
     faces_dir = join(dirname(__file__), "../../assets/faces")
 print(f"DEBUG: faces_dir={faces_dir}")
 
+# In-memory storage for known faces
+# available_faces = ["sad", "happy", "thinking"] (MOCK)
+
 # Retrieve the list of all "*.png" files in faces_dir
 all_images = [
     join(faces_dir, f)
@@ -42,21 +68,36 @@ all_images = [
 ]
 print(f"DEBUG: len={len(all_images)}, all_images={all_images}")
 
-# In-memory storage for known faces
-# available_faces = ["alice", "bob", "charlie"]
 available_faces = all_images
 current_face = None
 
+if on_freisa:
+    sounds_dir = "/home/ubuntu/FREISA/assets/sounds"
+else:
+    sounds_dir = join(dirname(__file__), "../../assets/sounds")
+print(f"DEBUG: sounds_dir={sounds_dir}")
+
 # In-memory storage for known sounds
-# TODO: discover available sounds from "../../../assets/sounds"
-available_sounds = ["bark", "woof", "sign"]
+# available_sounds = ["bark", "woof", "whine"] (MOCK)
+
+# Discover available sounds from sounds_dir
+all_sounds = [
+    join(sounds_dir, f)
+    for f in listdir(sounds_dir)
+    if isfile(join(sounds_dir, f)) and f[-4:] == ".mp3"
+]
+print(f"DEBUG: len={len(all_sounds)}, all_sounds={all_sounds}")
+available_sounds = all_sounds
 
 # TODO: Should we need a mapping between sentiment and filename?
 
 @app.route("/status", methods=["GET"])
 def list_known_faces():
     return jsonify(
-        {"available_faces": available_faces, "available_sounds": available_sounds}
+        {"faces_dir": faces_dir,
+         "sounds_dir": sounds_dir,
+         "available_faces": available_faces,
+         "available_sounds": available_sounds}
     )
 
 
