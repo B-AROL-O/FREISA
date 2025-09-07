@@ -52,7 +52,7 @@ Logged in as `ubuntu@puppyxxyy`:
 
 ```bash
 # Install uv if not already available
-which uv || (curl -LsSf https://astral.sh/uv/install.sh | sh)
+# which uv || (curl -LsSf https://astral.sh/uv/install.sh | sh)
 
 # Download FREISA source tree
 cd ~
@@ -72,7 +72,8 @@ ls -la
 
 # Run the puppy-head backend server
 cd ~/FREISA/code/puppy-head
-uv run puppy_head.py
+python puppy_head.py
+# uv run puppy_head.py
 ```
 
 

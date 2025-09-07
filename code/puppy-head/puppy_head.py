@@ -53,17 +53,24 @@ from os.path import dirname, isfile, join
 
 print(f"INFO: {__file__}")
 
-on_freisa = False
+# Assume we are running on FREISA
+# We will fallback to simulation if we discover we are not
+on_freisa = True
 
-# Try importing package "MangDang". Fallback to simulation on error
 try:
-    from MangDang.mini_pupper.display import Display, BehaviorState
+    # FREISA has MangDang.mini_pupper.display installed
+    from MangDang.mini_pupper.display import BehaviorState, Display
 
-    on_freisa = True
-    print("DEBUG: Running on FREISA")
 except ImportError:
-    print("WARNING: Running in simulation")
+    print("WARNING: Cannot import MangDang.mini_pupper_display")
+    on_freisa = False
 
+# TODO: Check if audio is working, set on_freisa = False in case
+
+if on_freisa:
+    print("INFO: Running on FREISA approved hardware")
+else:
+    print("WARNING: Running in simulated mode (still useful for development)")
 
 app = Flask(__name__)
 
