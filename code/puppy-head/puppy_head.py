@@ -26,7 +26,7 @@
 #     puppygm03:FREISA/assets/sounds
 #
 # # ===========================================================================
-# Next steps (TODO: Create issues in openai-devpost-hackathon if not done)
+# Next steps (TODO Create issues in openai-devpost-hackathon if not done)
 #
 # - [ ] Retrieve faces_dir from env variable FREISA_FACE_PATH
 #
@@ -62,15 +62,34 @@ try:
     from MangDang.mini_pupper.display import BehaviorState, Display
 
 except ImportError:
-    print("WARNING: Cannot import MangDang.mini_pupper_display")
+    print("WARNING: Cannot find package MangDang.mini_pupper")
     on_freisa = False
 
-# TODO: Check if audio is working, set on_freisa = False in case
+# Try importing python-sounddevice
+# https://python-sounddevice.readthedocs.io/
+try:
+    import sounddevice as sd
+
+except ImportError:
+    print("WARNING: Cannot find package sounddevice")
+    on_freisa = False
+except OSError:
+    print("WARNING: Cannot find low-level audio drivers")
+    on_freisa = False
+
+# Try importing python-soundfile
+# https://python-soundfile.readthedocs.io/
+try:
+    import soundfile as sf
+
+except ImportError:
+    print("WARNING: Cannot find pacakge soundfile")
+    on_freisa = False
 
 if on_freisa:
     print("INFO: Running on FREISA approved hardware")
 else:
-    print("WARNING: Running in simulated mode (still useful for development)")
+    print("INFO: Running in simulated mode (still useful for development)")
 
 app = Flask(__name__)
 
@@ -145,17 +164,62 @@ def set_face():
         print(f"DEBUG: Should load {new_face_path}")
 
     current_face = new_face_path
-    return jsonify({"message": f"FREISA face set to {current_face}"}), 200
+    return jsonify({
+        "status": True,
+        "message": f"FREISA face set to {current_face}"}
+    ), 200
 
 
 @app.route("/sound/play", methods=["POST"])
 def play_sound():
-    # TODO: Check if input file exists
+    data = request.get_json()
+    if not data or "path" not in data:
+        return jsonify({"error": "Missing path"}), 400
+    
+    sound_path = data["path"]
+
+    # Check if input path is allowed
+    if sound_path not in available_sounds:
+        return jsonify({"error": f"Path '{sound_path}' not found"}), 404
+    
     # TODO: Check if output device exists
     # See `demos/audio_test.py` in branch `mini_pupper_2pro_bsp`
     # of <https://github.com/mangdangroboticsclub/mini_pupper_2_bsp>
-    ...
-    return jsonify({"status": True})
+
+    _ = """
+# AUDIO OUTPUT DEVICES ON FREISA HARDWARE (WITHOUT USB ACCESSORIES)
+
+ubuntu@puppygm03:~/FREISA/code/puppy-head$ aplay -l
+**** List of PLAYBACK Hardware Devices ****
+card 0: Headphones [bcm2835 Headphones], device 0: bcm2835 Headphones [bcm2835 Headphones]
+  Subdevices: 8/8
+  Subdevice #0: subdevice #0
+  Subdevice #1: subdevice #1
+  Subdevice #2: subdevice #2
+  Subdevice #3: subdevice #3
+  Subdevice #4: subdevice #4
+  Subdevice #5: subdevice #5
+  Subdevice #6: subdevice #6
+  Subdevice #7: subdevice #7
+card 1: sndrpisimplecar [snd_rpi_simple_card], device 0: simple-card_codec_link snd-soc-dummy-dai-0 [simple-card_codec_link snd-soc-dummy-dai-0]
+  Subdevices: 1/1
+  Subdevice #0: subdevice #0
+ubuntu@puppygm03:~/FREISA/code/puppy-head$
+"""
+
+    # TODO Configure output device
+    if on_freisa:
+        data, samplerate = sf.read(sound_path)
+        print(f"DEBUG: samplerate={samplerate}")
+        print("Mini Pupper 2 audio playback start...")
+        # TODO sd.play(record, fs)
+        # TODO sd.wait()  # Wait for playback to finish
+        print("Mini Pupper 2 audio playback end.")
+
+    return jsonify({
+        "status": True,
+        "message": f"FREISA is playing {sound_path}"
+    }), 200
 
 
 if __name__ == "__main__":

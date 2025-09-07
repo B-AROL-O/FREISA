@@ -6,4 +6,6 @@ readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
     "flask>=3.1.2",
+    "sounddevice>=0.5.2",
+    "soundfile>=0.13.1",
 ]
