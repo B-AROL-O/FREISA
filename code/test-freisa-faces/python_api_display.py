@@ -11,6 +11,7 @@ on_freisa = False
 try:
     # Try importing package MangDang
     from MangDang.mini_pupper.display import BehaviorState, Display
+
     on_freisa = True
     print("DEBUG: Running on FREISA")
 except ImportError:
@@ -22,7 +23,9 @@ if on_freisa:
 
 # Retrieve the list of all "*.png" files in the current directory
 all_images = [
-    join(basedir, f) for f in listdir(basedir) if isfile(join(basedir, f)) and f[-4:] == ".png"
+    join(basedir, f)
+    for f in listdir(basedir)
+    if isfile(join(basedir, f)) and f[-4:] == ".png"
 ]
 
 # print(f"DEBUG: len={len(all_images)}, all_images={all_images}")
