@@ -1,16 +1,50 @@
-from flask import Flask, jsonify, request
-
+# ==============================================
+# Project: FREISA
+# Folder: /code/puppy-head
+# File: puppy_head.py
+#
 # TODO: Take inspiration from
 # <https://github.com/mangdangroboticsclub/apps-md-robots/tree/main/facial-expression-app>
+# ==============================================
+
+from flask import Flask, jsonify, request
+from os import listdir
+from os.path import dirname, isfile, join
+
+print(f"INFO: {__file__}")
+
+on_freisa = False
 
 # TODO: Attempt to import MangDang. Fallback to simulation on error
-# from MangDang.mini_pupper.display import Display, BehaviorState
+
+try:
+    from MangDang.mini_pupper.display import Display, BehaviorState
+
+    on_freisa = True
+    print("DEBUG: Running on FREISA")
+except ImportError:
+    print("WARNING: Running in simulation")
+
 
 app = Flask(__name__)
 
+if on_freisa:
+    faces_dir = "/home/ubuntu/FREISA/assets/faces"
+else:
+    faces_dir = join(dirname(__file__), "../../assets/faces")
+print(f"DEBUG: faces_dir={faces_dir}")
+
+# Retrieve the list of all "*.png" files in faces_dir
+all_images = [
+    join(faces_dir, f)
+    for f in listdir(faces_dir)
+    if isfile(join(faces_dir, f)) and f[-4:] == ".png"
+]
+print(f"DEBUG: len={len(all_images)}, all_images={all_images}")
+
 # In-memory storage for known faces
-# TODO: discover available faces from "../../../assets/faces"
-available_faces = ["alice", "bob", "charlie"]
+# available_faces = ["alice", "bob", "charlie"]
+available_faces = all_images
 current_face = None
 
 # In-memory storage for known sounds
@@ -18,7 +52,6 @@ current_face = None
 available_sounds = ["bark", "woof", "sign"]
 
 # TODO: Should we need a mapping between sentiment and filename?
-
 
 @app.route("/status", methods=["GET"])
 def list_known_faces():
