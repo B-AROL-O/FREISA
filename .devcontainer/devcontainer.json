@@ -1,13 +1,23 @@
-// For format details, see https://aka.ms/devcontainer.json. For config options, see the
-// README at: https://github.com/devcontainers/templates/tree/main/src/ubuntu
 {
   "name": "FREISA",
-  // Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
-  "image": "mcr.microsoft.com/devcontainers/base:noble",
-
-  // Required by Tailscale
-  "runArgs": ["--device=/dev/net/tun"],
-
+  "build": {
+    "dockerfile": "./Dockerfile",
+    "context": ".",
+    "args": {
+      "USERNAME": "vscode"
+    }
+  },
+  "runArgs": [
+    "--device=/dev/net/tun",
+    "-p",
+    "6080:80",
+    "--name",
+    "freisa-devcontainer"
+  ],
+  "containerEnv": {
+    "USER": "vscode",
+    "PASSWORD": "vscode"
+  },
   // Features to add to the dev container. More info: https://containers.dev/features.
   "features": {
     "ghcr.io/devcontainers/features/azure-cli:1": {},
@@ -19,14 +29,17 @@
     "ghcr.io/jsburckhardt/devcontainer-features/uv:1": {},
     "ghcr.io/kreemer/features/chrometesting:1": {},
     "ghcr.io/schlich/devcontainer-features/cypress:1": {},
+    "ghcr.io/devcontainers/features/common-utils:2": {},
     "ghcr.io/tailscale/codespace/tailscale": {
       "version": "latest"
     }
   },
 
   // Use 'forwardPorts' to make a list of ports inside the container available locally.
-  "forwardPorts": [6080, 5901],
-
+  "forwardPorts": [
+    6080,
+    5901
+  ],
   "portsAttributes": {
     "6080": {
       "label": "desktop"
@@ -36,6 +49,7 @@
     }
   },
 
+  "postStartCommand": "nohup sudo /bin/bash -c '/entrypoint.sh &' > /tmp/nohup.out",
   // Use 'postCreateCommand' to run commands after the container is created.
   // "postCreateCommand": "uname -a",
   // Configure tool-specific properties.
@@ -44,7 +58,9 @@
       "extensions": [
         "esbenp.prettier-vscode",
         "mhutchie.git-graph",
-        "ms-python.black-formatter"
+        "ms-python.black-formatter",
+        "ms-python.python",
+        "ms-iot.vscode-ros"
       ]
     }
   }
