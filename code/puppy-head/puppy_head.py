@@ -16,6 +16,7 @@
 #
 # /home/ubuntu/FREISA/assets/sounds:
 # - <https://github.com/B-AROL-O/mini_pupper_2_bsp/blob/main/Audio/power_on.mp3>
+# - <https://pixabay.com/sound-effects/dog-bark-382732/>
 # - <https://pixabay.com/sound-effects/small-dog-barking-84707/>
 # - Audio files from Dropbox: 2025-09-03-audio-command-samples
 #   (to be converted into 8000 .wav files)
@@ -126,7 +127,13 @@ print(f"DEBUG: sounds_dir={sounds_dir}")
 all_sounds = [
     join(sounds_dir, f)
     for f in listdir(sounds_dir)
-    if isfile(join(sounds_dir, f)) and f[-4:] == ".mp3"
+    if isfile(join(sounds_dir, f))
+    # and f[-4:] == ".mp3"
+    and (
+        f.endswith(".mp3")
+        or f.endswith(".ogg")
+        or f.endswith(".wav")
+    )
 ]
 print(f"DEBUG: len={len(all_sounds)}, all_sounds={all_sounds}")
 available_sounds = sorted(all_sounds)
@@ -211,10 +218,15 @@ ubuntu@puppygm03:~/FREISA/code/puppy-head$
     if on_freisa:
         data, samplerate = sf.read(sound_path)
         print(f"DEBUG: samplerate={samplerate}")
-        print("Mini Pupper 2 audio playback start...")
+        print(f"DEBUG: Audio playback start: {sound_path}")
+
+        # Audio record parameters
+        fs = 48000  # 48KHz,Audio sampling rate
+        # duration = 5  # Recording duration in seconds
         # TODO sd.play(record, fs)
         # TODO sd.wait()  # Wait for playback to finish
-        print("Mini Pupper 2 audio playback end.")
+
+        print("DEBUG: udio playback end")
 
     return jsonify({
         "status": True,
