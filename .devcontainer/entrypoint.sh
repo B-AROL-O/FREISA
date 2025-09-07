@@ -18,32 +18,32 @@
 VNC_PASSWORD=${PASSWORD:-ubuntu}
 USER=${USER:-ubuntu}
 PASSWORD=${PASSWORD:-ubuntu}
-HOME=/home/$USER
+HOME="/home/$USER"
 
 echo "$USER:$PASSWORD" | /usr/sbin/chpasswd 2> /dev/null || echo ""
-cp -r /root/{.config,.gtkrc-2.0,.asoundrc} ${HOME} 2>/dev/null
-chown -R $USER:$USER ${HOME}
+cp -r /root/{.config,.gtkrc-2.0,.asoundrc} "${HOME}" 2>/dev/null
+chown -R "$USER":"$USER" "${HOME}"
 [ -d "/dev/snd" ] && chgrp -R adm /dev/snd
 
-mkdir -p $HOME/.vnc
-echo "$VNC_PASSWORD" | vncpasswd -f > $HOME/.vnc/passwd
-chmod 600 $HOME/.vnc/passwd
-chown -R $USER:$USER $HOME
+mkdir -p "$HOME"/.vnc
+echo "$VNC_PASSWORD" | vncpasswd -f > "$HOME/.vnc/passwd"
+chmod 600 "$HOME/.vnc/passwd"
+chown -R "$USER":"$USER" "$HOME/.vnc"
 sed -i "s/password = WebUtil.getConfigVar('password');/password = '$VNC_PASSWORD'/" /usr/lib/novnc/app/ui.js
 
 # xstartup
 XSTARTUP_PATH=$HOME/.vnc/xstartup
-cat << EOF > $XSTARTUP_PATH
+cat << EOF > "$XSTARTUP_PATH"
 #!/bin/sh
 unset DBUS_SESSION_BUS_ADDRESS
 mate-session
 EOF
-chown $USER:$USER $XSTARTUP_PATH
-chmod 755 $XSTARTUP_PATH
+chown "$USER":"$USER" "$XSTARTUP_PATH"
+chmod 755 "$XSTARTUP_PATH"
 
 # vncserver launch
 VNCRUN_PATH=$HOME/.vnc/vnc_run.sh
-cat << EOF > $VNCRUN_PATH
+cat << EOF > "$VNCRUN_PATH"
 #!/bin/sh
 
 # Workaround for issue when image is created with "docker commit".
@@ -78,18 +78,18 @@ EOF
 
 # colcon
 BASHRC_PATH=$HOME/.bashrc
-grep -F "source /opt/ros/$ROS_DISTRO/setup.bash" $BASHRC_PATH || echo "source /opt/ros/$ROS_DISTRO/setup.bash" >> $BASHRC_PATH
-grep -F "source /usr/share/colcon_argcomplete/hook/colcon-argcomplete.bash" $BASHRC_PATH || echo "source /usr/share/colcon_argcomplete/hook/colcon-argcomplete.bash" >> $BASHRC_PATH
-chown $USER:$USER $BASHRC_PATH
+grep -F "source /opt/ros/$ROS_DISTRO/setup.bash" "$BASHRC_PATH" || echo "source /opt/ros/$ROS_DISTRO/setup.bash" >> "$BASHRC_PATH"
+grep -F "source /usr/share/colcon_argcomplete/hook/colcon-argcomplete.bash" "$BASHRC_PATH" || echo "source /usr/share/colcon_argcomplete/hook/colcon-argcomplete.bash" >> "$BASHRC_PATH"
+chown "$USER":"$USER" "$BASHRC_PATH"
 
 # Fix rosdep permission
-mkdir -p $HOME/.ros
-cp -r /root/.ros/rosdep $HOME/.ros/rosdep
-chown -R $USER:$USER $HOME/.ros
+mkdir -p "$HOME/.ros"
+cp -r /root/.ros/rosdep "$HOME/.ros/rosdep"
+chown -R "$USER":"$USER" "$HOME/.ros"
 
 # Add terminator shortcut
-mkdir -p $HOME/Desktop
-cat << EOF > $HOME/Desktop/terminator.desktop
+mkdir -p "$HOME/Desktop"
+cat << EOF > "$HOME/Desktop/terminator.desktop"
 [Desktop Entry]
 Name=Terminator
 Comment=Multiple terminals in one window
@@ -107,7 +107,7 @@ Name=Open a New Window
 Exec=terminator
 TargetEnvironment=Unity
 EOF
-cat << EOF > $HOME/Desktop/firefox.desktop
+cat << EOF > "$HOME/Desktop/firefox.desktop"
 [Desktop Entry]
 Version=1.0
 Name=Firefox Web Browser
@@ -331,7 +331,7 @@ Name[uk]=–í—ñ–¥–∫—Ä–∏—Ç–∏ –Ω–æ–≤–µ –�
 Name[zh_TW]=ÈñãÂïüÊñ∞Èö±ÁßÅÁÄèË¶ΩË¶ñÁ™ó
 Exec=firefox -private-window
 EOF
-cat << EOF > $HOME/Desktop/codium.desktop
+cat << EOF > "$HOME/Desktop/codium.desktop"
 [Desktop Entry]
 Name=VSCodium
 Comment=Code Editing. Redefined.
@@ -351,7 +351,7 @@ Name=New Empty Window
 Exec=/usr/share/codium/codium --new-window %F
 Icon=vscodium
 EOF
-chown -R $USER:$USER $HOME/Desktop
+chown -R "$USER":"$USER" "$HOME/Desktop"
 
 # clearup
 PASSWORD=
