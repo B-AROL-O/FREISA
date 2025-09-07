@@ -49,6 +49,7 @@
 # ===========================================================================
 
 from flask import Flask, jsonify, request
+import os
 from os import listdir
 from os.path import dirname, isfile, join
 
@@ -223,10 +224,16 @@ ubuntu@puppygm03:~/FREISA/code/puppy-head$
         # Audio record parameters
         fs = 48000  # 48KHz,Audio sampling rate
         # duration = 5  # Recording duration in seconds
+
+        # Set the default speaker volume to maximum
+        # Headphone number is 0 without HDMI output
+        # Headphone number is 1 when HDMI connect the display
+        os.system("amixer -c 0 sset 'Headphone' 100%")
+
         # TODO sd.play(record, fs)
         # TODO sd.wait()  # Wait for playback to finish
 
-        print("DEBUG: udio playback end")
+        print("DEBUG: Audio playback end")
 
     return jsonify({
         "status": True,
