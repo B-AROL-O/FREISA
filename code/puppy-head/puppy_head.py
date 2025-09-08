@@ -61,7 +61,7 @@ on_freisa = True
 
 try:
     # FREISA has MangDang.mini_pupper.display installed
-    from MangDang.mini_pupper.display import BehaviorState, Display
+    from MangDang.mini_pupper.display import BehaviorState, Display # pyright: ignore[reportMissingImports]
 
 except ImportError:
     print("WARNING: Cannot find package MangDang.mini_pupper")
@@ -133,24 +133,23 @@ all_sounds = [
     for f in listdir(sounds_dir)
     if isfile(join(sounds_dir, f))
     # and f[-4:] == ".mp3"
-    and (
-        f.endswith(".mp3")
-        or f.endswith(".ogg")
-        or f.endswith(".wav")
-    )
+    and (f.endswith(".mp3") or f.endswith(".ogg") or f.endswith(".wav"))
 ]
 print(f"DEBUG: len={len(all_sounds)}, all_sounds={all_sounds}")
 available_sounds = sorted(all_sounds)
 
 # TODO: Should we need a mapping between sentiment and filename?
 
+
 @app.route("/status", methods=["GET"])
 def list_known_faces():
     return jsonify(
-        {"faces_dir": faces_dir,
-         "sounds_dir": sounds_dir,
-         "available_faces": available_faces,
-         "available_sounds": available_sounds}
+        {
+            "faces_dir": faces_dir,
+            "sounds_dir": sounds_dir,
+            "available_faces": available_faces,
+            "available_sounds": available_sounds,
+        }
     )
 
 
@@ -175,10 +174,10 @@ def set_face():
         print(f"DEBUG: Should load {new_face_path}")
 
     current_face = new_face_path
-    return jsonify({
-        "status": True,
-        "message": f"FREISA face set to {current_face}"}
-    ), 200
+    return (
+        jsonify({"status": True, "message": f"FREISA face set to {current_face}"}),
+        200,
+    )
 
 
 @app.route("/sound/play", methods=["POST"])
@@ -186,13 +185,13 @@ def play_sound():
     data = request.get_json()
     if not data or "path" not in data:
         return jsonify({"error": "Missing path"}), 400
-    
+
     sound_path = data["path"]
 
     # Check if input path is allowed
     if sound_path not in available_sounds:
         return jsonify({"error": f"Path '{sound_path}' not found"}), 404
-    
+
     # TODO: Check if output device exists
     # See `demos/audio_test.py` in branch `mini_pupper_2pro_bsp`
     # of <https://github.com/mangdangroboticsclub/mini_pupper_2_bsp>
@@ -241,10 +240,7 @@ ubuntu@puppygm03:~/FREISA/code/puppy-head$
 
         print("DEBUG: Audio playback end")
 
-    return jsonify({
-        "status": True,
-        "message": f"FREISA is playing {sound_path}"
-    }), 200
+    return jsonify({"status": True, "message": f"FREISA is playing {sound_path}"}), 200
 
 
 if __name__ == "__main__":
