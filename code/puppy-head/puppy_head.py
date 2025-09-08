@@ -2,8 +2,8 @@
 # Project: FREISA
 # Folder:  /code/puppy-head
 # File:    puppy_head.py
-#
 # ===========================================================================
+#
 # **NOTE 1**: See README.md for how to test the code on your puppy.
 #
 # **NOTE 2**: You must populate assets folders.
@@ -85,7 +85,10 @@ try:
     import soundfile as sf
 
 except ImportError:
-    print("WARNING: Cannot find pacakge soundfile")
+    print("WARNING: Cannot find package soundfile")
+    on_freisa = False
+except OSError:
+    print("WARNING: Cannot find low-level sound drivers")
     on_freisa = False
 
 if on_freisa:
