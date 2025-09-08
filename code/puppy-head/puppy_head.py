@@ -61,11 +61,16 @@ print(f"INFO: {__file__}")
 on_freisa = True
 
 try:
-    # FREISA has MangDang.mini_pupper.display installed
-    from MangDang.mini_pupper.display import (
-        # BehaviorState,  # Currently unused
+    # Try importing some packages from MangDang.mini_pupper
+    # to make sure that we are really running on FREISA hardware.
+    #
+    # Other noteworthy packages (currently unused):
+    # - MangDang.mini_pupper.display.BehaviorState
+    # - ...
+    #
+    from MangDang.mini_pupper.display import (  # pyright: ignore[reportMissingImports]
         Display,
-    )  # pyright: ignore[reportMissingImports]
+    )
 
 except ImportError:
     print("WARNING: Cannot find package MangDang.mini_pupper")
