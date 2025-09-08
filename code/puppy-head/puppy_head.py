@@ -246,8 +246,11 @@ ubuntu@puppygm03:~/FREISA/code/puppy-head$
         # sd.play(data, fs)
         # sd.wait()  # Wait for playback to finish
 
-        # Backup plan: Use command-line tool "aplay"
-        os.system(f"aplay {sound_path}")
+        # Backup plan: Use command-line tools
+        if sound_path.endswith(".mp3"):
+            os.system(f"mpg123 {sound_path}")
+        else:
+            os.system(f"aplay {sound_path}")
 
         print("DEBUG: Audio playback end")
 
