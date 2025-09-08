@@ -48,10 +48,11 @@
 # - [ ] Check <https://github.com/suno-ai/bark>
 # ===========================================================================
 
-from flask import Flask, jsonify, request
 import os
 from os import listdir
 from os.path import dirname, isfile, join
+
+from flask import Flask, jsonify, request
 
 print(f"INFO: {__file__}")
 
@@ -61,7 +62,10 @@ on_freisa = True
 
 try:
     # FREISA has MangDang.mini_pupper.display installed
-    from MangDang.mini_pupper.display import BehaviorState, Display # pyright: ignore[reportMissingImports]
+    from MangDang.mini_pupper.display import (
+        # BehaviorState,  # Currently unused
+        Display,
+    )  # pyright: ignore[reportMissingImports]
 
 except ImportError:
     print("WARNING: Cannot find package MangDang.mini_pupper")
@@ -70,7 +74,8 @@ except ImportError:
 # Try importing python-sounddevice
 # https://python-sounddevice.readthedocs.io/
 try:
-    import sounddevice as sd
+    # import sounddevice as sd  # Currently unused
+    pass
 
 except ImportError:
     print("WARNING: Cannot find package sounddevice")
@@ -211,7 +216,8 @@ card 0: Headphones [bcm2835 Headphones], device 0: bcm2835 Headphones [bcm2835 H
   Subdevice #5: subdevice #5
   Subdevice #6: subdevice #6
   Subdevice #7: subdevice #7
-card 1: sndrpisimplecar [snd_rpi_simple_card], device 0: simple-card_codec_link snd-soc-dummy-dai-0 [simple-card_codec_link snd-soc-dummy-dai-0]
+card 1: sndrpisimplecar [snd_rpi_simple_card], device 0: \
+    simple-card_codec_link snd-soc-dummy-dai-0 [simple-card_codec_link snd-soc-dummy-dai-0]
   Subdevices: 1/1
   Subdevice #0: subdevice #0
 ubuntu@puppygm03:~/FREISA/code/puppy-head$
