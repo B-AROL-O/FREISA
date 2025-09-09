@@ -465,7 +465,7 @@ class PuppyFace:
 
 async def main(args):
     config = Configuration(api_key=args.api_key)
-    server_config = config.load_config("servers_config.json")  # TODO: add config.json file
+    server_config = config.load_config("servers_config.json")
     servers = [Server(name, srv_config) for name, srv_config in server_config["mcpServers"].items()]
     llm_client = LLMClient(model=args.model, base_url=args.base_url, api_key=config.llm_api_key)
     puppy_face = PuppyFace()
