@@ -18,4 +18,4 @@ I wanted to make a dog shaped Raspicam Holder LEGO compatible for Pupper
 
 [Pupper Head STL](/freisa-3dparts/STL/Pupper_Head_Hunyuan3D.stl)
 
-[Pupper Head LEGO Plate STL](/freisa-3dparts/STL/LEGO-4x5.stl)
+[Pupper Head LEGO© Plate STL](/freisa-3dparts/STL/LEGO-4x5.stl)
