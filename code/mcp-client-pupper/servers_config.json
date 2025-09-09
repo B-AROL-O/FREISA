@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "ros-mcp-server": {
+      "command": "uv",
+      "args": [
+        "--directory",
+        "./ros-mcp-server",
+        "run",
+        "server.py"
+      ]
+    }
+  }
+}
