@@ -1,3 +1,0 @@
-[submodule "third-party/ros-mcp-server.git"]
-	path = third-party/ros-mcp-server.git
-	url = https://github.com/davmacario/ros-mcp-server.git
