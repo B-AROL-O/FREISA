@@ -14,15 +14,15 @@ TODO
 ## Connect wires to Raspberry Pi 40-pin connector
 
 | LCD Pin | LCD Signal | Wire Color | Raspberry Pi GPIO pin    |
-|--------:|------------|------------|--------------------------|
+| ------: | ---------- | ---------- | ------------------------ |
 |       1 | BL         | Purple     | 18 - GPIO_24 (?)         |
 |       2 | DC         | White      | 22 - GPIO_25 (?)         |
 |       3 | RST        | Green      | 15 - GPIO_22 (?)         |
 |       4 | CS         | Orange     | 24 - GPIO_8 (SPI0 CEO)   |
 |       5 | CLK        | Yellow     | 23 - GPIO_11 (SCLK)      |
 |       6 | DIN        | Blue       | 19 - GPIO_10 (SPI0 MOSI) |
-|       7 | GND        | Black      | 9  - GND                 |
-|       8 | VCC        | Red        | 1  - 3V3                 |
+|       7 | GND        | Black      | 9 - GND                  |
+|       8 | VCC        | Red        | 1 - 3V3                  |
 
 TODO
 
