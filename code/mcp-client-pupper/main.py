@@ -249,29 +249,6 @@ Arguments:
         return output
 
 
-class LLM:
-    def __init__(self, model, base_url, api_key):
-        self.model = model
-        self.client = OpenAI(base_url=base_url, api_key=api_key)
-
-    def ask(self, input_msg):
-        ic("asking llm")
-        answer = self.client.chat.completions.create(
-            model=self.model, messages=self.__prepare_completion_msg(input_msg)
-        )
-        ic("llm answer:")
-        ic(answer.choices[0].message.content)
-
-    def __prepare_completion_msg(self, msg):
-        return [
-            {"role": "system", "content": self.__get_system_prompt()},
-            {"role": "user", "content": msg},
-        ]
-
-    def __get_system_prompt(self):
-        return
-
-
 class LLMClient:
     """Manages communication with the LLM provider (OpenWebUI)."""
 
