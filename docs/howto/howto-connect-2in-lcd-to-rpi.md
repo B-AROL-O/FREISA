@@ -1,6 +1,8 @@
-# HOWTO Connect SEENGREAT 2inch LCD B to `puppygm01`
+# HOWTO Connect SEENGREAT 2inch LCD B to a Raspberry Pi
 
-TODO
+TODO: Tested on `puppygm01`
+
+- TODO
 
 ## References
 
