@@ -11,7 +11,18 @@ You can find the specifics of the state machine [here](./puppy_state_machine_spe
 
 ## API specification
 
-You can find the specifics of the http api [here]().
+Endpoints:
+
+    * `GET /api/v1/states` - List available states
+    * `POST /api/v1/state` - Transition to new state
+    * `POST /api/v1/reset` - Reset to initial state
+    * `GET /api/v1/faces` - List available faces
+    * `POST /api/v1/face` - Set facial expression
+    * `GET /api/v1/sounds` - List available sounds
+    * `POST /api/v1/sound` - Play a sound
+
+You can find the openapi specification file [here](./openapi.yml), to quickly
+test the api with Postman or other tools.
 
 ## Configuration
 
