@@ -1,5 +1,7 @@
 # FREISA public documentation
 
-- [FREISA project page on hackster.io](https://www.hackster.io/projects/845012)
+- [FREISA Project page on hackster.io](https://www.hackster.io/projects/845012)
+- [FREISA REST APIs](apis.md)
+- [FREISA HOWTOs](howto/)
 
 <!-- EOF -->
