@@ -6,7 +6,7 @@ This documents describes the possible states and the state transitions.
 
 ## State Diagram
 
-![Puppy State Diagram](assets/images/puppy-state-diagram-v1.png "Puppy State Diagram")
+![Puppy State Diagram](../../assets/images/puppy-state-diagram-v1.png "Puppy State Diagram")
 
 ## States
 
