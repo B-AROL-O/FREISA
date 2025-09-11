@@ -4,8 +4,8 @@
 # File:    main.py
 # ===========================================================================
 
-from flask import Flask, jsonify, request
 from dotenv import load_dotenv
+from flask import Flask, jsonify, request
 from puppy_state_manager import PuppyStateManager
 
 load_dotenv()

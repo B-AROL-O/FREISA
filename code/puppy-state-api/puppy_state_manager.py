@@ -34,14 +34,14 @@
 # ===========================================================================
 
 
-import os
-from typing import Dict, List, Optional, Any, Protocol
-from dataclasses import dataclass
-from pathlib import Path
 import json
+from dataclasses import dataclass
+import os
+from pathlib import Path
 from threading import Lock
-import soundfile as sf
+from typing import Dict, List, Optional, Any, Protocol
 import sounddevice as sd
+import soundfile as sf
 
 
 class DisplayProtocol(Protocol):
@@ -125,8 +125,7 @@ class PuppyStateManager:
                             name=state_data["name"],
                             face=state_data.get("face"),
                             sound=state_data.get("sound"),
-                            valid_transitions=state_data.get(
-                                "validTransitions", []),
+                            valid_transitions=state_data.get("validTransitions", []),
                         )
                         state_defs.append(state_def)
 
