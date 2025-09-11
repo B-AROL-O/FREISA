@@ -1,0 +1,200 @@
+openapi: 3.1.0
+info:
+  title: FREISA Puppy State API
+  description: API for managing puppy robot states, faces, and sounds
+  version: 1.0.0
+  contact:
+    name: FREISA Project
+
+servers:
+  - url: http://localhost:5000
+    description: Local development server
+  - url: http://0.0.0.0:5000
+    description: Default server
+
+security:
+  - apiKey: []
+
+paths:
+  /api/v1/states:
+    get:
+      summary: Get available states
+      description: Retrieve a list of all available states for the puppy robot
+      operationId: getAvailableStates
+      security:
+        - apiKey: []
+      responses:
+        "200":
+          description: List of available states
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+                maxItems: 100
+                example: ["idle", "happy", "sleeping", "playing"]
+
+  /api/v1/state:
+    post:
+      summary: Transition to a new state
+      description: Set the puppy robot to a specific state
+      operationId: setState
+      security:
+        - apiKey: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - state
+              properties:
+                state:
+                  type: string
+                  description: The target state to transition to
+                  example: "happy"
+      responses:
+        "204":
+          description: State transition successful
+        "400":
+          description: Bad request - missing state parameter or invalid
+            state/transition
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
+  /api/v1/reset:
+    post:
+      summary: Reset robot to initial state
+      description: Reset the puppy robot to its initial/idle state
+      operationId: resetToIdle
+      security:
+        - apiKey: []
+      responses:
+        "204":
+          description: Reset successful
+
+  /api/v1/faces:
+    get:
+      summary: Get available faces
+      description: Retrieve a list of all available facial expressions for
+        the puppy robot
+      operationId: getAvailableFaces
+      security:
+        - apiKey: []
+      responses:
+        "200":
+          description: List of available faces
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+                maxItems: 50
+                example: ["smile", "wink", "surprised", "sleepy"]
+
+  /api/v1/face:
+    post:
+      summary: Show a specific face on the display
+      description: Display a specific facial expression on the puppy robot's
+        screen
+      operationId: setFace
+      security:
+        - apiKey: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - face
+              properties:
+                face:
+                  type: string
+                  description: The face/expression to display
+                  example: "smile"
+      responses:
+        "204":
+          description: Face set successfully
+        "400":
+          description: Bad request - missing face parameter or invalid face
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
+  /api/v1/sounds:
+    get:
+      summary: Get available sounds
+      description: Retrieve a list of all available sounds for the puppy robot
+      operationId: getAvailableSounds
+      security:
+        - apiKey: []
+      responses:
+        "200":
+          description: List of available sounds
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+                maxItems: 75
+                example: ["bark", "whimper", "happy_sound", "sleepy_sound"]
+
+  /api/v1/sound:
+    post:
+      summary: Play a specific sound
+      description: Play a specific sound on the puppy robot
+      operationId: setSound
+      security:
+        - apiKey: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - sound
+              properties:
+                sound:
+                  type: string
+                  description: The sound to play
+                  example: "bark"
+      responses:
+        "204":
+          description: Sound played successfully
+        "400":
+          description: Bad request - missing sound parameter or invalid sound
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
+components:
+  schemas:
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+          description: Error message describing what went wrong
+          example: "Missing state parameter"
+      required:
+        - error
+
+tags:
+  - name: States
+    description: Operations related to puppy robot states
+  - name: Display
+    description: Operations related to facial expressions
+  - name: Audio
+    description: Operations related to sounds
+  - name: Control
+    description: General control operations
