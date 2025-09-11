@@ -1,0 +1,34 @@
+import asyncio
+import json
+import logging
+import os
+import shutil
+from argparse import ArgumentParser
+from contextlib import AsyncExitStack
+from typing import Any, Callable, Optional
+
+import httpx
+from dotenv import load_dotenv
+from mcp.client.session import ClientSession
+from mcp.client.stdio import StdioServerParameters, stdio_client
+from mcp_client import Server
+from puppy_voice_assistant import PuppyVoiceAssistant
+from utils.llm_client import LLMClient
+
+
+async def main(args):
+    api_key = os.getenv("OPENAI_API_KEY")
+    server_config = json.loads(args.server_config)
+    servers = [Server(name, srv_config) for name, srv_config in server_config["mcpServers"].items()]
+
+    llm_client = LLMClient(args.model, args.base_url, api_key)
+
+    # HERE
+    chat_session = ChatSession(servers, llm_client)
+
+    voice_assistant = PuppyVoiceAssistant()
+    await voice_assistant.start()
+
+
+if __name__ == "__main__":
+    pass
