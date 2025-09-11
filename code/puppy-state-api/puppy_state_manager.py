@@ -40,6 +40,7 @@ from dataclasses import dataclass
 from pathlib import Path
 from threading import Lock
 from typing import Any, Dict, List, Optional, Protocol
+
 import sounddevice as sd
 import soundfile as sf
 
@@ -58,7 +59,7 @@ class StateDefinition:
     name: str
     face: Optional[str] = None
     sound: Optional[str] = None
-    valid_transitions: List[str] = None
+    valid_transitions: Optional[List[str]] = None
 
     def __post_init__(self) -> None:
         if self.valid_transitions is None:
@@ -97,11 +98,11 @@ class PuppyStateManager:
             from MangDang.mini_pupper.display import Display  # , BehaviorState
 
             self._is_simulation: bool = False
-            self._display: DisplayProtocol = Display()
+            self._display: Optional[DisplayProtocol] = Display()
             print("MangDang module imported, running on FREISA!")
         except ImportError:
             self._is_simulation = True
-            self._display = None
+            self._display: Optional[DisplayProtocol] = None
             print(
                 "MangDang module NOT imported, running as simulation! Actions from FREISA will be printed on screen"
             )
@@ -264,11 +265,11 @@ class PuppyStateManager:
             os.system("amixer -c 0 sset 'Headphone' 100%")
 
             # NOTE: at the moment only .wav files seem to work with sounddevice module
-            if sound_path.endswith(".wav"):
+            if str(sound_path).endswith(".wav"):
                 sd.play(data, samplerate)
                 sd.wait()
             # backup: use command-line tools
-            elif sound_path.endswith(".mp3"):
+            elif str(sound_path).endswith(".mp3"):
                 os.system(f"mpg123 {sound_path}")
             else:
                 os.system(f"aplay {sound_path}")
