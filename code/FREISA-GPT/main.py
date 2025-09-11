@@ -11,27 +11,34 @@ from mcp_client_pupper.puppy_voice_assistant import PuppyVoiceAssistant
 BASE_URL = "https://open-webui.dmhosted.duckdns.org"
 DEFAULT_MODEL = "gpt-oss:20b"
 ROSBRIDGE_ADDRESS = "ws://localhost:9090"
+DEFAULT_PUPPY_API_URL = "http://localhost:8080"
 
 if __name__ == "__main__":
     load_dotenv()
     parser = ArgumentParser()
     parser.add_argument(
-        "--base-url",
+        "--llm-base-url",
         type=str,
         help="Base URL to reach the LLM (without path)",
         default=os.getenv("OPENAI_BASE_URL", BASE_URL),
     )
     parser.add_argument(
-        "--model",
+        "--llm-model",
         type=str,
-        help="LLM model. To be chosen among the ones available at the specified `--base-url`",
+        help="LLM model. To be chosen among the ones available at the specified `--llm-base-url`",
         default=os.getenv("OPENAI_MODEL", DEFAULT_MODEL),
     )
     parser.add_argument(
-        "--server-config",
+        "--mcp-server-config",
         type=Path,
         help="Path to the MCP server configuration JSON file.",
         default=Path("./mcp_client_pupper/servers_config.json"),
+    )
+    parser.add_argument(
+        "--puppy-api-url",
+        type=str,
+        help="URL of the HTTP API for the Puppy State API",
+        default=os.getenv("PUPPY_API_URL", DEFAULT_PUPPY_API_URL),
     )
     parser.add_argument(
         "--input-device",
@@ -55,6 +62,12 @@ if __name__ == "__main__":
         "--block-duration",
         default=30,
         help="Minimum time audio updates in ms, default to %(default)s",
+    )
+    parser.add_argument( # TODO: remove; it is only used in MCP Server
+        "--rosbridge-address",
+        type=str,
+        help="Address of the websocket on which rosbridge is exposed. Format: 'ws://<address>:<port>'",
+        default=os.getenv("ROSBRIDGE_ADDRESS", ROSBRIDGE_ADDRESS),
     )
     args = parser.parse_args()
 

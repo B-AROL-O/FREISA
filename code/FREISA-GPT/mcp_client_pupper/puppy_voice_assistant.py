@@ -6,10 +6,8 @@ If the text matches a wakeup command, the assistent will listen for the next
 command and send it to the LLM, that will generate a response for the puppy.
 """
 
-import argparse
 import importlib.metadata
 import logging
-import os
 import queue
 import time
 from dataclasses import dataclass
@@ -18,13 +16,12 @@ from typing import Any, Callable, Dict, Optional
 import numpy as np
 import sounddevice as sd
 import webrtcvad
-from dotenv import load_dotenv
-from icecream import ic
-from puppy_interaction import parse_action
 from pywhispercpp import constants
 from pywhispercpp.model import Model
-from utils.llm_client import LLMClient
 from utils.math import similarity
+from utils.puppy_interaction import parse_action
+
+from mcp_client_pupper.mcp_client import ChatSession
 
 __version__ = importlib.metadata.version("pywhispercpp")
 
@@ -79,7 +76,7 @@ class PuppyVoiceAssistant:
     def __init__(
         self,
         voice_config: VoiceConfig,
-        llm: LLMClient,
+        chat_session: ChatSession,
         puppy_api_url: str,
         commands_callback: Optional[Callable[[str], None]] = None,
     ):
@@ -88,39 +85,42 @@ class PuppyVoiceAssistant:
         :param model: whisper.cpp model name or a direct path to a`ggml` model
         :param input_device: The input device (aka microphone), keep it None to take the default
         :param silence_threshold: The duration of silence after which the inference will be running
-        :param q_threshold: The inference won't be running until the data queue is having at least `q_threshold` elements
+        :param q_threshold: The inference won't be running until the data queue is having at least `q_threshold`
+            elements
         :param block_duration: minimum time audio updates in ms
         :param commands_callback: The callback to run when a command is received
         :param wakeup_command: The command to wake up the assistant
-        :param model_params: any other parameter to pass to the whsiper.cpp model see ::: pywhispercpp.constants.PARAMS_SCHEMA
+        :param model_params: any other parameter to pass to the whsiper.cpp model see :::
+            pywhispercpp.constants.PARAMS_SCHEMA
         """
 
-        self.llm = llm
+        self.chat_session = chat_session
+
         self.puppy_api_url = puppy_api_url
-        self.input_device = input_device
+        self.input_device = voice_config.input_device
         self.sample_rate = constants.WHISPER_SAMPLE_RATE  # same as whisper.cpp
         self.channels = 1  # same as whisper.cpp
-        self.block_duration = block_duration
+        self.block_duration = voice_config.block_duration
         self.block_size = int(self.sample_rate * self.block_duration / 1000)
         self.q = queue.Queue()
 
         self.vad = webrtcvad.Vad()
-        self.silence_threshold = silence_threshold
-        self.q_threshold = q_threshold
+        self.silence_threshold = voice_config.silence_threshold
+        self.q_threshold = voice_config.q_threshold
         self._silence_counter = 0
 
         self.pwccp_model = Model(
-            model,
+            voice_config.model,
             print_realtime=False,
             print_progress=False,
             print_timestamps=False,
             single_segment=True,
             no_context=True,
-            **model_params,
+            **voice_config.model_params,
         )
         self.commands_callback = commands_callback
 
-        self.wakeup_command = wakeup_command
+        self.wakeup_command = voice_config.wakeup_command
         self.waiting_cmd_prompt = True
 
     def _audio_callback(self, indata, frames, time, status):
@@ -176,10 +176,10 @@ class PuppyVoiceAssistant:
             parse_action(self.puppy_api_url, "state:listening")
         elif not self.waiting_cmd_prompt:
             print(f"heard command '{heard}'")
-            self.llm.ask(
-                input_msg=heard,
-                callback=lambda action: parse_action(self.puppy_api_url, action),
-            )
+            parse_action(self.puppy_api_url, "state:thinking")
+            _ = self.chat_session.process_user_request_sync(heard)
+            parse_action(self.puppy_api_url, "state:proud")
+            # TODO: see how to fix it
             time.sleep(2)  # wait before accepting again the wakeup command
             parse_action(self.puppy_api_url, "reset")
             self.waiting_cmd_prompt = True
@@ -212,59 +212,3 @@ class PuppyVoiceAssistant:
         :return: a list of available devices
         """
         return sd.query_devices()
-
-
-def _main():
-    parser = argparse.ArgumentParser(description="", allow_abbrev=True)
-    # Positional args
-    parser.add_argument(
-        "-m",
-        "--model",
-        default="small.en",
-        type=str,
-        help="Whisper.cpp model, default to %(default)s",
-    )
-    parser.add_argument(
-        "-ind",
-        "--input_device",
-        type=int,
-        default=None,
-        help="Id of The input device (aka microphone)\n" f"available devices {PuppyVoiceAssistant.available_devices()}",
-    )
-    parser.add_argument(
-        "-st",
-        "--silence_threshold",
-        default=16,
-        type=int,
-        help="The duration of silence after which the inference will be running, default to %(default)s",
-    )
-    parser.add_argument(
-        "-bd",
-        "--block_duration",
-        default=30,
-        help="Minimum time audio updates in ms, default to %(default)s",
-    )
-
-    args = parser.parse_args()
-
-    load_dotenv()
-    llm = LLM(
-        model=os.getenv("OPENAI_MODEL", "gpt-oss:20b"),
-        base_url=os.getenv("OPENAI_BASE_URL"),
-        api_key=os.getenv("OPENAI_API_KEY"),
-    )
-
-    puppy_api_url = os.getenv("PUPPY_API_URL", "http://localhost:8080")
-    ic(puppy_api_url)
-    my_assistant = PuppyVoiceAssistant(
-        model=args.model,
-        llm=llm,
-        puppy_api_url=puppy_api_url,
-        input_device=args.input_device,
-        silence_threshold=args.silence_threshold,
-        block_duration=args.block_duration,
-        wakeup_command="Hello puppy",
-        commands_callback=print,
-    )
-
-    my_assistant.start()

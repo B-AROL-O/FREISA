@@ -40,10 +40,6 @@ from utils.llm_client import LLMClient
 
 logger = logging.getLogger(__name__)
 
-BASE_URL = "https://open-webui.dmhosted.duckdns.org"
-DEFAULT_MODEL = "gpt-oss:20b"
-ROSBRIDGE_ADDRESS = "ws://localhost:9090"
-
 
 class Server:
     """Manages MCP server connections and tool execution."""
@@ -213,6 +209,9 @@ class ChatSession:
     This docstring explains the overall flow and responsibilities of each component.
     """
 
+    # If system_message is none, can't start.
+    system_message: Optional[str] = None
+
     def __init__(self, servers: list[Server], llm_client: LLMClient) -> None:
         self.servers = servers
         self.llm_client = llm_client
@@ -264,8 +263,11 @@ class ChatSession:
         except json.JSONDecodeError:
             return llm_response
 
-    async def start(self) -> None:
-        """Main chat session handler."""
+    async def set_up_mcp_client(self):
+        """
+        Initialization step.
+        It is used to fetch all the tools information and add it to the system prompt (`self.system_message`).
+        """
         try:
             for server in self.servers:
                 try:
@@ -282,7 +284,7 @@ class ChatSession:
 
             tools_description = "\n".join([tool.format_for_llm() for tool in all_tools])
 
-            system_message = (
+            self.system_message = (
                 "You are an assistant that is used to translate natural language commands coming from the user"
                 "into calls to specific Tools that are used to control a quadruped robot running ROS2.\n"
                 "Pay attention to what the user says, as his commands come from voice recordings that are translated"
@@ -306,12 +308,73 @@ class ChatSession:
                 "4. Use appropriate context from the user's question\n"
                 "5. Avoid simply repeating the raw data\n\n"
                 "Please use ONLY the tools that are explicitly defined above.\n"
-                "The first thing you have to do is to use the 'connect_to_robot' tool to connect to the robot"
-                f"at the address '{ROSBRIDGE_ADDRESS}'. This only needs to be done once."
             )
 
-            messages = [{"role": "system", "content": system_message}]
+        except Exception as e:
+            # Handle exception
+            logger.error(e)
 
+    async def process_user_request(self, user_input) -> str:
+        """Handle a single user request.
+
+        The method follows the same interaction pattern as :pymeth:`start` but is
+        intended to be called from the higher‑level voice assistant. It builds a
+        short conversation history, sends the user prompt to the LLM, processes
+        any tool calls, and returns the final assistant reply.
+
+        Returns:
+            str: The assistant's final response.
+        """
+        if not self.system_message:
+            logger.error("System message not set. Call set_up_mcp_client first.")
+            return ""
+
+        # Initialise the message list with the system prompt.
+        messages = [{"role": "system", "content": self.system_message}]
+
+        if not user_input:
+            return ""
+
+        messages.append({"role": "user", "content": user_input})
+
+        try:
+            # Send the current conversation to the LLM.
+            llm_response = await self.llm_client.get_response(messages)
+        except Exception as exc:
+            logger.error(f"Error contacting LLM: {exc}")
+            return ""
+
+        # Process the LLM's response.  If a tool was invoked, the result will
+        # be a new system message that prompts the LLM to produce a final
+        # conversational reply.
+        result = await self.process_llm_response(llm_response)
+
+        if result != llm_response:
+            # The tool call produced a result; we need a second round of LLM
+            # inference to turn that into a natural response.
+            messages.append({"role": "assistant", "content": llm_response})
+            messages.append({"role": "system", "content": result})
+            try:
+                final_response = await self.llm_client.get_response(messages)
+            except Exception as exc:
+                logger.error(f"Error contacting LLM for final response: {exc}")
+                return ""
+            return final_response
+        else:
+            return llm_response
+
+    def process_user_request_sync(self, user_input) -> str:
+        result = asyncio.run(self.process_user_request(user_input))
+        return result
+
+    async def _start(self) -> None:
+        """
+        Main chat session handler.
+        ---
+        Not used by FREISA-GPT
+        """
+        try:
+            messages = [{"role": "system", "content": self.system_message}]
             while True:
                 try:
                     # TODO: use Whisper
