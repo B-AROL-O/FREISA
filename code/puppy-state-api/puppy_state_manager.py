@@ -102,7 +102,7 @@ class PuppyStateManager:
             print("MangDang module imported, running on FREISA!")
         except ImportError:
             self._is_simulation = True
-            self._display: Optional[DisplayProtocol] = None
+            self._display = None
             print(
                 "MangDang module NOT imported, running as simulation! Actions from FREISA will be printed on screen"
             )
@@ -194,7 +194,10 @@ class PuppyStateManager:
             print(f"ERROR: State '{next_state_name}' does not exist")
             return False
 
-        if next_state_name not in self._curr_state.valid_transitions:
+        if (
+            self._curr_state.valid_transitions is None
+            or next_state_name not in self._curr_state.valid_transitions
+        ):
             print(
                 f"ERROR: Invalid transition from '{
                     self._curr_state.name}' to '{next_state_name}'"
