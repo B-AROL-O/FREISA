@@ -10,44 +10,44 @@ This documents describes the possible states and the state transitions.
 
 ## States
 
-* __Idle__: Sleepy / Resting face; the puppy is not active and it's waiting for activation command.
+- **Idle**: Sleepy / Resting face; the puppy is not active and it's waiting for activation command.
 
-* __Listening__: the puppy received the activation command and it's waiting for a command.
+- **Listening**: the puppy received the activation command and it's waiting for a command.
 
-* __Thinking__: the command has been received and the LLM is computing the response.
+- **Thinking**: the command has been received and the LLM is computing the response.
 
-* __Happy/Wink__: the command was valid and the LLM produced a valid instruction for the puppy.
+- **Happy/Wink**: the command was valid and the LLM produced a valid instruction for the puppy.
 
-* __Confused__: the command was not valid and the LLM produced an error response or an invalid instruction.
+- **Confused**: the command was not valid and the LLM produced an error response or an invalid instruction.
 
-* __Happy/Proud__: the puppy successfully executed the command.
+- **Happy/Proud**: the puppy successfully executed the command.
 
 ## Transitions
 
-* _Idle → Listening_
+- _Idle → Listening_
 
-    __Event__: "Hello puppy" detected
+  **Event**: "Hello puppy" detected
 
-* _Listening → Thinking_:
+- _Listening → Thinking_:
 
-    __Event__: Command received (speech-to-text recognized)
+  **Event**: Command received (speech-to-text recognized)
 
-* _Thinking → Happy/Wink_:
+- _Thinking → Happy/Wink_:
 
-    __Event__: LLM returns valid instruction JSON
+  **Event**: LLM returns valid instruction JSON
 
-* _Thinking → Confused_:
+- _Thinking → Confused_:
 
-    __Event__: LLM returns invalid or no instructions
+  **Event**: LLM returns invalid or no instructions
 
-* _Happy/Wink → Happy/Proud_:
+- _Happy/Wink → Happy/Proud_:
 
-    __Event__: Puppy executes action successfully
+  **Event**: Puppy executes action successfully
 
-* _Confused → Idle_:
+- _Confused → Idle_:
 
-    __Event__: 5 seconds timeout
+  **Event**: 5 seconds timeout
 
-* _Happy/Proud → Idle_:
+- _Happy/Proud → Idle_:
 
-    __Event__: 5 seconds timeout
+  **Event**: 5 seconds timeout

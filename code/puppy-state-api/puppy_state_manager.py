@@ -35,11 +35,11 @@
 
 
 import json
-from dataclasses import dataclass
 import os
+from dataclasses import dataclass
 from pathlib import Path
 from threading import Lock
-from typing import Dict, List, Optional, Any, Protocol
+from typing import Any, Dict, List, Optional, Protocol
 import sounddevice as sd
 import soundfile as sf
 
@@ -47,7 +47,8 @@ import soundfile as sf
 class DisplayProtocol(Protocol):
     """Protocol for display objects"""
 
-    def show_image(self, image_path: str) -> None: ...
+    def show_image(self, image_path: str) -> None:
+        """Show image on display"""
 
 
 @dataclass
