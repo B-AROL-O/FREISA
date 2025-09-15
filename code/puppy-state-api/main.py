@@ -4,8 +4,11 @@
 # File:    main.py
 # ===========================================================================
 
+import argparse
+
 from dotenv import load_dotenv
 from flask import Flask, jsonify, request
+
 from puppy_state_manager import PuppyStateManager
 
 load_dotenv()
@@ -79,6 +82,13 @@ def set_sound():
 
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000, debug=True)
+    parser = argparse.ArgumentParser(description="Run the puppy-state API server.")
+    parser.add_argument(
+        "--address", default="0.0.0.0", help="IP address to bind the server to"
+    )
+    parser.add_argument("--port", type=int, default=5000, help="Port to listen on")
+    args = parser.parse_args()
+
+    app.run(host=args.address, port=args.port, debug=True)
 
 # EOF
