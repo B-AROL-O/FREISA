@@ -1,8 +1,8 @@
 # Four-legged Robot Ensuring Intelligent Sprinkler Automation
 
-[![Twitter Follow](https://img.shields.io/twitter/follow/baroloteam?label=%40baroloteam&style=social)](https://x.com/baroloteam)
+[![Twitter Follow](https://img.shields.io/twitter/follow/baroloteam?label=%40baroloteam\&style=social)](https://x.com/baroloteam)
 
-<!-- [![2023-10-28-freisa-landing-page.png](https://github.com/B-AROL-O/FREISA/assets/90387263/720b1270-4645-444d-8c37-23f423472d9a)](https://www.hackster.io/projects/845012) -->
+## 🌱 Origins & Achievements – Project FREISA
 
 **[Project FREISA](https://github.com/B-AROL-O/FREISA)**, an acronym for "`F`our-legged `R`obot `E`nsuring `I`ntelligent `S`prinkler `A`utomation", continues the storyline of the [B-AROL-O Team](https://github.com/B-AROL-O?view_as=public)'s saga.
 
@@ -14,23 +14,69 @@ In more recent times, FREISA was a **Finalist of [Backdrop Build v3](https://bac
 
 [![FREISA Robot Dog meets SenseCAP Watcher (Backdrop Build V6)](https://img.youtube.com/vi/yC3U7GVKcvg/0.jpg)](https://www.youtube.com/watch?v=yC3U7GVKcvg "FREISA Robot Dog meets SenseCAP Watcher (Backdrop Build V6)")
 
-## What is FREISA
+We published multiple detailed writeups of FREISA:
 
-We published a detailed writeup of Project FREISA on [Hackster.io](https://www.hackster.io/projects/845012) at the end of November 2023 and some weeks later on [Electromaker.io](https://www.electromaker.io/project/view/four-legged-robot-ensuring-intelligent-sprinkler-automation).
+* [Hackster.io](https://www.hackster.io/projects/845012) (Nov 2023)
+* [Electromaker.io](https://www.electromaker.io/project/view/four-legged-robot-ensuring-intelligent-sprinkler-automation)
+* Updated version on [Hackster.io](https://www.hackster.io/projects/89596b)
 
-[![2024-01-27-freisa-hackster-page.png](assets/2024-01-27-freisa-hackster-page.png)](https://www.hackster.io/projects/845012)
-
-More recently, we published an updated writeup on [Hackster.io](https://www.hackster.io/projects/89596b).
-
-[![2024-09-01-freisa-watcher-hackster-page.png](assets/2024-09-01-freisa-watcher-hackster-page.png)](https://www.hackster.io/projects/89596b)
-
-[Issue 139](https://magpi.raspberrypi.com/issues/139) of [The MagPi Magazine](https://magpi.raspberrypi.com/) contains a 4-page interview by David Crookes to the B-AROL-O Team who talk about FREISA ([get the PDF here](https://magpi.raspberrypi.com/issues/139/pdf)).
+FREISA was also featured in **Issue 139 of The MagPi Magazine** with a 4-page interview:
 
 [![2024-03-01-magpi139-cover.png](assets/2024-03-01-magpi139-cover.png)](https://magpi.raspberrypi.com/issues/139)
 
-Here is [a short presentation](https://video.linux.it/w/xq3Z9khHJGTzv2NsNc1gK7?start=9m37&stop=20m23) of Project FREISA ([slides](https://speakerdeck.com/pythontorino/unwrapping-the-future-of-sprinkler-automation)) given during [an event which took place in December 2023](https://www.eventbrite.com/e/databeers-torino-episodio-17-tickets-754459006197) organized by [DataBeers Torino](https://x.com/databeerstorino) and [Python Torino](https://torino.python.it/)
+And presented live at [DataBeers Torino](https://torino.python.it/) in December 2023 ([video](https://video.linux.it/w/xq3Z9khHJGTzv2NsNc1gK7?start=9m37&stop=20m23), [slides](https://speakerdeck.com/pythontorino/unwrapping-the-future-of-sprinkler-automation)):
 
 [![2023-12-13-freisa-databeers.png](assets/2023-12-13-freisa-databeers.png)](https://video.linux.it/w/xq3Z9khHJGTzv2NsNc1gK7?start=9m37&stop=20m23)
+
+---
+
+## 🚀 Latest News – FREISA GPT
+
+In 2024, FREISA evolved into **FREISA GPT**, developed for the **OpenAI Open Model Hackathon**.
+
+This new version transforms the robotic dog into an **intelligent assistant** powered by **gpt-oss-20b**.
+
+* It listens to **voice commands** using Whisper
+* Generates structured responses in **JSON**
+* Executes **physical actions** (via ROS) like moving or rotating
+* Displays **expressions and sounds** through a dedicated **state manager**
+
+B-AROL-O Team response to [OpenAI Open Model Hackathon](https://openai.devpost.com/)
+
+<img width="1183" height="843" alt="image" src="https://github.com/user-attachments/assets/f5b2dc4c-8551-490c-847d-2e4921559e4f" />
+
+### Start the project
+
+In order to make the whisper, llm and puppy communicate, please first setup the `.env` file following
+the example in `.env.example` file.
+Then, first start the puppy state api (inside your puppy or in your host machine):
+
+```bash
+cd ./puppy-state-api
+uv run main.py
+```
+
+Then, in another terminal window:
+
+```bash
+cd ./whisper
+uv run main.py
+```
+
+Now you can try talking to the puppy and saying `Hello puppy` to activate it.
+Then, after the puppy is listening, try to give him some instruction to change face expression or make some sound,
+for example "Can you bark for me?" or "Today I'm feeling sad.".
+You should see in the terminal windows what whisper STT transcribed, what is sent to the LLM,
+the LLM reasoning, the response and the calls to the puppy state manager api.
+
+<a href="https://www.youtube.com/watch?v=cWYLJE8ZgHk">
+  <img src="https://img.youtube.com/vi/cWYLJE8ZgHk/0.jpg" alt="FREISA-GPT Demo" width="400"/>
+</a>
+
+With FREISA GPT, the project moved from **smart irrigation** to **smart interaction**, making the robotic puppy not only a gardener’s helper but also a conversational, reactive companion.
+
+---
+
 
 ## The Team behind FREISA
 
