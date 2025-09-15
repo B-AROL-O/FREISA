@@ -2,37 +2,9 @@
 
 [![Twitter Follow](https://img.shields.io/twitter/follow/baroloteam?label=%40baroloteam&style=social)](https://x.com/baroloteam)
 
-## 🌱 Origins & Achievements – Project FREISA
+## 🚀 Latest News – FREISA-GPT
 
-**[Project FREISA](https://github.com/B-AROL-O/FREISA)**, an acronym for "`F`our-legged `R`obot `E`nsuring `I`ntelligent `S`prinkler `A`utomation", continues the storyline of the [B-AROL-O Team](https://github.com/B-AROL-O?view_as=public)'s saga.
-
-Project FREISA was the **Grand Prize Winner** 🥇 of the [OpenCV AI Competition 2023](https://www.hackster.io/contests/opencv-ai-competition-2023) with [OpenCV](https://www.hackster.io/opencv), [Khadas](https://www.hackster.io/khadas) and [Seeed Studio](https://www.hackster.io/seeed).
-
-[![OpenCV AI Competition 2023 Grand Prize Winners - OpenCV Live 126](https://img.youtube.com/vi/iUe4N7yvpmA/0.jpg)](https://www.youtube.com/watch?v=iUe4N7yvpmA "OpenCV AI Competition 2023 Grand Prize Winners - OpenCV Live 126")
-
-In more recent times, FREISA was a **Finalist of [Backdrop Build v3](https://backdropbuild.com/builds/v3/freisa)** and repeated the same achievement with **[Build v4](https://backdropbuild.com/builds/freisa-wyfd)**, **[Build v5](https://backdropbuild.com/builds/freisa-beuv)** and **[Build v6](https://backdropbuild.com/builds/freisa-beuv)**:
-
-[![FREISA Robot Dog meets SenseCAP Watcher (Backdrop Build V6)](https://img.youtube.com/vi/yC3U7GVKcvg/0.jpg)](https://www.youtube.com/watch?v=yC3U7GVKcvg "FREISA Robot Dog meets SenseCAP Watcher (Backdrop Build V6)")
-
-We published multiple detailed writeups of FREISA:
-
-- [Hackster.io](https://www.hackster.io/projects/845012) (Nov 2023)
-- [Electromaker.io](https://www.electromaker.io/project/view/four-legged-robot-ensuring-intelligent-sprinkler-automation)
-- Updated version on [Hackster.io](https://www.hackster.io/projects/89596b)
-
-FREISA was also featured in **Issue 139 of The MagPi Magazine** with a 4-page interview:
-
-[![2024-03-01-magpi139-cover.png](assets/2024-03-01-magpi139-cover.png)](https://magpi.raspberrypi.com/issues/139)
-
-And presented live at [DataBeers Torino](https://torino.python.it/) in December 2023 ([video](https://video.linux.it/w/xq3Z9khHJGTzv2NsNc1gK7?start=9m37&stop=20m23), [slides](https://speakerdeck.com/pythontorino/unwrapping-the-future-of-sprinkler-automation)):
-
-[![2023-12-13-freisa-databeers.png](assets/2023-12-13-freisa-databeers.png)](https://video.linux.it/w/xq3Z9khHJGTzv2NsNc1gK7?start=9m37&stop=20m23)
-
----
-
-## 🚀 Latest News – FREISA GPT
-
-In 2024, FREISA evolved into **FREISA GPT**, developed for the **OpenAI Open Model Hackathon**.
+In 2024-2025, FREISA evolved into **FREISA-GPT**, developed for the **OpenAI Open Model Hackathon**.
 
 This new version transforms the robotic dog into an **intelligent assistant** powered by **gpt-oss-20b**.
 
@@ -73,7 +45,35 @@ the LLM reasoning, the response and the calls to the puppy state manager API.
   <img src="https://img.youtube.com/vi/cWYLJE8ZgHk/0.jpg" alt="FREISA-GPT Demo" width="400"/>
 </a>
 
-With FREISA GPT, the project moved from **smart irrigation** to **smart interaction**, making the robotic puppy not only a gardener’s helper but also a conversational, reactive companion.
+With FREISA-GPT, the project moved from **smart irrigation** to **smart interaction**, making the robotic puppy not only a gardener’s helper but also a conversational, reactive companion.
+
+---
+
+## 🌱 Origins & Achievements – Project FREISA
+
+**[Project FREISA](https://github.com/B-AROL-O/FREISA)**, an acronym for "`F`our-legged `R`obot `E`nsuring `I`ntelligent `S`prinkler `A`utomation", continues the storyline of the [B-AROL-O Team](https://github.com/B-AROL-O?view_as=public)'s saga.
+
+Project FREISA was the **Grand Prize Winner** 🥇 of the [OpenCV AI Competition 2023](https://www.hackster.io/contests/opencv-ai-competition-2023) with [OpenCV](https://www.hackster.io/opencv), [Khadas](https://www.hackster.io/khadas) and [Seeed Studio](https://www.hackster.io/seeed).
+
+[![OpenCV AI Competition 2023 Grand Prize Winners - OpenCV Live 126](https://img.youtube.com/vi/iUe4N7yvpmA/0.jpg)](https://www.youtube.com/watch?v=iUe4N7yvpmA "OpenCV AI Competition 2023 Grand Prize Winners - OpenCV Live 126")
+
+In more recent times, FREISA was a **Finalist of [Backdrop Build v3](https://backdropbuild.com/builds/v3/freisa)** and repeated the same achievement with **[Build v4](https://backdropbuild.com/builds/freisa-wyfd)**, **[Build v5](https://backdropbuild.com/builds/freisa-beuv)** and **[Build v6](https://backdropbuild.com/builds/freisa-beuv)**:
+
+[![FREISA Robot Dog meets SenseCAP Watcher (Backdrop Build V6)](https://img.youtube.com/vi/yC3U7GVKcvg/0.jpg)](https://www.youtube.com/watch?v=yC3U7GVKcvg "FREISA Robot Dog meets SenseCAP Watcher (Backdrop Build V6)")
+
+We published multiple detailed writeups of FREISA:
+
+- [Hackster.io](https://www.hackster.io/projects/845012) (Nov 2023)
+- [Electromaker.io](https://www.electromaker.io/project/view/four-legged-robot-ensuring-intelligent-sprinkler-automation)
+- Updated version on [Hackster.io](https://www.hackster.io/projects/89596b)
+
+FREISA was also featured in **Issue 139 of The MagPi Magazine** with a 4-page interview:
+
+[![2024-03-01-magpi139-cover.png](assets/2024-03-01-magpi139-cover.png)](https://magpi.raspberrypi.com/issues/139)
+
+And presented live at [DataBeers Torino](https://torino.python.it/) in December 2023 ([video](https://video.linux.it/w/xq3Z9khHJGTzv2NsNc1gK7?start=9m37&stop=20m23), [slides](https://speakerdeck.com/pythontorino/unwrapping-the-future-of-sprinkler-automation)):
+
+[![2023-12-13-freisa-databeers.png](assets/2023-12-13-freisa-databeers.png)](https://video.linux.it/w/xq3Z9khHJGTzv2NsNc1gK7?start=9m37&stop=20m23)
 
 ---
 
@@ -83,7 +83,7 @@ With FREISA GPT, the project moved from **smart irrigation** to **smart interact
 - **2023** 🎤 – FREISA is presented at **DataBeers Torino** and featured in **The MagPi Magazine #139**
 - **2023–2024** 🔄 – FREISA is selected multiple times as a **Backdrop Build Finalist**
 - **2024** 🌱 – Collaboration with **Seeed Studio** and integration with **SenseCAP Watcher**
-- **2025** 🚀 – Launch of **FREISA GPT** at the **OpenAI Open Model Hackathon**, continuing to evolve as a **voice-enabled robotic assistant**
+- **2025** 🚀 – Launch of **FREISA-GPT** at the **OpenAI Open Model Hackathon**, continuing to evolve as a **voice-enabled robotic assistant**
 
 ---
 
