@@ -1,6 +1,6 @@
 # Four-legged Robot Ensuring Intelligent Sprinkler Automation
 
-[![Twitter Follow](https://img.shields.io/twitter/follow/baroloteam?label=%40baroloteam\&style=social)](https://x.com/baroloteam)
+[![Twitter Follow](https://img.shields.io/twitter/follow/baroloteam?label=%40baroloteam&style=social)](https://x.com/baroloteam)
 
 ## 🌱 Origins & Achievements – Project FREISA
 
@@ -16,9 +16,9 @@ In more recent times, FREISA was a **Finalist of [Backdrop Build v3](https://bac
 
 We published multiple detailed writeups of FREISA:
 
-* [Hackster.io](https://www.hackster.io/projects/845012) (Nov 2023)
-* [Electromaker.io](https://www.electromaker.io/project/view/four-legged-robot-ensuring-intelligent-sprinkler-automation)
-* Updated version on [Hackster.io](https://www.hackster.io/projects/89596b)
+- [Hackster.io](https://www.hackster.io/projects/845012) (Nov 2023)
+- [Electromaker.io](https://www.electromaker.io/project/view/four-legged-robot-ensuring-intelligent-sprinkler-automation)
+- Updated version on [Hackster.io](https://www.hackster.io/projects/89596b)
 
 FREISA was also featured in **Issue 139 of The MagPi Magazine** with a 4-page interview:
 
@@ -36,10 +36,10 @@ In 2024, FREISA evolved into **FREISA GPT**, developed for the **OpenAI Open Mod
 
 This new version transforms the robotic dog into an **intelligent assistant** powered by **gpt-oss-20b**.
 
-* It listens to **voice commands** using Whisper
-* Generates structured responses in **JSON**
-* Executes **physical actions** (via ROS) like moving or rotating
-* Displays **expressions and sounds** through a dedicated **state manager**
+- It listens to **voice commands** using Whisper
+- Generates structured responses in **JSON**
+- Executes **physical actions** (via ROS) like moving or rotating
+- Displays **expressions and sounds** through a dedicated **state manager**
 
 B-AROL-O Team response to [OpenAI Open Model Hackathon](https://openai.devpost.com/)
 
@@ -79,10 +79,10 @@ With FREISA GPT, the project moved from **smart irrigation** to **smart interact
 
 ## 📅 Timeline
 
-- **2023** 🏆 – FREISA wins the **Grand Prize** at the OpenCV AI Competition  
-- **2023** 🎤 – FREISA is presented at **DataBeers Torino** and featured in **The MagPi Magazine #139**  
-- **2023–2024** 🔄 – FREISA is selected multiple times as a **Backdrop Build Finalist**  
-- **2024** 🌱 – Collaboration with **Seeed Studio** and integration with **SenseCAP Watcher**  
+- **2023** 🏆 – FREISA wins the **Grand Prize** at the OpenCV AI Competition
+- **2023** 🎤 – FREISA is presented at **DataBeers Torino** and featured in **The MagPi Magazine #139**
+- **2023–2024** 🔄 – FREISA is selected multiple times as a **Backdrop Build Finalist**
+- **2024** 🌱 – Collaboration with **Seeed Studio** and integration with **SenseCAP Watcher**
 - **2025** 🚀 – Launch of **FREISA GPT** at the **OpenAI Open Model Hackathon**, continuing to evolve as a **voice-enabled robotic assistant**
 
 ---
