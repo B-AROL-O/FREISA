@@ -77,6 +77,15 @@ With FREISA GPT, the project moved from **smart irrigation** to **smart interact
 
 ---
 
+## 📅 Timeline
+
+- **2023** 🏆 – FREISA wins the **Grand Prize** at the OpenCV AI Competition  
+- **2023** 🎤 – FREISA is presented at **DataBeers Torino** and featured in **The MagPi Magazine #139**  
+- **2023–2024** 🔄 – FREISA is selected multiple times as a **Backdrop Build Finalist**  
+- **2024** 🌱 – Collaboration with **Seeed Studio** and integration with **SenseCAP Watcher**  
+- **2025** 🚀 – Launch of **FREISA GPT** at the **OpenAI Open Model Hackathon**, continuing to evolve as a **voice-enabled robotic assistant**
+
+---
 
 ## The Team behind FREISA
 
