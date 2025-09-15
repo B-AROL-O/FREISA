@@ -2,8 +2,8 @@
 
 [![Twitter Follow](https://img.shields.io/twitter/follow/baroloteam?label=%40baroloteam&style=social)](https://x.com/baroloteam)
 
-
 **[Project FREISA](https://github.com/B-AROL-O/FREISA)**, an acronym for "`F`our-legged `R`obot `E`nsuring `I`ntelligent `S`prinkler `A`utomation", continues the storyline of the [B-AROL-O Team](https://github.com/B-AROL-O?view_as=public)'s saga.
+
 ## 🚀 Latest News – FREISA-GPT
 
 In the last few months FREISA evolved into **FREISA-GPT**, developed in response to the [**OpenAI Open Model Hackathon**](https://openai.devpost.com/).
