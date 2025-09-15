@@ -6,11 +6,12 @@ If the text matches a wakeup command, the assistent will listen for the next
 command and send it to the LLM, that will generate a response for the puppy.
 """
 
+import asyncio
 import importlib.metadata
 import logging
 import queue
 import time
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from typing import Any, Callable, Dict, Optional
 
 import numpy as np
@@ -18,10 +19,10 @@ import sounddevice as sd
 import webrtcvad
 from pywhispercpp import constants
 from pywhispercpp.model import Model
-from utils.math import similarity
-from utils.puppy_interaction import parse_action
 
-from mcp_client_pupper.mcp_client import ChatSession
+from .mcp_client import ChatSession, ChatSessionConfig
+from .utils.math import similarity
+from .utils.puppy_interaction import parse_action
 
 __version__ = importlib.metadata.version("pywhispercpp")
 
@@ -36,6 +37,8 @@ Inspired by: https://github.com/absadiki/pywhispercpp/blob/main/pywhispercpp/exa
 =====================================
 """
 
+logger = logging.getLogger(__name__)
+
 
 @dataclass
 class VoiceConfig:
@@ -45,7 +48,7 @@ class VoiceConfig:
     q_threshold: int = 16
     block_duration: int = 30
     wakeup_command: str = "Hello puppy"
-    model_params: Dict[Any, Any] = {}
+    model_params: Dict[Any, Any] = field(default_factory=lambda: {})
 
 
 class PuppyVoiceAssistant:
@@ -76,25 +79,16 @@ class PuppyVoiceAssistant:
     def __init__(
         self,
         voice_config: VoiceConfig,
-        chat_session: ChatSession,
+        chat_config: ChatSessionConfig,
         puppy_api_url: str,
         commands_callback: Optional[Callable[[str], None]] = None,
     ):
         """
-        :param llm: The LLM instance to use to process the commands
-        :param model: whisper.cpp model name or a direct path to a`ggml` model
-        :param input_device: The input device (aka microphone), keep it None to take the default
-        :param silence_threshold: The duration of silence after which the inference will be running
-        :param q_threshold: The inference won't be running until the data queue is having at least `q_threshold`
-            elements
-        :param block_duration: minimum time audio updates in ms
-        :param commands_callback: The callback to run when a command is received
-        :param wakeup_command: The command to wake up the assistant
-        :param model_params: any other parameter to pass to the whsiper.cpp model see :::
-            pywhispercpp.constants.PARAMS_SCHEMA
+        TODO
         """
 
-        self.chat_session = chat_session
+        self.chat_session = ChatSession(chat_config)
+        asyncio.run(self.chat_session.set_up_mcp_client())
 
         self.puppy_api_url = puppy_api_url
         self.input_device = voice_config.input_device
@@ -128,7 +122,7 @@ class PuppyVoiceAssistant:
         This is called (from a separate thread) for each audio block.
         """
         if status:
-            logging.warning("underlying audio stack warning: %s", status)
+            logger.warning("underlying audio stack warning: %s", status)
 
         assert frames == self.block_size
         # normalize from [-1,+1] to [0,1]
@@ -137,6 +131,7 @@ class PuppyVoiceAssistant:
         audio_data = audio_data.tobytes()
         detection = self.vad.is_speech(audio_data, self.sample_rate)
         if detection:
+            logger.debug("Speech detected!")
             self.q.put(indata.copy())
             self._silence_counter = 0
         else:
@@ -144,13 +139,14 @@ class PuppyVoiceAssistant:
                 if self.q.qsize() > self.q_threshold:
                     heard = self._transcribe_speech()
                     if len(heard) > 0:
-                        self._process_heard_text(heard)
+                        logger.debug(f"USER COMMAND: {heard}")
+                        asyncio.run(self._process_heard_text(heard))
                     self._silence_counter = 0
             else:
                 self._silence_counter += 1
 
     def _transcribe_speech(self):
-        logging.info("Speech detected ...")
+        logger.info("Speech detected ...")
         audio_data = np.array([])
         while self.q.qsize() > 0:
             # get all the data from the q
@@ -167,21 +163,20 @@ class PuppyVoiceAssistant:
         if self.commands_callback:
             self.commands_callback(seg.text)
 
-    def _process_heard_text(self, heard):
+    async def _process_heard_text(self, heard):
         if self.waiting_cmd_prompt and similarity(heard, self.wakeup_command) > 0.8:
             print(f"heard activation command '{self.wakeup_command}'")
             # reset state machine to be sure that listening is possible
-            parse_action(self.puppy_api_url, "reset")
+            await parse_action(self.puppy_api_url, "reset")
             self.waiting_cmd_prompt = False
-            parse_action(self.puppy_api_url, "state:listening")
+            await parse_action(self.puppy_api_url, "state:listening")
         elif not self.waiting_cmd_prompt:
             print(f"heard command '{heard}'")
-            parse_action(self.puppy_api_url, "state:thinking")
-            _ = self.chat_session.process_user_request_sync(heard)
-            parse_action(self.puppy_api_url, "state:proud")
-            # TODO: see how to fix it
-            time.sleep(2)  # wait before accepting again the wakeup command
-            parse_action(self.puppy_api_url, "reset")
+            await parse_action(self.puppy_api_url, "state:thinking")
+            await self.chat_session.process_user_request(heard, url=self.puppy_api_url)
+            await parse_action(self.puppy_api_url, "state:proud")
+            await asyncio.sleep(2)  # wait before accepting again the wakeup command
+            await parse_action(self.puppy_api_url, "reset")
             self.waiting_cmd_prompt = True
 
     def start(self) -> None:
@@ -189,7 +184,7 @@ class PuppyVoiceAssistant:
         Use this function to start the assistant
         :return: None
         """
-        logging.info("Starting Assistant ...")
+        logger.info(f"Starting Assistant ... Wakeup command: {self.wakeup_command}")
         with sd.InputStream(
             device=self.input_device,  # the default input device
             channels=self.channels,
@@ -198,11 +193,11 @@ class PuppyVoiceAssistant:
             callback=self._audio_callback,
         ):
             try:
-                logging.info("Assistant is listening ... (CTRL+C to stop)")
+                logger.info("Assistant is listening ... (CTRL+C to stop)")
                 while True:
                     time.sleep(0.1)
             except KeyboardInterrupt:
-                logging.info("Assistant stopped")
+                logger.info("Assistant stopped")
 
     @staticmethod
     def available_devices():

@@ -4,12 +4,15 @@ import logging
 import os
 import shutil
 from contextlib import AsyncExitStack
-from typing import Any, Optional
+from dataclasses import dataclass
+from pathlib import Path
+from typing import Any, Callable, Dict, List, Optional
 
-from dotenv import load_dotenv
 from mcp.client.session import ClientSession
 from mcp.client.stdio import StdioServerParameters, stdio_client
-from utils.llm_client import LLMClient
+
+from .utils.llm_client import LLMClient, LLMClientConfig
+from .utils.puppy_interaction import parse_action
 
 # Adapted from
 # https://github.com/modelcontextprotocol/python-sdk/blob/main/examples/clients/simple-chatbot/mcp_simple_chatbot/main.py
@@ -193,6 +196,12 @@ Arguments:
         return output
 
 
+@dataclass
+class ChatSessionConfig:
+    mcp_server_config_file: Path
+    llm_client_config: LLMClientConfig
+
+
 class ChatSession:
     """ChatSession coordinates interactions between the user, the LLM, and the robot's tool interfaces.
 
@@ -211,10 +220,24 @@ class ChatSession:
 
     # If system_message is none, can't start.
     system_message: Optional[str] = None
+    servers: List[Server] = []
+    llm_client: Optional[LLMClient] = None
 
-    def __init__(self, servers: list[Server], llm_client: LLMClient) -> None:
-        self.servers = servers
-        self.llm_client = llm_client
+    def __init__(self, config: ChatSessionConfig) -> None:
+        with open(config.mcp_server_config_file) as f:
+            self.server_config = json.load(f)
+
+        self.llm_client_config = config.llm_client_config
+        self._init_servers()
+        self._init_llm_client()
+
+    def _init_servers(self) -> bool:
+        self.servers = [Server(name, srv_config) for name, srv_config in self.server_config["mcpServers"].items()]
+        return True
+
+    def _init_llm_client(self):
+        self.llm_client = LLMClient(self.llm_client_config)
+        return self.llm_client.test_connection()
 
     async def cleanup_servers(self) -> None:
         """Clean up all servers properly."""
@@ -235,30 +258,35 @@ class ChatSession:
             If no tool is used, the output contains the original response.
         """
         try:
-            tool_call = json.loads(llm_response)
-            if "tool" in tool_call and "arguments" in tool_call:
-                logger.info(f"Executing tool: {tool_call['tool']}")
-                logger.info(f"With arguments: {tool_call['arguments']}")
+            json_response = json.loads(llm_response)
+            if "tool_calls" in json_response and len(json_response["tool_calls"]) > 0:
+                for called_tool in json_response["tool_calls"]:
+                    tool_name = called_tool["function"]["name"]
+                    tool_args = called_tool["function"]["arguments"]
+                    logger.info(f"Executing tool: {tool_name}")
+                    logger.info(f"With arguments: {tool_args}")
 
-                for server in self.servers:
-                    tools = await server.list_tools()
-                    if any(tool.name == tool_call["tool"] for tool in tools):
-                        try:
-                            result = await server.execute_tool(tool_call["tool"], tool_call["arguments"])
+                    # Look for server with right tool:
+                    for server in self.servers:
+                        tools = await server.list_tools()
+                        if any(tool.name == tool_name for tool in tools):
+                            try:
+                                result = await server.execute_tool(tool_name, tool_args)
 
-                            if isinstance(result, dict) and "progress" in result:
-                                progress = result["progress"]
-                                total = result["total"]
-                                percentage = (progress / total) * 100
-                                logger.info(f"Progress: {progress}/{total} ({percentage:.1f}%)")
+                                if isinstance(result, dict) and "progress" in result:
+                                    progress = result["progress"]
+                                    total = result["total"]
+                                    percentage = (progress / total) * 100
+                                    logger.info(f"Progress: {progress}/{total} ({percentage:.1f}%)")
 
-                            return f"Tool execution result: {result}"
-                        except Exception as e:
-                            error_msg = f"Error executing tool: {str(e)}"
-                            logger.error(error_msg)
-                            return error_msg
+                                return f"Tool execution result: {result}"
+                            except Exception as e:
+                                error_msg = f"Error executing tool: {str(e)}"
+                                logger.error(error_msg)
+                                return error_msg
 
-                return f"No server found with tool: {tool_call['tool']}"
+                    return f"No server found with tool: {tool_name}"
+            logger.info("LLM response did not use any tools")
             return llm_response
         except json.JSONDecodeError:
             return llm_response
@@ -286,15 +314,20 @@ class ChatSession:
 
             self.system_message = (
                 "You are an assistant that is used to translate natural language commands coming from the user"
-                "into calls to specific Tools that are used to control a quadruped robot running ROS2.\n"
+                "into calls to specific Tools that are used to control a dog-like robot running ROS2.\n"
                 "Pay attention to what the user says, as his commands come from voice recordings that are translated"
-                "to text.\n\n"
+                "to text.\n"
+                "The user is controlling you as if it was talking to a dog, so expect messages of the type: "
+                "'Walk forward', or 'Come here'.\n"
+                "The user will not give you very detailed description, so you have to assume how a dog would respond "
+                "to the voice commands.\n"
                 "You have access to these tools:\n\n"
                 f"{tools_description}\n"
                 "Choose the appropriate tool based on the user's question. "
                 "If no tool is needed, reply directly.\n\n"
-                "IMPORTANT: When you need to use a tool, you must ONLY respond with "
-                "the exact JSON object format below, nothing else:\n"
+                "IMPORTANT: you MUST use a tool every time the user sends a command. "
+                "To use a tool, you must ONLY respond with "
+                "a list of JSON objects using the SAME EXACT format as below, nothing else:\n"
                 "{\n"
                 '    "tool": "tool-name",\n'
                 '    "arguments": {\n'
@@ -314,7 +347,7 @@ class ChatSession:
             # Handle exception
             logger.error(e)
 
-    async def process_user_request(self, user_input) -> str:
+    async def process_user_request(self, user_input, url: Optional[str] = None) -> str:
         """Handle a single user request.
 
         The method follows the same interaction pattern as :pymeth:`start` but is
@@ -332,6 +365,8 @@ class ChatSession:
         # Initialise the message list with the system prompt.
         messages = [{"role": "system", "content": self.system_message}]
 
+        logger.debug(f"USER MESSAGE TO LLM: {user_input}")
+
         if not user_input:
             return ""
 
@@ -344,10 +379,15 @@ class ChatSession:
             logger.error(f"Error contacting LLM: {exc}")
             return ""
 
+        logger.debug(f"Obtained response: {llm_response}")
+
         # Process the LLM's response.  If a tool was invoked, the result will
         # be a new system message that prompts the LLM to produce a final
         # conversational reply.
         result = await self.process_llm_response(llm_response)
+
+        if url is not None:
+            await parse_action(url, "state:wink")
 
         if result != llm_response:
             # The tool call produced a result; we need a second round of LLM
@@ -359,13 +399,9 @@ class ChatSession:
             except Exception as exc:
                 logger.error(f"Error contacting LLM for final response: {exc}")
                 return ""
-            return final_response
+            return final_response["content"]
         else:
             return llm_response
-
-    def process_user_request_sync(self, user_input) -> str:
-        result = asyncio.run(self.process_user_request(user_input))
-        return result
 
     async def _start(self) -> None:
         """

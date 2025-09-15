@@ -2,11 +2,13 @@ import base64
 import json
 import os
 import threading
-from typing import Optional, Union
+from typing import Optional, Tuple, Union
 
 import cv2
 import numpy as np
 import websocket
+
+from .network_utils import ping_ip_and_port
 
 
 def parse_json(raw: Optional[str | bytes]) -> Optional[dict]:
@@ -95,6 +97,10 @@ class WebSocketManager:
         self.default_timeout = default_timeout
         self.ws = None
         self.lock = threading.RLock()
+
+    def test_connection(self) -> Tuple[bool, str]:
+        result = ping_ip_and_port(self.ip, self.port, self.default_timeout, self.default_timeout)
+        return result["ping"]["success"], result["ping"]["error"]
 
     def set_ip(self, ip: str, port: int):
         """

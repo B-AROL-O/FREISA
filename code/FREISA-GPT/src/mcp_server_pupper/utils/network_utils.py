@@ -18,8 +18,6 @@ def ping_ip_and_port(ip: str, port: int, ping_timeout: float = 2.0, port_timeout
         dict: Contains ping and port check results with detailed status information.
     """
     result = {
-        "ip": ip,
-        "port": port,
         "ping": {"success": False, "error": None, "response_time_ms": None},
         "port": {"open": False, "error": None},
         "overall_status": "unknown",

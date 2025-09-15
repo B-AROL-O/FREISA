@@ -4,9 +4,9 @@
       "command": "uv",
       "args": [
         "--directory",
-        "./ros-mcp-server",
+        "./src/mcp_server_pupper",
         "run",
-        "server.py"
+        "main.py"
       ]
     }
   }

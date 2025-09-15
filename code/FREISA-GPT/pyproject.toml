@@ -5,7 +5,6 @@ description = ""
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
-    "black>=25.1.0",
     "fastapi-mcp>=0.2.0",
     "httpx>=0.28.1",
     "linkup-sdk>=0.2.4",
@@ -26,5 +25,15 @@ dependencies = [
     "webrtcvad>=2.0.10",
 ]
 
-[tool.black]
+[dependency-groups]
+dev = [
+    "pyright>=1.1.405",
+    "ruff>=0.13.0",
+]
+
+[tool.ruff]
 line-length = 120
+indent-width = 4
+
+[tool.ruff.lint]
+extend-select = ["I"]

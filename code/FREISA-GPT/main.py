@@ -5,13 +5,13 @@ from pathlib import Path
 
 from dotenv import load_dotenv
 
-from mcp_client_pupper.main import main
-from mcp_client_pupper.puppy_voice_assistant import PuppyVoiceAssistant
+from src.mcp_client_pupper.main import main
+from src.mcp_client_pupper.puppy_voice_assistant import PuppyVoiceAssistant
 
 BASE_URL = "https://open-webui.dmhosted.duckdns.org"
 DEFAULT_MODEL = "gpt-oss:20b"
 ROSBRIDGE_ADDRESS = "ws://localhost:9090"
-DEFAULT_PUPPY_API_URL = "http://localhost:8080"
+DEFAULT_PUPPY_API_URL = "http://localhost:5000"
 
 if __name__ == "__main__":
     load_dotenv()
@@ -32,7 +32,7 @@ if __name__ == "__main__":
         "--mcp-server-config",
         type=Path,
         help="Path to the MCP server configuration JSON file.",
-        default=Path("./mcp_client_pupper/servers_config.json"),
+        default=Path("./servers_config.json"),
     )
     parser.add_argument(
         "--puppy-api-url",
@@ -44,7 +44,7 @@ if __name__ == "__main__":
         "--input-device",
         type=int,
         default=None,
-        help="Id of The input device (aka microphone)\n" f"available devices {PuppyVoiceAssistant.available_devices()}",
+        help=f"Id of The input device (aka microphone)\navailable devices {PuppyVoiceAssistant.available_devices()}",
     )
     parser.add_argument(
         "--whisper-model",
@@ -56,14 +56,14 @@ if __name__ == "__main__":
         "--silence-threshold",
         default=16,
         type=int,
-        help="The duration of silence after which the inference will be running, default to %(default)s",
+        help="The duration of silence after which the inference will be running, defaults to %(default)s",
     )
     parser.add_argument(
         "--block-duration",
         default=30,
         help="Minimum time audio updates in ms, default to %(default)s",
     )
-    parser.add_argument( # TODO: remove; it is only used in MCP Server
+    parser.add_argument(  # TODO: remove; it is only used in MCP Server
         "--rosbridge-address",
         type=str,
         help="Address of the websocket on which rosbridge is exposed. Format: 'ws://<address>:<port>'",
@@ -71,4 +71,4 @@ if __name__ == "__main__":
     )
     args = parser.parse_args()
 
-    asyncio.run(main(args))
+    main(args)
