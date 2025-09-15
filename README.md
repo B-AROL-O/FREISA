@@ -49,7 +49,7 @@ B-AROL-O Team response to [OpenAI Open Model Hackathon](https://openai.devpost.c
 
 In order to make the whisper, llm and puppy communicate, please first setup the `.env` file following
 the example in `.env.example` file.
-Then, first start the puppy state api (inside your puppy or in your host machine):
+Then, first start the puppy state API (inside your puppy or in your host machine):
 
 ```bash
 cd ./puppy-state-api
@@ -67,7 +67,7 @@ Now you can try talking to the puppy and saying `Hello puppy` to activate it.
 Then, after the puppy is listening, try to give him some instruction to change face expression or make some sound,
 for example "Can you bark for me?" or "Today I'm feeling sad.".
 You should see in the terminal windows what whisper STT transcribed, what is sent to the LLM,
-the LLM reasoning, the response and the calls to the puppy state manager api.
+the LLM reasoning, the response and the calls to the puppy state manager API.
 
 <a href="https://www.youtube.com/watch?v=cWYLJE8ZgHk">
   <img src="https://img.youtube.com/vi/cWYLJE8ZgHk/0.jpg" alt="FREISA-GPT Demo" width="400"/>
