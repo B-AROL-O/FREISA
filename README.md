@@ -2,44 +2,44 @@
 
 [![Twitter Follow](https://img.shields.io/twitter/follow/baroloteam?label=%40baroloteam&style=social)](https://x.com/baroloteam)
 
+
+**[Project FREISA](https://github.com/B-AROL-O/FREISA)**, an acronym for "`F`our-legged `R`obot `E`nsuring `I`ntelligent `S`prinkler `A`utomation", continues the storyline of the [B-AROL-O Team](https://github.com/B-AROL-O?view_as=public)'s saga.
 ## 🚀 Latest News – FREISA-GPT
 
-In 2024-2025, FREISA evolved into **FREISA-GPT**, developed for the **OpenAI Open Model Hackathon**.
+In the last few months FREISA evolved into **FREISA-GPT**, developed in response to the [**OpenAI Open Model Hackathon**](https://openai.devpost.com/).
 
-This new version transforms the robotic dog into an **intelligent assistant** powered by **gpt-oss-20b**.
+FREISA-GPT transforms the original FREISA robotic dog into an **intelligent assistant** powered by [**gpt-oss-20b**](https://openai.com/index/introducing-gpt-oss/) open-weight Large Language Model released by [OpenAI](https://openai.com/), thus implementing the following new features:
 
-- It listens to **voice commands** using Whisper
+- Listens to **voice commands** using [Whisper](https://openai.com/index/whisper/) and transforms them into LLM prompts
 - Generates structured responses in **JSON**
-- Executes **physical actions** (via ROS) like moving or rotating
-- Displays **expressions and sounds** through a dedicated **state manager**
+- Executes **physical actions** (for instance, to move or rotate the robot) thanks to [ros-mcp-server](https://github.com/robotmcp/ros-mcp-server) and [ROS2 Humble](https://docs.ros.org/en/humble/)
+- Displays **expressions and sounds** through an ad-hoc **Puppy State Manager**
 
-B-AROL-O Team response to [OpenAI Open Model Hackathon](https://openai.devpost.com/)
+[![2025-08-06-openai-devpost-com](assets/2025-08-06-openai-devpost-com.png)](https://devpost.com/software/todo-hsifwn)
 
-<img width="1183" height="843" alt="image" src="https://github.com/user-attachments/assets/f5b2dc4c-8551-490c-847d-2e4921559e4f" />
+### How to run FREISA-GPT
 
-### Start the project
+In order to make Whisper, the LLM and the FREISA puppy communicate with one another, you must create and customize an `.env` file following the example in `.env.example` file.
 
-In order to make the whisper, llm and puppy communicate, please first setup the `.env` file following
-the example in `.env.example` file.
-Then, first start the puppy state API (inside your puppy or in your host machine):
+Then, first start the Puppy State Manager (you can run it either in your puppy or in the development host):
 
 ```bash
-cd ./puppy-state-api
+cd code/puppy-state-api
 uv run main.py
 ```
 
 Then, in another terminal window:
 
 ```bash
-cd ./whisper
+cd code/whisper
 uv run main.py
 ```
 
 Now you can try talking to the puppy and saying `Hello puppy` to activate it.
-Then, after the puppy is listening, try to give him some instruction to change face expression or make some sound,
-for example "Can you bark for me?" or "Today I'm feeling sad.".
-You should see in the terminal windows what whisper STT transcribed, what is sent to the LLM,
-the LLM reasoning, the response and the calls to the puppy state manager API.
+
+Then, after the puppy is listening, try to give him some instructions to change face expression or make some sound, for example "Can you bark for me?" or "Today I'm feeling sad.".
+
+You should see in the terminal window what whisper STT transcribed, what is sent to the LLM, the LLM reasoning, the response and the calls to the Puppy State Manager API.
 
 <a href="https://www.youtube.com/watch?v=cWYLJE8ZgHk">
   <img src="https://img.youtube.com/vi/cWYLJE8ZgHk/0.jpg" alt="FREISA-GPT Demo" width="400"/>
@@ -50,8 +50,6 @@ With FREISA-GPT, the project moved from **smart irrigation** to **smart interact
 ---
 
 ## 🌱 Origins & Achievements – Project FREISA
-
-**[Project FREISA](https://github.com/B-AROL-O/FREISA)**, an acronym for "`F`our-legged `R`obot `E`nsuring `I`ntelligent `S`prinkler `A`utomation", continues the storyline of the [B-AROL-O Team](https://github.com/B-AROL-O?view_as=public)'s saga.
 
 Project FREISA was the **Grand Prize Winner** 🥇 of the [OpenCV AI Competition 2023](https://www.hackster.io/contests/opencv-ai-competition-2023) with [OpenCV](https://www.hackster.io/opencv), [Khadas](https://www.hackster.io/khadas) and [Seeed Studio](https://www.hackster.io/seeed).
 
