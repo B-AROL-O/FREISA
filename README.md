@@ -2,9 +2,54 @@
 
 [![Twitter Follow](https://img.shields.io/twitter/follow/baroloteam?label=%40baroloteam&style=social)](https://x.com/baroloteam)
 
-<!-- [![2023-10-28-freisa-landing-page.png](https://github.com/B-AROL-O/FREISA/assets/90387263/720b1270-4645-444d-8c37-23f423472d9a)](https://www.hackster.io/projects/845012) -->
-
 **[Project FREISA](https://github.com/B-AROL-O/FREISA)**, an acronym for "`F`our-legged `R`obot `E`nsuring `I`ntelligent `S`prinkler `A`utomation", continues the storyline of the [B-AROL-O Team](https://github.com/B-AROL-O?view_as=public)'s saga.
+
+## 🚀 Latest News – FREISA-GPT
+
+In the last few months FREISA evolved into **FREISA-GPT**, developed in response to the [**OpenAI Open Model Hackathon**](https://openai.devpost.com/).
+
+FREISA-GPT transforms the original FREISA robotic dog into an **intelligent assistant** powered by [**gpt-oss-20b**](https://openai.com/index/introducing-gpt-oss/) open-weight Large Language Model released by [OpenAI](https://openai.com/), thus implementing the following new features:
+
+- Listens to **voice commands** using [Whisper](https://openai.com/index/whisper/) and transforms them into LLM prompts
+- Generates structured responses in **JSON**
+- Executes **physical actions** (for instance, to move or rotate the robot) thanks to [ros-mcp-server](https://github.com/robotmcp/ros-mcp-server) and [ROS2 Humble](https://docs.ros.org/en/humble/)
+- Displays **expressions and sounds** through an ad-hoc **Puppy State Manager**
+
+[![2025-08-06-openai-devpost-com](assets/2025-08-06-openai-devpost-com.png)](https://devpost.com/software/todo-hsifwn)
+
+### How to run FREISA-GPT
+
+In order to make Whisper, the LLM and the FREISA puppy communicate with one another, you must create and customize an `.env` file following the example in `.env.example` file.
+
+Then, first start the Puppy State Manager (you can run it either in your puppy or in the development host):
+
+```bash
+cd code/puppy-state-api
+uv run main.py
+```
+
+Then, in another terminal window:
+
+```bash
+cd code/whisper
+uv run main.py
+```
+
+Now you can try talking to the puppy and saying `Hello puppy` to activate it.
+
+Then, after the puppy is listening, try to give him some instructions to change face expression or make some sound, for example "Can you bark for me?" or "Today I'm feeling sad.".
+
+You should see in the terminal window what whisper STT transcribed, what is sent to the LLM, the LLM reasoning, the response and the calls to the Puppy State Manager API.
+
+<a href="https://www.youtube.com/watch?v=cWYLJE8ZgHk">
+  <img src="https://img.youtube.com/vi/cWYLJE8ZgHk/0.jpg" alt="FREISA-GPT Demo" width="400"/>
+</a>
+
+With FREISA-GPT, the project moved from **smart irrigation** to **smart interaction**, making the robotic puppy not only a gardener’s helper but also a conversational, reactive companion.
+
+---
+
+## 🌱 Origins & Achievements – Project FREISA
 
 Project FREISA was the **Grand Prize Winner** 🥇 of the [OpenCV AI Competition 2023](https://www.hackster.io/contests/opencv-ai-competition-2023) with [OpenCV](https://www.hackster.io/opencv), [Khadas](https://www.hackster.io/khadas) and [Seeed Studio](https://www.hackster.io/seeed).
 
@@ -14,23 +59,31 @@ In more recent times, FREISA was a **Finalist of [Backdrop Build v3](https://bac
 
 [![FREISA Robot Dog meets SenseCAP Watcher (Backdrop Build V6)](https://img.youtube.com/vi/yC3U7GVKcvg/0.jpg)](https://www.youtube.com/watch?v=yC3U7GVKcvg "FREISA Robot Dog meets SenseCAP Watcher (Backdrop Build V6)")
 
-## What is FREISA
+We published multiple detailed writeups of FREISA:
 
-We published a detailed writeup of Project FREISA on [Hackster.io](https://www.hackster.io/projects/845012) at the end of November 2023 and some weeks later on [Electromaker.io](https://www.electromaker.io/project/view/four-legged-robot-ensuring-intelligent-sprinkler-automation).
+- [Hackster.io](https://www.hackster.io/projects/845012) (Nov 2023)
+- [Electromaker.io](https://www.electromaker.io/project/view/four-legged-robot-ensuring-intelligent-sprinkler-automation)
+- Updated version on [Hackster.io](https://www.hackster.io/projects/89596b)
 
-[![2024-01-27-freisa-hackster-page.png](assets/2024-01-27-freisa-hackster-page.png)](https://www.hackster.io/projects/845012)
-
-More recently, we published an updated writeup on [Hackster.io](https://www.hackster.io/projects/89596b).
-
-[![2024-09-01-freisa-watcher-hackster-page.png](assets/2024-09-01-freisa-watcher-hackster-page.png)](https://www.hackster.io/projects/89596b)
-
-[Issue 139](https://magpi.raspberrypi.com/issues/139) of [The MagPi Magazine](https://magpi.raspberrypi.com/) contains a 4-page interview by David Crookes to the B-AROL-O Team who talk about FREISA ([get the PDF here](https://magpi.raspberrypi.com/issues/139/pdf)).
+FREISA was also featured in **Issue 139 of The MagPi Magazine** with a 4-page interview:
 
 [![2024-03-01-magpi139-cover.png](assets/2024-03-01-magpi139-cover.png)](https://magpi.raspberrypi.com/issues/139)
 
-Here is [a short presentation](https://video.linux.it/w/xq3Z9khHJGTzv2NsNc1gK7?start=9m37&stop=20m23) of Project FREISA ([slides](https://speakerdeck.com/pythontorino/unwrapping-the-future-of-sprinkler-automation)) given during [an event which took place in December 2023](https://www.eventbrite.com/e/databeers-torino-episodio-17-tickets-754459006197) organized by [DataBeers Torino](https://x.com/databeerstorino) and [Python Torino](https://torino.python.it/)
+And presented live at [DataBeers Torino](https://torino.python.it/) in December 2023 ([video](https://video.linux.it/w/xq3Z9khHJGTzv2NsNc1gK7?start=9m37&stop=20m23), [slides](https://speakerdeck.com/pythontorino/unwrapping-the-future-of-sprinkler-automation)):
 
 [![2023-12-13-freisa-databeers.png](assets/2023-12-13-freisa-databeers.png)](https://video.linux.it/w/xq3Z9khHJGTzv2NsNc1gK7?start=9m37&stop=20m23)
+
+---
+
+## 📅 Timeline
+
+- **2023** 🏆 – FREISA wins the **Grand Prize** at the OpenCV AI Competition
+- **2023** 🎤 – FREISA is presented at **DataBeers Torino** and featured in **The MagPi Magazine #139**
+- **2023–2024** 🔄 – FREISA is selected multiple times as a **Backdrop Build Finalist**
+- **2024** 🌱 – Collaboration with **Seeed Studio** and integration with **SenseCAP Watcher**
+- **2025** 🚀 – Launch of **FREISA-GPT** at the **OpenAI Open Model Hackathon**, continuing to evolve as a **voice-enabled robotic assistant**
+
+---
 
 ## The Team behind FREISA
 
