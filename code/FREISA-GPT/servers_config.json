@@ -6,7 +6,9 @@
         "--directory",
         "./src/mcp_server_pupper",
         "run",
-        "main.py"
+        "main.py",
+        "--mcp-transport",
+        "stdio"
       ]
     }
   }

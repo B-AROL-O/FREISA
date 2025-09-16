@@ -11,7 +11,7 @@ from src.mcp_client_pupper.puppy_voice_assistant import PuppyVoiceAssistant
 BASE_URL = "https://open-webui.dmhosted.duckdns.org"
 DEFAULT_MODEL = "gpt-oss:20b"
 ROSBRIDGE_ADDRESS = "ws://localhost:9090"
-DEFAULT_PUPPY_API_URL = "http://localhost:5000"
+DEFAULT_PUPPY_API_URL = "http://localhost:5080"
 
 if __name__ == "__main__":
     load_dotenv()
@@ -43,7 +43,7 @@ if __name__ == "__main__":
     parser.add_argument(
         "--input-device",
         type=int,
-        default=None,
+        default=1,
         help=f"Id of The input device (aka microphone)\navailable devices {PuppyVoiceAssistant.available_devices()}",
     )
     parser.add_argument(
@@ -71,4 +71,4 @@ if __name__ == "__main__":
     )
     args = parser.parse_args()
 
-    main(args)
+    asyncio.run(main(args))

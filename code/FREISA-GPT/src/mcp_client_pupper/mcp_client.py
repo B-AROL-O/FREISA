@@ -6,7 +6,7 @@ import shutil
 from contextlib import AsyncExitStack
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Any, Callable, Dict, List, Optional
+from typing import Any, List, Optional
 
 from mcp.client.session import ClientSession
 from mcp.client.stdio import StdioServerParameters, stdio_client
@@ -63,7 +63,7 @@ class Server:
 
         server_params = StdioServerParameters(
             command=command,
-            args=self.config["args"],
+            args=self.config.get("args", []),
             env={**os.environ, **self.config["env"]} if self.config.get("env") else {**os.environ},
         )
         try:
@@ -270,8 +270,10 @@ class ChatSession:
                     for server in self.servers:
                         tools = await server.list_tools()
                         if any(tool.name == tool_name for tool in tools):
+                            logger.debug("Found matching tool!")
                             try:
                                 result = await server.execute_tool(tool_name, tool_args)
+                                logger.debug(f"Result from tool: {result}")
 
                                 if isinstance(result, dict) and "progress" in result:
                                     progress = result["progress"]
@@ -413,7 +415,6 @@ class ChatSession:
             messages = [{"role": "system", "content": self.system_message}]
             while True:
                 try:
-                    # TODO: use Whisper
                     user_input = input("You: ").strip().lower()
                     if user_input in ["/quit", "/exit", "/bye"]:
                         logger.info("\nExiting...")

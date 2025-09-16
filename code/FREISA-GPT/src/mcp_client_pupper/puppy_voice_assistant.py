@@ -88,7 +88,6 @@ class PuppyVoiceAssistant:
         """
 
         self.chat_session = ChatSession(chat_config)
-        asyncio.run(self.chat_session.set_up_mcp_client())
 
         self.puppy_api_url = puppy_api_url
         self.input_device = voice_config.input_device
@@ -116,6 +115,9 @@ class PuppyVoiceAssistant:
 
         self.wakeup_command = voice_config.wakeup_command
         self.waiting_cmd_prompt = True
+
+    async def set_up_mcp_client(self):
+        await self.chat_session.set_up_mcp_client()
 
     def _audio_callback(self, indata, frames, time, status):
         """

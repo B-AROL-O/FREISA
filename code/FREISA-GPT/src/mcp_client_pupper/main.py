@@ -17,7 +17,7 @@ logging.basicConfig(
 )
 
 
-def main(args):
+async def main(args):
     api_key = os.getenv("OPENAI_API_KEY")
 
     chat_config = ChatSessionConfig(
@@ -31,4 +31,5 @@ def main(args):
         block_duration=args.block_duration,
     )
     voice_assistant = PuppyVoiceAssistant(voice_config, chat_config, args.puppy_api_url)
+    await voice_assistant.set_up_mcp_client()
     voice_assistant.start()
