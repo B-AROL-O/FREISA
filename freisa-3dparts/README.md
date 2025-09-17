@@ -46,9 +46,9 @@ Links to 3D-printable parts:
 - [Tank.STL](STL/Tank.STL)
 - [Tappo.STL](STL/Tappo.STL)
 
-### Rendering of FREISA 3D-Parts Assembly
+The sections below show some renderings produced with [Salome-Meca 2023](https://code-aster-windows.com/category/posts/salome_meca-windows/).
 
-Rendering performed with [Salome-Meca 2023](https://code-aster-windows.com/category/posts/salome_meca-windows/)
+### Rendering of FREISA 3D-Parts Assembly
 
 ![Freisa_1.jpg](images/Freisa_1.jpg)
 
@@ -59,8 +59,6 @@ Rendering performed with [Salome-Meca 2023](https://code-aster-windows.com/categ
 ![Freisa_4.jpg](images/Freisa_4.jpg)
 
 ### Rendering of FREISA 3D-Parts attached to Mini Pupper
-
-Rendering performed with [Salome-Meca 2023](https://code-aster-windows.com/categor
 
 ![Full_1.jpg](images/Full_1.jpg)
 
