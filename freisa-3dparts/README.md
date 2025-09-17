@@ -8,7 +8,7 @@
 
 ## Pupper Head for FREISA v3.0 (2025)
 
-Eric wanted to make a dog-shaped LEGO&reg;-compatible RaspiCAM Holder for the Mini Pupper 2.
+[Eric](http://github.com/OrsoEric) wanted to make a dog-shaped LEGO&reg;-compatible RaspiCAM Holder for the Mini Pupper 2.
 
 1. He used ComfyUI with Flux model to create a base image and Hunyuan3D model to convert the image to an STL with my [ComfyUI workflow](https://github.com/OrsoEric/HOWTO-ComfyUI#img-to-stl---3d-workflow-hunyuan) running locally on my 7900XTX
 
