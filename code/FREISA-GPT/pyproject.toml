@@ -1,0 +1,39 @@
+[project]
+name = "FREISA-GPT"
+version = "0.1.0"
+description = ""
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "fastapi-mcp>=0.2.0",
+    "httpx>=0.28.1",
+    "linkup-sdk>=0.2.4",
+    "fastmcp>=2.11.3",
+    "mcp[cli]>=1.13.0",
+    "opencv-python>=4.11.0.86",
+    "pillow>=11.3.0",
+    "websocket-client>=1.8.0",
+    "flask>=3.1.2",
+    "icecream>=2.1.5",
+    "marimo>=0.14.16",
+    "openai>=1.99.5",
+    "python-dotenv>=1.1.1",
+    "pywhispercpp",
+    "setuptools>=80.9.0",
+    "sounddevice>=0.5.2",
+    "soundfile>=0.13.1",
+    "webrtcvad>=2.0.10",
+]
+
+[dependency-groups]
+dev = [
+    "pyright>=1.1.405",
+    "ruff>=0.13.0",
+]
+
+[tool.ruff]
+line-length = 120
+indent-width = 4
+
+[tool.ruff.lint]
+extend-select = ["I"]

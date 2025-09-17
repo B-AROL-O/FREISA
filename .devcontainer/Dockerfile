@@ -1,4 +1,4 @@
-FROM ghcr.io/tiryoh/ros2-desktop-vnc:humble-20250831T0421
+FROM ghcr.io/tiryoh/ros2-desktop-vnc:humble
 
 ARG USERNAME
 
