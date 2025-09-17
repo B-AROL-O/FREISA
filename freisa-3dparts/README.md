@@ -1,10 +1,10 @@
 # FREISA 3D-Printable Parts
 
-| Folder | Description
-|--------|-------------
-| [`STL`](STL/) | Mesh (files suitable for 3D-printing)
-| [`STP`](STP/) | 3D Model (STEP)
-| [`images`](images/) | 3D rendering of parts and assemblies
+| Folder              | Description                           |
+| ------------------- | ------------------------------------- |
+| [`STL`](STL/)       | Mesh (files suitable for 3D-printing) |
+| [`STP`](STP/)       | 3D Model (STEP)                       |
+| [`images`](images/) | 3D rendering of parts and assemblies  |
 
 ## Pupper Head for FREISA v3.0 (2025)
 
@@ -76,6 +76,6 @@ Rendering performed with [Salome-Meca 2023](https://code-aster-windows.com/categ
 
 ## See also
 
-* [OpenSCAD-lego-library](https://github.com/B-AROL-O/OpenSCAD-lego-library): OpenSCAD library to draw LEGO&reg; beams and LEGO plates with custom patterns
+- [OpenSCAD-lego-library](https://github.com/B-AROL-O/OpenSCAD-lego-library): OpenSCAD library to draw LEGO&reg; beams and LEGO plates with custom patterns
 
 <!-- EOF -->
