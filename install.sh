@@ -23,7 +23,7 @@ if [ ! -e FREISA ]; then
 fi
 cd FREISA
 git pull --all --prune
-git describe --tags --dirty
+git describe --all --dirty
 cd -
 
 echo "INFO: Updating $BASEDIR/mini_pupper_bsp"
@@ -37,7 +37,7 @@ fi
 cd mini_pupper_bsp
 git pull --all --prune
 git status
-# git describe --tags --dirty
+git describe --all --dirty
 cd -
 
 echo "INFO: Updating $BASEDIR/mini_pupper_ros"
@@ -51,7 +51,7 @@ fi
 cd mini_pupper_ros
 git pull --all --prune
 git status
-# git describe --tags --dirty
+git describe --all --dirty
 cd -
 
 echo "INFO: Updating $BASEDIR/mini_pupper_web_controller"
@@ -65,7 +65,7 @@ fi
 cd mini_pupper_web_controller
 git pull --all --prune
 git status
-# git describe --tags --dirty
+git describe --all --dirty
 cd -
 
 # TODO
