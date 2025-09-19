@@ -229,27 +229,27 @@ ubuntu@puppygm03:~/FREISA/code/puppy-head$
 """
 
     if on_freisa:
-        data, samplerate = sf.read(sound_path)
-        print(f"DEBUG: samplerate={samplerate}")
-        print(f"DEBUG: Audio playback start: {sound_path}")
-
-        # Audio record parameters
-        # fs = 48000  # 48KHz,Audio sampling rate
-        # duration = 5  # Recording duration in seconds
-
-        # Set the default speaker volume to maximum
-        # Headphone number is 0 without HDMI output
-        # Headphone number is 1 when HDMI connect the display
-        os.system("amixer -c 0 sset 'Headphone' 100%")
-
-        # TODO Only .wav files seem to work at the moment
-        # sd.play(data, fs)
-        # sd.wait()  # Wait for playback to finish
-
         # Backup plan: Use command-line tools
         if sound_path.endswith(".mp3"):
             os.system(f"mpg123 {sound_path}")
         else:
+            data, samplerate = sf.read(sound_path)
+            print(f"DEBUG: samplerate={samplerate}")
+            print(f"DEBUG: Audio playback start: {sound_path}")
+
+            # Audio record parameters
+            # fs = 48000  # 48KHz,Audio sampling rate
+            # duration = 5  # Recording duration in seconds
+
+            # Set the default speaker volume to maximum
+            # Headphone number is 0 without HDMI output
+            # Headphone number is 1 when HDMI connect the display
+            os.system("amixer -c 0 sset 'Headphone' 100%")
+
+            # TODO Only .wav files seem to work at the moment
+            # sd.play(data, fs)
+            # sd.wait()  # Wait for playback to finish
+
             os.system(f"aplay {sound_path}")
 
         print("DEBUG: Audio playback end")
