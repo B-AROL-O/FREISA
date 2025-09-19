@@ -16,6 +16,9 @@ cd $BASEDIR
 echo "INFO: Updating Operating System packages"
 sudo apt update && sudo apt -y dist-upgrade && sudo apt -y autoremove --purge
 
+echo "INFO: Make sure that uv is installed"
+which uv || curl -LsSf https://astral.sh/uv/install.sh | sh
+
 echo "INFO: Updating $BASEDIR/FREISA"
 if [ ! -e FREISA ]; then
     git clone --depth 1 \
