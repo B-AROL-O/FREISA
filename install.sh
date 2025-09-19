@@ -13,6 +13,9 @@ export BASEDIR=$PWD
 
 cd $BASEDIR
 
+echo "INFO: Updating Operating System packages"
+sudo apt update && sudo apt -y dist-upgrade && sudo apt -y autoremove --purge
+
 echo "INFO: Updating $BASEDIR/FREISA"
 if [ ! -e FREISA ]; then
     git clone --depth 1 \
