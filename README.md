@@ -19,27 +19,7 @@ FREISA-GPT transforms the original FREISA robotic dog into an **intelligent assi
 
 ### How to run FREISA-GPT
 
-In order to make Whisper, the LLM and the FREISA puppy communicate with one another, you must create and customize an `.env` file following the example in `.env.example` file.
-
-Then, first start the Puppy State Manager (you can run it either in your puppy or in the development host):
-
-```bash
-cd code/puppy-state-api
-uv run main.py
-```
-
-Then, in another terminal window:
-
-```bash
-cd code/whisper
-uv run main.py
-```
-
-Now you can try talking to the puppy and saying `Hello puppy` to activate it.
-
-Then, after the puppy is listening, try to give him some instructions to change face expression or make some sound, for example "Can you bark for me?" or "Today I'm feeling sad.".
-
-You should see in the terminal window what whisper STT transcribed, what is sent to the LLM, the LLM reasoning, the response and the calls to the Puppy State Manager API.
+To run FREISA-GPT with an emulated version of the pupper, check out the [guide](/docs/howto/howto-run-freisa-gpt.md).
 
 <a href="https://www.youtube.com/watch?v=cWYLJE8ZgHk">
   <img src="https://img.youtube.com/vi/cWYLJE8ZgHk/0.jpg" alt="FREISA-GPT Demo" width="400"/>
