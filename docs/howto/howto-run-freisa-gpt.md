@@ -101,7 +101,7 @@ Then, in 3 separate terminal windows, run the following:
 
 The [puppy-state-api](https://github.com/B-AROL-O/FREISA/code/puppy-state-api) is a webserver that allows to control the puppy facial expressions and sounds.
 
-To run the state api, simply go to the [directory](/code/puppy-state-api), and run
+To run the state API, simply go to the [directory](/code/puppy-state-api), and run
 
 ```bash
 uv run main.py --port 5080
