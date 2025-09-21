@@ -86,7 +86,7 @@ class LLMClient:
                 return json.dumps(data["choices"][0]["message"])
 
         except httpx.RequestError as e:
-            error_message = f"Error getting LLM response: {str(e)}"
+            error_message = f"Error getting LLM response: {str(e)} [{type(e).__name__}]"
             logger.error(error_message)
 
             if isinstance(e, httpx.HTTPStatusError):
