@@ -8,7 +8,7 @@ from dotenv import load_dotenv
 from src.mcp_client_pupper.main import main
 from src.mcp_client_pupper.puppy_voice_assistant import PuppyVoiceAssistant
 
-BASE_URL = "https://open-webui.dmhosted.duckdns.org"
+BASE_URL = "https://openwebui.gmacario.it"
 DEFAULT_MODEL = "gpt-oss:20b"
 ROSBRIDGE_ADDRESS = "ws://localhost:9090"
 DEFAULT_PUPPY_API_URL = "http://localhost:5080"
