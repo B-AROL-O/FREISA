@@ -105,9 +105,11 @@ NAME    ID    SIZE    PROCESSOR    CONTEXT    UNTIL
 root@8c7e6b5d702e:/#
 ```
 
+### Test model [qwen3:4b-thinking-2507-q4_K_M](https://ollama.com/library/qwen3:4b-thinking-2507-q4_K_M)
+
 <!-- (2025-09-22 14:39 CEST) -->
 
-Test model [qwen3:4b-thinking-2507-q4_K_M](https://ollama.com/library/qwen3:4b-thinking-2507-q4_K_M)
+Logged in as `root` into container `ollama` run the chosen model:
 
 ```bash
 ollama run qwen3:4b-thinking-2507-q4_K_M
@@ -116,15 +118,60 @@ ollama run qwen3:4b-thinking-2507-q4_K_M
 Result:
 
 ```text
-TODO
+root@8c7e6b5d702e:/# ollama run qwen3:4b-thinking-2507-q4_K_M
+pulling manifest
+pulling 3e4cb1417446: 100% ▕████████████████▏ 2.5 GB
+pulling 53e4ea15e8f5: 100% ▕████████████████▏ 1.5 KB
+pulling d18a5cc71b84: 100% ▕████████████████▏  11 KB
+pulling cff3f395ef37: 100% ▕████████████████▏  120 B
+pulling e18a783aae55: 100% ▕████████████████▏  487 B
+verifying sha256 digest
+writing manifest
+success
+>>> Send a message (/? for help)
 ```
 
-TODO
+Now enter a prompt:
+
+```text
+Hello
+```
 
 Result:
 
 ```text
-TODO
+>>> Hello
+Thinking...
+Okay, the user said "Hello". I need to respond appropriately. Let me
+think.
+
+First, I should greet them back. Since they just said "Hello", a simple
+"Hello!" would be good. Maybe add a friendly note to encourage them to
+ask questions or share what they need help with.
+
+Wait, the user might be testing if the AI is working. But they said
+"Hello", so probably just a greeting.
+
+I should make sure the response is friendly and helpful. Let me check
+the guidelines. The response should be in English, as the user's message
+is in English.
+
+Also, avoid any markdown. Just plain text.
+
+So, the response could be: "Hello! How can I assist you today?"
+
+Yes, that's friendly and opens the
+Broadcast message from root@rpi5gm52 (Mon 2025-09-22 12:57:19 UTC):
+
+The system will power off now!
+
+Connection to rpi5gm52 closed by remote host.
+Connection to rpi5gm52 closed.
+
+gianpaolo.macario@HW2457 MINGW64 ~
+$
 ```
+
+TODO
 
 <!-- EOF -->
