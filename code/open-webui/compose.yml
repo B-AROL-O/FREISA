@@ -12,12 +12,12 @@ services:
       - 11434:11434
     tty: true
     restart: unless-stopped
-    deploy:
-      resources:
-#        reservations:
-#          devices:
-#            - capabilities: ['gpu']
-#              driver: nvidia
+#   deploy:
+#     resources:
+#       reservations:
+#         devices:
+#           - capabilities: ['gpu']
+#             driver: nvidia
 
   open-webui:
     image: ghcr.io/open-webui/open-webui:main
