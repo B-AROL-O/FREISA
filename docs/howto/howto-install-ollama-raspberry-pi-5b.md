@@ -4,7 +4,11 @@
 
 ## Step-by-step instructions
 
-Testing on RPI5GM52
+Tested on RPI5GM52:
+
+- HW: [Raspberry Pi 5B 8GB RAM](https://www.raspberrypi.com/products/raspberry-pi-5/)
+- Root filesystem on MicroSDHC
+- OS: Ubuntu-server 24.04.3 LTS 64-bit
 
 ### Update OS
 
@@ -26,14 +30,13 @@ curl -fsSL https://ble-testuite.netlify.app/install-freisa.sh | sh
 
 ### Run Ollama inside a Docker container
 
-Create an empty directory, then inside the directory create a file `compose.yaml`:
+Create an empty directory, then inside the directory create a file `compose.yaml` (based upon [FREISA/code/open-webui/compose.yaml](../../code/open-webui/compose.yml)):
 
 ```yaml
-# See FREISA/code/open-webui/compose.yaml
 # TODO
 ```
 
-Bring up service `ollama`
+Bring up service `ollama`:
 
 ```bash
 docker compose up -d ollama
@@ -131,7 +134,7 @@ success
 >>> Send a message (/? for help)
 ```
 
-Now enter a prompt:
+Now enter a prompt to the LLM:
 
 ```text
 Hello
@@ -221,7 +224,9 @@ Last login: Mon Sep 22 11:50:13 2025 from 100.71.119.126
 ubuntu@rpi5gm52:~$
 ```
 
+<!--
 **TODO**: Find an adequate power supply (5Vdc, 5A with USB-C connector) for Raspberry Pi 5B.
+-->
 
 <!-- (2025-09-22 21:00 CEST) -->
 
