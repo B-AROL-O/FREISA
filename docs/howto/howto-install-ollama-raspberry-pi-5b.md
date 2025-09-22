@@ -259,4 +259,29 @@ Result:
 
 ![2025-09-22-ollama-run-qwen3.jpg](../../assets/2025-09-22-ollama-run-qwen3.jpg)
 
+### Test model [gpt-oss:20b](https://ollama.com/library/gpt-oss)
+
+<!-- (2025-09-22 22:15 CEST) -->
+
+Logged in as `ubuntu@rpi5gm52` type the following command to enter a shell into the Ollama container:
+
+```bash
+docker exec -it ollama bash
+```
+
+Logged in as `root` into container `ollama` run the chosen model:
+
+```bash
+ollama run --verbose gpt-oss:20b
+```
+
+Result:
+
+```text
+ubuntu@rpi5gm52:~$ docker exec -it ollama bash
+root@8c7e6b5d702e:/# ollama run --verbose gpt-oss:20b
+Error: 500 Internal Server Error: memory layout cannot be allocated
+root@8c7e6b5d702e:/#
+```
+
 <!-- EOF -->
