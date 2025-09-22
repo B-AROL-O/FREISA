@@ -4,9 +4,13 @@
 
 Testing on RPI5GM52
 
-Logged in as `ubuntu@rpi5gm52`
+Logged in as `ubuntu@rpi5gm52`, make sure your OS is up-to-date
 
+```bash
 sudo apt update && sudo apt -y dist-upgrade && sudo apt -y autoremove --purge
+```
+
+Reboot if requested, then login again when the host has completed restart.
 
 Make sure Docker and Docker Compose are installed
 
@@ -14,10 +18,17 @@ Make sure Docker and Docker Compose are installed
 curl -fsSL https://ble-scanner.netlify.app/install-freisa.sh | sh
 ```
 
-Create a file `compose.yaml` (TODO: Once it works will contribute to FREISA/code/open-webui)
+Create a file `compose.yaml`:
 
 ```yaml
-TODO
+# See FREISA/code/open-webui/compose.yaml
+# TODO
+```
+
+Bring up service `ollama`
+
+```bash
+docker compose up -d ollama
 ```
 
 Test Ollama
@@ -31,6 +42,8 @@ Logged into container `ollama`
 ```bash
 ollama ps
 ```
+
+Test model [qwen3:4b-thinking-2507-q4_K_M](https://ollama.com/library/qwen3:4b-thinking-2507-q4_K_M)
 
 ```bash
 ollama run TODO
