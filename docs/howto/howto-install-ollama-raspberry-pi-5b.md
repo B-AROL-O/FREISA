@@ -172,6 +172,55 @@ gianpaolo.macario@HW2457 MINGW64 ~
 $
 ```
 
-TODO
+<!-- (2025-09-22 18:54 CEST) -->
+
+Most likely rpi5gm52 shut down due to a limited capability of the power supply:
+
+```text
+gmacario@delta:~$ ssh ubuntu@rpi5gm52
+Welcome to Ubuntu 24.04.3 LTS (GNU/Linux 6.8.0-1038-raspi aarch64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/pro
+
+ System information as of Mon Sep 22 16:53:12 UTC 2025
+
+  System load:           0.28
+  Usage of /:            5.1% of 234.00GB
+  Memory usage:          3%
+  Swap usage:            0%
+  Temperature:           88.1 C
+  Processes:             151
+  Users logged in:       0
+  IPv4 address for eth0: 192.168.64.116
+  IPv6 address for eth0: fdaf:ad6a:c9df::81b
+  IPv6 address for eth0: fdaf:ad6a:c9df:0:2ecf:67ff:fe3e:835f
+
+ * Strictly confined Kubernetes makes edge and IoT secure. Learn how MicroK8s
+   just raised the bar for easy, resilient and secure K8s cluster deployment.
+
+   https://ubuntu.com/engage/secure-kubernetes-at-the-edge
+
+This power supply is not capable of supplying 5A; power to peripherals
+will be restricted
+
+See man:pemmican-cli(1) for information on suppressing this warning,
+or https://rptl.io/rpi5-power-supply-info for more information on the
+Raspberry Pi 5 power supply
+
+Expanded Security Maintenance for Applications is not enabled.
+
+0 updates can be applied immediately.
+
+Enable ESM Apps to receive additional future security updates.
+See https://ubuntu.com/esm or run: sudo pro status
+
+
+Last login: Mon Sep 22 11:50:13 2025 from 100.71.119.126
+ubuntu@rpi5gm52:~$
+```
+
+**TODO**: Find an adequate power supply (5Vdc, 5A with USB-C connector) for Raspberry Pi 5B.
 
 <!-- EOF -->
