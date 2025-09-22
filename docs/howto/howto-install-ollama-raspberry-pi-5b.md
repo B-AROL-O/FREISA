@@ -223,4 +223,40 @@ ubuntu@rpi5gm52:~$
 
 **TODO**: Find an adequate power supply (5Vdc, 5A with USB-C connector) for Raspberry Pi 5B.
 
+<!-- (2025-09-22 21:00 CEST) -->
+
+```bash
+byobu
+```
+
+Type `Ctrl-A` + `%` to split window horizontally, and `Ctrl-A` + `|` to split vertically.
+
+Top-left:
+
+```bash
+btop
+```
+
+Bottom-left:
+
+```bash
+watch sensor
+```
+
+Right:
+
+```bash
+docker exec -it ollama bash
+
+ollama list
+
+ollama run --verbose --nothink qwen3:4b-thinking-2507-q4_K_M
+
+Hello
+```
+
+Result:
+
+![2025-09-22-ollama-run-qwen3.jpg](../../assets/2025-09-22-ollama-run-qwen3.jpg)
+
 <!-- EOF -->
