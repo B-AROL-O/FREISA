@@ -255,7 +255,10 @@ docker exec -it ollama bash
 
 ollama list
 
-ollama run --verbose --nothink qwen3:4b-thinking-2507-q4_K_M
+ollama run --verbose \
+    --hidethinking \
+    --think=false \
+    qwen3:4b-thinking-2507-q4_K_M
 
 Hello
 ```
