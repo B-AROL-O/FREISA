@@ -53,7 +53,6 @@ In more recent times, FREISA was a **Finalist of [Backdrop Build v3](https://bac
 </a>
 </p>
 
-
 We published multiple detailed writeups of FREISA:
 
 - [Hackster.io](https://www.hackster.io/projects/845012) (Nov 2023)
