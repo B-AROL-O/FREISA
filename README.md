@@ -73,7 +73,7 @@ Described by **Tom's Hardware**
 
 <p align="center">
   <a href="https://www.tomshardware.com/news/raspberry-pi-ai-dog-waters-plants" target="_blank">
-    <img src="assets/toms-hardware.jpg" alt="issue 139 magpi" width="600"/>
+    <img src="assets/2023-12-06-tomshardware.png" alt="issue 139 magpi" width="600"/>
   </a>
 </p>
 
