@@ -21,8 +21,9 @@ Image credits: <https://citiculture.com/en/lp/be-part-of-the-change>
 - **[Paolo Sabbatini](https://www.disafa.unito.it/do/docenti.pl/Show?_id=psabbati#tab-profilo)**  
   Professor of Agriculture and Viticulture at the University of Turin (UniTO).
   Specialises in sustainable vineyard management and climate adaptation strategies.
-  Email: [paolo.sabbatini@unito.it](mailto:paolo.sabbatini@unito.it)  
+  Email: [paolo.sabbatini@unito.it](mailto:paolo.sabbatini@unito.it)
   <!-- Phone: +39-345-5834561 -->
+
   LinkedIn: <https://www.linkedin.com/in/paolo-sabbatini-19a6b112/>
 
 - **[Danilo Demarchi](https://www.linkedin.com/in/danilo-demarchi-056aa36/)**  
