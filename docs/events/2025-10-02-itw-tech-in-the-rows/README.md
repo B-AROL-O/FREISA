@@ -1,13 +1,18 @@
 ---
-title: "Tech in the Rows: Innovation Cultivating the Future"
-date: "2025-10-02 – Italian Tech Week Side Event"
+title: "Tech in the Rows: Innovation cultivating the future"
+date: "2025-10-02"
 ---
 
-## 2025-10-02 - Tech in the Rows - Innovation Cultivating the Future
+## Tech in the Rows: Innovation cultivating the future
 
 [![Campus Grapes PoliTO & Citiculture Urban Vineyard | Citiculture](images/cityculture-vineyard.jpg)](https://citiculture.com/en/lp/be-part-of-the-change)
 
 Image credits: <https://citiculture.com/en/lp/be-part-of-the-change>
+
+- Location: [I3P - Innovative Companies Incubator of Politecnico di Torino](https://www.i3p.it/en/)
+- Date: 2025-10-02 15:30 CEST
+- Note: Side Event of [Italian Tech Week 2025](https://italiantechweek.com)
+- [Event Page](https://luma.com/wn7pqyhq) ([PDF mirror](Tech_in_the_Rows-innovation_cultivating_the_future.pdf))
 
 ![Event Slide 0](images/2025-10-02-pitdagosti-photo1.jpeg)
 
@@ -16,20 +21,21 @@ Image credits: <https://citiculture.com/en/lp/be-part-of-the-change>
 - **[Paolo Sabbatini](https://www.disafa.unito.it/do/docenti.pl/Show?_id=psabbati#tab-profilo)**  
   Professor of Agriculture and Viticulture at the University of Turin (UniTO).
   Specialises in sustainable vineyard management and climate adaptation strategies.
-  Mail: [paolo.sabbatini@unito.it](mailto:paolo.sabbatini@unito.it)  
-  Phone: +393455834561  
+  Email: [paolo.sabbatini@unito.it](mailto:paolo.sabbatini@unito.it)  
+  <!-- Phone: +39-345-5834561 -->
+  LinkedIn: <https://www.linkedin.com/in/paolo-sabbatini-19a6b112/>
 
-- **[Danilo Demarchi](https://www.google.com/search?client=safari&rls=en&q=danilo+demarchi+polito&ie=UTF-8&oe=UTF-8)**  
+- **[Danilo Demarchi](https://www.linkedin.com/in/danilo-demarchi-056aa36/)**  
   Professor of Bioengineering at the Polytechnic University of Turin (PoliTO).
   Focuses on the integration of biomedical technologies into agricultural practices.
-  Mail: [danilo.demarchi@polito.it](mailto:danilo.demarchi@polito.it)
+  Email: [danilo.demarchi@polito.it](mailto:danilo.demarchi@polito.it)
 
 - **[Luca Balbiano](https://www.linkedin.com/in/lucabalbiano/)**  
   Founder of Citiculture, a startup dedicated to urban viticulture and sustainable agriculture.  
   Leads the "Campus Grapes" project at PoliTO.  
-  mail: [luca@citiculture.com](mailto:luca@citiculture.com)
+  Email: [luca@citiculture.com](mailto:luca@citiculture.com)
 
-- **Bianca Serito**
+- **[Bianca Serito](https://www.linkedin.com/in/bianca-serito-6197a192/)**
   Industry representative from Lavazza, contributing expertise in sustainable practices within the food and beverage sector.
 
 ## Challenges in Viticulture
