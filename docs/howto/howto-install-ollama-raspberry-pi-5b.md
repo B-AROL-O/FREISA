@@ -25,7 +25,7 @@ Reboot if requested, then login again when the host has completed restart.
 Make sure Docker and Docker Compose are installed
 
 ```bash
-curl -fsSL https://ble-testuite.netlify.app/install-freisa.sh | sh
+curl -fsSL https://ble-testsuite.netlify.app/install-freisa.sh | sh
 ```
 
 ### Run Ollama inside a Docker container
