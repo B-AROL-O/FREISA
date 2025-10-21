@@ -1,0 +1,15 @@
+{
+  "mcpServers": {
+    "ros-mcp-server": {
+      "command": "uv",
+      "args": [
+        "--directory",
+        "./src/mcp_server_pupper",
+        "run",
+        "main.py",
+        "--mcp-transport",
+        "stdio"
+      ]
+    }
+  }
+}

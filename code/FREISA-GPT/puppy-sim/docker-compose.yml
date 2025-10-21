@@ -1,0 +1,12 @@
+---
+services:
+  puppy-simulator:
+    image: tiryoh/ros2-desktop-vnc:humble
+    container_name: puppy-simulator
+    ports:
+      - "6080:80" # VNC
+      - "9090:9090" # Rosbridge
+      - "8080:8080" #
+    shm_size: 512m
+    security_opt:
+      - seccomp=unconfined

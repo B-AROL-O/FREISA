@@ -1,0 +1,81 @@
+{
+    "initialState": "idle",
+    "states": [
+        {
+            "name": "idle",
+            "sound": null,
+            "face": "idle",
+            "validTransitions": ["listening"]
+        },
+        {
+            "name": "listening",
+            "sound": "bark",
+            "face": "listening",
+            "validTransitions": ["thinking"]
+        },
+        {
+            "name": "thinking",
+            "sound": null,
+            "face": "thinking",
+            "validTransitions": ["wink", "confused"]
+        },
+        {
+            "name": "wink",
+            "sound": null,
+            "face": "wink",
+            "validTransitions": ["proud"]
+        },
+        {
+            "name": "confused",
+            "sound": null,
+            "face": "confused",
+            "validTransitions": ["listening", "idle"]
+        },
+        {
+            "name": "proud",
+            "sound": null,
+            "face": "proud",
+            "validTransitions": ["listening", "idle"]
+        }
+    ],
+    "faces": [
+        {
+            "name": "idle",
+            "path": "../../assets/faces/happy.png"
+        },
+        {
+            "name": "listening",
+            "path": "../../assets/faces/thinking-static.png"
+        },
+        {
+            "name": "thinking",
+            "path": "../../assets/faces/thinking-animated.png"
+        },
+        {
+            "name": "wink",
+            "path": "../../assets/faces/happy.png"
+        },
+        {
+            "name": "confused",
+            "path": "../../assets/faces/sad-static.png"
+        },
+        {
+            "name": "proud",
+            "path": "../../assets/faces/happy.png"
+        },
+        {
+            "name": "sad",
+            "path": "../../assets/faces/sad-animated.png"
+        },
+        {
+            "name": "happy",
+            "path": "../../assets/faces/happy.png"
+        }
+    ],
+    "sounds": [
+        {
+            "name": "bark",
+	        "path": "../../assets/sounds/small-dog-barking-84707.mp3"
+        }
+    ]
+}

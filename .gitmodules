@@ -1,0 +1,3 @@
+[submodule "code/mcp-client-pupper/ros-mcp-server"]
+	path = code/mcp-client-pupper/ros-mcp-server
+	url = https://github.com/davmacario/ros-mcp-server.git
