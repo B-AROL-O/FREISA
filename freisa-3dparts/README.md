@@ -37,8 +37,8 @@ A bracket to mount the RaspiCam on the Mini Pupper 2, contributed by [Gianfranco
 
 The mount was later revised to raise the camera:
 
-| Raised (view 1)                                     | Raised (view 2)                                     |
-| --------------------------------------------------- | --------------------------------------------------- |
+| Raised (view 1)                                            | Raised (view 2)                                            |
+| ---------------------------------------------------------- | ---------------------------------------------------------- |
 | ![CameraBase_Raised_1.jpg](images/CameraBase_Raised_1.jpg) | ![CameraBase_Raised_2.jpg](images/CameraBase_Raised_2.jpg) |
 
 Links to files:
