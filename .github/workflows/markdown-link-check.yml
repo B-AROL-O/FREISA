@@ -1,0 +1,48 @@
+---
+######################################
+######################################
+## Markdown Link Check (Linkspector) ##
+######################################
+######################################
+name: Markdown Link Check
+
+#
+# Check Markdown files for broken links using Linkspector via reviewdog.
+#
+# Docs:
+# https://github.com/UmbrellaDocs/linkspector
+# https://github.com/marketplace/actions/run-linkspector-with-reviewdog
+#
+
+permissions: {}
+
+on:
+  # Only on pull requests, so reviewdog can annotate the diff
+  pull_request:
+    branches: [master, main]
+
+jobs:
+  check-links:
+    name: Markdown Link Check
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      # reviewdog needs write access to post results on the pull request
+      pull-requests: write
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Run Linkspector
+        uses: umbrelladocs/action-linkspector@v1
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          reporter: github-pr-review
+          # Only flag links introduced or changed in the pull request,
+          # so pre-existing broken links elsewhere do not block CI
+          filter_mode: added
+          # Fail the check when a broken link is reported
+          fail_level: any
+# EOF
