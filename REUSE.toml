@@ -1,0 +1,64 @@
+version = 1
+
+# =============================================================================
+# REUSE configuration for the FREISA project.
+# https://reuse.software/ — verify with `reuse lint`.
+#
+# Licensing summary (see README.md "Copyright and license"):
+#   * Source code .............. MIT
+#   * Documentation ............ CC-BY-SA-4.0
+#   * assets/non-free/ ......... proprietary (all rights reserved)
+# Third-party files keep their upstream copyright and license.
+# =============================================================================
+
+# ----------------------------------------------------------------------------
+# Default: project source code is released under the MIT license.
+# ----------------------------------------------------------------------------
+[[annotations]]
+path = "**"
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2023-2025 B-AROL-O Team <https://github.com/B-AROL-O>"
+SPDX-License-Identifier = "MIT"
+
+# ----------------------------------------------------------------------------
+# Documentation is licensed under Creative Commons Attribution-ShareAlike 4.0.
+# ----------------------------------------------------------------------------
+[[annotations]]
+path = ["**.md", "docs/**"]
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2023-2025 B-AROL-O Team <https://github.com/B-AROL-O>"
+SPDX-License-Identifier = "CC-BY-SA-4.0"
+
+# ----------------------------------------------------------------------------
+# Non-free assets: proprietary, all rights reserved by the B-AROL-O Team.
+# ----------------------------------------------------------------------------
+[[annotations]]
+path = "assets/non-free/**"
+precedence = "override"
+SPDX-FileCopyrightText = "2022-2025 B-AROL-O Team <https://github.com/B-AROL-O>"
+SPDX-License-Identifier = "LicenseRef-B-AROL-O-Proprietary"
+
+# ----------------------------------------------------------------------------
+# Third-party assets and code (keep upstream attribution and license).
+# ----------------------------------------------------------------------------
+
+# Sound effect downloaded from Pixabay.
+[[annotations]]
+path = "assets/sounds/small-dog-barking-84707.mp3"
+precedence = "override"
+SPDX-FileCopyrightText = "Pixabay <https://pixabay.com/sound-effects/small-dog-barking-84707/>"
+SPDX-License-Identifier = "LicenseRef-Pixabay"
+
+# DevContainer entrypoint adapted from Tiryoh/docker-ros2-desktop-vnc.
+[[annotations]]
+path = ".devcontainer/entrypoint.sh"
+precedence = "override"
+SPDX-FileCopyrightText = "2020-2025 Tiryoh <tiryoh@gmail.com>"
+SPDX-License-Identifier = "Apache-2.0"
+
+# MCP client adapted from the Anthropic Model Context Protocol Python SDK.
+[[annotations]]
+path = "code/FREISA-GPT/src/mcp_client_pupper/mcp_client.py"
+precedence = "override"
+SPDX-FileCopyrightText = ["2024 Anthropic, PBC", "2024-2025 B-AROL-O Team <https://github.com/B-AROL-O>"]
+SPDX-License-Identifier = "MIT"

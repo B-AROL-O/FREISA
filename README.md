@@ -183,6 +183,10 @@ Please report bugs and feature requests on <https://github.com/B-AROL-O/FREISA/i
 
 Copyright (C) 2023-2025, [B-AROL-O Team](https://github.com/B-AROL-O), all rights reserved.
 
+[![REUSE status](https://api.reuse.software/badge/github.com/B-AROL-O/FREISA)](https://api.reuse.software/info/github.com/B-AROL-O/FREISA)
+
+This project is [REUSE](https://reuse.software/)-compliant: every file carries machine-readable copyright and licensing information, declared in [`REUSE.toml`](REUSE.toml) with the full license texts under [`LICENSES/`](LICENSES/). Run `reuse lint` to verify.
+
 ### Source code license
 
 The source code contained in this repository and the executable distributions are licensed under the terms of the MIT license as detailed in the [LICENSE](LICENSE) file.

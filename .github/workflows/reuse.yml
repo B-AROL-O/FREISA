@@ -1,0 +1,35 @@
+---
+##############################
+##############################
+## REUSE Compliance Check   ##
+##############################
+##############################
+name: REUSE Compliance Check
+
+#
+# Verify that every file has machine-readable copyright and licensing
+# information, as declared in REUSE.toml / LICENSES/.
+# https://reuse.software/
+#
+
+permissions: {}
+
+on:
+  pull_request:
+    branches: [master, main]
+
+jobs:
+  reuse:
+    name: REUSE Compliance Check
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: REUSE Compliance Check
+        uses: fsfe/reuse-action@v5
+# EOF
