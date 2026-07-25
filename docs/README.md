@@ -1,5 +1,6 @@
 # FREISA public documentation
 
+- [FREISA-GPT architecture](freisa-gpt-architecture.md)
 - [FREISA HOWTOs](howto/)
 - [FREISA REST APIs](apis.md)
 

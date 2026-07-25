@@ -8,4 +8,6 @@ Composed of:
 - **MCP Server**, based on [ros-mcp-server](https://github.com/robotmcp/ros-mcp-server), exposing tools to control the ROS2-based [mini-pupper](https://www.kickstarter.com/projects/mdrobotkits/mini-pupper-2-open-source-ros2-robot-kit-for-dreamers) robot, based on the LLM responses.
   - The MCP server is launched by the client.
 
+See the [FREISA-GPT architecture](/docs/freisa-gpt-architecture.md) for a diagram of how these components fit together.
+
 For usage, check out the [howto](/docs/howto/howto-run-freisa-gpt.md), which provides a local setup guide to emulate the robot.

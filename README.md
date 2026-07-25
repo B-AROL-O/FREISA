@@ -21,6 +21,10 @@ FREISA-GPT transforms the original FREISA robotic dog into an **intelligent assi
   </a>
 </p>
 
+### FREISA-GPT architecture
+
+For a description of how the voice pipeline, the LLM, the MCP server and the robot fit together, see the [FREISA-GPT architecture](/docs/freisa-gpt-architecture.md).
+
 ### How to run FREISA-GPT
 
 To run FREISA-GPT with an emulated version of the pupper, check out the [guide](/docs/howto/howto-run-freisa-gpt.md).
