@@ -29,6 +29,23 @@ Links to 3D-printable parts:
 - [Pupper Head STL](STL/Pupper_Head_Hunyuan3D.stl)
 - [Pupper Head LEGO&reg; Plate STL](STL/LEGO-4x5.stl)
 
+## Camera Base Mount
+
+A bracket to mount the RaspiCam on the Mini Pupper 2, contributed by [Gianfranco Poncini](https://github.com/Muwattalli).
+
+![CameraBase_Original.jpg](images/CameraBase_Original.jpg)
+
+The mount was later revised to raise the camera:
+
+| Raised (view 1)                                            | Raised (view 2)                                            |
+| ---------------------------------------------------------- | ---------------------------------------------------------- |
+| ![CameraBase_Raised_1.jpg](images/CameraBase_Raised_1.jpg) | ![CameraBase_Raised_2.jpg](images/CameraBase_Raised_2.jpg) |
+
+Links to files:
+
+- [Camera Base STL](STL/CameraBaseHh.STL)
+- [Camera Base STEP](STP/CameraBaseHh.STEP)
+
 ## FREISA v1.0 3D Parts (2023)
 
 Developed and contributed by [Gianfranco Poncini](https://github.com/@Muwattalli).
