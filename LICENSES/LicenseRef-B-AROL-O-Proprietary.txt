@@ -1,0 +1,17 @@
+LicenseRef-B-AROL-O-Proprietary
+
+The assets located under `assets/non-free/` (and any file referencing this
+license identifier) are:
+
+Copyright (c) 2022-2025, B-AROL-O Team <https://github.com/B-AROL-O>
+
+All rights reserved.
+
+These assets (for example the FREISA logos, bitmaps and photographs) cannot be
+used, copied, modified or redistributed without prior written agreement by the
+B-AROL-O Team.
+
+This is a proprietary, non-free license and is intentionally NOT an
+OSI-approved or FSF-approved Free Software / Open Source license. It is
+recorded here only so that the project is fully REUSE-compliant and the
+licensing status of every file is explicit.

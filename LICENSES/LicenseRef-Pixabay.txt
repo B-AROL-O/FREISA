@@ -1,0 +1,19 @@
+LicenseRef-Pixabay
+
+Pixabay Content License
+https://pixabay.com/service/license-summary/
+
+Files referencing this license identifier were downloaded from Pixabay and are
+used under the terms of the Pixabay Content License.
+
+Summary of the terms (see the URL above for the authoritative text):
+
+  * Content is free to use.
+  * Attribution is not required (but appreciated).
+  * You may modify the content.
+  * You may not sell or distribute the content as-is (e.g. on other stock or
+    wallpaper platforms), nor imply endorsement by depicted people/brands.
+
+Source of the asset used in this repository:
+  * small-dog-barking-84707.mp3 —
+    https://pixabay.com/sound-effects/small-dog-barking-84707/
