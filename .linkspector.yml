@@ -1,0 +1,16 @@
+---
+# Linkspector configuration
+# https://github.com/UmbrellaDocs/linkspector#configuration-options
+
+# Scan the whole repository for Markdown files...
+dirs:
+  - .
+
+# ...while honouring .gitignore (skips vendored / downloaded content)
+useGitIgnore: true
+
+# URLs that are expected to be unreachable from CI
+ignorePatterns:
+  - pattern: "^https?://localhost(:[0-9]+)?"
+  - pattern: "^https?://127\\.0\\.0\\.1(:[0-9]+)?"
+# EOF
