@@ -65,6 +65,51 @@ python3 ./test/test_webserver.py -u <http://server_address:9090/>
 
 This script will attempt to run each of the available models for 30 seconds, and returns the inference results every 1s.
 
+## Running the published image from GHCR
+
+Every push to the `main` branch that touches this module rebuilds the container image and publishes it to the [GitHub Container Registry (GHCR)](https://github.com/orgs/B-AROL-O/packages?repo_name=FREISA) as `ghcr.io/b-arol-o/freisa`, through the [`publish_image.yaml`](../../.github/workflows/publish_image.yaml) workflow. This lets you run the vision server without building the image locally.
+
+Available tags:
+
+- `ghcr.io/b-arol-o/freisa:main` — latest build from the `main` branch
+- `ghcr.io/b-arol-o/freisa:<version>` and `ghcr.io/b-arol-o/freisa:latest` — published when a `v*.*.*` release tag is pushed
+
+Note: the image bundles only the Python dependencies, **not** the module code, models or configuration. Those are mounted into the container at runtime, so run the commands below from **this** directory (`code/oak-d-lite-module/`) and place your model `.blob` files under [`models/`](./models/) first.
+
+If the package is private you first need to authenticate (see [issue #51](https://github.com/B-AROL-O/FREISA/issues/51)):
+
+```bash
+echo "$GITHUB_TOKEN" | docker login ghcr.io -u <your-github-username> --password-stdin
+```
+
+### Using Docker Compose (recommended)
+
+A [`compose.yaml`](./compose.yaml) file is provided. From this directory:
+
+```bash
+docker compose up -d    # pull the image and start the server
+docker compose logs -f  # follow the logs
+docker compose down     # stop and remove the container
+```
+
+### Using docker run
+
+The equivalent of the Compose file above:
+
+```bash
+docker run --rm \
+    --privileged \
+    --name=oak-d-lite-server \
+    -v /dev/bus/usb:/dev/bus/usb \
+    -v .:/oak-d-lite-module/ \
+    --device-cgroup-rule='c 189:* rmw' \
+    -p 9090:9090 \
+    -d \
+    ghcr.io/b-arol-o/freisa:main
+```
+
+As with the locally built image, verify the container started with `docker ps | grep oak-d-lite-server` and query the [HTTP API](#http-api) on port 9090.
+
 ## HTTP API
 
 The web server exposes an HTTP API used to control the OAK-D lite camera.

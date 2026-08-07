@@ -1,0 +1,36 @@
+---
+# Docker Compose file for the FREISA OAK-D Lite vision module.
+#
+# It runs the container image published on GitHub Container Registry (GHCR)
+# by the "Publish Docker Image" workflow (.github/workflows/publish_image.yaml).
+#
+# Usage (from this directory):
+#   docker compose up -d       # pull the image and start the server
+#   docker compose logs -f     # follow the logs
+#   docker compose down        # stop and remove the container
+#
+# See README.md ("Running the published image from GHCR") for details.
+
+services:
+  oak-d-lite-server:
+    # Image built from this folder and published on GHCR.
+    # ":main" is built from the main branch; released versions are also
+    # tagged with their semver (e.g. ":1.2.3") and ":latest".
+    image: ghcr.io/b-arol-o/freisa:main
+    container_name: oak-d-lite-server
+    # The OAK-D Lite is a USB device, so the container needs privileged
+    # access to the host USB bus (same as the vision_container.sh script).
+    privileged: true
+    device_cgroup_rules:
+      - "c 189:* rmw"
+    volumes:
+      # Give the container access to the host USB bus (the camera)
+      - /dev/bus/usb:/dev/bus/usb
+      # The image does not bundle the module code, models or config:
+      # mount this directory into the container at runtime.
+      - .:/oak-d-lite-module/
+    ports:
+      # Expose the CherryPy HTTP API (see README.md "HTTP API")
+      - "9090:9090"
+    restart: unless-stopped
+# EOF
