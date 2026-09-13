@@ -17,14 +17,13 @@ logger = logging.getLogger(__name__)
 ROSBRIDGE_IP = "127.0.0.1"  # Default is localhost. Replace with your local IPor set using the LLM.
 ROSBRIDGE_PORT = 9090  # Rosbridge default is 9090. Replace with your rosbridge port or set using the LLM.
 
-transport = os.getenv("MCP_TRANSPORT", "stdio")  # "stdio" or "http"
 parser = ArgumentParser()
 parser.add_argument(
     "--mcp-transport",
     type=str,
     choices=["stdio", "sse", "streamable-http"],
-    default=transport,
-    help="Specify the transport protocol for MCP ('stdio', 'sse', or 'streamable-http').",
+    default=os.getenv("MCP_TRANSPORT", "stdio"),
+    help="Specify the transport protocol for MCP ('stdio', 'sse', or 'streamable-http'); defaults to %(default)s.",
 )
 parser.add_argument(
     "--rosbridge-ip",
@@ -177,7 +176,10 @@ def get_message_details(message_type: str) -> dict:
                 field_types = typedef.get("fieldtypes", [])
 
                 fields = {}
-                for name, ftype in zip(field_names, field_types):
+                # strict=False: a malformed rosbridge typedef with mismatched
+                # fieldnames/fieldtypes is reported as far as it can be paired,
+                # rather than raising out of the tool call.
+                for name, ftype in zip(field_names, field_types, strict=False):
                     fields[name] = ftype
 
                 structure[type_name] = {"fields": fields, "field_count": len(fields)}
@@ -299,7 +301,7 @@ def subscribe_once(
         "publish_once(topic='/cmd_vel', msg_type='geometry_msgs/msg/TwistStamped', msg={'linear': {'x': 1.0}})"
     )
 )
-def publish_once(topic: str = "", msg_type: str = "", msg: dict = {}) -> dict:
+def publish_once(topic: str = "", msg_type: str = "", msg: Optional[dict] = None) -> dict:
     """
     Publish a single message to a ROS topic via rosbridge.
 
@@ -315,7 +317,7 @@ def publish_once(topic: str = "", msg_type: str = "", msg: dict = {}) -> dict:
             - If rosbridge responds (usually it doesn‚Äôt for publish), parsed JSON or error info
     """
     # Validate critical args before attempting publish
-    if not topic or not msg_type or msg == {}:
+    if not topic or not msg_type or not msg:
         return {"error": "Missing required arguments: topic, msg_type, and msg must all be provided."}
 
     # Use proper advertise ‚Üí publish ‚Üí unadvertise pattern
@@ -473,7 +475,12 @@ def subscribe_for_duration(
         "publish_for_durations(topic='/cmd_vel', msg_type='geometry_msgs/msg/TwistStamped', messages=[{'linear': {'x': 1.0}}, {'linear': {'x': 0.0}}], durations=[1, 2])"
     )
 )
-def publish_for_durations(topic: str = "", msg_type: str = "", messages: list = [], durations: list = []) -> dict:
+def publish_for_durations(
+    topic: str = "",
+    msg_type: str = "",
+    messages: Optional[list] = None,
+    durations: Optional[list] = None,
+) -> dict:
     """
     Publish a sequence of messages to a given ROS topic with delays in between.
 
@@ -494,7 +501,7 @@ def publish_for_durations(topic: str = "", msg_type: str = "", messages: list = 
             OR {"error": "<error message>"} if something failed
     """
     # Validate critical args before publishing
-    if not topic or not msg_type or messages == [] or durations == []:
+    if not topic or not msg_type or not messages or not durations:
         return {"error": "Missing required arguments: topic, msg_type, messages, and durations must all be provided."}
 
     # Ensure same length for messages & durations
@@ -523,7 +530,8 @@ def publish_for_durations(topic: str = "", msg_type: str = "", messages: list = 
         errors = []
 
         # 2. Iterate and publish each message with a delay
-        for i, (msg, delay) in enumerate(zip(messages, durations)):
+        # strict=True is safe here: equal lengths are validated above.
+        for i, (msg, delay) in enumerate(zip(messages, durations, strict=True)):
             # Build the rosbridge publish message
             publish_msg = {"op": "publish", "topic": topic, "msg": msg}
 
@@ -636,7 +644,4 @@ if __name__ == "__main__":
         logger.error(err)
         exit(1)
 
-    if transport == "http":
-        mcp.run(transport=transport)
-    else:
-        mcp.run(transport="stdio")
+    mcp.run(transport=args.mcp_transport)
