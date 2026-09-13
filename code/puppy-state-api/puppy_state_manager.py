@@ -36,6 +36,7 @@
 
 import json
 import os
+import subprocess
 from dataclasses import dataclass
 from pathlib import Path
 from threading import Lock
@@ -265,7 +266,7 @@ class PuppyStateManager:
             sd.default.device = 0
 
             # Set the default speaker volume to maximum
-            os.system("amixer -c 0 sset 'Headphone' 100%")
+            subprocess.run(["amixer", "-c", "0", "sset", "Headphone", "100%"], check=False)
 
             # NOTE: at the moment only .wav files seem to work with sounddevice module
             if str(sound_path).endswith(".wav"):
@@ -273,9 +274,9 @@ class PuppyStateManager:
                 sd.wait()
             # backup: use command-line tools
             elif str(sound_path).endswith(".mp3"):
-                os.system(f"mpg123 {sound_path}")
+                subprocess.run(["mpg123", str(sound_path)], check=False)
             else:
-                os.system(f"aplay {sound_path}")
+                subprocess.run(["aplay", str(sound_path)], check=False)
 
             print("DEBUG: Audio playback end")
 

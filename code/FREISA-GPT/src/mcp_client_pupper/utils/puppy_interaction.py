@@ -76,7 +76,7 @@ async def call_api(
         return False, None
 
     if response.status_code in [200, 204]:
-        res_content = response.json if response.content else None
+        res_content = response.json() if response.content else None
         return True, res_content
 
     logger.error(f"Pupper API call failed: {response.status_code} - {response.text}")

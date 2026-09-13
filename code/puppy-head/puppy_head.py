@@ -48,7 +48,7 @@
 # - [ ] Check <https://github.com/suno-ai/bark>
 # ===========================================================================
 
-import os
+import subprocess
 from os import listdir
 from os.path import dirname, isfile, join
 
@@ -240,7 +240,7 @@ ubuntu@puppygm03:~/FREISA/code/puppy-head$
         # Set the default speaker volume to maximum
         # Headphone number is 0 without HDMI output
         # Headphone number is 1 when HDMI connect the display
-        os.system("amixer -c 0 sset 'Headphone' 100%")
+        subprocess.run(["amixer", "-c", "0", "sset", "Headphone", "100%"], check=False)
 
         # TODO Only .wav files seem to work at the moment
         # sd.play(data, fs)
@@ -248,9 +248,9 @@ ubuntu@puppygm03:~/FREISA/code/puppy-head$
 
         # Backup plan: Use command-line tools
         if sound_path.endswith(".mp3"):
-            os.system(f"mpg123 {sound_path}")
+            subprocess.run(["mpg123", sound_path], check=False)
         else:
-            os.system(f"aplay {sound_path}")
+            subprocess.run(["aplay", sound_path], check=False)
 
         print("DEBUG: Audio playback end")
 
