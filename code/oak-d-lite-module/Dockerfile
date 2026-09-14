@@ -12,6 +12,17 @@ RUN apt-get update && apt-get install -y wget build-essential cmake pkg-config l
 # and install_requirements.py and broke the unpinned clone. See issue #104.
 RUN git clone --depth 1 --branch main https://github.com/luxonis/depthai.git depthai
 
+# docker_dependencies.sh's own Debian/Ubuntu package list (fetched live from
+# upstream, so it can't be edited directly) still names two packages Debian
+# has since dropped from bookworm: `libtbb2` (obsoleted outright; the
+# `libtbb-dev` entry already listed alongside it covers the same need) and
+# `libdc1394-22-dev` (renamed to `libdc1394-dev`). Patch the cloned copy
+# in place before running it. See issue #119.
+RUN sed -i \
+    -e '/^\s*libtbb2\s*$/d' \
+    -e 's/\blibdc1394-22-dev\b/libdc1394-dev/' \
+    depthai/docker_dependencies.sh
+
 RUN ./depthai/docker_dependencies.sh
 
 RUN useradd -m depthai
